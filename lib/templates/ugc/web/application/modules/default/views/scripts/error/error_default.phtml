@@ -1,0 +1,23 @@
+<?php if ('production' !== $this->env): ?>
+<div id="error">
+    <p>
+        <ul class="errorList">
+            <li>
+                <h3><?php echo $this->message ?></h3> 
+            </li>
+            <li>
+                <h4>Exception information:</h4>
+                <p><?php echo $this->exception->getMessage() ?></p>
+            </li>
+            <li>
+                <h4>Stack trace:</h4>
+                <p><?php echo $this->exception->getTraceAsString() ?></p>
+            </li>
+            <li>
+                <h4>Request Parameters:</h4>
+                <p><?php var_dump($this->request->getParams()) ?></p>
+            </li>
+        </ul>
+    </p>
+</div>
+<?php endif ?>

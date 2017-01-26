@@ -1,0 +1,103 @@
+<?php 
+$configuration_locale = Zend_Registry::get('Application_Config_Locale');
+?>
+<div class="well">
+	<div class="pull-left"><h4 style="float: left; margin-top: 5px;">ALLTIME&nbsp;</h4>
+			
+		<button id="top10" class="btn <? if($this->limit == 10) echo "btn-primary"; ?>" type="button">TOP 10</button>
+		<button id="top25" class="btn <? if($this->limit == 25) echo "btn-primary"; ?>" type="button">TOP 25</button>
+		<button id="top50" class="btn <? if($this->limit == 50) echo "btn-primary"; ?>" type="button">TOP 50</button>
+		<button id="top100" class="btn <? if($this->limit == 100) echo "btn-primary"; ?>" type="button">TOP 100</button>
+	</div>
+	<div class="pull-right">
+		<div class="input-append date" id="dp_start" data-date="12-02-2012"
+			data-date-format="yyyy-mm-dd">
+			<h4 style="float: left; margin-top: 5px;">FROM&nbsp;</h4>
+			<input class="span2" id="date_start_input" size="16" type="text" value="12-02-2012"> <span
+				class="add-on"><i class="icon-th"></i> </span>
+		</div>
+		<div class="input-append date" id="dp_end" data-date="12-02-2012"
+			data-date-format="yyyy-mm-dd">
+			<h4 style="float: left; margin-top: 5px; margin-left:10px">TO&nbsp;</h4>
+			<input class="span2" id="date_end_input" size="16" type="text" value="12-02-2012"> <span
+				class="add-on"><i class="icon-th"></i> </span>
+		</div>
+		<button class="btn <? if(!empty($this->date_start)) echo "btn-primary"; ?>" type="button" style="margin-top: -14px;">Set Date</button>
+	</div>
+</div>
+<script type="text/javascript">
+	var start = new Date(<? if(!empty($this->date_start)) echo "'". $this->date_start ."'"; ?>);
+	var end = new Date();
+	<? if(!empty($this->date_end)) { ?>
+	end = new Date(<?php echo "'". $this->date_end ."'"; ?>);
+	<?php } else {?>
+	end.setDate(start.getDate() - 7);
+	<?php }?>
+	
+	var dp_start = $('#dp_start').datepicker({weekStart : 1});
+	dp_start.datepicker('setValue', start);
+
+	var dp_end = $('#dp_end').datepicker({weekStart : 1});
+	dp_end.datepicker('setValue', end);
+
+	$('.pull-left .btn').on('click', function (e) {
+	     window.location.href = "/admin/toplist/?perpage=" + e.target.id.substr(3);
+	})
+
+	$('.pull-right .btn').on('click', function (e) {
+	     window.location.href = "/admin/toplist/?date_start=" + $('#date_start_input').val() + "&date_end=" + $('#date_end_input').val();
+	})
+</script>
+
+
+<? if(isset($this->items)): ?>
+<table cellpadding="0" cellspacing="0"
+	class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th><span class="badge badge-inverse"><?= $this->count; ?> </span>
+				Entries</th>
+			<?
+			//headline => sortby
+			$_thead = array(
+                            'Username' => 'name',
+                            'Entry' => 'url_big',
+                            'Locale' => 'locale',
+                            'Date' => 'timestamp',
+							'Likes' => 'like_count',
+							'Complaints' => 'complain_count'
+                        );
+                    ?>
+			<? foreach($_thead as $colName => $sortby): ?>
+			<th><?= $colName; ?>
+			</th>
+			<? endforeach; ?>
+			<th>Toggle</th>
+		</tr>
+	</thead>
+	<tbody>
+		<? foreach($this->items as $idx => $row): ?>
+		<tr
+		<?= (($this->affectedId == $row->id) ? ' class="success"' : '' ); ?>>
+			<td><img src="<?= $row->picture; ?>"
+				style="width: 90px; height: 90px; margin-right: 15px"
+				class="img-rounded"></td>
+			<td><?= $row->name; ?></td>
+			<td><img src="<?= $row->url_big; ?>" style="width:<?= $row->w; ?>px; height:<?= $row->h; ?>px; margin-right:15px" class="img-rounded">
+			</td>
+			<td><?= $row->locale; ?></td>
+			<td><?= $row->timestamp; ?></td>
+			<td><?= $row->like_count; ?></td>
+			<td><?= $row->complain_count; ?></td>
+			<td><a href="/admin/toggleactive/?id=<?= $row->id; ?>"
+				title="click to toggle state"
+				class="<?= (($row->flag == 0) ? 'btn btn-success' : 'btn btn-danger'); ?>"><?= (($row->flag == 0) ? 'Active' : 'Inactive'); ?>
+			</a></td>
+		</tr>
+		<? endforeach; ?>
+	</tbody>
+</table>
+
+<? endif;
+//echo var_dump($this->items[8]->_data);
+?>

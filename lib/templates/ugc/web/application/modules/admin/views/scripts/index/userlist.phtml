@@ -1,0 +1,59 @@
+<?php 
+	$configuration_locale = Zend_Registry::get('Application_Config_Locale');
+?>
+
+	<? if(isset($this->items)): ?>
+        <table cellpadding="0" cellspacing="0" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th><span class="badge badge-inverse"><?= $this->count; ?></span> Entries</th>
+                    <?
+						//headline => sortby
+                        $_thead = array(
+                            'Username' => 'name',
+                            'Entry' => 'url_big',
+                            'Locale' => 'locale',
+                            'Date' => 'timestamp',
+							'Likes' => 'like_count',					
+							'Complaints' => 'complain_count'					
+                        );
+                    ?>
+                    <? foreach($_thead as $colName => $sortby): ?>
+                        <th>
+							<?= $colName; ?>
+                            <div style="height:28px;margin-bottom:5px">
+                                <a href="?sortby=<?= $sortby; ?>&sortorder=DESC"><i class="icon-chevron-up"></i></a>
+                                <a href="?sortby=<?= $sortby; ?>&sortorder=ASC"><i class="icon-chevron-down"></i></a>
+                            </div>
+                       	</th>
+                    <? endforeach; ?>
+                    <th>Toggle</th>
+                </tr>
+            </thead>
+            <tbody>
+            <? foreach($this->items as $idx => $row): ?>
+                <tr<?= (($this->affectedId == $row->id) ? ' class="success"' : '' ); ?>>
+                    <td><img src="<?= $row->picture; ?>" style="width:90px; height:90px; margin-right:15px" class="img-rounded"></td>
+                    <td><?= $row->name; ?></td>
+                    <td><img src="<?= $row->url_big; ?>" style="width:<?= $row->w; ?>px; height:<?= $row->h; ?>px; margin-right:15px" class="img-rounded"></td>
+                    <td><?= $row->locale; ?></td>
+                    <td><?= $row->timestamp; ?></td>
+                    <td><?= $row->like_count; ?></td>
+                    <td><?= $row->complain_count; ?></td>
+                    <td><a href="/admin/toggleactive/?id=<?= $row->id; ?>" title="click to toggle state" class="<?= (($row->flag == 0) ? 'btn btn-success' : 'btn btn-danger'); ?>"><?= (($row->flag == 0) ? 'Active' : 'Inactive'); ?></a></td>
+                </tr> 
+            <? endforeach; ?>
+            </tbody>
+        </table>
+        
+        <div class="pull-right">
+            <? if($this->showPerPage instanceof Zend_Form): ?>
+                <?= $this->showPerPage; ?>
+            <? endif; ?>
+        </div>
+        
+        <?= $this->paginator; ?>
+        
+    <? endif;
+		//echo var_dump($this->items[8]->_data);
+    ?>

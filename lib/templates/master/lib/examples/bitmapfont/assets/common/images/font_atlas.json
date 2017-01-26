@@ -1,0 +1,48 @@
+{"frames": [
+
+{
+	"filename": "Fascinate_Inline.png",
+	"frame": {"x":2,"y":2,"w":503,"h":476},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":503,"h":476},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Luckiest_Guy.png",
+	"frame": {"x":507,"y":398,"w":502,"h":403},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":502,"h":403},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Sarina.png",
+	"frame": {"x":2,"y":480,"w":502,"h":375},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":502,"h":375},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Sigmar_One.png",
+	"frame": {"x":507,"y":2,"w":504,"h":394},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":3,"w":504,"h":394},
+	"sourceSize": {"w":512,"h":512},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "font_atlas.png",
+	"format": "RGBA8888",
+	"size": {"w":1013,"h":857},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9e71c815df21272379237fbff813bbb2:9aa963e655529484e424eb38b03f3ba9:eeb4b67f43b52f3ee803dc84feb6adc7$"
+}
+}

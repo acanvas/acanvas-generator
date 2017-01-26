@@ -1,0 +1,94 @@
+<?
+require_once (dirname ( __FILE__ ) . '/../../../../../services/UGCEndpointJSON.php');
+
+$endpoint = new UGCEndpointJSON ( );
+
+//createItem
+echo '<pre>createItem</pre>';
+
+$obj = new stdClass();
+$obj->creator_uid =  "1685491709";
+$obj->title =  "4";
+$obj->description = "STAGRAM";
+$obj->type = 1;
+$obj->type_dao = new stdClass();
+$obj->type_dao->w = 600;
+$obj->type_dao->h = 535;
+$obj->type_dao->url_big = "http://apps.jvm-neckar.de/rockdot-demo/backend/uploads/84992427_31779067.589249462.jpg";
+$obj->type_dao->url_thumb = "http://apps.jvm-neckar.de/rockdot-demo/backend/uploads/84992427_31779067.589249462_thumb.jpg";
+echo '<pre>'. print_r($endpoint->createItem( json_encode( $obj ) ))  .'</pre>';
+
+
+echo '<pre>readItem</pre>';
+//readItem
+$obj = new stdClass();
+$obj->id =  7;
+echo '<pre>'.  print_r($endpoint->readItem(json_encode( $obj )))  .'</pre>';
+
+
+//filterItems: CONDITION_ALL
+echo '<pre>filterItems: CONDITION_ALL</pre>';
+
+$obj = new stdClass();
+$obj->condition =  "CONDITION_ALL";
+$obj->order =  "timestamp DESC";
+$obj->limit = 10;
+$obj->limitindex = 0;
+echo '<pre>'. print_r($endpoint->filterItems( json_encode( $obj ) ))  .'</pre>';
+
+
+//filterItems: CONDITION_UGC_ID
+echo '<pre>filterItems: CONDITION_UGC_ID</pre>';
+
+$obj = new stdClass();
+$obj->condition =  "CONDITION_UGC_ID";
+$obj->order =  "timestamp DESC";
+$obj->limit = 10;
+$obj->limitindex = 0;
+$obj->item_id = 1;
+echo '<pre>'. print_r($endpoint->filterItems( json_encode( $obj ) ))  .'</pre>';
+
+
+//filterItems: CONDITION_FRIENDS
+echo '<pre>filterItems: CONDITION_FRIENDS</pre>';
+
+$obj = new stdClass();
+$obj->condition =  "CONDITION_FRIENDS";
+$obj->order =  "timestamp DESC";
+$obj->limit = 10;
+$obj->limitindex = 0;
+$obj->creator_uids = array("1234-fake", "1685491709");
+echo '<pre>'. print_r($endpoint->filterItems( json_encode( $obj ) ))  .'</pre>';
+
+
+//filterItems: CONDITION_ME
+echo '<pre>filterItems: CONDITION_ME</pre>';
+
+$obj = new stdClass();
+$obj->condition =  "CONDITION_ME";
+$obj->order =  "timestamp DESC";
+$obj->limit = 1;
+$obj->limitindex = 0;
+$obj->creator_uid = "1685491709";
+echo '<pre>'. print_r($endpoint->filterItems( json_encode( $obj ) ))  .'</pre>';
+
+
+
+//login
+echo '<pre>login</pre>';
+
+$obj = new stdClass();
+$obj->device =  "Mac OS 10.6.8";
+$obj->locale =  "en_US";
+$obj->login_count = 0;
+$obj->name = "Nils Döhring";
+$obj->network = "facebook";
+$obj->pic = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/186467_1685491709_795058035_q.jpg";
+$obj->timestamp_lastlogin = NULL;
+$obj->timestamp_registered = NULL;
+$obj->uid = "1685491709";
+echo '<pre>'. print_r($endpoint->login( json_encode( $obj ) ))  .'</pre>';
+/*
+*/
+
+?>

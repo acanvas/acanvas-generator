@@ -1,0 +1,18 @@
+# Copyright (c) 2015, Block Forest. Please see the AUTHORS file for details.
+# All rights reserved. Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+#currently fails because chocolatey (appveyor only has dart 1.8.5 as package
+
+install:
+  - cinst -y dart-sdk
+  - set PATH=%PATH%;C:\tools\dart-sdk\bin
+  - set PATH=%PATH%;%APPDATA%\Pub\Cache\bin
+  - pub.bat get
+
+build: off
+
+test_script:
+  - set PATH=%PATH%;C:\tools\dart-sdk\bin
+  - set PATH=%PATH%;%APPDATA%\Pub\Cache\bin
+  - dart.exe tool\grind.dart buildbot

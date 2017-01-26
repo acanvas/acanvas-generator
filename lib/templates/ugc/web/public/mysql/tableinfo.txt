@@ -1,0 +1,45 @@
+users:
+uid
+locale
+network (facebook|signup)
+device (browser|app-ios|app-android)
+name
+pic (optional)
+hash
+timestamp
+timestamp_lastlogin (autoset via query)
+
+users_sweepstake:
+uid
+hometown_location (null)
+email (null)
+email_confirmed (0; in case of facebook-email: 1)
+birthday_date (null)
+realname
+street
+city
+score
+
+users_like_items:
+uid
+rating (1|1-5)
+item_id
+timestamp
+
+items:
+id
+creator_uid
+title
+description
+href
+orientation
+like_count
+liker_count
+flag (0)
+timestamp
+
+games:
+uid
+level
+score
+timestamp

@@ -1,0 +1,1 @@
+Find the character source file at https://github.com/bp74/StageXL_Samples/tree/master/example/filter/normal_map_filter

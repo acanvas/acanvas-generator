@@ -1,0 +1,30 @@
+<?php
+/*
+Eigenschaft / Beschreibung
+first: 				Erste Seitennummer (z.B., 1)
+firstItemNumber: 	Absolute Nummer des ersten Elements auf dieser Seite
+firstPageInRange: 	Erste Seite des Bereichs der vom Scrolling Stil zurückgegeben wird
+current: 			Aktuelle Seitenzahl
+currentItemCount: 	Anzahl der Elemente auf dieser Seite
+itemCountPerPage: 	Maximale Anzahl der Elemente die auf jeder Seite vorhanden sind
+last: 				Letzte Seitennummer
+lastItemNumber: 	Absolute Zahl des letzten Elements auf dieser Seite
+lastPageInRange: 	Letzte Seite im Bereich der vom Scrolling Stil zurückgegeben wird
+next: 				Nächste Seitenzahl
+pageCount: 			Anzahl an Seiten
+pagesInRange: 		Array von Seiten das vom Scrolling Stil zurückgegeben wird
+previous: 			Vorherige Seitenzahl
+totalItemCount: 	Komplette Anzahl an Elementen
+*/
+?>
+<?php if ($this->pageCount && $this->pageCount > 1) :?>
+    <div class="pagination pagination-left" style="width:300px;">
+        <ul>
+            <li<?= (isset($this->previous) ? '' : ' class="disabled"'); ?>><a href="<?= (isset($this->previous) ? '?page='.$this->previous : ''); ?>">&#171;</a></li>    
+            <? foreach ($this->pagesInRange as $page): ?>
+                <li<?= ($page == $this->current) ? ' class="disabled"' : ''; ?>><a href="?page=<?= $page; ?>"><?= $page; ?></a></li>
+            <? endforeach; ?>
+            <li<?= (isset($this->next) ? '' : ' class="disabled"'); ?>><a href="<?= (isset($this->next) ? '?page='.$this->next : ''); ?>">&#187;</a></li>
+        </ul>
+    </div>
+<? endif; ?>

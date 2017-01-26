@@ -1,0 +1,103 @@
+<?= $this->docType().PHP_EOL; ?>
+<head>
+<?= $this->headTitle().PHP_EOL; ?>
+<?= $this->headMeta().PHP_EOL; ?>
+<meta name="viewport" content="width=device-width, user-scalable=0" />
+<meta http-equiv="cleartype" content="on">
+<?= $this->headLink().PHP_EOL; ?>
+<?= $this->headScript().PHP_EOL; ?>
+</head>
+<body>
+
+	<?php
+	/**
+	 * Basic/Main Layout
+	 *
+	 * @author nils.doehring
+	 * @version
+	 */
+	try{
+		$configuration_locale = Zend_Registry::get('Application_Config_Locale');
+		?>
+	<div class="container" style="width: 1024px">
+		<div class="page-header" style="position: relative;">
+			<h1>
+				ADMINISTRATION <small><?php echo $configuration_locale->title; 
+				echo $this->test; ?> </small>
+			</h1>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<ul class="nav">
+					<li <? if($this->action == "index") echo "class='active'"; ?>><a href="/admin">Toplist</a></li>
+					<li <? if($this->action == "userlist") echo "class='active'"; ?>><a href="/admin/userlist">Userlist</a></li>
+					<li <? if($this->action == "bugs") echo "class='active'"; ?>><a href="/admin/bugs">File a Bug</a></li>
+				</ul>
+				<ul class="nav pull-right">
+					<li><a href="/admin/index/logout/">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<? if(isset($this->messages) && !empty($this->messages)): ?>
+		<? foreach($this->messages as $namespace => $_messages): ?>
+		<? if(!empty($_messages)): ?>
+		<div class="alert alert-<?= $namespace; ?>">
+			<strong>Notice!</strong>
+			<? 
+			foreach($_messages as $message){
+                	echo $message;
+				}
+				?>
+		</div>
+		<? endif; //_messages per namespace?>
+		<? endforeach; //messages ?>
+		<? endif; //isset messages ?>
+
+		<?php
+			
+		// CONTENT
+		echo $this->layout()->content;
+
+		?>
+	</div>
+	<?php 
+	}
+	catch(Exception $e){
+		if(APPLICATION_ENV !== 'production' && ($this->system_debug === 'on' || $this->system_debug)){
+			echo $e->getMessage();
+		}
+	}
+	//----------------------------------------------------
+	//wrapped in try catch to avoid missing plugin error
+	try{echo PHP_EOL.$this->script();
+	}catch(Exception $e){
+	}
+	//debug / dumps output_buffer only on devel/local context
+	if(APPLICATION_ENV !== 'production' && ($this->system_debug === 'on' || $this->system_debug === '1')){
+		Rockdot_Debug::dump($this->activePage, 'ACTIVE_PAGE');
+		Rockdot_Debug::dump(
+		array(
+		'APPLICATION_LANG' => APPLICATION_LANG,
+		'APPLICATION_URI' => APPLICATION_URI,
+		'APPLICATION_ENV' => APPLICATION_ENV,
+		'APPLICATION_ENC' => APPLICATION_ENC,
+		'APPLICATION_PATH' => APPLICATION_PATH,
+		'APPLICATION_PATH_ROOT' => APPLICATION_PATH_ROOT,
+		'APPLICATION_PATH_TEMP' => APPLICATION_PATH_TEMP,
+		'APPLICATION_PATH_PUBLIC' => APPLICATION_PATH_PUBLIC,
+		'APPLICATION_PATH_DEFAULT_MODULE' => APPLICATION_PATH_DEFAULT_MODULE,
+		'APPLICATION_PATH_LIBRARY' => APPLICATION_PATH_LIBRARY,
+		'ZEND_VERSION' => Zend_Version::VERSION
+		),
+		'PAGE_CONSTANTS'
+                			);
+                			Rockdot_Debug::dump(memory_get_usage(true)/1024/1024, 'MEMORY_USAGE');
+                			Rockdot_Debug::dump(memory_get_peak_usage(true)/1024/1024, 'MEMORY_PEAK_USAGE');
+                			#Rockdot_Debug::dump(get_included_files(), 'INCLUDED_FILES');
+                			Rockdot_Debug::dump($_SESSION, 'SESSION');
+                			echo '<div style="margin:40px 0 0 0; border:1px solid grey; padding: 5px; font-size:12px; background:#F5F5F5;border-radius:4px">'.Rockdot_Debug::getBufferString().'</div>';
+	}
+	//----------------------------------------------------
+	?>
+</body>
+</html>

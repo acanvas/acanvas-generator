@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirect</title>
+		<script>
+			window.top.location.href = "<? echo $this->invite_redirect; ?>"
+				 + "&app_data=<? echo $this->invite_app_data; ?>";
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

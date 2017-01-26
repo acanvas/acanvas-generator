@@ -1,0 +1,104 @@
+<?php 
+$configuration = Zend_Registry::get('Application_Config');
+$configuration_locale = Zend_Registry::get('Application_Config_Locale');
+$rockdot_registry = Rockdot_Registry::getInstance();
+?>
+<!DOCTYPE html>
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo $rockdot_registry->get('language') ?>" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo $rockdot_registry->get('language') ?>" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml> <![endif]-->
+
+<!--[if gt IE 8]><!-->
+<html
+	class="no-js" lang="<?php echo $rockdot_registry->get('language') ?>"
+	xmlns:og="http://ogp.me/ns#"
+<!--<![endif]-->
+<head>
+
+<meta charset="utf-8">
+
+<!-- Always force latest IE rendering engine (even in intranet) -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- <link rel="dns-prefetch" href="//widget.foo.com"> DNS Prefetch for better DNS lookup time (e.g. webfont services) -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+
+
+<title><?php echo $configuration_locale->title ?></title>
+
+<!-- Search Engine tags -->
+<meta name="name"
+	content="<?php echo $configuration_locale->og_title ?>">
+<meta name="description"
+	content="<?php echo $configuration_locale->meta_description ?>">
+<meta name="author"
+	content="<?php echo $configuration_locale->meta_author ?>">
+<meta name="copyright"
+	content="<?php echo $configuration_locale->meta_copyright ?>">
+<meta name="language" content="<?php echo $rockdot_registry->language ?>">
+<meta name="revisit-after" content="3 days">
+<meta http-equiv="imagetoolbar" content="no">
+
+<!-- Facebook OpenGraph tags -->
+<meta property="og:title"
+	content="<?php echo $configuration_locale->og_title ?>" />
+<meta property="og:url"
+	content="<?php echo $configuration_locale->og_url ?>" />
+<meta property="og:description"
+	content="<?php echo $configuration_locale->og_description ?>" />
+<meta property="og:image"
+	content="<?php echo $configuration_locale->og_image ?>" />
+<meta property="og:type" content="website" />
+
+<!-- 'Add to homescreen' for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="<?php echo $this->baseUrl('/');?>assets/html/images/icon/chrome-touch-icon-192x192.png">
+
+<!-- 'Add to homescreen' for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="rockdot_maximal">
+<link rel="apple-touch-icon-precomposed" href="<?php echo $this->baseUrl('/');?>assets/html/images/icon/apple-touch-icon-precomposed.png">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="<?php echo $this->baseUrl('/');?>assets/html/images/icon/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileColor" content="#3372DF">
+
+
+<!-- set class to prevent flickering -->
+<script>
+	document.documentElement.className += " RCKDT_js-load";
+</script>
+
+<!-- START include external css -->
+<link href="<?php echo $this->baseUrl('/');?>assets/html/css/project.css"
+	rel="stylesheet">
+<!-- END include external css -->
+
+
+<!-- START include icons -->
+<link rel="shortcut icon" sizes="16x16"
+	href="<?php echo $this->baseUrl('/');?>assets/html/images/icon/RCKDT_ico_16.png">
+<link rel="shortcut icon" sizes="128x128"
+	href="<?php echo $this->baseUrl('/');?>assets/html/images/icon/RCKDT_ico_128.png">
+<link rel="apple-touch-icon"
+	href="<?php echo $this->baseUrl('/');?>assets/html/images/icon/apple-touch-icon.png">
+<!-- END include icons -->
+
+
+<!-- START include external javascript -->
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+    <script async type="application/dart" src="<?php echo $this->baseUrl('/');?>project.dart"></script>
+    <script async src="<?php echo $this->baseUrl('/');?>packages/browser/dart.js"></script>
+<!-- END include external javascript -->
+
+</head>
+  <body>
+
+    <div id="canvas-holder">
+		<?php echo $this->layout()->content ?>
+   	</div>
+   	
+  </body>
+</body>
+</html>

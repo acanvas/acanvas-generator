@@ -1,0 +1,26 @@
+name: rockdot_generator
+version: 0.9.6
+authors:
+- Nils Döhring <nilsdoehring@gmail.com>
+- Seth Ladd (Stagehand) <sethladd@google.com>
+- Devon Carew (Stagehand) <devoncarew@google.com>
+description: |
+  A pub global script to generate skeletons of Canvas/WebGL projects based on StageXL and Rockdot. Supports activation of extensions and examples via command line options. Based on Google's stagehand.
+homepage: https://github.com/blockforest/rockdot-generator
+environment:
+  sdk: '>=1.21.0'
+dependencies:
+  args: '>=0.12.0+1 <0.13.0'
+  crypto: '>=0.9.0 <0.10.0'
+  http: '>=0.11.0 <0.12.0'
+  path: '>=1.3.0 <2.0.0'
+  usage: '>=1.0.0 <2.0.0'
+  resource: any
+
+dev_dependencies:
+  browser: any
+  ghpages_generator: any
+  grinder: '>=0.7.0 <0.7.1'
+  unittest: any
+executables:
+  rockdot_generator: null

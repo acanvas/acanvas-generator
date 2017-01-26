@@ -1,0 +1,12 @@
+### Needed for WebGL images.
+Header set Access-Control-Allow-Origin *
+
+#Header set Access-Control-Allow-Credentials true
+
+### Stuff below only needed if you DON’T set public folder as apache root.
+
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^@project.host@$ [NC,OR]
+#RewriteCond %{HTTP_HOST} ^@project.host@$
+#RewriteCond %{REQUEST_URI} !public/
+#RewriteRule (.*) /public/$1 [L]

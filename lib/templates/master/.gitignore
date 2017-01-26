@@ -1,0 +1,14 @@
+build
+cache/
+deploy
+packages
+pubspec.lock
+.buildlog
+.DS_Store
+.idea
+.settings
+.project
+.pub
+.packages
+.settings/
+*.iml

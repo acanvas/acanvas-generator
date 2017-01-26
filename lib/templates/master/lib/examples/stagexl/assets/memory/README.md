@@ -1,0 +1,1 @@
+Find the atlas image and texture maker source files at https://github.com/bp74/StageXL_Samples/tree/master/example/game/memory

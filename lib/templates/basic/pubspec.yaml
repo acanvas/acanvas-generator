@@ -1,0 +1,25 @@
+name: rockdot_template
+version: 0.5.0
+description: Empty project template ready to unleash awesomeness with Rockdot and StageXL/Dart. 
+environment:
+  sdk: '>=1.12.0'
+
+dependencies:
+  args: any
+  browser: any
+  path: any 
+  crypto: any
+  rockdot_framework:
+    git: https://github.com/blockforest/rockdot-framework
+  rockdot_physics:
+    git: https://github.com/blockforest/rockdot-physics
+
+dev_dependencies:
+  barback: any
+  grinder: '>=0.7.0 <0.7.1'
+
+transformers:
+- rockdot_template
+- $dart2js:
+    minify: true
+    $exclude: ["bin/add_command.dart", "bin/add_element.dart", "bin/add_screen.dart", "bin/collect_assets.dart", "bin/add_plugin.dart"]

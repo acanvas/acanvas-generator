@@ -1,0 +1,32 @@
+<?php 
+	$configuration = Zend_Registry::get('Application_Config');
+	$rckdt_registry = Rockdot_Registry::getInstance();
+?>
+<canvas id="stage" style="stage-full-window" tabindex="1"></canvas>
+  <div id="plus-button-holder">
+    <div id="plus-button">Share if you dare</div>
+  </div>
+  <div id="upload-holder">
+    <input type="file" id="upload"/>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+	var flashvars = {}; 
+    flashvars["debug"] 				= <?php echo $configuration->zend->debug ? 'true' : 'false' ?>;
+    flashvars["local"] 				= <?php echo $configuration->zend->mode == "local" ? 'true' : 'false' ?>;
+    
+    flashvars["language"] 			= "<?php echo $rckdt_registry->get('language') ?>";
+    flashvars["country"] 			= "<?php echo $rckdt_registry->get('country') ?>";
+    flashvars["locale"] 			= "<?php echo $rckdt_registry->get('locale') ?>";
+    
+    flashvars["host_frontend"] 		= "<?php echo $this->baseUrl('/') ?>";
+    flashvars["protocol"] 			= "<?php echo $rckdt_registry->get('protocol') ?>";
+    flashvars["app_data"] 			= "<?php echo $rckdt_registry->get('app_data') ?>"; 
+    
+}
+
+</script>
+
+<!-- flash END -->

@@ -1,0 +1,1 @@
+@zend.ugcmanager.user@:Private:@zend.ugcmanager.pass@

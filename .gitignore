@@ -1,0 +1,17 @@
+.idea
+.DS_Store
+foo/
+cache/
+.packages
+packages
+pubspec.lock
+build
+.buildlog
+.pub
+.settings/
+lib/templates/master/config
+lib/templates/master/web/application
+lib/templates/master/web/public/assets
+lib/templates/master/web/public/admin_assets
+lib/templates/master/web/public/config
+lib/templates/master/web/public/mysql
