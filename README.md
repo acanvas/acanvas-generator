@@ -4,7 +4,6 @@
 
 [![Coverage Status](https://coveralls.io/repos/blockforest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/blockforest/rockdot-generator)
 [![Travis Build Status](https://travis-ci.org/blockforest/rockdot-generator.svg?branch=master)](https://travis-ci.org/blockforest/rockdot-generator)
-[![Drone Build Status](https://drone.io/github.com/blockforest/rockdot-generator/status.png)](https://drone.io/github.com/blockforest/rockdot-generator/latest)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/rockdot-generator)
 
 
