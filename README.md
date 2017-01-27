@@ -1,6 +1,6 @@
 # Rockdot Generator - Start new Dart+StageXL+Rockdot projects with ease!
 
-![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/templates/template/web/public/assets/logo_blockforest_rockdot.png)
+![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/lib/templates/basic/web/public/assets/autoload/rockdot.png)
 
 [![Coverage Status](https://coveralls.io/repos/blockforest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/blockforest/rockdot-generator)
 [![Travis Build Status](https://travis-ci.org/blockforest/rockdot-generator.svg?branch=master)](https://travis-ci.org/blockforest/rockdot-generator)
