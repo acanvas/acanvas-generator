@@ -14,7 +14,7 @@ import 'package:rockdot_generator/rockdot_generator.dart' as rockdot_generator;
 
 final Directory BUILD_DIR = new Directory('build');
 
-main(args) => grind(args);
+main(List<String> args) => grind(args);
 
 @DefaultTask('Concatenate the template files into data files that the generators can consume.')
 @Depends(checkInit)
