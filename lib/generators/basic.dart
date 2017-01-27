@@ -15,7 +15,6 @@ import 'material_data.dart' as material_data;
 import 'physics_data.dart' as physics_data;
 import 'ugc_data.dart' as ugc_data;
 import 'package:args/args.dart';
-import 'dart:io';
 
 /**
  * A generator for a template web application.

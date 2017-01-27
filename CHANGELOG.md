@@ -1,5 +1,12 @@
 # CHANGELOG ROCKDOT_GENERATOR
 
+## 0.9.7
+
+- Fixed tool/grind.dart so dartanalyzer uses the `.packages` file instead of dir
+- Travis build should work now
+- Removed drone.io hook (drone.io went out of service)
+- Updated README to reflect those changes
+
 ## 0.9.6
 
 - Refactored file generation to use `Resource` package, getting rid of >60MiB of byte arrays!

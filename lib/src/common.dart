@@ -9,7 +9,7 @@ library rockdot_generator.utils;
 
 import 'dart:async' show Future;
 import 'package:resource/resource.dart';
-import 'dart:convert' show BASE64, UTF8;
+import 'dart:convert' show UTF8;
 import '../rockdot_generator.dart';
 
 const int _RUNE_SPACE = 32;

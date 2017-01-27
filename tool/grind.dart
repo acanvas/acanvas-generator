@@ -6,10 +6,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:grinder/grinder.dart';
+import 'package:which/which.dart';
+import 'package:grinder/src/run.dart' as run_lib;
 import 'package:ghpages_generator/ghpages_generator.dart' as ghpages;
 import 'package:path/path.dart' as path;
 import 'package:rockdot_generator/rockdot_generator.dart' as rockdot_generator;
-import 'dart:convert';
 
 final Directory BUILD_DIR = new Directory('build');
 
@@ -53,7 +54,7 @@ void test() {
 
       log('${generator.id} template:');
 
-      List args = [
+      List<String> args = [
         generator.id,
         '--material',
         /*
@@ -92,12 +93,40 @@ void test() {
       File entrypoint = joinFile(fooDir, ['web', 'public', 'index.html']);
       String filePath = _locateDartFile(entrypoint).path;
       filePath = filePath.replaceAll('projectName', 'foo');
-      Analyzer.analyze(filePath, fatalWarnings: true, packageRoot: new Directory('foo/packages'));
+
+      // Analyzer doesn't support package config file, workaround further down
+      /* Analyzer.analyze(filePath, fatalWarnings: true); */
+
+      List<String> aargs = [];
+      aargs.add('--packages=foo/.packages');
+      aargs.add('--fatal-warnings');
+      aargs.add(filePath);
+      run_lib.run(_sdkBin('dartanalyzer'), arguments: aargs);
+
     }
   } catch (e) {}
   try {
     fooDir.deleteSync(recursive: true);
   } catch (_) {}
+}
+
+/// Taken from grinder package because of workaround
+String _sdkBin(String name) {
+  bool _sdkOnPath;
+  if (Platform.isWindows) {
+    return name == 'dart' ? 'dart.exe' : '${name}.bat';
+  } else if (Platform.isMacOS) {
+    // If `dart` is not visible, we should join the sdk path and `bin/$name`.
+    // This is only necessary in unusual circumstances, like when the script is
+    // run from the Editor on macos.
+    if (_sdkOnPath == null) {
+      _sdkOnPath = whichSync('dart', orElse: () => null) != null;
+    }
+
+    return _sdkOnPath ? name : '${sdkDir.path}/bin/${name}';
+  } else {
+    return name;
+  }
 }
 
 @Task('Gather and send coverage data.')

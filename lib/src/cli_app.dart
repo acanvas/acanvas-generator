@@ -126,7 +126,7 @@ class CliApp {
     _out("Creating ${generator.id} application '${projectName}':");
 
     String author = options['author'];
-    Map vars = {'author': author};
+    Map<String, String> vars = {'author': author};
 
     Future f = generator.generate(projectName, target, additionalVars: vars);
     return f.then((_) {
