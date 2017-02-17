@@ -26,7 +26,7 @@ class BitmapDataHiDPI extends AbstractScreen {
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var bitmapData = _resourceManager.getBitmapData("background");

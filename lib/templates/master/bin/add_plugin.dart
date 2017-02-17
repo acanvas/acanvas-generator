@@ -24,28 +24,26 @@ String pluginNameUnderscoredUppercase;
 
 String packageName;
 
-
-void main(List args) {
-
+void main(List<String> args) {
   _setupArgs(args);
-  
-  if(pluginNameCamelCase == DEFAULT_PLUGIN_NAME){
+
+  if (pluginNameCamelCase == DEFAULT_PLUGIN_NAME) {
     print("Well, at least provide the --name of the Plugin you want to add, will you?");
     exit(1);
   }
-  
+
   packageName = _getPackageNameFromPubspec();
   pluginNameUnderscored = _getPluginNameUnderscored();
   pluginNameUnderscoredUppercase = pluginNameUnderscored.toUpperCase();
-  
-  
+
   //iterate through sourceDir and copy to targetDir
   _scanSource();
-  
+
   //add plugin instantiation call to [DIR_BOOTSTRAP]/rd_bootstrap.dart
   _insertPlugin();
-  
-  print("Done. You can now use the plugin like this: \n\t new RdSignal(${pluginNameCamelCase}Events.SAMPLE, new ${pluginNameCamelCase}VO('message').dispatch();");
+
+  print(
+      "Done. You can now use the plugin like this: \n\t new RdSignal(${pluginNameCamelCase}Events.SAMPLE, new ${pluginNameCamelCase}VO('message').dispatch();");
 }
 
 /// Adds the newly created library as dependency to the project's root pubspec.yaml.
@@ -56,26 +54,27 @@ String _getPackageNameFromPubspec() {
 }
 
 String _getPluginNameUnderscored() {
-  return pluginNameCamelCase.replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "_" + m.group(2))).toLowerCase();
+  return pluginNameCamelCase
+      .replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "_" + m.group(2)))
+      .toLowerCase();
 }
 
 void _scanSource() {
-  
   String generatedEntries = "";
-  
+
   /* iterate over source path, grab *.as files */
-    Directory sourceDir = new Directory(TEMPLATE_DIR);
-    if (sourceDir.existsSync()) {
-      sourceDir.listSync(recursive: true, followLinks: false).forEach((FileSystemEntity entity) {
-        if (FileSystemEntity.typeSync(entity.path) == FileSystemEntityType.FILE) {
-          generatedEntries += _createFile(entity.path) + "\n";
-        }
-      });
-      _addToPackage( generatedEntries );
-    } else {
-      print("The directory that was provided as source directory does not exist: $TEMPLATE_DIR");
-      exit(1);
-    }
+  Directory sourceDir = new Directory(TEMPLATE_DIR);
+  if (sourceDir.existsSync()) {
+    sourceDir.listSync(recursive: true, followLinks: false).forEach((FileSystemEntity entity) {
+      if (FileSystemEntity.typeSync(entity.path) == FileSystemEntityType.FILE) {
+        generatedEntries += _createFile(entity.path) + "\n";
+      }
+    });
+    _addToPackage(generatedEntries);
+  } else {
+    print("The directory that was provided as source directory does not exist: $TEMPLATE_DIR");
+    exit(1);
+  }
 }
 
 /// Copies Plugin template file from [TEMPLATE_DIR] to [DIR_PLUGIN].
@@ -86,29 +85,29 @@ String _createFile(String sourcePath) {
   baseName = baseName.replaceFirst(new RegExp("plugin"), pluginNameUnderscored);
   String normd = normalize("src/plugin/$pluginNameUnderscored/${dirName}/${baseName}");
   print(normd);
-  
+
   File file = new File(sourcePath);
   String fileContent = file.readAsStringSync();
-  
+
   fileContent = fileContent.replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
   fileContent = fileContent.replaceAll(new RegExp(PLUGIN_REPLACE_STRING), pluginNameCamelCase);
   fileContent = fileContent.replaceAll(new RegExp(PLUGIN_LOWERCASE_REPLACE_STRING), pluginNameUnderscored);
   fileContent = fileContent.replaceAll(new RegExp(PLUGIN_UPPERCASE_REPLACE_STRING), pluginNameUnderscoredUppercase);
 
   new File("lib/$normd")
-      ..createSync(recursive: true)
-      ..writeAsStringSync(fileContent);
-  
-  String entry ='''part '$normd'; ''';
+    ..createSync(recursive: true)
+    ..writeAsStringSync(fileContent);
+
+  String entry = '''part '$normd'; ''';
   return entry;
 }
 
 /// Adds file imports to the project's package definition file
-void _addToPackage(String defs){
+void _addToPackage(String defs) {
   String replace = '''$defs
     $PLUGIN_INSERTION_PLACEHOLDER
   ''';
-  
+
   File file = new File("$DIR_LIB/$packageName.dart");
   String fileContent = file.readAsStringSync();
   fileContent = fileContent.replaceFirst(new RegExp(PLUGIN_INSERTION_PLACEHOLDER), replace);
@@ -116,25 +115,26 @@ void _addToPackage(String defs){
 }
 
 ///add plugin instantiation call to [DIR_BOOTSTRAP]/rd_bootstrap.dart
-void _insertPlugin(){
-  
+void _insertPlugin() {
   String replace = '''new ${pluginNameCamelCase}Plugin(),
       $PLUGIN_INSERTION_PLACEHOLDER
   ''';
-  
+
   File file = new File("$DIR_BOOTSTRAP/rd_bootstrap.dart");
   String fileContent = file.readAsStringSync();
   fileContent = fileContent.replaceFirst(new RegExp(PLUGIN_INSERTION_PLACEHOLDER), replace);
   file.writeAsStringSync(fileContent);
 }
 
-
-
 /// Manages the script's arguments and provides instructions and defaults for the --help option.
-void _setupArgs(List args) {
+void _setupArgs(List<String> args) {
   ArgParser argParser = new ArgParser();
-  
-  argParser.addOption('name', abbr: 'n', defaultsTo: DEFAULT_PLUGIN_NAME, help: 'The name (in CamelCase) of the plugin to be generated.', valueHelp: 'name', callback: (_pluginName) {
+
+  argParser.addOption('name',
+      abbr: 'n',
+      defaultsTo: DEFAULT_PLUGIN_NAME,
+      help: 'The name (in CamelCase) of the plugin to be generated.',
+      valueHelp: 'name', callback: (_pluginName) {
     pluginNameCamelCase = _pluginName;
   });
 

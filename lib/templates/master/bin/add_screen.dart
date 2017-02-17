@@ -26,61 +26,55 @@ String screenRoot;
 String screenDir;
 String screenModelDir;
 
-
 String packageName;
 
-
-void main(List args) {
-
+void main(List<String> args) {
   _setupArgs(args);
-  
-  if(screenNameCamelCase == DEFAULT_SCREEN_NAME){
+
+  if (screenNameCamelCase == DEFAULT_SCREEN_NAME) {
     print("Well, at least provide the --name of the Screen you want to add, will you?");
     exit(1);
   }
-  
+
   packageName = _getPackageNameFromPubspec();
   screenNameDashed = _getScreenNameDashed();
   screenNameUnderscored = _getScreenNameUnderscored();
   screenNameUnderscoredUppercase = screenNameUnderscored.toUpperCase();
 
-  if(screenRoot != DIR_LIB){
+  if (screenRoot != DIR_LIB) {
     screenDir = "src/view/screen";
     screenModelDir = "src/model";
-  }
-  else{
+  } else {
     screenDir = "src/project/view/screen";
     screenModelDir = "src/project/model";
   }
 
   //add const to events
   _insertProperties();
-  
+
   //add command from template to DIR_SCREEN
   _createScreenFile();
-  
+
   //add class name to package spec $DIR_LIB/$packageName.dart
   _addToPackage();
-  
+
   //add id to $DIR_PROJECT/model/screen_ids.dart
   _registerScreenID();
 
   //add class to event mapping to $DIR_PROJECT/project.dart
   _registerScreen();
-  
+
   print("Done. You can now access your new screen at URL #/$screenNameDashed");
-  
 }
 
 /// Adds the newly created library as dependency to the project's root pubspec.yaml.
 String _getPackageNameFromPubspec() {
-  if(screenRoot != DIR_LIB){
+  if (screenRoot != DIR_LIB) {
     Directory dir = new Directory(screenRoot);
     File file = dir.listSync(followLinks: false).where((entity) => entity is File).first;
     String content = file.readAsStringSync();
     return new RegExp("library\\s*(\\w+);").firstMatch(content).group(1);
-  }
-  else{
+  } else {
     File pubspecRootFile = new File('pubspec.yaml').absolute;
     String pubspecRootFileContent = pubspecRootFile.readAsStringSync();
     return new RegExp("name\\s*:\\s*(\\w+)").firstMatch(pubspecRootFileContent).group(1);
@@ -88,17 +82,19 @@ String _getPackageNameFromPubspec() {
 }
 
 String _getScreenNameDashed() {
-  return screenNameCamelCase.replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "-" + m.group(2))).toLowerCase();
+  return screenNameCamelCase
+      .replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "-" + m.group(2)))
+      .toLowerCase();
 }
 
 String _getScreenNameUnderscored() {
-  return screenNameCamelCase.replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "_" + m.group(2))).toLowerCase();
+  return screenNameCamelCase
+      .replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "_" + m.group(2)))
+      .toLowerCase();
 }
 
-void _insertProperties(){
-  
-  String replace = 
-'''##############################
+void _insertProperties() {
+  String replace = '''##############################
 ### Screen: $screenNameUnderscoredUppercase
 ##############################
 screen.$screenNameUnderscored.url = /$screenNameDashed
@@ -125,28 +121,28 @@ void _createScreenFile() {
   fileContent = fileContent.replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
 
   new File(join(screenRoot, screenDir, "$screenNameUnderscored.dart"))
-      ..createSync(recursive: true)
-      ..writeAsStringSync(fileContent);
+    ..createSync(recursive: true)
+    ..writeAsStringSync(fileContent);
 }
 
-void _addToPackage(){
+void _addToPackage() {
   String replace = '''part '${screenDir}/$screenNameUnderscored.dart';
     $SCREEN_INSERTION_PLACEHOLDER
   ''';
-  
+
   File file = new File("$screenRoot/$packageName.dart");
   String fileContent = file.readAsStringSync();
   fileContent = fileContent.replaceFirst(new RegExp(SCREEN_INSERTION_PLACEHOLDER), replace);
   file.writeAsStringSync(fileContent);
 }
 
-void _registerScreenID(){
+void _registerScreenID() {
   String replace = '''static const String $screenNameUnderscoredUppercase = "screen.$screenNameUnderscored";
     $SCREEN_INSERTION_PLACEHOLDER
   ''';
-  
+
   File file = new File("$screenRoot/$screenModelDir/screen_ids.dart");
-  if(!file.existsSync()){
+  if (!file.existsSync()) {
     Directory dir = new Directory("$screenRoot/$screenModelDir");
     file = dir.listSync(followLinks: false).where((entity) => entity is File).first;
   }
@@ -155,14 +151,15 @@ void _registerScreenID(){
   file.writeAsStringSync(fileContent);
 }
 
-void _registerScreen(){
+void _registerScreen() {
   //parses to: addScreen(ScreenIDs.HOME, () => new Home(ScreenIDs.HOME), tree_order: 1);
-  String replace = '''addScreen(ScreenIDs.$screenNameUnderscoredUppercase, () => new $screenNameCamelCase(ScreenIDs.$screenNameUnderscoredUppercase), transition: EffectIDs.DEFAULT, tree_order: 0);
+  String replace =
+      '''addScreen(ScreenIDs.$screenNameUnderscoredUppercase, () => new $screenNameCamelCase(ScreenIDs.$screenNameUnderscoredUppercase), transition: EffectIDs.DEFAULT, tree_order: 0);
     $SCREEN_INSERTION_PLACEHOLDER
   ''';
-  
+
   File file = new File("$screenRoot/src/project/project.dart");
-  if(!file.existsSync()){
+  if (!file.existsSync()) {
     Directory dir = new Directory("$screenRoot/src");
     file = dir.listSync(followLinks: false).where((entity) => entity is File).first;
   }
@@ -172,14 +169,22 @@ void _registerScreen(){
 }
 
 /// Manages the script's arguments and provides instructions and defaults for the --help option.
-void _setupArgs(List args) {
+void _setupArgs(List<String> args) {
   ArgParser argParser = new ArgParser();
-  
-  argParser.addOption('name', abbr: 'n', defaultsTo: DEFAULT_SCREEN_NAME, help: 'The name (in CamelCase) of the screen to be generated.', valueHelp: 'name', callback: (_screenName) {
+
+  argParser.addOption('name',
+      abbr: 'n',
+      defaultsTo: DEFAULT_SCREEN_NAME,
+      help: 'The name (in CamelCase) of the screen to be generated.',
+      valueHelp: 'name', callback: (_screenName) {
     screenNameCamelCase = _screenName;
   });
 
-  argParser.addOption('root', abbr: 'r', defaultsTo: DEFAULT_SCREEN_ROOT, help: 'The src directory of the screen to be generated.', valueHelp: 'root', callback: (_screenRoot) {
+  argParser.addOption('root',
+      abbr: 'r',
+      defaultsTo: DEFAULT_SCREEN_ROOT,
+      help: 'The src directory of the screen to be generated.',
+      valueHelp: 'root', callback: (_screenRoot) {
     screenRoot = _screenRoot;
   });
 

@@ -7,9 +7,7 @@ class Plugins {
   int _exampleOrder;
   List<IObjectFactoryPostProcessor> plugins;
 
-
   Plugins() {
-
     //----------------------------
     //Index for order of Examples. Starts with 1 because 0 is reserved for Home Page.
     _exampleOrder = 1;
@@ -17,7 +15,6 @@ class Plugins {
     // The Plugins we want to use
 
     plugins = [
-
       //----------------------------
 
       // Mandatory Plugins
@@ -28,7 +25,7 @@ class Plugins {
       //----------------------------
 
       //Optional Plugins
-      
+
       new IOPlugin(),
       new GooglePlugin(),
       new FacebookPlugin(),
@@ -42,7 +39,7 @@ class Plugins {
       // ## PLUGIN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
       //----------------------------
-  
+
       // Examples
 
       //StageXL BitmapFont extension Examples
@@ -89,8 +86,6 @@ class Plugins {
 
       // Our project. Contains the Home Page. It's a plugin, too!
       new Project()
-
     ];
   }
-
 }

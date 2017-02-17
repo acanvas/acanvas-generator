@@ -74,8 +74,8 @@ Additionally, you can choose to install example pages:
  * flumpExamples: Install Flump Examples
  * gafExamples: Install GAF Examples
  * spineExamples: Install Spine Examples
-
-
+ 
+ 
     # one extension and examples
     $> rockdot_generator basic --material --materialExamples
     

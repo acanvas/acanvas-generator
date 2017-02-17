@@ -10,7 +10,8 @@ class Background extends RockdotLifecycleSprite {
     inheritSpan = true;
   }
 
-  @override void init({Map params: null}){
+  @override
+  void init({Map params: null}) {
     super.init(params: params);
 
     // bg grey
@@ -20,11 +21,13 @@ class Background extends RockdotLifecycleSprite {
     onInitComplete();
   }
 
-  @override void span(num spanWidth, num spanHeight, {bool refresh: true}){
+  @override
+  void span(num spanWidth, num spanHeight, {bool refresh: true}) {
     super.span(Dimensions.WIDTH_STAGE, Dimensions.HEIGHT_STAGE);
   }
 
-  @override void refresh() {
+  @override
+  void refresh() {
     super.refresh();
 
     if (_bg != null) {
@@ -34,6 +37,4 @@ class Background extends RockdotLifecycleSprite {
       _bg.applyCache(0, 0, spanWidth.round(), spanHeight.round());
     }
   }
-
-
 }

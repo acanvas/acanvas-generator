@@ -6,7 +6,7 @@ class UGCGallery extends AbstractScreen {
   UGCGallery(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _pager = new UGCPhotoPager(applicationContext.getObject(UGCEvents.ITEMS_FILTER), getProperty("pager.prev"),

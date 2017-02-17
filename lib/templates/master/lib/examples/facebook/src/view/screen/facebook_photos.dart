@@ -7,12 +7,12 @@ class FacebookPhotos extends AbstractScreen implements IStateModelAware {
   FacebookPhotos(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     if (params == null || !(params is Map) || params["id"] == null) {
       if (_stateModel.currentStateVO.params == null || _stateModel.currentStateVO.params["id"] == null) {
-        new RdSignal(StateEvents.ADDRESS_SET, getProperty("${FacebookExampleScreenIDs.FACEBOOK_ALBUMS}.url"), true)
+        new RdSignal(StateEvents.ADDRESS_SET, getProperty("${FacebookExampleScreenIDs.FACEBOOK_ALBUMS}.url"))
             .dispatch();
         return;
       }

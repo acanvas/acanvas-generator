@@ -25,7 +25,7 @@ class AbstractIsometricScreen extends RockdotLifecycleSprite implements IModelAw
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     reflow = new Wrap(spacing: 16, scrollOrientation: ScrollOrientation.VERTICAL)

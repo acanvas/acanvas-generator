@@ -47,7 +47,7 @@ class CliApp {
     _cwd = value;
   }
 
-  Future process(List<String> args) async{
+  Future process(List<String> args) async {
     ArgParser argParser = _createArgParser();
 
     ArgResults options;
@@ -70,7 +70,7 @@ class CliApp {
         List versions = JSON.decode(response.body)['versions'];
         if (APP_VERSION != versions.last) {
           _out("Version ${versions.last} is available! Run `pub global activate"
-               " ${APP_NAME}` to get the latest.");
+              " ${APP_NAME}` to get the latest.");
         }
       }).catchError((e) => null);
     }
@@ -107,9 +107,10 @@ class CliApp {
     io.Directory dir = cwd;
 
     if (!options.wasParsed('override') && !_isDirEmpty(dir)) {
-      String err = 'The current directory is not empty. Please create a new project directory, or use --override to force generation into the current directory.';
-      logger.stderr( err );
-      return new Future.error(new ArgError( err ));
+      String err =
+          'The current directory is not empty. Please create a new project directory, or use --override to force generation into the current directory.';
+      logger.stderr(err);
+      return new Future.error(new ArgError(err));
     }
 
     // Normalize the project name.
@@ -121,7 +122,6 @@ class CliApp {
     }
 
     await generator.prepare(options);
-
 
     _out("Creating ${generator.id} application '${projectName}':");
 
@@ -144,7 +144,7 @@ class CliApp {
   ArgParser _createArgParser() {
     var argParser = new ArgParser(allowTrailingOptions: true);
 
-    _argsMap = new Map<String,String>();
+    _argsMap = new Map<String, String>();
 
     _argsMap["stagexl"] = "Install StageXL Minimal Template";
     _argsMap["stagexlExamples"] = "Install StageXL Examples (sprite sheets, tweening, ect.)";
@@ -178,23 +178,22 @@ class CliApp {
     _argsMap["particle"] = "Add Particle Extension to StageXL";
     _argsMap["particleExamples"] = "Install Particle Example";
 
-    _argsMap.forEach((flag, description){
+    _argsMap.forEach((flag, description) {
       argParser.addFlag(flag, negatable: false, help: description);
     });
-
 
     // Output the list of available projects as json to stdout (required by IntelliJ plugin).
     argParser.addFlag('machine', negatable: false, hide: true);
 
-
     argParser.addFlag('help', abbr: 'h', negatable: false, help: 'Help!');
-    argParser.addFlag('version', negatable: false,
-        help: 'Display the version for ${APP_NAME}.');
-    argParser.addOption('author', defaultsTo: '<your name>',
-        help: 'The author name to use for file headers.');
+    argParser.addFlag('version', negatable: false, help: 'Display the version for ${APP_NAME}.');
+    argParser.addOption('author', defaultsTo: '<your name>', help: 'The author name to use for file headers.');
 
     // Really, really generate into the current directory.
-    argParser.addFlag('override', negatable: false, help: 'Disable write protection for non-empty directories.' /*, callback: (mode) => print('Got override mode $mode')*/);
+    argParser.addFlag('override',
+        negatable: false,
+        help:
+            'Disable write protection for non-empty directories.' /*, callback: (mode) => print('Got override mode $mode')*/);
 
     return argParser;
   }
@@ -206,21 +205,13 @@ class CliApp {
     _out(argParser.usage);
     _out('');
     _out('Available generators:');
-    int len = generators
-      .map((g) => g.id.length)
-      .fold(0, (a, b) => max(a, b));
-    generators
-      .map((g) => "  ${_pad(g.id, len)} - ${g.description}")
-      .forEach(logger.stdout);
+    int len = generators.map((g) => g.id.length).fold(0, (a, b) => max(a, b));
+    generators.map((g) => "  ${_pad(g.id, len)} - ${g.description}").forEach(logger.stdout);
   }
 
   String _createMachineInfo(List<Generator> generators) {
     Iterable itor = generators.map((Generator generator) {
-      Map m = {
-        'name': generator.id,
-        'label': generator.label,
-        'description': generator.description
-      };
+      Map m = {'name': generator.id, 'label': generator.label, 'description': generator.description};
 
       if (generator.entrypoint != null) {
         m['entrypoint'] = generator.entrypoint.path;
@@ -244,7 +235,8 @@ class CliApp {
   bool _isDirEmpty(io.Directory dir) {
     var isHiddenDir = (dir) => path.basename(dir.path).startsWith('.');
 
-    return dir.listSync(followLinks: false)
+    return dir
+        .listSync(followLinks: false)
         .where((entity) => entity is io.Directory)
         .where((entity) => !isHiddenDir(entity))
         .isEmpty;
@@ -275,9 +267,7 @@ class _DirectoryGeneratorTarget extends GeneratorTarget {
 
     logger.stdout('  ${file.path}');
 
-    return file
-      .create(recursive: true)
-      .then((_) => file.writeAsBytes(contents));
+    return file.create(recursive: true).then((_) => file.writeAsBytes(contents));
   }
 }
 

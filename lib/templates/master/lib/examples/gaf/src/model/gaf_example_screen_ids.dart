@@ -12,7 +12,6 @@ class GAFExampleScreenIDs {
   static const String GAF_SLOT_MACHINE = "screen.gaf_slot_machine";
   static const String GAF_SOUND = "screen.gaf_sound";
   static const String GAF_HOME = "screen.gaf_home";
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+  // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 }

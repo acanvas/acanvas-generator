@@ -16,7 +16,6 @@ import 'package:rockdot_template/rockdot_template_plugins.dart';
 
 // ## PLUGIN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
-
 // ##### PROJECT #####
 
 part 'src/project/project.dart';
@@ -36,7 +35,6 @@ part 'src/project/view/screen/home.dart';
 //part 'src/project/view/screen/two.dart';
 
 // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
 
 // VIEW:LAYER
 part 'src/project/view/layer/abstract_layer.dart';
@@ -51,7 +49,6 @@ part 'src/project/view/element/pager/abstract_photo_pager.dart';
 
 // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
-
 // COMMANDS
 part 'src/project/command/event/project_events.dart';
 part 'src/project/command/abstract_command.dart';
@@ -59,9 +56,7 @@ part 'src/project/command/init_command.dart';
 part 'src/project/command/message_show_command.dart';
 part 'src/project/command/message_hide_command.dart';
 
-
 // ## COMMAND INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-
 
 // MODEL
 part 'src/project/inject/i_model_aware.dart';

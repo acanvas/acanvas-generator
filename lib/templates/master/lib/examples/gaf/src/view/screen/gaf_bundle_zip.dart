@@ -34,7 +34,7 @@ class GafBundleZip extends AbstractScreen {
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var skeletonTimeline = _skeletonAsset.getGAFTimelineByLinkage('rootTimeline');
@@ -63,8 +63,8 @@ class GafBundleZip extends AbstractScreen {
   @override
   void refresh() {
     _skeleton.scaleX = _skeleton.scaleY = spanWidth / 320 / 1.5;
-    _skeleton.x = _skeleton.width/2 + 30;
-    _skeleton.y = spanHeight - _skeleton.height/2;
+    _skeleton.x = _skeleton.width / 2 + 30;
+    _skeleton.y = spanHeight - _skeleton.height / 2;
 
     _monster.x = spanWidth - _monster.width;
     _monster.y = _monster.height;

@@ -3,7 +3,6 @@ part of dragonbones_example;
 class DragonBonesSwordsMan extends AbstractScreen {
   ResourceManager _resourceManager;
 
-
   num _originalWidth;
 
   Skeleton _skeleton;
@@ -26,7 +25,7 @@ class DragonBonesSwordsMan extends AbstractScreen {
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     // create a skeleton and play the "steady2" animation
@@ -49,11 +48,10 @@ class DragonBonesSwordsMan extends AbstractScreen {
 
   @override
   void refresh() {
-
     _originalWidth ??= 660;
     _skeleton.scaleX = _skeleton.scaleY = spanWidth / _originalWidth / 1.5;
-    _skeleton.x = spanWidth/2 - _skeleton.width/2;
-    _skeleton.y = spanHeight - 120*_skeleton.scaleX;
+    _skeleton.x = spanWidth / 2 - _skeleton.width / 2;
+    _skeleton.y = spanHeight - 120 * _skeleton.scaleX;
 
     super.refresh();
   }

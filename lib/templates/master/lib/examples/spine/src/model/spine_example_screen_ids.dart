@@ -12,7 +12,6 @@ class SpineExampleScreenIDs {
   static const String VINE = "screen.spine_vine";
   static const String STRETCHY_MAN = "screen.spine_stretchy_man";
   static const String SPINE_HOME = "screen.spine_home";
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+  // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 }

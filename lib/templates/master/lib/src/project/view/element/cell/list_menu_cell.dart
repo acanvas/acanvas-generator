@@ -7,21 +7,17 @@ class ListMenuCell extends SelectableButton {
   UITextField title;
   int fontColor;
 
-  ListMenuCell([this.fontColor = Colors.ARCTIC_BLUE]) :super() {
+  ListMenuCell([this.fontColor = Colors.ARCTIC_BLUE]) : super() {
     selfSelect = false;
-    MdRipple ripple = new MdRipple(color: Colors.BF_BASE_GREEN)
-    ..opacity = 1;
+    MdRipple ripple = new MdRipple(color: Colors.BF_BASE_GREEN)..opacity = 1;
     addChild(ripple);
 
     title = Theme.getCopy("empty", size: 14, color: fontColor);
     addChild(title);
   }
 
-
   @override
-  SelectableButton clone()
-  => new ListMenuCell(fontColor);
-
+  SelectableButton clone() => new ListMenuCell(fontColor);
 
   @override
   void set data(Object newdata) {
@@ -39,10 +35,11 @@ class ListMenuCell extends SelectableButton {
     super.span(w, MdDimensions.HEIGHT_MENU_CELL, refresh: refresh);
   }
 
-  @override void refresh() {
+  @override
+  void refresh() {
     title.text = title.text.toUpperCase();
     title.width = spanWidth - 10;
-    title.x = 2*Dimensions.SPACER;
+    title.x = 2 * Dimensions.SPACER;
     title.y = (spanHeight / 2 - title.textHeight / 2).round();
 
     graphics.clear();
@@ -52,17 +49,17 @@ class ListMenuCell extends SelectableButton {
     super.refresh();
   }
 
-  @override void selectAction(){
+  @override
+  void selectAction() {
     downAction();
     mouseEnabled = false;
     title.defaultTextFormat = title.defaultTextFormat..color = Colors.WHITE;
   }
 
-  @override void deselectAction(){
+  @override
+  void deselectAction() {
     mouseEnabled = true;
     upAction(null, false);
     title.defaultTextFormat = title.defaultTextFormat..color = Colors.ARCTIC_BLUE;
   }
-
 }
-

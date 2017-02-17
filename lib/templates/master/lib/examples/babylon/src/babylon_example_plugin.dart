@@ -6,9 +6,9 @@ class BabylonExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(BabylonExampleScreenIDs.BABYLON_HOME, () => new BabylonHome(BabylonExampleScreenIDs.BABYLON_HOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(BabylonExampleScreenIDs.BABYLON_HOME, () => new BabylonHome(BabylonExampleScreenIDs.BABYLON_HOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
 
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
   }
 }

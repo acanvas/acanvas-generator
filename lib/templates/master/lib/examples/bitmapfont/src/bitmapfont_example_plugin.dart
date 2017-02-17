@@ -6,7 +6,9 @@ class BitmapFontExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(BitmapFontExampleScreenIDs.BITMAP_FONT_HOME, () => new BitmapFontHome(BitmapFontExampleScreenIDs.BITMAP_FONT_HOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(BitmapFontExampleScreenIDs.BITMAP_FONT_HOME,
+        () => new BitmapFontHome(BitmapFontExampleScreenIDs.BITMAP_FONT_HOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
 
     addScreen(BitmapFontExampleScreenIDs.SIMPLE, () => new BitmapfontSimple(BitmapFontExampleScreenIDs.SIMPLE),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
@@ -20,6 +22,5 @@ class BitmapFontExamplePlugin extends AbstractRdPlugin {
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
 
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
   }
 }

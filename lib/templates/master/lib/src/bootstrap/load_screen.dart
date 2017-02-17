@@ -17,7 +17,6 @@ class LoadScreen extends Sprite {
 
   LoadScreen({this.color: Colors.BF_BASE_GREEN}) : super() {
     alpha = 0;
-    Rd.MATERIALIZE_REQUIRED = true;
     addEventListener(Event.ADDED_TO_STAGE, _onAddedToStage);
   }
 
@@ -37,11 +36,13 @@ class LoadScreen extends Sprite {
   }
 
   void _onEnterFrame(Event event) {
+    Rd.MATERIALIZE_REQUIRED = true;
+
     x = stage.stageWidth / 2;
     y = stage.stageHeight / 2;
 
     _rotation = _rotation + 6;
-    if(_rotation == 0)_rotation = 0;
+    if (_rotation == 0) _rotation = 0;
     _render(_rotation, false);
 
     // TODO revisit this when implementing deferred loading
@@ -57,29 +58,29 @@ class LoadScreen extends Sprite {
     */
   }
 
-  void cancel(){
+  void cancel() {
     removeEventListener(Event.ENTER_FRAME, _onEnterFrame);
     Rd.MATERIALIZE_REQUIRED = false;
 
-    if(_timer != null){
+    if (_timer != null) {
       _timer.cancel();
     }
     _clear();
   }
 
   void _render([num startAng = 0, bool create = true]) {
-    if(create){
+    if (create) {
       _clear();
     }
     for (int i = 0; i < 12; i++) {
       var theShape = create ? _createShape() : _sprPreloader.getChildAt(i);
       theShape.rotation = ((i * 30) + startAng) * PI / 180;
       theShape.alpha = 0 + (1 / 12 * i);
-      if(create){
+      if (create) {
         _sprPreloader.addChild(theShape);
       }
     }
-    if(Rd.WEBGL){
+    if (Rd.WEBGL) {
       //_sprPreloader.applyCache(-25, -25, 50, 50);
     }
   }

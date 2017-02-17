@@ -18,7 +18,7 @@ class GafFireman extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var gafTimeline = _gafAsset.getGAFTimelineByLinkage('rootTimeline');
@@ -30,15 +30,15 @@ class GafFireman extends AbstractScreen {
 
     // listen to custom events on the fireman MovieClip
 
-    var subtitles_txt = _fireman.getChildByName("subtitles_txt");
+    GAFTextField subtitles_txt = _fireman.getChildByName("subtitles_txt");
     var subtitles = ["Our game is on fire!", "GAF Team, there is a job for us!", "Go and do your best!"];
 
-    _fireman.on("showSubtitles").listen((ActionEvent e) {
+    _fireman.on<ActionEvent>("showSubtitles").listen((ActionEvent e) {
       var subtitlesIndex = int.parse(e.data) - 1;
       subtitles_txt.text = subtitles[subtitlesIndex];
     });
 
-    _fireman.on("hideSubtitles").listen((ActionEvent e) {
+    _fireman.on<ActionEvent>("hideSubtitles").listen((ActionEvent e) {
       subtitles_txt.text = "";
     });
 
@@ -49,7 +49,8 @@ class GafFireman extends AbstractScreen {
   void refresh() {
     super.refresh();
     _fireman.scaleX = _fireman.scaleY = spanWidth / 600;
-    _fireman.x = - 80 * _fireman.scaleX;;
+    _fireman.x = -80 * _fireman.scaleX;
+    ;
     _fireman.y = 15 * _fireman.scaleX;
   }
 

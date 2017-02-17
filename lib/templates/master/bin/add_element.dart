@@ -25,12 +25,10 @@ String elementNameUnderscoredUppercase;
 
 String packageName;
 
-
-void main(List args) {
-
+void main(List<String> args) {
   _setupArgs(args);
 
-  if(elementNameCamelCase == DEFAULT_ELEMENT_NAME){
+  if (elementNameCamelCase == DEFAULT_ELEMENT_NAME) {
     print("Well, at least provide the --name of the Element you want to add, in CamelCase, will you?");
     exit(1);
   }
@@ -50,7 +48,6 @@ void main(List args) {
   _addToPackage();
 
   print("Done. You can now access your new Element class named ${elementNameCamelCase}");
-
 }
 
 /// Adds the newly created library as dependency to the project's root pubspec.yaml.
@@ -61,17 +58,19 @@ String _getPackageNameFromPubspec() {
 }
 
 String _getElementNameDashed() {
-  return elementNameCamelCase.replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "-" + m.group(2))).toLowerCase();
+  return elementNameCamelCase
+      .replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "-" + m.group(2)))
+      .toLowerCase();
 }
 
 String _getElementNameUnderscored() {
-  return elementNameCamelCase.replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "_" + m.group(2))).toLowerCase();
+  return elementNameCamelCase
+      .replaceAllMapped(new RegExp("([^A-Z-])([A-Z])"), (Match m) => (m.group(1) + "_" + m.group(2)))
+      .toLowerCase();
 }
 
-void _insertProperties(){
-
-  String replace =
-  '''##############################
+void _insertProperties() {
+  String replace = '''##############################
 ### Element: $elementNameUnderscoredUppercase
 ##############################
 element.$elementNameUnderscored.headline = Hello World.
@@ -100,7 +99,7 @@ void _createElementFile() {
     ..writeAsStringSync(fileContent);
 }
 
-void _addToPackage(){
+void _addToPackage() {
   String replace = '''part 'src/project/view/element/$elementNameUnderscored.dart';
     $ELEMENT_INSERTION_PLACEHOLDER
   ''';
@@ -111,12 +110,15 @@ void _addToPackage(){
   file.writeAsStringSync(fileContent);
 }
 
-
 /// Manages the script's arguments and provides instructions and defaults for the --help option.
-void _setupArgs(List args) {
+void _setupArgs(List<String> args) {
   ArgParser argParser = new ArgParser();
 
-  argParser.addOption('name', abbr: 'n', defaultsTo: DEFAULT_ELEMENT_NAME, help: 'The name (in CamelCase) of the element to be generated.', valueHelp: 'name', callback: (_screenName) {
+  argParser.addOption('name',
+      abbr: 'n',
+      defaultsTo: DEFAULT_ELEMENT_NAME,
+      help: 'The name (in CamelCase) of the element to be generated.',
+      valueHelp: 'name', callback: (_screenName) {
     elementNameCamelCase = _screenName;
   });
 

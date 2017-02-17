@@ -5,8 +5,7 @@ import 'package:rockdot_commons/rockdot_commons.dart';
 
 // ##### PLUGINS #####
 import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart'
-    show AbstractReflowScreen, EffectIDs, Theme;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, EffectIDs, Theme;
 import 'package:stagexl_particle/stagexl_particle.dart';
 import 'dart:async';
 import 'dart:math';

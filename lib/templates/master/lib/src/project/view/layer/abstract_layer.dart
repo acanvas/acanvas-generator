@@ -1,11 +1,9 @@
 part of rockdot_template;
 
-
 /**
  * @author nilsdoehring
  */
 class AbstractLayer extends RockdotLifecycleSprite implements IModelAware {
-
   static const int LAYER_WIDTH_MAX = 480;
   num LAYER_HEIGHT = 0;
 
@@ -21,8 +19,8 @@ class AbstractLayer extends RockdotLifecycleSprite implements IModelAware {
     autoSpan = false;
   }
 
-  @override void init({Map params: null}){
-
+  @override
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     // bg image
@@ -30,12 +28,13 @@ class AbstractLayer extends RockdotLifecycleSprite implements IModelAware {
     addChild(_bg);
   }
 
-  @override void span(num spanWidth, num spanHeight, {bool refresh: true}){
+  @override
+  void span(num spanWidth, num spanHeight, {bool refresh: true}) {
     super.span(min(LAYER_WIDTH_MAX, Dimensions.WIDTH_STAGE), Dimensions.HEIGHT_STAGE, refresh: refresh);
-
   }
 
-  @override void refresh() {
+  @override
+  void refresh() {
     super.refresh();
 
     if (LAYER_HEIGHT == 0) {
@@ -55,5 +54,4 @@ class AbstractLayer extends RockdotLifecycleSprite implements IModelAware {
     x = (Dimensions.WIDTH_STAGE_REAL / 2).round();
     y = (Dimensions.HEIGHT_STAGE_REAL / 2 + 50).round();
   }
-
 }

@@ -5,7 +5,6 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
 
   MdWrap _wrap01;
   MdWrap _wrap02;
-  MdButton _speechButton;
   IOModel _ioModel;
 
   @override
@@ -16,7 +15,7 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
   GoogleExample(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     /* Google Plus API */
@@ -27,8 +26,9 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
         new MdButton("Show My Google+ Friends", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
           ..submitEvent = new RdSignal(
               GoogleEvents.USER_LOGIN,
-              new GoogleLoginVO(nextSignal: new RdSignal(
-                  StateEvents.ADDRESS_SET, getProperty(GoogleExampleScreenIDs.GOOGLE_FRIENDS + ".url", true)))));
+              new GoogleLoginVO(
+                  nextSignal: new RdSignal(
+                      StateEvents.ADDRESS_SET, getProperty(GoogleExampleScreenIDs.GOOGLE_FRIENDS + ".url", true)))));
     _wrap01.addChild(
         new MdButton("Google Plus Me", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
           ..submitEvent = new RdSignal(GoogleEvents.PLUS_USER_GET, "me", _onGoogleDataMe));

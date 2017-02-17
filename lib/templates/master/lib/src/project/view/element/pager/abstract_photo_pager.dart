@@ -1,6 +1,5 @@
 part of rockdot_template;
 
-
 /**
  * @author nilsdoehring
  */
@@ -22,7 +21,9 @@ class AbstractPhotoPager extends PagerSprite {
   UITextField _tfNothingFound;
   Shape _bg;
 
-  AbstractPhotoPager(this.labelPrev, this.labelNext, this.labelEmpty, {this.buttonWidth: WIDTH_BUTTON, this.DATA_PAGESIZE: 100}) : super() {
+  AbstractPhotoPager(this.labelPrev, this.labelNext, this.labelEmpty,
+      {this.buttonWidth: WIDTH_BUTTON, this.DATA_PAGESIZE: 100})
+      : super() {
     name = "element.pager.multi";
 
     chunkSize = DATA_PAGESIZE;
@@ -50,22 +51,21 @@ class AbstractPhotoPager extends PagerSprite {
     throw new StateError("Override this method, would you?");
   }
 
-
-  @override void refresh() {
+  @override
+  void refresh() {
     rows = (spanHeight / (listItemHeight + listItemSpacer)).ceil();
     chunkSize = rows * (spanWidth / (listItemWidth + listItemSpacer)).round();
 
     super.refresh();
 
     maskWidth = spanWidth - 2 * listItemSpacer;
-    maskHeight = (listItemHeight + listItemSpacer) * rows - Dimensions.HEIGHT_RASTER - 2*listItemSpacer;
+    maskHeight = (listItemHeight + listItemSpacer) * rows - Dimensions.HEIGHT_RASTER - 2 * listItemSpacer;
 
     _imageListMask = new Mask.rectangle(listItemSpacer, 0, maskWidth, maskHeight);
     // holder.mask = _imageListMask;
 
     if (loaded == true) {
       if (holder.numChildren > 0) {
-
         disposeChild(holder.getChildAt(0));
       }
 
@@ -74,20 +74,19 @@ class AbstractPhotoPager extends PagerSprite {
 
     btnPrev.x = 0;
     btnPrev.y = spanHeight - Dimensions.HEIGHT_RASTER;
-    btnPrev.span((spanWidth/2).round(), Dimensions.HEIGHT_RASTER);
+    btnPrev.span((spanWidth / 2).round(), Dimensions.HEIGHT_RASTER);
 
-    btnNext.x = (spanWidth/2).round();
+    btnNext.x = (spanWidth / 2).round();
     btnNext.y = spanHeight - Dimensions.HEIGHT_RASTER;
-    btnNext.span((spanWidth/2).round(), Dimensions.HEIGHT_RASTER);
+    btnNext.span((spanWidth / 2).round(), Dimensions.HEIGHT_RASTER);
 
     if (_tfNothingFound != null) {
       _tfNothingFound.x = buttonWidth + Dimensions.SPACER;
     }
-
   }
 
-  @override void setData(List data) {
-
+  @override
+  void setData(List data) {
     if (pressedNext == true) {
       _pageChange(super.setData, data, -holder.width, listItemSpacer + maskWidth, 0);
     } else {
@@ -100,7 +99,6 @@ class AbstractPhotoPager extends PagerSprite {
   }
 
   void _pageChange(Function cb, List listItems, num xCurrentTarget, num xComingInitial, num xComingTarget) {
-
     DisplayObject current = holder.numChildren == 0 ? null : holder.getChildAt(0);
 
     Sprite coming = pageCreate(listItems);
@@ -108,35 +106,31 @@ class AbstractPhotoPager extends PagerSprite {
     holder.addChildAt(coming, 0);
 
     if (current != null && chunksPlaced.length > 0) {
-
       Rd.JUGGLER.addTween(current, 0.3, Transition.easeInQuintic)
         ..animate.x.to(xCurrentTarget)
         ..onComplete = () => disposeChild(current);
 
-      Rd.JUGGLER.addTween(coming, 0.3, Transition.easeInQuintic)
-        ..animate.x.to(xComingTarget);
+      Rd.JUGGLER.addTween(coming, 0.3, Transition.easeInQuintic)..animate.x.to(xComingTarget);
 
       if (pressedNext) {
         Rd.JUGGLER.delayCall(() => cb.call(listItems), 0.55);
-      } else Rd.JUGGLER.delayCall(() => cb.call(listItems), 0.7);
+      } else
+        Rd.JUGGLER.delayCall(() => cb.call(listItems), 0.7);
     } else {
       disposeChild(current);
       coming.x = xComingTarget;
       cb.call(listItems);
     }
-
   }
 
   void _createNothingFoundInfo() {
-
     if (_tfNothingFound == null) {
       _tfNothingFound = Theme.getCopy(labelEmpty, size: 11, color: Colors.GREY_DARK);
       _tfNothingFound.alpha = 0;
       addChild(_tfNothingFound);
     }
 
-    Rd.JUGGLER.addTween(_tfNothingFound, 0.3)
-      ..animate.alpha.to(1);
+    Rd.JUGGLER.addTween(_tfNothingFound, 0.3)..animate.alpha.to(1);
   }
 
   Sprite pageCreate(List listItems) {
@@ -176,7 +170,6 @@ class AbstractPhotoPager extends PagerSprite {
         // --- display photo: big: don't show cutted image / small: show cutted image and mask
         if (rows > 1) {
           if (currentWidth - listItemSpacer < spanWidth) {
-
             lineSprite.addChild(item);
             numPlacedPhotos++;
           } else {
@@ -184,7 +177,6 @@ class AbstractPhotoPager extends PagerSprite {
           }
 
           lineSprite.x = (spanWidth / 2 - (currentWidth).toInt() / 2);
-
         } else {
           lineSprite.addChild(item);
           if (currentWidth - listItemSpacer < spanWidth) {
@@ -193,12 +185,10 @@ class AbstractPhotoPager extends PagerSprite {
             break;
           }
         }
-
       } else {
         break;
       }
     }
-
 
     if (numPlacedPhotos == 0) {
       _createNothingFoundInfo();
@@ -217,5 +207,4 @@ class AbstractPhotoPager extends PagerSprite {
       submitCallback.call(vo);
     }
   }
-
 }

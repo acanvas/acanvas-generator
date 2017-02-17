@@ -7,7 +7,7 @@ html, body {
 
 #canvas-holder {
     max-width: 1280px;
-    max-height: 900px;
+    max-height: 1024px;
     margin: 0 auto;
 }
 

@@ -4,7 +4,6 @@ part of rockdot_template;
 	 * Called by the initialization Command Sequence inside of @see Application
 	 */
 class InitCommand extends AbstractCommand implements IStateModelAware, IScreenServiceAware {
-
   StateModel _stateModel;
   void set stateModel(StateModel stateModel) {
     _stateModel = stateModel;
@@ -15,7 +14,8 @@ class InitCommand extends AbstractCommand implements IStateModelAware, IScreenSe
     _uiService = uiService;
   }
 
-  @override void execute([RdSignal event = null]) {
+  @override
+  void execute([RdSignal event = null]) {
     super.execute(event);
 
     //App Background
@@ -27,7 +27,7 @@ class InitCommand extends AbstractCommand implements IStateModelAware, IScreenSe
     Navigation navigation = new Navigation("element.navigation");
     RdContextUtil.wire(navigation);
     _uiService.navi.addChild(navigation);
-   // navigation.init();
+    // navigation.init();
 
     //Setup Modal Filter Effect
     _uiService.modalBackgroundFilter = new BlurFilter(6, 6);
@@ -36,6 +36,5 @@ class InitCommand extends AbstractCommand implements IStateModelAware, IScreenSe
     dispatchCompleteEvent();
 
     return null;
-
   }
 }

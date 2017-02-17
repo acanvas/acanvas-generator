@@ -5,8 +5,7 @@ import 'package:rockdot_commons/rockdot_commons.dart';
 
 // ##### PLUGINS #####
 import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart'
-    show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
 import 'package:stagexl_spine/stagexl_spine.dart';
 import 'dart:async';
 import 'dart:math';
@@ -25,7 +24,6 @@ part 'src/view/screen/spine_texture_atlas.dart';
 part 'src/view/screen/spine_vine.dart';
 part 'src/view/screen/spine_stretchy_man.dart';
 part 'src/view/screen/spine_home.dart';
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+// ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //

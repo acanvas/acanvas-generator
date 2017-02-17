@@ -46,7 +46,6 @@ class BasicGenerator extends DefaultGenerator {
       "google",
       "facebook",
       "physics",
-      "ugc",
       "babylon",
       "bitmapFont",
       "dragonBones",
@@ -54,9 +53,9 @@ class BasicGenerator extends DefaultGenerator {
       "gaf",
       "spine",
       "isometric",
-      "particle"
+      "particle",
+      "ugc"
     ];
-
 
     // Remove example content assets from source list according to option
     extensions.forEach((element) {
@@ -86,7 +85,6 @@ class BasicGenerator extends DefaultGenerator {
 
     // Iterate over source list
     for (TemplateFile file in templates) {
-
       /*
         Skip config and view/element, if NO examples are to be installed
        */
@@ -147,8 +145,6 @@ class BasicGenerator extends DefaultGenerator {
       if (file.path.contains("rockdot_template_plugins.dart")) {
         //check flag values of extensions
         extensions.forEach((ext) {
-          print("extension: $ext ${options[ext]} / examples: ${options["${ext}Examples"]}");
-
           //uninstall all imports
           if (!options[ext]) {
             file.content = _uninstallPluginImports(ext, file.content);
@@ -197,25 +193,26 @@ class BasicGenerator extends DefaultGenerator {
     }
 
     //check flag values of extensions
-    extensions.forEach((ext) {
+    Future.forEach(extensions, (ext) async {
       //uninstall all from bootstrap
       if (options[ext]) {
         switch (ext) {
           case "material":
-            _installPluginData(material_data.type, material_data.data);
+            await _installPluginData(material_data.type, material_data.data);
             break;
           case "facebook":
-            _installPluginData(facebook_data.type, facebook_data.data);
+            await _installPluginData(facebook_data.type, facebook_data.data);
             break;
           case "google":
-            _installPluginData(google_data.type, google_data.data);
+            await _installPluginData(google_data.type, google_data.data);
             break;
           case "physics":
-            _installPluginData(physics_data.type, physics_data.data);
+            await _installPluginData(physics_data.type, physics_data.data);
             _addLibraryToRootPubspec("rockdot_physics", "https://github.com/blockforest/rockdot-physics");
             break;
           case "ugc":
-            _installPluginData(ugc_data.type, ugc_data.data);
+            //TODO ugc example doesn't complete its Future
+            await _installPluginData(ugc_data.type, ugc_data.data);
             break;
           case "babylon":
             _addLibraryToRootPubspec("babylonjs_facade", "https://github.com/blockforest/babylonjs-dart-facade");
@@ -268,7 +265,8 @@ dependencies:
         break;
       default:
         plugin = plugin[0].toUpperCase() + plugin.substring(1);
-        content = content.replaceAllMapped(new RegExp("new ${plugin}Plugin([^,]+)"), (m) => "//new ${plugin}Plugin${m[1]},");
+        content =
+            content.replaceAllMapped(new RegExp("new ${plugin}Plugin([^,]+)"), (m) => "//new ${plugin}Plugin${m[1]},");
         break;
     }
 
@@ -278,9 +276,9 @@ dependencies:
   /// Removes references to plugin examples from plugins.dart
   String _uninstallPluginExamplesBootstrap(String plugin, String content) {
     plugin = plugin[0].toUpperCase() + plugin.substring(1);
-    //TODO doesn't seem to work
     print("uninstalling ${plugin}");
-    content = content.replaceAllMapped(new RegExp("new ${plugin}ExamplePlugin([^,]+)"), (m) => "//new ${plugin}ExamplePlugin${m[1]},");
+    content = content.replaceAllMapped(
+        new RegExp("new ${plugin}ExamplePlugin([^,]+)"), (m) => "//new ${plugin}ExamplePlugin${m[1]},");
     return content;
   }
 
@@ -317,7 +315,7 @@ dependencies:
     return content;
   }
 
-  _installPluginData(String type, List<String> data) async {
+  Future _installPluginData(String type, List<String> data) async {
     bool append = false;
 
     List<TemplateFile> decdata = await decodeConcanenatedData(data, type);
@@ -332,5 +330,5 @@ dependencies:
   }
 
   String getInstallInstructions() => "${super.getInstallInstructions()}\n"
-      "to run your app, use 'pub serve'\n";
+      "to run your app, use 'pub serve' and hit http://localhost:xxxx/public in the browser\n";
 }

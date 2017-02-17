@@ -42,7 +42,7 @@ class ImageItemButton extends Button {
   }
 
   @override
-  void rollOverAction([MouseEvent event = null]) {
+  void rollOverAction([InputEvent event = null]) {
     if (stage != null) {
       Rd.JUGGLER.removeTweens(_bgOver);
       Rd.JUGGLER.addTween(_bgOver, 0.3)..animate.alpha.to(1);
@@ -52,7 +52,7 @@ class ImageItemButton extends Button {
   }
 
   @override
-  void rollOutAction([MouseEvent event = null]) {
+  void rollOutAction([InputEvent event = null]) {
     if (stage != null) {
       Rd.JUGGLER.addTween(_bgOver, 0.3)..animate.alpha.to(0);
     } else if (_bgOver != null) {

@@ -27,7 +27,6 @@ part 'src/view/element/memory/playing_field.dart';
 part 'package:rockdot_template/examples/stagexl/src/view/element/sprite3d/cube_face.dart';
 
 part 'src/view/screen/stage_xlhome.dart';
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+// ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //

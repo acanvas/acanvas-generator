@@ -6,7 +6,7 @@ class FacebookAlbums extends AbstractScreen {
   FacebookAlbums(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     new RdSignal(FBEvents.ALBUMS_GET, null, (List albums) {

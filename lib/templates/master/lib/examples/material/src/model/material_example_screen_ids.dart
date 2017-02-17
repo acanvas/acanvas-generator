@@ -13,7 +13,7 @@ class MaterialExampleScreenIDs {
   static const String PAPER_ICON_BUTTONS = "screen.paper_icon_buttons";
 
   static const String SHADER_EXAMPLE = "screen.shader_example";
-static const String MATERIAL_HOME = "screen.material_home";
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+  static const String MATERIAL_HOME = "screen.material_home";
+  // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+
 }

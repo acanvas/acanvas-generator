@@ -8,10 +8,10 @@ class Layer extends AbstractLayer {
   ImageSprite _pic;
   MdButton _button;
 
-  Layer(String id) : super(id) {
-  }
+  Layer(String id) : super(id) {}
 
-  @override void init({Map params: null}){
+  @override
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     String url = model.kitten;
@@ -40,8 +40,8 @@ class Layer extends AbstractLayer {
     refresh();
   }
 
-
-  @override void refresh() {
+  @override
+  void refresh() {
     _headline
       ..x = 20
       ..y = 20;
@@ -56,5 +56,4 @@ class Layer extends AbstractLayer {
 
     super.refresh();
   }
-
 }

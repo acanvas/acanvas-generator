@@ -20,7 +20,7 @@ class SpineVine extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     // load Spine skeleton
@@ -49,13 +49,12 @@ class SpineVine extends AbstractScreen {
 
     _originalSkeletonWidth ??= 580;
     //_skeletonAnimation.scaleX = _skeletonAnimation.scaleY = spanWidth / _originalSkeletonWidth / 1.5;
-    _skeletonAnimation.x = spanWidth/2 - _skeletonAnimation.width/2;
+    _skeletonAnimation.x = spanWidth / 2 - _skeletonAnimation.width / 2;
     _skeletonAnimation.y = spanHeight - _skeletonAnimation.height - 10;
   }
 
   @override
   void dispose({bool removeSelf: true}) {
-
     Rd.JUGGLER.remove(_skeletonAnimation);
     Rd.JUGGLER.removeTweens(this);
     super.dispose();

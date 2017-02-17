@@ -4,7 +4,7 @@ class MdToggles extends AbstractReflowScreen {
   MdToggles(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     /*
@@ -37,8 +37,8 @@ class MdToggles extends AbstractReflowScreen {
 
     addChild(reflow);
 
-    wrap02.flow.children.where((c) => c is BehaveSprite).forEach((BehaveSprite child) {
-      child.enabled = false;
+    wrap02.flow.children.where((c) => c is BehaveSprite).forEach((child) {
+      (child as BehaveSprite).enabled = false;
     });
 
     addChild(reflow);

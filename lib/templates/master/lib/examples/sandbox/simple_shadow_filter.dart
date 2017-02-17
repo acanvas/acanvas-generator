@@ -193,7 +193,6 @@ class CloudFilter extends BitmapFilter {
   }
 }
 
-
 class DropShadowFilterProgram extends RenderProgram {
   RenderBufferVertex _renderBufferVertex;
 

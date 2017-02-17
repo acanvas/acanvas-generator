@@ -5,7 +5,7 @@ class SpinePowerup extends AbstractScreen {
 
   SkeletonAnimation _skeletonAnimation;
 
-  SpinePowerup(String id) : super(id)  {
+  SpinePowerup(String id) : super(id) {
     requiresLoading = true;
   }
 
@@ -19,7 +19,7 @@ class SpinePowerup extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     // load Spine skeleton

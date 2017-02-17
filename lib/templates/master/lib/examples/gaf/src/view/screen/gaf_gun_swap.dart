@@ -19,7 +19,7 @@ class GafGunSwap extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var gafTimeline = _gafAsset.getGAFTimelineByLinkage('rootTimeline');
@@ -59,10 +59,8 @@ class GafGunSwap extends AbstractScreen {
 
     _robot.scaleX = _robot.scaleY = spanWidth / _originalWidth / 1.5;
 
-    _robot.x = spanWidth/2;
-    _robot.y = spanHeight - _robot.height/2;
-
-
+    _robot.x = spanWidth / 2;
+    _robot.y = spanHeight - _robot.height / 2;
   }
 
   @override

@@ -6,9 +6,7 @@ part of rockdot_template;
 class RdBootstrap extends AbstractRdBootstrap {
   int _exampleOrder;
 
-
   RdBootstrap(Stage stage) : super(stage) {
-
     // Defaults are injected from public.properties
     // TODO add support for setting these via GET
 
@@ -19,13 +17,10 @@ class RdBootstrap extends AbstractRdBootstrap {
     RdConstants.setLoaderInfo(loaderInfo);
 
     //----------------------------
-    
+
     // The Property Files we want to load initially
 
-    propertyFiles = [
-      "config/locale/${RdConstants.LANGUAGE}.properties",
-      "config/project.properties"
-    ];
+    propertyFiles = ["config/locale/${RdConstants.LANGUAGE}.properties", "config/project.properties"];
 
     // The Plugins we want to use
     Plugins ps = new Plugins();
@@ -34,8 +29,7 @@ class RdBootstrap extends AbstractRdBootstrap {
 
   /// Load Webfonts and Assets
 
-  Future<bool> load() async{
-
+  Future<bool> load() async {
     // Add Fonts to load
     RdFontUtil.addFont(Fonts.ROBOTO_LOADSTRING);
 

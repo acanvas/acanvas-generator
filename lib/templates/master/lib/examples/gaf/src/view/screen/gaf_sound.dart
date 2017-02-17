@@ -18,7 +18,7 @@ class GafSound extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var gafTimeline = _gafAsset.getGAFTimelineByLinkage('rootTimeline');
@@ -41,9 +41,8 @@ class GafSound extends AbstractScreen {
 
     _tank.scaleX = _tank.scaleY = spanWidth / _originalWidth / 2;
 
-    _tank.x = spanWidth/2;
-    _tank.y = spanHeight/2;
-    
+    _tank.x = spanWidth / 2;
+    _tank.y = spanHeight / 2;
   }
 
   @override

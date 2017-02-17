@@ -36,7 +36,7 @@ class PagerPrevNextButton extends Button {
   }
 
   @override
-  void rollOverAction([MouseEvent event = null]) {
+  void rollOverAction([InputEvent event = null]) {
     //TweenLite.to(_bg, 0.1, {colorMatrixFilter:{brightness:0.8}});
     if (stage != null) {
       Tween tween = new Tween(_bg, 0.2, Transition.easeInCubic);
@@ -49,7 +49,7 @@ class PagerPrevNextButton extends Button {
   }
 
   @override
-  void rollOutAction([MouseEvent event = null]) {
+  void rollOutAction([InputEvent event = null]) {
 //			TweenLite.to(_bg, 0.3, {colorMatrixFilter:{brightness:1.0}});
     if (stage != null) {
       Tween tween = new Tween(_bg, 0.3, Transition.easeInCubic);

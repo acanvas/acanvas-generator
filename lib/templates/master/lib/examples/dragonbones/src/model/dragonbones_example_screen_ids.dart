@@ -7,8 +7,7 @@ class DragonBonesExampleScreenIDs {
   static const String SWORDS_MAN = "screen.stagexl.dragonbones.swords_man";
   static const String UBBIE = "screen.stagexl.dragonbones.ubbie";
 
-static const String DRAGONBONES_HOME = "screen.dragonbones_home";
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+  static const String DRAGONBONES_HOME = "screen.dragonbones_home";
+  // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 }

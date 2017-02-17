@@ -23,7 +23,7 @@ class SpineBoy extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     // add TextField to show user information
@@ -73,7 +73,6 @@ class SpineBoy extends AbstractScreen {
 
     // register track events
 
-
     _skeletonAnimation.state.onTrackStart.listen((TrackEntryStartEvent e) {
       print("${e.trackEntry.trackIndex} start: ${e.trackEntry}");
     });
@@ -100,12 +99,12 @@ class SpineBoy extends AbstractScreen {
     super.refresh();
 
     _textField.width = spanWidth / 1.5;
-    _textField.x = spanWidth/2 - _textField.textWidth/2;
+    _textField.x = spanWidth / 2 - _textField.textWidth / 2;
     _textField.y = 20;
 
     _originalSkeletonWidth ??= 580;
     _skeletonAnimation.scaleX = _skeletonAnimation.scaleY = spanWidth / _originalSkeletonWidth / 1.5;
-    _skeletonAnimation.x = spanWidth/2 - _skeletonAnimation.width/2;
+    _skeletonAnimation.x = spanWidth / 2 - _skeletonAnimation.width / 2;
     _skeletonAnimation.y = spanHeight - _skeletonAnimation.height - 10;
   }
 

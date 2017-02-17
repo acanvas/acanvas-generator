@@ -4,7 +4,7 @@ class MdFabs extends AbstractReflowScreen {
   MdFabs(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     MdWrap wrap01 = Theme.getWrap(label: getProperty("col01"), align: AlignH.CENTER);
@@ -37,8 +37,8 @@ class MdFabs extends AbstractReflowScreen {
 
     addChild(reflow);
 
-    wrap02.children.where((c) => c is BehaveSprite).forEach((BehaveSprite child) {
-      child.enabled = false;
+    wrap02.children.where((c) => c is BehaveSprite).forEach((child) {
+      (child as BehaveSprite).enabled = false;
     });
 
     onInitComplete();

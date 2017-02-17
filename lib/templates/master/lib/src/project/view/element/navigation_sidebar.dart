@@ -4,7 +4,6 @@ part of rockdot_template;
  * @author Nils Doehring (nilsdoehring(gmail as at).com)
  */
 class NavigationSidebar extends RockdotLifecycleSprite implements IStateModelAware {
-
   StateModel _stateModel;
   ImageSprite _logo;
   MdMenu _itemList;
@@ -14,7 +13,8 @@ class NavigationSidebar extends RockdotLifecycleSprite implements IStateModelAwa
     inheritSpan = true;
   }
 
-  @override void init({Map params: null}){
+  @override
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _logo = new ImageSprite()
@@ -22,24 +22,26 @@ class NavigationSidebar extends RockdotLifecycleSprite implements IStateModelAwa
       ..inheritSpan = false
       ..autoSpan = false
       ..useHandCursor = true
-      ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, (e){
-          new RdSignal(StateEvents.ADDRESS_SET, getProperty("${ScreenIDs.HOME}.url", true)).dispatch();
+      ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, (e) {
+        new RdSignal(StateEvents.ADDRESS_SET, getProperty("${ScreenIDs.HOME}.url", true)).dispatch();
       });
     addChild(_logo);
 
-
-    _itemList = new MdMenu(_stateModel.getStateVOList(), cell: new ListMenuCell(), shadow: false, backgroundColor: Colors.GREY_DARK);
+    _itemList = new MdMenu(_stateModel.getStateVOList(),
+        cell: new ListMenuCell(), shadow: false, backgroundColor: Colors.GREY_DARK);
     _itemList.submitCallback = _sideBarCellSelectAction;
     addChild(_itemList);
 
     onInitComplete();
   }
 
-  @override void span(num spanWidth, num spanHeight, {bool refresh: true}){
+  @override
+  void span(num spanWidth, num spanHeight, {bool refresh: true}) {
     super.span(Dimensions.WIDTH_SIDEBAR, spanHeight);
   }
 
-  @override void refresh() {
+  @override
+  void refresh() {
     super.refresh();
 
     RdGraphics.rectangle(0, 0, spanWidth, spanHeight, sprite: this, color: Colors.GREY_DARK);
@@ -58,14 +60,15 @@ class NavigationSidebar extends RockdotLifecycleSprite implements IStateModelAwa
     new RdSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
   }
 
-  void setVO(StateVO vo){
-    if(!_blockSelectionByAddressCallback){
+  void setVO(StateVO vo) {
+    if (!_blockSelectionByAddressCallback) {
       _itemList.selectCellByVO(vo);
     }
     _blockSelectionByAddressCallback = false;
   }
 
-  @override void set stateModel(StateModel stateModel) {
+  @override
+  void set stateModel(StateModel stateModel) {
     _stateModel = stateModel;
   }
 }

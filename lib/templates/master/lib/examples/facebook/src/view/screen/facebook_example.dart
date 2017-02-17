@@ -15,15 +15,16 @@ class FacebookHome extends AbstractReflowScreen implements IFBModelAware {
   FacebookHome(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _wrap01 = Theme.getWrap(label: getProperty("col01"), align: AlignH.CENTER);
     _wrap01.addChild(Theme.getButton(label: getProperty("button01"))
       ..submitEvent = new RdSignal(
           FBEvents.USER_LOGIN,
-          new FacebookLoginVO(nextSignal: new RdSignal(
-              StateEvents.ADDRESS_SET, getProperty(FacebookExampleScreenIDs.FACEBOOK_ALBUMS + ".url", true)))));
+          new FacebookLoginVO(
+              nextSignal: new RdSignal(
+                  StateEvents.ADDRESS_SET, getProperty(FacebookExampleScreenIDs.FACEBOOK_ALBUMS + ".url", true)))));
     _wrap01.addChild(Theme.getButton(label: getProperty("invite.button"))
       ..submitEvent = new RdSignal(
           FBEvents.PROMPT_INVITE,

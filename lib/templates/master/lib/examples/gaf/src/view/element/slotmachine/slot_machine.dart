@@ -36,10 +36,10 @@ class SlotMachine extends GAFMovieClip {
 
   //---------------------------------------------------------------------------
 
-  SlotMachine(GAFTimeline gafTimeline) : super(gafTimeline) {
+  SlotMachine(GAFTimeline gafTimeline) : super(gafTimeline, 25) {
     this.play(true);
 
-    var obj = this.getChildByName("obj");
+    DisplayObjectContainer obj = this.getChildByName("obj");
 
     // Here we get pointers to inner Gaf objects for quick access
 
@@ -55,7 +55,7 @@ class SlotMachine extends GAFMovieClip {
 
     // Play the "start" sequence once and then play the "spin" sequence.
 
-    var spinningRays = obj.getChildByName("spinning_rays");
+    GAFMovieClip spinningRays = obj.getChildByName("spinning_rays");
     spinningRays.setSequence("start");
     spinningRays.onSequenceEnd.first.then((e) {
       spinningRays.setSequence("spin", true);

@@ -22,10 +22,8 @@ class SpineHero extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
-
-
 
     // load Spine skeleton
 
@@ -55,7 +53,7 @@ class SpineHero extends AbstractScreen {
 
     _textField = new TextField();
     _textField.defaultTextFormat = new TextFormat("Arial", 24, Color.White);
-   // _textField.defaultTextFormat.align = TextFormatAlign.CENTER;
+    // _textField.defaultTextFormat.align = TextFormatAlign.CENTER;
     _textField.text = "tap to change animation";
     _textField.addTo(this);
 
@@ -97,13 +95,12 @@ class SpineHero extends AbstractScreen {
     super.refresh();
 
     _textField.width = spanWidth / 1.5;
-    _textField.x = spanWidth/2 - _textField.textWidth/2;
+    _textField.x = spanWidth / 2 - _textField.textWidth / 2;
     _textField.y = 20;
-
 
     _originalSkeletonWidth ??= 380;
     _skeletonAnimation.scaleX = _skeletonAnimation.scaleY = spanWidth / _originalSkeletonWidth / 1.5;
-    _skeletonAnimation.x = spanWidth/2 - _skeletonAnimation.width/2;
+    _skeletonAnimation.x = spanWidth / 2 - _skeletonAnimation.width / 2;
     _skeletonAnimation.y = spanHeight - _skeletonAnimation.height - 10;
   }
 

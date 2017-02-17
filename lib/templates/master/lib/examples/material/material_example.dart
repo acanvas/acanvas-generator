@@ -7,8 +7,7 @@ import 'package:rockdot_commons/rockdot_commons.dart';
 
 // ##### PLUGINS #####
 import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart'
-    show AbstractReflowScreen, Assets, Colors, EffectIDs, Theme;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, Assets, Colors, EffectIDs, Theme;
 import 'dart:async';
 
 part 'src/material_example_plugin.dart';
@@ -27,5 +26,4 @@ part 'src/view/screen/paper_icon_buttons.dart';
 
 part 'src/view/screen/shader_example.dart';
 part 'src/view/screen/material_home.dart';
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+// ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //

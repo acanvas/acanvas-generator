@@ -12,11 +12,11 @@ class Colors {
 
   static const int ARCTIC_BLUE = 0xFFcee2f5; //blue light
 
-  static const int BLUE       = Theme.COLOR_BASE;
-  static const int BLUE_DARK   = 0xFF193249;
-  static const int BLUE_LIGHT   = 0xFF86AED2;
-  static const int BLUE_DARK2   = 0xFF2F3D49;
-  static const int BLUE_MIDDLE   = 0xFF336796;
+  static const int BLUE = Theme.COLOR_BASE;
+  static const int BLUE_DARK = 0xFF193249;
+  static const int BLUE_LIGHT = 0xFF86AED2;
+  static const int BLUE_DARK2 = 0xFF2F3D49;
+  static const int BLUE_MIDDLE = 0xFF336796;
 
   static const int GREY_LIGHT = 0xFF999999;
   static const int GREY_MIDDLE = 0xFF414853;
@@ -32,7 +32,7 @@ class Colors {
 
   /* Example Colors */
 
-  static const int PINK   = 0xFFD65290;
-  static const int RED    = 0xFFf44336;
-  static const int GREEN  = 0xFF41A12D;
+  static const int PINK = 0xFFD65290;
+  static const int RED = 0xFFf44336;
+  static const int GREEN = 0xFF41A12D;
 }

@@ -20,5 +20,4 @@ part 'src/view/screen/ugc_example.dart';
 part 'src/view/screen/ugc_gallery.dart';
 
 part 'src/view/screen/ugchome.dart';
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+// ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //

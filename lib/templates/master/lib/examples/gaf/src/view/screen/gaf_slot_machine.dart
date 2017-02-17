@@ -18,7 +18,7 @@ class GafSlotMachine extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     // load and show the slot machine GAF asset
@@ -38,7 +38,7 @@ class GafSlotMachine extends AbstractScreen {
   void refresh() {
     super.refresh();
 
-    _originalWidth ??= _slotMachineGame.width/2;
+    _originalWidth ??= _slotMachineGame.width / 2;
     _slotMachineGame.scaleX = _slotMachineGame.scaleY = spanWidth / _originalWidth;
 
     _slotMachineGame.x = 40 * _slotMachineGame.scaleX;

@@ -5,8 +5,7 @@ import 'package:rockdot_commons/rockdot_commons.dart';
 
 // ##### PLUGINS #####
 import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart'
-    show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
 import 'package:stagexl_gaf/stagexl_gaf.dart';
 import 'dart:async';
 import 'dart:math';
@@ -28,7 +27,6 @@ part 'src/view/element/slotmachine/slot_machine.dart';
 part 'src/view/element/slotmachine/slot_machine_game.dart';
 part 'src/view/screen/gaf_sound.dart';
 part 'src/view/screen/gaf_home.dart';
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+// ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //

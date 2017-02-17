@@ -7,7 +7,8 @@ class MdDialogs extends AbstractReflowScreen {
 
   ResourceManager _resourceManager;
 
-  MdDialogs(String id) : super(id) {    requiresLoading = true;
+  MdDialogs(String id) : super(id) {
+    requiresLoading = true;
   }
 
   @override
@@ -19,7 +20,7 @@ class MdDialogs extends AbstractReflowScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _bg = new Sprite();

@@ -2,8 +2,7 @@ part of rockdot_template;
 
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 
-class AbstractReflowScreen extends AbstractScreen implements IModelAware{
-
+class AbstractReflowScreen extends AbstractScreen implements IModelAware {
   //----------------------------------------------------------------------------
 
   /// AppModel as defined by interface. Will be injected by ApplicationContext/factory
@@ -19,18 +18,16 @@ class AbstractReflowScreen extends AbstractScreen implements IModelAware{
   MdText _headline;
   MdText _copy;
 
-
-  AbstractReflowScreen(String id) : super(id) {
-  }
+  AbstractReflowScreen(String id) : super(id) {}
 
   /// This is the place where you add anything to this method that needs initialization.
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params : null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
-    reflow = new Wrap(spacing: 16, scrollOrientation : ScrollOrientation.VERTICAL, enableMask: false)
+    reflow = new Wrap(spacing: 16, scrollOrientation: ScrollOrientation.VERTICAL, enableMask: false)
       ..x = padding
       ..y = padding
       ..inheritSpan = false
@@ -45,24 +42,24 @@ class AbstractReflowScreen extends AbstractScreen implements IModelAware{
     _copy.inheritWidth = false;
     reflow.addChild(_copy);
 
-    reflow.addChild(new Sprite()..graphics.rect(0,0,spanWidth-10,Dimensions.SPACER)..graphics.fillColor(0x00ff0000));
+    reflow.addChild(new Sprite()
+      ..graphics.rect(0, 0, spanWidth - 10, Dimensions.SPACER)
+      ..graphics.fillColor(0x00ff0000));
 
     //In the implementing class, do:
     /*
     addChild(reflow);
     onInitComplete();
      */
-
   }
-
 
   /// Positioning logic goes here. Use spanWidth and spanHeight to find out about available space.
 
-  @override void refresh(){
+  @override
+  void refresh() {
     _headline.width = spanWidth - 2 * padding;
     _copy.width = spanWidth - 2 * padding;
-    reflow.span(spanWidth-padding, spanHeight-padding);
+    reflow.span(spanWidth - padding, spanHeight - padding);
     super.refresh();
   }
-
 }

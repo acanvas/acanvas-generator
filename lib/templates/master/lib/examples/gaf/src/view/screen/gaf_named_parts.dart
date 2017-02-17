@@ -13,8 +13,6 @@ class GafNamedParts extends AbstractScreen {
 
   TextField _txtNesting;
 
-
-
   GAFAsset _gafAsset;
   num _originalWidth;
 
@@ -31,7 +29,7 @@ class GafNamedParts extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var gafTimeline1 = _gafAsset.getGAFTimelineByLinkage('rootTimeline');
@@ -98,22 +96,22 @@ class GafNamedParts extends AbstractScreen {
 
     _gafMovieClip1.scaleX = _gafMovieClip1.scaleY = spanWidth / _originalWidth / 2;
 
-    _gafMovieClip1.x = _gafMovieClip1.width/2 + 10;
-    _gafMovieClip1.y = spanHeight - _gafMovieClip1.height/2;
+    _gafMovieClip1.x = _gafMovieClip1.width / 2 + 10;
+    _gafMovieClip1.y = spanHeight - _gafMovieClip1.height / 2;
 
     _gafMovieClip2.scaleX = _gafMovieClip2.scaleY = spanWidth / _originalWidth / 2;
 
-    _gafMovieClip2.x = spanWidth - _gafMovieClip2.width/2 - 10;
-    _gafMovieClip2.y = spanHeight - _gafMovieClip2.height/2;
+    _gafMovieClip2.x = spanWidth - _gafMovieClip2.width / 2 - 10;
+    _gafMovieClip2.y = spanHeight - _gafMovieClip2.height / 2;
 
-    _txtTitle.x = spanWidth/2 - _txtTitle.width/2;
+    _txtTitle.x = spanWidth / 2 - _txtTitle.width / 2;
     _txtTitle.y = 20;
 
-    _txtPlain.x = _gafMovieClip1.x - _txtPlain.textWidth/2;
-    _txtPlain.y = _gafMovieClip1.y - _gafMovieClip1.height/2 - 20;
+    _txtPlain.x = _gafMovieClip1.x - _txtPlain.textWidth / 2;
+    _txtPlain.y = _gafMovieClip1.y - _gafMovieClip1.height / 2 - 20;
 
-    _txtNesting.x = _gafMovieClip2.x - _txtNesting.textWidth/2;
-    _txtNesting.y = _gafMovieClip2.y - _gafMovieClip2.height/2 - 20;
+    _txtNesting.x = _gafMovieClip2.x - _txtNesting.textWidth / 2;
+    _txtNesting.y = _gafMovieClip2.y - _gafMovieClip2.height / 2 - 20;
   }
 
   @override

@@ -6,7 +6,8 @@ class SpineExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(SpineExampleScreenIDs.SPINE_HOME, () => new SpineHome(SpineExampleScreenIDs.SPINE_HOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(SpineExampleScreenIDs.SPINE_HOME, () => new SpineHome(SpineExampleScreenIDs.SPINE_HOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
     addScreen(SpineExampleScreenIDs.GOBLINS_FFD, () => new SpineGoblinsFfd(SpineExampleScreenIDs.GOBLINS_FFD),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
     addScreen(SpineExampleScreenIDs.HERO, () => new SpineHero(SpineExampleScreenIDs.HERO),
@@ -28,6 +29,5 @@ class SpineExamplePlugin extends AbstractRdPlugin {
     addScreen(SpineExampleScreenIDs.STRETCHY_MAN, () => new SpineStretchyMan(SpineExampleScreenIDs.STRETCHY_MAN),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
   }
 }

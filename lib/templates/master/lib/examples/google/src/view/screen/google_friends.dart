@@ -3,8 +3,8 @@ part of google_example;
 class GoogleFriends extends AbstractScreen implements IGoogleModelAware {
   GooglePlusFriendPhotoPager _photoPager;
 
-  @override
   GoogleModel _googleModel;
+  @override
   void set googleModel(GoogleModel gModel) {
     _googleModel = gModel;
   }
@@ -12,7 +12,7 @@ class GoogleFriends extends AbstractScreen implements IGoogleModelAware {
   GoogleFriends(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _photoPager = new GooglePlusFriendPhotoPager(applicationContext.getObject(GoogleEvents.PLUS_PEOPLE_GET),

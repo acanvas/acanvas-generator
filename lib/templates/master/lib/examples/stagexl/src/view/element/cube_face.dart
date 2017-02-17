@@ -3,9 +3,7 @@ part of stagexl_example;
 // ---------------------------------------------------
 
 class CubeFace extends Sprite3D {
-
   CubeFace(int color, BitmapData bitmapData) {
-
     Bitmap back = new Bitmap(new BitmapData(150, 150, color));
     Bitmap icon = new Bitmap(bitmapData);
     this.addChild(back..alignPivot());

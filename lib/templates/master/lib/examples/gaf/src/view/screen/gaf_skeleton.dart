@@ -18,7 +18,7 @@ class GafSkeleton extends AbstractScreen {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     var gafTimeline = _gafAsset.getGAFTimelineByLinkage('rootTimeline');
@@ -41,9 +41,8 @@ class GafSkeleton extends AbstractScreen {
 
     _skeleton.scaleX = _skeleton.scaleY = spanWidth / _originalWidth / 2;
 
-    _skeleton.x = spanWidth/2;
-    _skeleton.y = spanHeight - _skeleton.height/2;
-    
+    _skeleton.x = spanWidth / 2;
+    _skeleton.y = spanHeight - _skeleton.height / 2;
   }
 
   @override

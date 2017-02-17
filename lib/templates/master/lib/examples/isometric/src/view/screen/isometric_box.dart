@@ -13,7 +13,7 @@ class IsometricGoblins extends AbstractReflowScreen {
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     addChild(reflow);
@@ -30,8 +30,8 @@ class IsometricGoblins extends AbstractReflowScreen {
   void refresh() {
     super.refresh();
 
-    _iso.x = spanWidth/2;
-    _iso.y = spanHeight/2;
+    _iso.x = spanWidth / 2;
+    _iso.y = spanHeight / 2;
   }
 
   /// Put anything here that needs special disposal.

@@ -210,7 +210,13 @@ abstract class MBox2dHelper {
 
   int _randomColor() {
     int random = new Random().nextInt(4);
-    List<int> col = [MdColor.BLACK, Theme.COLOR_BASE, MdColor.RED, MdColor.GREEN, MdColor.GREY_DARK,];
+    List<int> col = [
+      MdColor.BLACK,
+      Theme.COLOR_BASE,
+      MdColor.RED,
+      MdColor.GREEN,
+      MdColor.GREY_DARK,
+    ];
     return col[random];
   }
 

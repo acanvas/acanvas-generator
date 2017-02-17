@@ -9,8 +9,7 @@ class StageXLExampleScreenIDs {
   static const String LOGO = "screen.stagexl.logo";
   static const String MEMORY = "screen.stagexl.memory";
 
-static const String STAGE_XLHOME = "screen.stage_xlhome";
-    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
+  static const String STAGE_XLHOME = "screen.stage_xlhome";
+  // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 }

@@ -4,7 +4,6 @@ class AbstractPolaroidPager extends AbstractPhotoPager {
   static const num WIDTH_BUTTON = MdDimensions.WIDTH_BUTTON_MINIMAL;
   static const num HEIGHT_BUTTON = MdDimensions.HEIGHT_BUTTON;
 
-  UITextField _tfNothingFound;
   Shape _bg;
   List _items;
 

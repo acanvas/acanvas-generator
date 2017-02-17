@@ -1,20 +1,17 @@
 part of rockdot_template;
 
 class Two extends AbstractScreen {
-
   ImageSprite _bmp;
   MdButton _button;
 
-  Two(String id) : super(id) {
-  }
-
+  Two(String id) : super(id) {}
 
   @override
-  void init({Map params : null}) {
+  void init({Map params: null}) {
     super.init(params: params);
 
     _bmp = new ImageSprite()
-    //..span(spanWidth, spanHeight, refresh: false)
+      //..span(spanWidth, spanHeight, refresh: false)
       ..bitmapData = Assets.dog
       ..inheritSpan = false
       ..autoSpan = false;
@@ -27,19 +24,18 @@ class Two extends AbstractScreen {
     onInitComplete();
   }
 
-
-  @override void refresh() {
+  @override
+  void refresh() {
     super.refresh();
 
     _bmp.x = 0;
     _bmp.y = 0;
     _bmp.span(spanWidth, spanHeight, refresh: true);
-    
-    _button.span(spanWidth/2, 0);
-    _button.x = (spanWidth/2 - _button.spanWidth/2).round();
-    _button.y = (_bmp.y + _bmp.height - _button.height - 6*Dimensions.SPACER).round();
-  }
 
+    _button.span(spanWidth / 2, 0);
+    _button.x = (spanWidth / 2 - _button.spanWidth / 2).round();
+    _button.y = (_bmp.y + _bmp.height - _button.height - 6 * Dimensions.SPACER).round();
+  }
 
   @override
   void dispose() {

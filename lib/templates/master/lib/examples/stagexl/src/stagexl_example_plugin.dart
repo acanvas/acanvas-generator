@@ -6,7 +6,8 @@ class StagexlExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(StageXLExampleScreenIDs.STAGE_XLHOME, () => new StageXLHome(StageXLExampleScreenIDs.STAGE_XLHOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(StageXLExampleScreenIDs.STAGE_XLHOME, () => new StageXLHome(StageXLExampleScreenIDs.STAGE_XLHOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
 
     addScreen(StageXLExampleScreenIDs.BASIC_BITMAPDATA_HIDPI,
         () => new BitmapDataHiDPI(StageXLExampleScreenIDs.BASIC_BITMAPDATA_HIDPI),
@@ -25,6 +26,5 @@ class StagexlExamplePlugin extends AbstractRdPlugin {
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
 
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
   }
 }

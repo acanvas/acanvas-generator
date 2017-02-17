@@ -6,7 +6,9 @@ class DragonBonesExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(DragonBonesExampleScreenIDs.DRAGONBONES_HOME, () => new DragonbonesHome(DragonBonesExampleScreenIDs.DRAGONBONES_HOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(DragonBonesExampleScreenIDs.DRAGONBONES_HOME,
+        () => new DragonbonesHome(DragonBonesExampleScreenIDs.DRAGONBONES_HOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
 
     addScreen(DragonBonesExampleScreenIDs.DEMON, () => new DragonBonesDemon(DragonBonesExampleScreenIDs.DEMON),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
@@ -20,6 +22,5 @@ class DragonBonesExamplePlugin extends AbstractRdPlugin {
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
 
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
   }
 }

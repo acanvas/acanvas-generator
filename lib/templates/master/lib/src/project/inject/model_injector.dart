@@ -15,31 +15,27 @@
  */
 part of rockdot_template;
 
-
-
-	/**
+/**
 	 * @inheritDoc
 	 */
-	 class ModelInjector implements IObjectPostProcessor {
-		 IObjectFactory _applicationContext;
-	 ModelInjector(IObjectFactory applicationContext) {
-			_applicationContext = applicationContext;
-		}
+class ModelInjector implements IObjectPostProcessor {
+  IObjectFactory _applicationContext;
+  ModelInjector(IObjectFactory applicationContext) {
+    _applicationContext = applicationContext;
+  }
 
-
-		/**
+  /**
 		 * @inheritDoc
-		 */ dynamic postProcessAfterInitialization(dynamic object,String objectName)
-		 {
-			if (object is IModelAware) {
-				(object as IModelAware).appModel = _applicationContext.getObject(Project.MODEL);
-			}
-			
-			return object;
-		} dynamic postProcessBeforeInitialization(dynamic object,String objectName)
-		 {
-		  return object;
-		}
+		 */
+  dynamic postProcessAfterInitialization(dynamic object, String objectName) {
+    if (object is IModelAware) {
+      (object as IModelAware).appModel = _applicationContext.getObject(Project.MODEL);
+    }
 
-	}
+    return object;
+  }
 
+  dynamic postProcessBeforeInitialization(dynamic object, String objectName) {
+    return object;
+  }
+}

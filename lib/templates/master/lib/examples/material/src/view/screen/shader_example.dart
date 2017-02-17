@@ -8,7 +8,7 @@ class ShaderExample extends AbstractReflowScreen {
   ShaderExample(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     reflow.flow.reflow = false;

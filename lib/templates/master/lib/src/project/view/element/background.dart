@@ -16,13 +16,15 @@ class Background extends RockdotLifecycleSprite {
 
   /// Always span to maximum dimensions.
 
-  @override void span(num spanWidth, num spanHeight, {bool refresh: true}){
+  @override
+  void span(num spanWidth, num spanHeight, {bool refresh: true}) {
     super.span(Dimensions.WIDTH_STAGE, Dimensions.HEIGHT_STAGE);
   }
 
   //----------------------------------------------------------------------------
 
-  @override void init({Map params: null}){
+  @override
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _bg = new Shape();
@@ -35,15 +37,15 @@ class Background extends RockdotLifecycleSprite {
 
   /// Positioning logic
 
-  @override void refresh() {
+  @override
+  void refresh() {
     super.refresh();
-    
+
     if (_bg != null) {
       _bg.graphics.clear();
       _bg.graphics.rectRound(0, 0, spanWidth, spanHeight, 8, 8);
       _bg.graphics.fillColor(Theme.BACKGROUND_COLOR);
-     // _bg.applyCache(0, 0, spanWidth.round(), spanHeight.round());
+      // _bg.applyCache(0, 0, spanWidth.round(), spanHeight.round());
     }
   }
-
 }

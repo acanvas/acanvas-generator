@@ -9,7 +9,7 @@ class UGCExample extends AbstractReflowScreen {
   UGCExample(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _wrap01 = new MdWrap(Theme.getHeadline(getProperty("col01").toUpperCase(), size: 18, color: Colors.WHITE),

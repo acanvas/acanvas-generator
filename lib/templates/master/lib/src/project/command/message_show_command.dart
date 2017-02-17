@@ -4,7 +4,6 @@ part of rockdot_template;
 * Show Status Message
 */
 class MessageShowCommand extends AbstractCommand implements IStateModelAware, IScreenServiceAware {
-
   StateModel _stateModel;
   void set stateModel(StateModel stateModel) {
     _stateModel = stateModel;
@@ -15,40 +14,41 @@ class MessageShowCommand extends AbstractCommand implements IStateModelAware, IS
     _uiService = uiService;
   }
 
-  @override dynamic execute([RdSignal event = null]) {
+  @override
+  dynamic execute([RdSignal event = null]) {
     super.execute(event);
-    
+
     StateMessageVO vo = event.data;
-    
+
     int fontColor = MdColor.WHITE;
     int bgColor = Theme.COLOR_BASE;
-    switch(vo.type){
+    switch (vo.type) {
       case StateMessageVO.TYPE_ERROR:
         bgColor = MdColor.RED;
-      break;
+        break;
       case StateMessageVO.TYPE_INFO:
         bgColor = MdColor.GREEN;
-      break;
+        break;
       case StateMessageVO.TYPE_WAITING:
         bgColor = MdColor.BLACK;
-      break;
+        break;
       case StateMessageVO.TYPE_LOADING:
       case StateMessageVO.TYPE_WARN:
         bgColor = MdColor.WHITE;
         fontColor = MdColor.BLACK;
-      break;
+        break;
     }
-    
-    MdToast toast = new MdToast(vo.message, _uiService.stage, fontColor: MdColor.WHITE, bgColor : Theme.COLOR_BASE, hideAfterSeconds: vo.timeBox, position: MdToast.BR);
+
+    MdToast toast = new MdToast(vo.message, _uiService.stage,
+        fontColor: MdColor.WHITE, bgColor: Theme.COLOR_BASE, hideAfterSeconds: vo.timeBox, position: MdToast.BR);
     toast.name = vo.id;
-    
-    if(vo.blurContent && !_uiService.isBlurred && _stateModel.currentStateVO.substate != StateConstants.SUB_MODAL){
+
+    if (vo.blurContent && !_uiService.isBlurred && _stateModel.currentStateVO.substate != StateConstants.SUB_MODAL) {
       _uiService.blur();
-      if(vo.timeBox > 0){
+      if (vo.timeBox > 0) {
         Rd.JUGGLER.delayCall(_uiService.unblur, vo.timeBox);
       }
     }
-    
 
     dispatchCompleteEvent();
 

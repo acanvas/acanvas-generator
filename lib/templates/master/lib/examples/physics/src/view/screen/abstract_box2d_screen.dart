@@ -1,7 +1,7 @@
 part of physics_example;
 
 class AbstractBox2dScreen extends AbstractScreen with MBox2dHelper {
-  static const double FPS = 60.0;
+  static const double FPS = 30.0;
 
   bool debugDrawActive = true;
 
@@ -13,7 +13,7 @@ class AbstractBox2dScreen extends AbstractScreen with MBox2dHelper {
   AbstractBox2dScreen(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _initWorld();
@@ -73,12 +73,12 @@ class AbstractBox2dScreen extends AbstractScreen with MBox2dHelper {
   }
 
   void onTimer(Timer t) {
-    Rd.MATERIALIZE_REQUIRED = true;
     m_world.Step(m_timeStep, m_velocityIterations, m_positionIterations);
     m_world.ClearForces();
     if (debugDrawActive) {
       m_world.DrawDebugData();
     }
+    Rd.MATERIALIZE_REQUIRED = true;
     //FRateLimiter.limitFrame(FPS.toInt());
   }
 

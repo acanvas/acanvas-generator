@@ -39,7 +39,7 @@ aliquyam erat, sed diam voluptua.""";
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     TextureAtlas atlas = _resourceManager.getTextureAtlas("atlas");
@@ -94,7 +94,7 @@ aliquyam erat, sed diam voluptua.""";
   void refresh() {
     for (var bitmap in this.children) {
       _originalTextWidth ??= bitmap.width + 350;
-      bitmap.scaleX = bitmap.scaleY = (spanWidth ) / _originalTextWidth;
+      bitmap.scaleX = bitmap.scaleY = (spanWidth) / _originalTextWidth;
     }
     super.refresh();
   }

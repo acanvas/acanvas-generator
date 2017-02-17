@@ -13,7 +13,7 @@ class ParticleExample extends AbstractReflowScreen {
   /// This especially applies to members of the display list.
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     //-------------------------
@@ -57,7 +57,7 @@ class ParticleExample extends AbstractReflowScreen {
 
     //-------------------------
 
-    var mouseEventListener = (me) {
+    EventListener<MouseEvent> mouseEventListener = (MouseEvent me) {
       if (me.buttonDown) _particleEmitter.setEmitterLocation(me.localX, me.localY);
     };
 

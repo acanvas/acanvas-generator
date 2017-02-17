@@ -6,9 +6,9 @@ class MaterialExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(MaterialExampleScreenIDs.MATERIAL_HOME, () => new MaterialHome(MaterialExampleScreenIDs.MATERIAL_HOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(MaterialExampleScreenIDs.MATERIAL_HOME, () => new MaterialHome(MaterialExampleScreenIDs.MATERIAL_HOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
 
     //App Bar 20
     addScreen(MaterialExampleScreenIDs.PAPER_APP_BAR_EXAMPLE,

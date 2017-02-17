@@ -6,7 +6,8 @@ class GAFExamplePlugin extends AbstractRdPlugin {
 
   @override
   void configureScreens() {
-    addScreen(GAFExampleScreenIDs.GAF_HOME, () => new GafHome(GAFExampleScreenIDs.GAF_HOME), transition: EffectIDs.DEFAULT, tree_order: sorting);
+    addScreen(GAFExampleScreenIDs.GAF_HOME, () => new GafHome(GAFExampleScreenIDs.GAF_HOME),
+        transition: EffectIDs.DEFAULT, tree_order: sorting);
 
     addScreen(GAFExampleScreenIDs.GAF_BUNDLE_ZIP, () => new GafBundleZip(GAFExampleScreenIDs.GAF_BUNDLE_ZIP),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
@@ -27,6 +28,5 @@ class GAFExamplePlugin extends AbstractRdPlugin {
     addScreen(GAFExampleScreenIDs.GAF_SOUND, () => new GafSound(GAFExampleScreenIDs.GAF_SOUND),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
     // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-  
   }
 }

@@ -1,5 +1,9 @@
 # CHANGELOG ROCKDOT_GENERATOR
 
+## 0.9.8 2017-02-16
+
+- Strong mode fixes
+
 ## 0.9.7
 
 - Fixed tool/grind.dart so dartanalyzer uses the `.packages` file instead of dir

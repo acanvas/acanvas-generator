@@ -8,7 +8,6 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 
 class InjectProperties extends Transformer {
-
   final String _prefix = '@';
   final String _postfix = '@';
 
@@ -23,12 +22,8 @@ class InjectProperties extends Transformer {
   // A constructor named "asPlugin" is required. It can be empty, but
   // it must be present. It is how pub determines that you want this
   // class to be publicly available as a loadable transformer plugin.
-  InjectProperties.asPlugin(this._settings){
-
+  InjectProperties.asPlugin(this._settings) {
     Directory d = new Directory('config');
-    if(d.existsSync()){
-      d.deleteSync(recursive: true);
-    }
 
     /**
      *  copy different properties
@@ -36,14 +31,12 @@ class InjectProperties extends Transformer {
 
     _getDirectory('web/public/config/locale/');
 
-
     if ("@project.debug@" == "false" ? false : true) {
       //copy project.properties from config/debug to web/config
       new File('config/debug/public.properties').copySync('web/public/config/project.properties');
       //parse private.properties from config/debug
       _files.add('config/debug/private.properties');
-    }
-    else {
+    } else {
       //copy project.properties from config/release to web/config
       new File('config/release/public.properties').copySync('web/public/config/project.properties');
       //parse private.properties from config/release
@@ -51,31 +44,29 @@ class InjectProperties extends Transformer {
     }
     _files.add('web/public/config/project.properties');
 
-
     //copy plugin language files to web folder
     Directory dir = new Directory('config/locale');
     var files = dir.listSync(recursive: false, followLinks: false);
-    files.where((e) => e is File).forEach((File file){
+    files.where((e) => e is File).forEach((File file) {
       file.copySync('web/public/config/locale/${path.basename(file.path)}');
     });
 
     //treat examples properties and examples
     dir = new Directory('lib/examples');
-    if(dir.existsSync()){
+    if (dir.existsSync()) {
       files = dir.listSync(recursive: true, followLinks: false);
 
       //copy examples language files to web folder (merge if existing)
-      files.where((e) => e is Directory && e.path.contains("locale")).forEach((Directory d){
+      files.where((e) => e is Directory && e.path.contains("locale")).forEach((Directory d) {
         _recursiveFolderCopySync(d.path, 'web/public/config/locale');
       });
 
       //copy examples assets files to web folder
       files = dir.listSync(recursive: false, followLinks: false);
-      files.where((e) => e is Directory).forEach((Directory d){
+      files.where((e) => e is Directory).forEach((Directory d) {
         _recursiveFolderCopySync(path.join(d.path, "assets"), 'web/public/assets/${path.basename(d.path)}/');
       });
     }
-
 
     //load and parse properties
     _properties = new Properties();
@@ -91,21 +82,19 @@ class InjectProperties extends Transformer {
 
   Directory _getDirectory(String s, {bool recursive: true, bool create: true}) {
     Directory d = new Directory(s);
-    if(!d.existsSync()){
-      if(create){
+    if (!d.existsSync()) {
+      if (create) {
         d.createSync(recursive: recursive);
-      }
-      else{
+      } else {
         return null;
       }
     }
     return d;
   }
 
-
-  _recursiveFolderCopySync(String path1, String path2) /*async */{
+  _recursiveFolderCopySync(String path1, String path2) /*async */ {
     Directory dir1 = _getDirectory(path1, create: false);
-    if(dir1 == null){
+    if (dir1 == null) {
       return;
     }
     Directory dir2 = _getDirectory(path2);
@@ -117,14 +106,12 @@ class InjectProperties extends Transformer {
         File newFile = new File(newPath);
 
         var writeMode = FileMode.WRITE;
-        if(newFile.existsSync() && newFile.path.contains(".properties")){
+        if (newFile.existsSync() && newFile.path.contains(".properties")) {
           //print("merging: \n ${newFile.readAsStringSync()}");
           writeMode = FileMode.APPEND;
-
         }
 
         newFile.writeAsBytesSync(element.readAsBytesSync(), mode: writeMode);
-
       } else if (element is Directory) {
         //print("newDir: ${newPath}");
         Directory dir3 = _getDirectory(newPath);
@@ -132,9 +119,7 @@ class InjectProperties extends Transformer {
         throw new Exception('File is neither File nor Directory. HOW?!');
       }
     });
-
   }
-
 
   Future apply(Transform transform) async {
     var content = await transform.primaryInput.readAsString();
@@ -174,7 +159,6 @@ class InjectProperties extends Transformer {
  * @author Roland Zwaga
  */
 class Properties {
-
   /**
    * Creates a new <code>Properties</code> object.
    */
@@ -226,7 +210,7 @@ class Properties {
   /**
    * Adds all conIPropertiese given properties object to this Properties.
    */
-  void merge(Properties properties, [bool overrideProperty=false]) {
+  void merge(Properties properties, [bool overrideProperty = false]) {
     if ((properties == null) || (properties == this)) {
       return;
     }
@@ -290,7 +274,6 @@ class Properties {
  * @version 1.0
  */
 class KeyValuePropertiesParser {
-
   static const int HASH_CHARCODE = 35;
 
   //= "#";
@@ -306,8 +289,7 @@ class KeyValuePropertiesParser {
   /**
    * Constructs a new <code>PropertiesParser</code> instance.
    */
-  KeyValuePropertiesParser():super() {
-  }
+  KeyValuePropertiesParser() : super() {}
 
   /**
    * Parses the given <code>source</code> and creates a <code>Properties</code> instance from it.
@@ -449,9 +431,12 @@ class KeyValuePropertiesParser {
   }
 
   bool isPropertyLine(String line) {
-    return (line != null && line.length > 0 && line.codeUnitAt(0) != HASH_CHARCODE && line.codeUnitAt(0) != EXCLAMATION_MARK_CHARCODE && line.length != 0);
+    return (line != null &&
+        line.length > 0 &&
+        line.codeUnitAt(0) != HASH_CHARCODE &&
+        line.codeUnitAt(0) != EXCLAMATION_MARK_CHARCODE &&
+        line.length != 0);
   }
-
 }
 
 /**
@@ -468,7 +453,6 @@ class KeyValuePropertiesParser {
  * @version 1.0
  */
 class MultilineString {
-
   /** Character code for the WINDOWS line break. */
   static final String WIN_BREAK = new String.fromCharCodes([13]) + new String.fromCharCodes([10]);
 
@@ -487,7 +471,7 @@ class MultilineString {
   /**
    * Constructs a new MultilineString.
    */
-  MultilineString(String string):super() {
+  MultilineString(String string) : super() {
     initMultiString(string);
   }
 
@@ -495,7 +479,6 @@ class MultilineString {
     _original = string;
     _lines = string.split(WIN_BREAK).join(NEWLINE_CHAR).split(MAC_BREAK).join(NEWLINE_CHAR).split(NEWLINE_CHAR);
   }
-
 
   /**
    * Returns the original used string (without line break standarisation).
@@ -539,6 +522,4 @@ class MultilineString {
   int get numLines {
     return _lines.length;
   }
-
 }
-
