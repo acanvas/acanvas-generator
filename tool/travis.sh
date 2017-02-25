@@ -22,7 +22,7 @@ dart tool/grind.dart test
 # Install dart_coveralls; gather and send coverage data.
 if [ "$COVERALLS_TOKEN" ]; then
   echo "token found"
-  pub global activate --source git https://github.com/nilsdoehring/dart-coveralls
+  pub global activate --source git https://github.com/block-forest/dart-coveralls
   pub global run dart_coveralls:dart_coveralls report \
     --token $COVERALLS_TOKEN \
     --retry 2 \

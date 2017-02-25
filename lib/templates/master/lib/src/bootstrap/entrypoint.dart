@@ -32,7 +32,7 @@ class Entrypoint {
     opts.stageAlign = StageAlign.TOP_LEFT;
     opts.backgroundColor = Theme.BACKGROUND_COLOR;
     // Due to performance reasons, we use Canvas2D on mobile
-    opts.renderEngine = RenderEngine.WebGL; // Rd.MOBILE ? RenderEngine.Canvas2D : RenderEngine.WebGL;
+    opts.renderEngine = RenderEngine.WebGL; //Rd.MOBILE ? RenderEngine.Canvas2D : RenderEngine.WebGL;
     opts.antialias = Rd.MOBILE ? false : true;
 
     //----------------------------
@@ -146,5 +146,7 @@ class Entrypoint {
     html.Element holder = html.querySelector("#canvas-holder");
     holder.style.maxWidth = "${windowWidth}px";
     holder.style.maxHeight = "${windowHeight}px";
+
+    Rd.MATERIALIZE_REQUIRED = true;
   }
 }

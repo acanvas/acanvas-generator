@@ -35,17 +35,23 @@ class BabylonHome extends AbstractScreen {
     addChild(_button);
 
     // activate keyboard control
+    //var camera = new BABYLON.TouchCamera("TouchCamera", new BABYLON.Vector3(0, 1, -15), _babylonBitmapData.babylonScene);
 
     var activeCamera = _babylonBitmapData.babylonScene.activeCamera;
-    if (activeCamera is BABYLON.FreeCamera) {
-      activeCamera.attachControl(html.querySelector('#stage'), false);
-      activeCamera.keysUp.add(90); // Z
-      activeCamera.keysUp.add(87); // W
-      activeCamera.keysDown.add(83); // S
-      activeCamera.keysLeft.add(65); // A
-      activeCamera.keysLeft.add(81); // Q
-      activeCamera.keysRight.add(69); // E
-      activeCamera.keysRight.add(68); // D
+    if (activeCamera is BABYLON.UniversalCamera) {
+      if(Rd.MOBILE){
+        activeCamera.attachControl(html.querySelector('#canvas-holder'), false);
+      }
+      else{
+        activeCamera.attachControl(html.querySelector('#stage'), false);
+        activeCamera.keysUp.add(90); // Z
+        activeCamera.keysUp.add(87); // W
+        activeCamera.keysDown.add(83); // S
+        activeCamera.keysLeft.add(65); // A
+        activeCamera.keysLeft.add(81); // Q
+        activeCamera.keysRight.add(69); // E
+        activeCamera.keysRight.add(68); // D
+      }
     }
 
     onInitComplete();

@@ -28,7 +28,7 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
       ..autoSpan = false
       ..useHandCursor = true
       ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, (e) {
-        new RdSignal(StateEvents.ADDRESS_SET, "https://github.com/blockforest/rockdot_generator").dispatch();
+        new RdSignal(StateEvents.ADDRESS_SET, "https://github.com/block-forest/rockdot-generator").dispatch();
       });
     _flow.addChild(_bmp);
 

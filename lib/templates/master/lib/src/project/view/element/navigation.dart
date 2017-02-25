@@ -43,17 +43,22 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
   void init({Map<String, String> params: null}) {
     super.init(params: params);
 
+    _appBar = new MdAppBar(bgColor: Colors.GREY_DARK);
+
     _menuButton = new MdFab(MdIcon.white(MdIconSet.menu), bgColor: Theme.COLOR_BASE, radius: 20)
       ..submitCallback = _openMenu
       ..submitCallbackParams = [];
+    _appBar.addToTL(_menuButton);
 
     _headline = Theme.getHeadline("", size: 28, color: Colors.WHITE);
     _headline.inheritWidth = false;
+    _appBar.addHeadline(_headline);
 
     if (Rd.WEBGL) {
       _fxButton = new MdFab(MdIcon.white(MdIconSet.search), bgColor: Colors.BF_BASE_GREEN, radius: 20)
         ..submitCallback = _mousePointerShader
         ..submitCallbackParams = [];
+      _appBar.addToTR(_fxButton);
     }
 
     _fwdButton =
@@ -64,11 +69,6 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
           ..enable();
     addChild(_fwdButton);
 
-    _appBar = new MdAppBar(bgColor: Colors.GREY_DARK);
-    _appBar.addToTL(_menuButton);
-    //_appBar.addToTR(_fwdButton);
-    _appBar.addToTR(_fxButton);
-    _appBar.addHeadline(_headline);
     addChild(_appBar);
 
     _modalBg = RdGraphics.rectangle(0, 0, spanWidth, spanHeight, color: MdColor.BLACK);
@@ -252,14 +252,15 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
       Rd.STAGE.addEventListener(TouchEvent.TOUCH_MOVE, (TouchEvent e) {
         filter.matrix.tx = e.stageX - 285;
         filter.matrix.ty = e.stageY - 185;
+        Rd.MATERIALIZE_REQUIRED = true;
       });
     } else {
       Rd.STAGE.addEventListener(MouseEvent.MOUSE_MOVE, (MouseEvent e) {
         filter.matrix.tx = e.stageX - 285;
         filter.matrix.ty = e.stageY - 185;
+        Rd.MATERIALIZE_REQUIRED = true;
       });
     }
 
-    Rd.MATERIALIZE_REQUIRED = true;
   }
 }

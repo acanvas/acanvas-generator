@@ -10,13 +10,6 @@ class RdRenderLoop extends RenderLoop {
 
   //----------------------------------------------------------------------------
 
-  void invalidate() {
-    _invalidate = true;
-    super.invalidate();
-  }
-
-  //----------------------------------------------------------------------------
-
   void addStage(Stage stage) {
     if (stage.renderLoop != null) {
       stage.renderLoop.removeStage(stage);
