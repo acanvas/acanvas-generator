@@ -2,8 +2,8 @@
 
 ![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/lib/templates/basic/web/public/assets/autoload/rockdot.png)
 
-[![Coverage Status](https://coveralls.io/repos/block-forest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/blockforest/rockdot-generator)
-[![Travis Build Status](https://travis-ci.org/block-forest/rockdot-generator.svg?branch=master)](https://travis-ci.org/blockforest/rockdot-generator)
+[![Coverage Status](https://coveralls.io/repos/block-forest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/rockdot-generator)
+[![Travis Build Status](https://travis-ci.org/block-forest/rockdot-generator.svg?branch=master)](https://travis-ci.org/block-forest/rockdot-generator)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/rockdot-generator)
 
 

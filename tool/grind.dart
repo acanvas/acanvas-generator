@@ -172,8 +172,6 @@ void _concatenateFiles(Directory src, File target, [String generator_id]) {
 
   List<String> results = _listFiles(beneath: src.path);
 
-  //_traverse(src, '', results);
-
   String str = results.map((s) => '  ${_toStr(s)}').join(',\n');
 
   target.writeAsStringSync("""
@@ -195,22 +193,6 @@ String _toStr(String s) {
   }
 }
 
-void _traverse(Directory dir, String root, List<String> results) {
-  var files = _listSync(dir, recursive: false, followLinks: false);
-  for (FileSystemEntity entity in files) {
-    String name = path.basename(entity.path);
-
-    if (entity is Link) continue;
-    if (name == 'pubspec.lock') continue;
-    if (name.startsWith('.')) continue;
-
-    if (entity is Directory) {
-      _traverse(entity, '${root}${name}/', results);
-    } else {
-      results.add('${root}${name}');
-    }
-  }
-}
 
 /// Returns a list of files that are considered to be part of this package.
 ///
