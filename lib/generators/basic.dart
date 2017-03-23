@@ -65,7 +65,7 @@ class BasicGenerator extends DefaultGenerator {
     });
 
     // Copy all assets from source list (files inside the package) to the target list
-    List<TemplateFile> templates = await decodeConcanenatedData(master_data.data, "master");
+    List<TemplateFile> templates = await decodeConcanenatedData(master_data.data, master_data.type);
 
     // Iterate over extensions and add example files to write list, if applicable
     if (hasExamples) {
@@ -163,8 +163,7 @@ class BasicGenerator extends DefaultGenerator {
     /*
       Install basic_data, overwriting some files from master_data (e.g. transformer)
      */
-    List<String> data = basic_data.data;
-    List<TemplateFile> files = await decodeConcanenatedData(data, "basic");
+    List<TemplateFile> files = await decodeConcanenatedData(basic_data.data, basic_data.type);
 
     for (TemplateFile file in files) {
       /*

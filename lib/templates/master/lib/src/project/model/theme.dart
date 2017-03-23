@@ -7,12 +7,12 @@ class Theme {
   static const int COLOR_TRIAD_BROWN = Colors.BF_TRIAD_BROWN;
   static const int COLOR_TRIAD_ORANGE = Colors.BF_TRIAD_ORANGE;
 
-  static const int HEADLINE_COLOR = Colors.ARCTIC_BLUE;
-  static const int HEADLINE_SIZE = 24;
+  static const int HEADLINE_COLOR = Colors.WHITE;
+  static const int HEADLINE_SIZE = 28;
   static const String HEADLINE_FONT = Fonts.ROBOTO_FONTNAME;
 
-  static const int COPY_COLOR = Colors.ARCTIC_BLUE;
-  static const int COPY_SIZE = 12;
+  static const int COPY_COLOR = Colors.WHITE;
+  static const int COPY_SIZE = 14;
   static const String COPY_FONT = Fonts.ROBOTO_FONTNAME;
 
   static const int MD_BUTTON_COLOR = COLOR_BASE;

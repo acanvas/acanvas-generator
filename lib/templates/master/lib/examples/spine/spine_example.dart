@@ -11,6 +11,7 @@ import 'dart:async';
 import 'dart:math';
 
 part 'src/spine_example_plugin.dart';
+part 'src/model/spine_assets.dart';
 part 'src/model/spine_example_screen_ids.dart';
 
 part 'src/view/screen/spine_goblins_ffd.dart';

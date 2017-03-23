@@ -14,12 +14,11 @@ class BitmapfontDistanceField extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     var fontUrl = "assets/bitmapfont/distance_field/font.fnt";
 
     _bitmapFont = await BitmapFont.load(fontUrl, BitmapFontFormat.FNT);
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this class that needs initialization.

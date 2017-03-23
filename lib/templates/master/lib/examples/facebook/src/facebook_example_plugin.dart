@@ -2,7 +2,7 @@ part of facebook_example;
 
 class FacebookExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  FacebookExamplePlugin(this.sorting) : super(900) {}
+  FacebookExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

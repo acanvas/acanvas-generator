@@ -29,14 +29,12 @@ class RdBootstrap extends AbstractRdBootstrap {
 
   /// Load Webfonts and Assets
 
-  Future<bool> load() async {
+  Future load() async {
     // Add Fonts to load
     RdFontUtil.addFont(Fonts.ROBOTO_LOADSTRING);
 
     await Assets.load();
     await RdFontUtil.loadFonts();
     await loadApplicationContext();
-
-    return true;
   }
 }

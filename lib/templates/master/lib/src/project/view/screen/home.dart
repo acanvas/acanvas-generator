@@ -2,6 +2,7 @@ part of rockdot_template;
 
 class Home extends AbstractReflowScreen implements IScreenServiceAware {
   IScreenService _uiService;
+
   /* ScreenService setter defined by interface. Injected as per setup in lib/src/project/project.dart */
   @override
   void set uiService(IScreenService uiService) {
@@ -10,6 +11,7 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
 
   Flow _flow;
   ImageSprite _bmp;
+  ImageSprite _bmp2;
 
   Home(String id) : super(id) {}
 
@@ -40,21 +42,47 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
       _flow.addChild(Theme.getHeadline(getProperty("headline0${i}"), size: 24, color: Colors.ARCTIC_BLUE));
       _flow.addChild(Theme.getCopy(getProperty("copy0${i}"), size: 16, color: Colors.ARCTIC_BLUE));
     }
+    _flow.addChild(Theme.getHeadline(getProperty("headline08"), size: 24, color: Colors.ARCTIC_BLUE));
+    _bmp2 = new ImageSprite()
+    //..span(spanWidth, spanHeight, refresh: false)
+      ..href = "assets/home/rockdot_spring_architecture.png"
+      ..inheritSpan = false
+      ..autoSpan = false
+      ..useHandCursor = true
+      ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, (e) {
+        new RdSignal(StateEvents.ADDRESS_SET,
+            "http://rockdot.sounddesignz.com/template/assets/home/rockdot_spring_architecture.png").dispatch();
+        })
+      ..addEventListener(Event.COMPLETE, (e) {
+        onBigImageLoaded();
+    });
+    _flow.addChild(_bmp2);
+
     reflow.addChild(_flow);
     reflow.addChild(new Sprite()
       ..graphics.rect(0, 0, spanWidth - 10, Dimensions.SPACER)
       ..graphics.fillColor(0x00ff0000));
 
     addChild(reflow);
+
     onInitComplete();
+  }
+
+  void onBigImageLoaded(){
+    _flow.refresh();
+    refresh();
   }
 
   @override
   void refresh() {
     _bmp.scaleToWidth(spanWidth - 2 * padding);
-    _bmp.spanHeight = _bmp.height;
+    if(_bmp2.loaded){
+      _bmp2.scaleToWidth(spanWidth - 2 * padding);
+    }
+
     _flow.span(spanWidth - 2 * padding, spanHeight);
     _flow.x = padding;
+
     super.refresh();
   }
 

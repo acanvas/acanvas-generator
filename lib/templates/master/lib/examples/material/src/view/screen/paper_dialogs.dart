@@ -12,11 +12,10 @@ class MdDialogs extends AbstractReflowScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addBitmapData("dog", "assets/material/dog.jpg");
     await _resourceManager.load();
-    return true;
   }
 
   @override
@@ -35,7 +34,7 @@ class MdDialogs extends AbstractReflowScreen {
 
     MdWrap wrap01 = Theme.getWrap(label: getProperty("col01"));
     wrap01.addChild(new MdButton(getProperty("button01"), bgColor: Colors.ORANGE, fontColor: Colors.WHITE, width: 240)
-      ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, "/layer"));
+      ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, "/paper-layer"));
     wrap01.addChild(new MdButton(getProperty("button02"), bgColor: Colors.GREEN, fontColor: Colors.WHITE, width: 240)
       ..submitCallback = _openDialog01);
     wrap01.addChild(new MdButton(getProperty("button03"), bgColor: Colors.PINK, fontColor: Colors.WHITE, width: 240)
@@ -56,7 +55,8 @@ class MdDialogs extends AbstractReflowScreen {
         new MdButton("DECLINE", preset: MdButton.PRESET_RED, fontColor: MdColor.GREY_DARK, width: 90, background: false)
           ..submitCallback = (_) => dialog.dispose());
     dialog.addButton(
-        new MdButton("ACCEPT", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: 90, background: false));
+        new MdButton("ACCEPT", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: 90, background: false)
+          ..submitCallback = (_) => dialog.dispose());
     dialog.span(300, 240);
     dialog.x = (spanWidth / 2 - dialog.width / 2).round();
     dialog.y = (spanHeight / 2 - dialog.height / 2).round();

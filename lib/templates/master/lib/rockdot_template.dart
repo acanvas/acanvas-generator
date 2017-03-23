@@ -37,7 +37,7 @@ part 'src/project/view/screen/home.dart';
 // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 // VIEW:LAYER
-part 'src/project/view/layer/abstract_layer.dart';
+//part 'src/project/view/layer/abstract_layer.dart';
 //part 'src/project/view/layer/layer.dart';
 
 // VIEW:BACKGROUND

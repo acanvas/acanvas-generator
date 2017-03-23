@@ -13,12 +13,11 @@ class SpineRaptor extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("raptor", "assets/spine/raptor/raptor.json");
     _resourceManager.addTextureAtlas("raptor", "assets/spine/raptor/atlas3/raptor.json");
     await _resourceManager.load();
-    return true;
   }
 
   @override

@@ -3,8 +3,6 @@ part of ugc_example;
 class UGCHome extends AbstractReflowScreen {
   UGCHome(String id) : super(id) {}
 
-  //----------------------------------------------------------------------------
-
   @override
   void init({Map<String, String> params: null}) {
     super.init(params: params);
@@ -16,16 +14,12 @@ class UGCHome extends AbstractReflowScreen {
     onInitComplete();
   }
 
-  //----------------------------------------------------------------------------
-
   @override
   void refresh() {
     super.refresh();
 
     // your redraw operations here
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void dispose({bool removeSelf: true}) {
@@ -34,6 +28,4 @@ class UGCHome extends AbstractReflowScreen {
     Rd.JUGGLER.removeTweens(this);
     super.dispose();
   }
-
-  //----------------------------------------------------------------------------
 }

@@ -12,8 +12,10 @@ class StagexlExamplePlugin extends AbstractRdPlugin {
     addScreen(StageXLExampleScreenIDs.BASIC_BITMAPDATA_HIDPI,
         () => new BitmapDataHiDPI(StageXLExampleScreenIDs.BASIC_BITMAPDATA_HIDPI),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
-    addScreen(StageXLExampleScreenIDs.BASIC_SPRITE3D, () => new Sprite3DExample(StageXLExampleScreenIDs.BASIC_SPRITE3D),
-        transition: EffectIDs.DEFAULT, tree_parent: sorting);
+    if(Rd.WEBGL){
+      addScreen(StageXLExampleScreenIDs.BASIC_SPRITE3D, () => new Sprite3DExample(StageXLExampleScreenIDs.BASIC_SPRITE3D),
+          transition: EffectIDs.DEFAULT, tree_parent: sorting);
+    }
     addScreen(StageXLExampleScreenIDs.NORMAL_MAP_FILTER, () => new MapFilter(StageXLExampleScreenIDs.NORMAL_MAP_FILTER),
         transition: EffectIDs.DEFAULT, tree_parent: sorting);
     addScreen(StageXLExampleScreenIDs.BEZIER, () => new BezierExample(StageXLExampleScreenIDs.BEZIER),

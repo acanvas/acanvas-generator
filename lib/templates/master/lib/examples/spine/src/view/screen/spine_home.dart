@@ -3,8 +3,6 @@ part of spine_example;
 class SpineHome extends AbstractReflowScreen {
   SpineHome(String id) : super(id) {}
 
-  //----------------------------------------------------------------------------
-
   @override
   void init({Map<String, String> params: null}) {
     super.init(params: params);
@@ -16,16 +14,12 @@ class SpineHome extends AbstractReflowScreen {
     onInitComplete();
   }
 
-  //----------------------------------------------------------------------------
-
   @override
   void refresh() {
     super.refresh();
 
     // your redraw operations here
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void dispose({bool removeSelf: true}) {
@@ -34,6 +28,4 @@ class SpineHome extends AbstractReflowScreen {
     Rd.JUGGLER.removeTweens(this);
     super.dispose();
   }
-
-  //----------------------------------------------------------------------------
 }

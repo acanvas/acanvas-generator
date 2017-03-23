@@ -14,12 +14,11 @@ class SpineBoy extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("spineboy", "assets/spine/spineboy/spineboy.json");
     _resourceManager.addTextureAtlas("spineboy", "assets/spine/spineboy/spineboy.atlas", TextureAtlasFormat.LIBGDX);
     await _resourceManager.load();
-    return true;
   }
 
   @override

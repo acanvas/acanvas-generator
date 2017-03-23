@@ -2,7 +2,7 @@ part of spine_example;
 
 class SpineExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  SpineExamplePlugin(this.sorting) : super(910) {}
+  SpineExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

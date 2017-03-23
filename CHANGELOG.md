@@ -1,5 +1,17 @@
 # CHANGELOG ROCKDOT_GENERATOR
 
+## 0.9.10 2017-03-23
+
+- Example Intros for DragonBones and GAF
+- Fixed Native Keyboard
+- Use ?gl=0 or ?gl=1 to force WebGL off or on (It's off on Mobile by default, otherwise on)
+
+## 0.9.9 2017-03-11
+
+- Better Example Experience
+- Fixed refresh bug in Flow component
+- tool/grind.dart now only adds files not in .gitignore
+
 ## 0.9.8 2017-02-16
 
 - Strong mode fixes

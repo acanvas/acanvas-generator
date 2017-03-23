@@ -12,7 +12,7 @@ class BitmapfontSimple extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     var fontUrl = "assets/bitmapfont/common/fonts/fnt/Luckiest_Guy.fnt";
     //var fontUrl = "assets/bitmapfont/common/fonts/fnt/Fascinate_Inline.fnt";
     //var fontUrl = "assets/bitmapfont/common/fonts/fnt/Orbitron.fnt";
@@ -22,7 +22,6 @@ class BitmapfontSimple extends AbstractScreen {
 
     _bitmapFont = await BitmapFont.load(fontUrl, BitmapFontFormat.FNT);
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

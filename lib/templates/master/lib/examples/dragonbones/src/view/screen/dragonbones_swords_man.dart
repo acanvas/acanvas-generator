@@ -12,13 +12,12 @@ class DragonBonesSwordsMan extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextureAtlas(
         "smTexture", "assets/dragonbones/swords_man/texture.json", TextureAtlasFormat.STARLINGJSON);
     _resourceManager.addTextFile("smJson", "assets/dragonbones/swords_man/swords_man.json");
     await _resourceManager.load();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

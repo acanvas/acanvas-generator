@@ -10,7 +10,7 @@ class SpineTextureAtlas extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
 
     _resourceManager.addTextureAtlas("combined", "assets/spine/texture-atlas/combined.json");
@@ -26,7 +26,6 @@ class SpineTextureAtlas extends AbstractScreen {
     _resourceManager.addTextFile("spineboy-hoverboard-atlas", "assets/spine/texture-atlas/spineboy-hoverboard.atlas");
 
     await _resourceManager.load();
-    return true;
   }
 
   @override

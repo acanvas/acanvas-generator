@@ -21,11 +21,10 @@ class GafNamedParts extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _gafAsset = await GAFAsset.load('assets/gaf/robot_plain/robot.gaf', 1, 1);
     _gafAsset2 = await GAFAsset.load('assets/gaf/robot_nesting/robot.gaf', 1, 1);
     onLoadComplete();
-    return true;
   }
 
   @override

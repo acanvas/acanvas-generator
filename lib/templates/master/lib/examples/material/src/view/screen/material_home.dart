@@ -3,20 +3,15 @@ part of material_example;
 class MaterialHome extends AbstractReflowScreen {
   MaterialHome(String id) : super(id) {}
 
-  //----------------------------------------------------------------------------
-
   @override
   void init({Map<String, String> params: null}) {
     super.init(params: params);
-
-    // your initialization operations here
+    reflow.flow.flowOrientation = FlowOrientation.VERTICAL;
 
     addChild(reflow);
 
     onInitComplete();
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void refresh() {
@@ -25,8 +20,6 @@ class MaterialHome extends AbstractReflowScreen {
     // your redraw operations here
   }
 
-  //----------------------------------------------------------------------------
-
   @override
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
@@ -34,6 +27,4 @@ class MaterialHome extends AbstractReflowScreen {
     Rd.JUGGLER.removeTweens(this);
     super.dispose();
   }
-
-  //----------------------------------------------------------------------------
 }

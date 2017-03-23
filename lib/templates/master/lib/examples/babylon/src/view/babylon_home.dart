@@ -7,21 +7,20 @@ class BabylonHome extends AbstractScreen {
 
   MdButton _button;
 
+  EventStreamSubscription<EnterFrameEvent> _enterFrameSubscription;
+
   BabylonHome(String id) : super(id) {
     requiresLoading = true;
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     var rootUrl = "http://cdn.babylonjs.com/wwwbabylonjs/Scenes/Retail/";
     var sceneFilename = "Retail.babylon";
     _babylonBitmapData = await BabylonBitmapData.load(rootUrl, sceneFilename, spanWidth, spanHeight);
 
     onLoadComplete();
-    return true;
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void init({Map<String, String> params: null}) {
@@ -40,7 +39,7 @@ class BabylonHome extends AbstractScreen {
     var activeCamera = _babylonBitmapData.babylonScene.activeCamera;
     if (activeCamera is BABYLON.UniversalCamera) {
       if(Rd.MOBILE){
-        activeCamera.attachControl(html.querySelector('#canvas-holder'), false);
+        activeCamera.attachControl(html.querySelector('#stage'), false);
       }
       else{
         activeCamera.attachControl(html.querySelector('#stage'), false);
@@ -54,10 +53,10 @@ class BabylonHome extends AbstractScreen {
       }
     }
 
+    _enterFrameSubscription = this.onEnterFrame.listen((e) => Rd.MATERIALIZE_REQUIRED = true);
+
     onInitComplete();
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void refresh() {
@@ -74,15 +73,12 @@ class BabylonHome extends AbstractScreen {
     _button.y = (_babylonBitmap.getBounds(this).bottom - _button.height - Dimensions.SPACER).round();
   }
 
-  //----------------------------------------------------------------------------
-
   @override
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
-
+    _enterFrameSubscription?.cancel();
+    _enterFrameSubscription = null;
     Rd.JUGGLER.removeTweens(this);
     super.dispose();
   }
-
-  //----------------------------------------------------------------------------
 }

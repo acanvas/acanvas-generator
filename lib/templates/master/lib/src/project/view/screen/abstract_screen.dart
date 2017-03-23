@@ -3,14 +3,10 @@ part of rockdot_template;
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 
 class AbstractScreen extends RockdotLifecycleSprite {
-  //----------------------------------------------------------------------------
-
   AbstractScreen(String id) : super(id) {
     padding = Rd.MOBILE ? 32 : 52;
     inheritSpan = true;
   }
-
-  //----------------------------------------------------------------------------
 
   /// This is the place where you add anything to this method that needs initialization.
   /// This especially applies to members of the display list.
@@ -20,16 +16,12 @@ class AbstractScreen extends RockdotLifecycleSprite {
     super.init(params: params);
   }
 
-  //----------------------------------------------------------------------------
-
   /// Positioning logic goes here. Use spanWidth and spanHeight to find out about available space.
 
   @override
   void refresh() {
     super.refresh();
   }
-
-  //----------------------------------------------------------------------------
 
   /// Put anything here that needs special disposal.
   /// Note that the super function already takes care of display objects.
@@ -39,8 +31,6 @@ class AbstractScreen extends RockdotLifecycleSprite {
     Rd.JUGGLER.removeTweens(this);
     super.dispose();
   }
-
-  //----------------------------------------------------------------------------
 
   /// Set spanWidth and spanHeight according to calculations in Dimensions class.
 
@@ -56,8 +46,6 @@ class AbstractScreen extends RockdotLifecycleSprite {
 
     y = Dimensions.Y_PAGES;
   }
-
-  //----------------------------------------------------------------------------
 
   /// Use this in case all your fade in / fade out stuff is the same for all screens
 

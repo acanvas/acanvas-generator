@@ -16,8 +16,6 @@ class Entrypoint {
     RdConstants.DEBUG = "@project.debug@" == "false" ? false : true;
   }
 
-  //----------------------------------------------------------------------------
-
   // Invoked by web/project.dart
 
   void init(String qS) {
@@ -31,8 +29,22 @@ class Entrypoint {
     opts.stageRenderMode = StageRenderMode.ONCE;
     opts.stageAlign = StageAlign.TOP_LEFT;
     opts.backgroundColor = Theme.BACKGROUND_COLOR;
-    // Due to performance reasons, we use Canvas2D on mobile
-    opts.renderEngine = RenderEngine.WebGL; //Rd.MOBILE ? RenderEngine.Canvas2D : RenderEngine.WebGL;
+
+    // Due to performance reasons, we use Canvas2D on mobile by default
+    // You can add ?gl=0|1 to force GL off or on
+    if(Uri.base.queryParameters['gl'] == "1"){
+      opts.renderEngine = RenderEngine.WebGL;
+    }
+    else if(Uri.base.queryParameters['gl'] == "0"){
+      opts.renderEngine = RenderEngine.Canvas2D;
+    }
+    else if(Rd.MOBILE){
+      opts.renderEngine = RenderEngine.Canvas2D;
+    }
+    else{
+      opts.renderEngine = RenderEngine.WebGL;
+    }
+
     opts.antialias = Rd.MOBILE ? false : true;
 
     //----------------------------
@@ -73,8 +85,6 @@ class Entrypoint {
     _initRdBootstrap();
   }
 
-  //----------------------------------------------------------------------------
-
   /// Show Load Screen and initialize the project's RdBootstrap
 
   void _initPreloader() {
@@ -84,11 +94,9 @@ class Entrypoint {
     _stage.addChild(_sprPreloader);
   }
 
-  //----------------------------------------------------------------------------
-
   /// Initiate load operations in RdBootstrap (properties, assets)
 
-  Future<bool> _initRdBootstrap() async {
+  Future _initRdBootstrap() async {
     RdBootstrap bootstrap = new RdBootstrap(_stage);
     bootstrap.init();
 
@@ -103,11 +111,7 @@ class Entrypoint {
         _stage.removeChild(_sprPreloader);
         _sprPreloader = null;
       };
-
-    return true;
   }
-
-  //----------------------------------------------------------------------------
 
   /// Resizing
 

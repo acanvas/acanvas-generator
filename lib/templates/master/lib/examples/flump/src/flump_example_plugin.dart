@@ -2,7 +2,7 @@ part of flump_example;
 
 class FlumpExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  FlumpExamplePlugin(this.sorting) : super(910) {}
+  FlumpExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

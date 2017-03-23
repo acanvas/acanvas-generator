@@ -183,7 +183,7 @@ void _setupArgs(List<String> args) {
   argParser.addOption('root',
       abbr: 'r',
       defaultsTo: DEFAULT_SCREEN_ROOT,
-      help: 'The src directory of the screen to be generated.',
+      help: 'The lib directory of the screen to be generated.',
       valueHelp: 'root', callback: (_screenRoot) {
     screenRoot = _screenRoot;
   });

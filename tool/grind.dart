@@ -170,9 +170,9 @@ Future testsBuildWeb() {
 void _concatenateFiles(Directory src, File target, [String generator_id]) {
   log('Creating ${target.path}');
 
-  List<String> results = [];
+  List<String> results = _listFiles(beneath: src.path);
 
-  _traverse(src, '', results);
+  //_traverse(src, '', results);
 
   String str = results.map((s) => '  ${_toStr(s)}').join(',\n');
 
@@ -210,6 +210,37 @@ void _traverse(Directory dir, String root, List<String> results) {
       results.add('${root}${name}');
     }
   }
+}
+
+/// Returns a list of files that are considered to be part of this package.
+///
+/// If [beneath] is passed, this will only return files beneath that path,
+/// which is expected to be relative to the package's root directory. If
+/// [recursive] is true, this will return all files beneath that path;
+/// otherwise, it will only return files one level beneath it.
+///
+/// Note that the returned paths won't always be beneath [dir]. To safely
+/// convert them to paths relative to the package root, use [relative].
+
+List<String> _listFiles({String beneath, bool recursive: true}) {
+  // Later versions of git do not allow a path for ls-files that appears to
+  // be outside of the repo, so make sure we give it a relative path.
+  String relativeBeneath = path.relative(beneath, from: path.current);
+
+  // List all files that aren't gitignored, including those not checked in
+  // to Git.
+  ProcessResult result = Process.runSync("git", ["ls-files", "--cached", "--others", "--exclude-standard",
+  relativeBeneath], workingDirectory: path.current);
+
+  // Create List with corrected relative path
+  List<String> lines = result.stdout.split("\n").map((line) => line.replaceFirst(new RegExp(r"\r$"), "")).toList();
+  lines = lines.map((file) {
+    return file.replaceAll("$relativeBeneath/", "");
+  }).toList();
+
+  if (!lines.isEmpty && lines.last == "") lines.removeLast();
+
+  return lines;
 }
 
 

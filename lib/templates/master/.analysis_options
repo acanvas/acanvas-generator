@@ -3,3 +3,4 @@ analyzer:
   exclude:
     - web/**
     - lib/examples/ugc/**
+    - lib/examples/sandbox/**

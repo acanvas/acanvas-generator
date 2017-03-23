@@ -2,7 +2,7 @@ part of material_example;
 
 class MaterialExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  MaterialExamplePlugin(this.sorting) : super(920) {}
+  MaterialExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {
@@ -31,7 +31,7 @@ class MaterialExamplePlugin extends AbstractRdPlugin {
     //TODO Dialog 50
     addScreen(MaterialExampleScreenIDs.PAPER_DIALOGS, () => new MdDialogs(MaterialExampleScreenIDs.PAPER_DIALOGS),
         transition: EffectIDs.SWIPE, tree_order: 60, tree_parent: sorting);
-    /*addLayer(ScreenIDs.LAYER_PHOTO, () => new Layer(ScreenIDs.LAYER_PHOTO), transition: EffectIDs.DEFAULT_MODAL, tree_parent: 60, tree_parent: sorting);*/
+    addLayer(MaterialExampleScreenIDs.LAYER_PHOTO, () => new Layer(MaterialExampleScreenIDs.LAYER_PHOTO), transition: EffectIDs.DEFAULT_MODAL, tree_parent: 60);
     //TODO Dropdown Menu 70
     //TODO Icons 80
     addScreen(MaterialExampleScreenIDs.PAPER_ICON_BUTTONS,

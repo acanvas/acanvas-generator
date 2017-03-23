@@ -32,14 +32,11 @@ class Assets {
 
   Assets._internal() {}
 
-  static Future<bool> load() async {
-    _singleton.mgr.addBitmapData("block_forest", "assets/autoload/block_forest.png");
+  static Future load() async {
     _singleton.mgr.addBitmapData("displacement_bubble", "assets/autoload/displacement_bubble.png");
     _singleton.mgr.addBitmapData("logo_rockdot_small", "assets/autoload/logo_rockdot_small.png");
     _singleton.mgr.addBitmapData("rockdot", "assets/autoload/rockdot.png");
 
     ResourceManager mgr = await _singleton.mgr.load();
-
-    return true;
   }
 }

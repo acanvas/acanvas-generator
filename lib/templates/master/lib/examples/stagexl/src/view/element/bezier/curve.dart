@@ -32,8 +32,6 @@ class Curve extends Shape implements Animatable {
     _bezier.endY = p.y2;
     _stroke.width = p.width;
     _stroke.color = p.color;
-
-    return true;
   }
 
   void animateTo(CurveData curveData) {

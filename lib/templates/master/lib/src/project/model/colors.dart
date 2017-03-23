@@ -10,7 +10,7 @@ class Colors {
   static const int BF_TRIAD_BROWN = 0xFF642F12;
   static const int BF_TRIAD_ORANGE = 0xFFE37235;
 
-  static const int ARCTIC_BLUE = 0xFFcee2f5; //blue light
+  static const int ARCTIC_BLUE = WHITE;//0xFFcee2f5; //blue light
 
   static const int BLUE = Theme.COLOR_BASE;
   static const int BLUE_DARK = 0xFF193249;

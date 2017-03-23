@@ -11,10 +11,9 @@ class GafSequences extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _gafAsset = await GAFAsset.load('assets/gaf/RedRobot/RedRobot.gaf', 1, 1);
     onLoadComplete();
-    return true;
   }
 
   @override

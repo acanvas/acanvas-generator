@@ -11,11 +11,10 @@ class GafGunSwap extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _gafAsset = await GAFAsset.load('assets/gaf/gun_swap/gun_swap.gaf', 1, 1);
 
     onLoadComplete();
-    return true;
   }
 
   @override

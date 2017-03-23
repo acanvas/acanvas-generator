@@ -18,10 +18,14 @@ const String DIR_PROJECT = "$DIR_LIB/src/project";
 const String DIR_SCREEN = "$DIR_PROJECT/view/element";
 const String DIR_MODEL = "$DIR_PROJECT/model";
 
+const String DEFAULT_ELEMENT_ROOT = DIR_LIB;
+
 String elementNameDashed;
 String elementNameCamelCase;
 String elementNameUnderscored;
 String elementNameUnderscoredUppercase;
+String elementRoot;
+String elementDir;
 
 String packageName;
 
@@ -38,6 +42,12 @@ void main(List<String> args) {
   elementNameUnderscored = _getElementNameUnderscored();
   elementNameUnderscoredUppercase = elementNameUnderscored.toUpperCase();
 
+  if (elementRoot != DEFAULT_ELEMENT_ROOT) {
+    elementDir = "src/view/element";
+  } else {
+    elementDir = "src/project/view/element";
+  }
+
   //add const to events
   _insertProperties();
 
@@ -52,9 +62,16 @@ void main(List<String> args) {
 
 /// Adds the newly created library as dependency to the project's root pubspec.yaml.
 String _getPackageNameFromPubspec() {
-  File pubspecRootFile = new File('pubspec.yaml').absolute;
-  String pubspecRootFileContent = pubspecRootFile.readAsStringSync();
-  return new RegExp("name\\s*:\\s*(\\w+)").firstMatch(pubspecRootFileContent).group(1);
+  if (elementRoot != DIR_LIB) {
+    Directory dir = new Directory(elementRoot);
+    File file = dir.listSync(followLinks: false).where((entity) => entity is File).first;
+    String content = file.readAsStringSync();
+    return new RegExp("library\\s*(\\w+);").firstMatch(content).group(1);
+  } else {
+    File pubspecRootFile = new File('pubspec.yaml').absolute;
+    String pubspecRootFileContent = pubspecRootFile.readAsStringSync();
+    return new RegExp("name\\s*:\\s*(\\w+)").firstMatch(pubspecRootFileContent).group(1);
+  }
 }
 
 String _getElementNameDashed() {
@@ -79,7 +96,10 @@ element.$elementNameUnderscored.copy = See config/locale for text associated to 
 $ELEMENT_PROPERTIES_PLACEHOLDER
 ''';
 
-  File file = new File("$DIR_PROPERTIES/en.properties");
+  String path =
+      (elementRoot != DIR_LIB) ? "$elementRoot/$DIR_PROPERTIES/en.properties" : "$DIR_PROPERTIES/en.properties";
+
+  File file = new File(path);
   String fileContent = file.readAsStringSync();
   fileContent = fileContent.replaceFirst(new RegExp(ELEMENT_PROPERTIES_PLACEHOLDER), replace);
   file.writeAsStringSync(fileContent);
@@ -94,17 +114,17 @@ void _createElementFile() {
   fileContent = fileContent.replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
   fileContent = fileContent.replaceAll(new RegExp(ELEMENT_PROPERTY_REPLACE_STRING), elementNameUnderscored);
 
-  new File(join(DIR_SCREEN, "$elementNameUnderscored.dart"))
+  new File(join(elementRoot, elementDir, "$elementNameUnderscored.dart"))
     ..createSync(recursive: true)
     ..writeAsStringSync(fileContent);
 }
 
 void _addToPackage() {
-  String replace = '''part 'src/project/view/element/$elementNameUnderscored.dart';
+  String replace = '''part '${elementDir}/$elementNameUnderscored.dart';
     $ELEMENT_INSERTION_PLACEHOLDER
   ''';
 
-  File file = new File("$DIR_LIB/$packageName.dart");
+  File file = new File("$elementRoot/$packageName.dart");
   String fileContent = file.readAsStringSync();
   fileContent = fileContent.replaceFirst(new RegExp(ELEMENT_INSERTION_PLACEHOLDER), replace);
   file.writeAsStringSync(fileContent);
@@ -120,6 +140,14 @@ void _setupArgs(List<String> args) {
       help: 'The name (in CamelCase) of the element to be generated.',
       valueHelp: 'name', callback: (_screenName) {
     elementNameCamelCase = _screenName;
+  });
+
+  argParser.addOption('root',
+      abbr: 'r',
+      defaultsTo: DEFAULT_ELEMENT_ROOT,
+      help: 'The lib directory of the element to be generated.',
+      valueHelp: 'root', callback: (_screenRoot) {
+    elementRoot = _screenRoot;
   });
 
   argParser.addFlag('help', negatable: false, help: 'Displays the help.', callback: (help) {

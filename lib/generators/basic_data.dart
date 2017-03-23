@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 String type = "basic";
 List<String> data = [
+  "web/public/assets/home/rockdot_spring_architecture.png",
   "config/debug/private.properties",
   "config/debug/public.properties",
   "config/locale/en.properties",
@@ -10,6 +11,8 @@ List<String> data = [
   "config/release/public.properties",
   "lib/src/project/view/element/background.dart",
   "lib/src/project/view/element/navigation.dart",
+  "lib/src/project/view/layer/abstract_layer.dart",
+  "lib/src/project/view/layer/layer.dart",
   "lib/src/project/view/screen/two.dart",
   "lib/transformer.dart",
   "pubspec.yaml",

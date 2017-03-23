@@ -11,12 +11,11 @@ class SpineTank extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("tank", "assets/spine/tank/tank.json");
     _resourceManager.addTextureAtlas("tank", "assets/spine/tank/tank.atlas", TextureAtlasFormat.LIBGDX);
     await _resourceManager.load();
-    return true;
   }
 
   @override

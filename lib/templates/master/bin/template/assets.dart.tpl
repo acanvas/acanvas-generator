@@ -20,8 +20,8 @@ class Assets {
   Assets._internal() {
   }
 
-  static void load(Function cb) {
+  static Future load() async {
     @entry@
-    _singleton.mgr.load().then((ResourceManager mgr) => cb());
+    await _singleton.mgr.load();
   }
 }

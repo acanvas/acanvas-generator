@@ -9,12 +9,11 @@ class Logo extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addBitmapData("logo", "assets/stagexl/logo/logo.png");
     await _resourceManager.load();
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

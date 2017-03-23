@@ -2,7 +2,7 @@ part of particle_example;
 
 class ParticleExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  ParticleExamplePlugin(this.sorting) : super(910) {}
+  ParticleExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

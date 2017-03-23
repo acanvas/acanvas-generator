@@ -2,7 +2,7 @@ part of gaf_example;
 
 class GAFExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  GAFExamplePlugin(this.sorting) : super(910) {}
+  GAFExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

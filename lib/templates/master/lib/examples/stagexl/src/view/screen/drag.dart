@@ -13,7 +13,7 @@ class DragExample extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
 
     _resourceManager.addBitmapData("flower1", "assets/stagexl/drag/flower1.png");
@@ -21,7 +21,6 @@ class DragExample extends AbstractScreen {
     _resourceManager.addBitmapData("flower3", "assets/stagexl/drag/flower3.png");
     await _resourceManager.load();
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

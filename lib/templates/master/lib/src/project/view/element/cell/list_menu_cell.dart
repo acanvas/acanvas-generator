@@ -12,7 +12,7 @@ class ListMenuCell extends SelectableButton {
     MdRipple ripple = new MdRipple(color: Colors.BF_BASE_GREEN)..opacity = 1;
     addChild(ripple);
 
-    title = Theme.getCopy("empty", size: 14, color: fontColor);
+    title = Theme.getHeadline("empty", size: 14, color: fontColor);
     addChild(title);
   }
 

@@ -61,12 +61,13 @@ class ParticleExample extends AbstractReflowScreen {
       if (me.buttonDown) _particleEmitter.setEmitterLocation(me.localX, me.localY);
     };
 
+    addChild(reflow);
+
     var glassPlate = new GlassPlate(spanWidth, spanHeight);
     glassPlate.onMouseDown.listen(mouseEventListener);
     glassPlate.onMouseMove.listen(mouseEventListener);
     addChild(glassPlate);
 
-    addChild(reflow);
 
     onInitComplete();
   }

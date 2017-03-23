@@ -11,12 +11,11 @@ class SpineVine extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("vine", "assets/spine/vine/vine.json");
     _resourceManager.addTextureAtlas("vine", "assets/spine/vine/vine.atlas", TextureAtlasFormat.LIBGDX);
     await _resourceManager.load();
-    return true;
   }
 
   @override

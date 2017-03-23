@@ -11,10 +11,9 @@ class GafSkeleton extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _gafAsset = await GAFAsset.load('assets/gaf/skeleton/skeleton.gaf', 1, 1);
     onLoadComplete();
-    return true;
   }
 
   @override

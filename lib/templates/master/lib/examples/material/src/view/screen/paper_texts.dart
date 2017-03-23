@@ -10,6 +10,12 @@ class MdTexts extends AbstractReflowScreen {
     reflow.flow.reflow = false;
     reflow.flow.flowOrientation = FlowOrientation.VERTICAL;
 
+    if(Rd.MOBILE){
+      reflow.addChild(Theme.getHeadline(getProperty("mobile.note1"), size: 24));
+      reflow.addChild(Theme.getCopy(getProperty("mobile.note2"), size: 16));
+    }
+
+
     MdWrap wrap01 = Theme.getWrap(label: getProperty("wrap01"));
     wrap01.addChild(new MdInput(getProperty("input01"), keyboard: Rd.MOBILE, floating: true));
     wrap01.addChild(new MdInput(getProperty("input02"), keyboard: Rd.MOBILE, floating: true, password: true));
@@ -18,7 +24,7 @@ class MdTexts extends AbstractReflowScreen {
     wrap01.span(spanWidth - 4 * padding, 300);
 
     MdWrap wrap02 = Theme.getWrap(label: getProperty("wrap02"));
-    wrap02.addChild(new MdInput(getProperty("input05"), keyboard: Rd.MOBILE, floating: true, multiline: true));
+    wrap02.addChild(new MdInput(getProperty("input05"), keyboard: Rd.MOBILE, floating: true, multiline: true, rows: 5));
     wrap02.span(spanWidth - 4 * padding, 260);
 
     MdWrap wrap03 = Theme.getWrap(label: getProperty("wrap03"));

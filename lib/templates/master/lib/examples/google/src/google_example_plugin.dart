@@ -2,7 +2,7 @@ part of google_example;
 
 class GoogleExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  GoogleExamplePlugin(this.sorting) : super(910) {}
+  GoogleExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

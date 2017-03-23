@@ -2,12 +2,10 @@ part of @package@;
 
 class @screen@ extends AbstractScreen {
 
-  @screen@(String id) : super(id) {
-  }
+    @screen@(String id) : super(id) {
+    }
 
-    //----------------------------------------------------------------------------
-  
-  @override
+    @override
     void init({Map params : null}) {
       super.init(params: params);
 
@@ -16,24 +14,18 @@ class @screen@ extends AbstractScreen {
       onInitComplete();
     }
 
-    //----------------------------------------------------------------------------
-
     @override void refresh() {
       super.refresh();
 
       // your redraw operations here
     }
 
-    //----------------------------------------------------------------------------
-
     @override
-    void dispose() {
+    void dispose({bool removeSelf: true}) {
 
       // your cleanup operations here
 
       Rd.JUGGLER.removeTweens(this);
-      super.dispose();
+      super.dispose(removeSelf: removeSelf);
     }
-
-    //----------------------------------------------------------------------------
 }

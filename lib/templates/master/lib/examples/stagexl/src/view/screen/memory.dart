@@ -11,13 +11,12 @@ class MemoryExample extends AbstractScreen implements Animatable {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
 
     _resourceManager.addTextureAtlas("atlas", "assets/stagexl/memory/atlas.json");
     await _resourceManager.load();
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.
@@ -53,7 +52,6 @@ class MemoryExample extends AbstractScreen implements Animatable {
 
   bool advanceTime(num time) {
     _playingField.advanceTime(time);
-    return true;
   }
 
   /// Positioning logic goes here. Use spanWidth and spanHeight to find out about available space.

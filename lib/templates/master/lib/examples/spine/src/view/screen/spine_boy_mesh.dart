@@ -11,13 +11,12 @@ class SpineBoyMesh extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("spineboy", "assets/spine/spineboy-mesh/spineboy-hover.json");
     _resourceManager.addTextureAtlas(
         "spineboy", "assets/spine/spineboy-mesh/spineboy-hover.atlas", TextureAtlasFormat.LIBGDX);
     await _resourceManager.load();
-    return true;
   }
 
   @override

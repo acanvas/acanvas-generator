@@ -2,7 +2,7 @@ part of physics_example;
 
 class PhysicsExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  PhysicsExamplePlugin(this.sorting) : super(930) {}
+  PhysicsExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

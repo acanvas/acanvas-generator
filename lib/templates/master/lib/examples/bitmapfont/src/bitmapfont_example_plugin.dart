@@ -2,7 +2,7 @@ part of bitmapfont_example;
 
 class BitmapFontExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  BitmapFontExamplePlugin(this.sorting) : super(910) {}
+  BitmapFontExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

@@ -2,7 +2,7 @@ part of isometric_example;
 
 class IsometricExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  IsometricExamplePlugin(this.sorting) : super(910) {}
+  IsometricExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

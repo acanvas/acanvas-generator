@@ -20,14 +20,13 @@ class GafBundleZip extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _gafBundle = await GAFBundle.loadZipUrl("assets/gaf/bundle_zip/bundle.zip");
 
     _skeletonAsset = await _gafBundle.getAsset("skeleton", 1, 1);
     _monsterAsset = await _gafBundle.getAsset("ufo-monster", 1, 1);
 
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

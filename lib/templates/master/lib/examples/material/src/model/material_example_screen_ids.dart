@@ -14,6 +14,8 @@ class MaterialExampleScreenIDs {
 
   static const String SHADER_EXAMPLE = "screen.shader_example";
   static const String MATERIAL_HOME = "screen.material_home";
+
+  static const String LAYER_PHOTO = "layer.paper_dialogs";
   // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 }

@@ -30,6 +30,10 @@ void main(List<String> args) {
     print("Defaulting to $DEFAULT_SOURCE_DIR as source directory");
   }
 
+  if (assetTargetFile == DEFAULT_TARGET_FILE) {
+    assetTargetFile = join(DEFAULT_TARGET_DIR, "$assetTargetFile");
+  }
+
   packageName = _getPackageNameFromPubspec();
 
   //add const to events
@@ -114,7 +118,7 @@ void _createAssetFile(String getters, String mapEntries) {
   fileContent = fileContent.replaceAll(new RegExp(MAPENTRY_REPLACE_STRING), mapEntries);
   fileContent = fileContent.replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
 
-  new File(join(DEFAULT_TARGET_DIR, "$assetTargetFile"))
+  new File(assetTargetFile)
     ..createSync(recursive: true)
     ..writeAsStringSync(fileContent);
 }
@@ -129,6 +133,14 @@ void _setupArgs(List<String> args) {
       help: 'The source directory where to search the assets.',
       valueHelp: 'sourcedir', callback: (_sourceDir) {
     assetSourceDir = _sourceDir;
+  });
+
+  argParser.addOption('targetfile',
+      abbr: 't',
+      defaultsTo: DEFAULT_TARGET_FILE,
+      help: 'The target class.',
+      valueHelp: 'targetfile', callback: (_targetFile) {
+    assetTargetFile = _targetFile;
   });
 
   argParser.addFlag('help', negatable: false, help: 'Displays the help.', callback: (help) {

@@ -14,14 +14,13 @@ class MapFilter extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
 
     _resourceManager.addBitmapData("guy_pixels", "assets/stagexl/normal_map_filter/character-with-si-logo.png");
     _resourceManager.addBitmapData("guy_normal", "assets/stagexl/normal_map_filter/character-with-si-logo_n.png");
     await _resourceManager.load();
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

@@ -23,21 +23,15 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     _stateModel = stateModel;
   }
 
-  //----------------------------------------------------------------------------
-
   Navigation(String id) : super(id) {
     inheritSpan = true;
     inheritInit = true;
   }
 
-  //----------------------------------------------------------------------------
-
   @override
   void span(num spanWidth, num spanHeight, {bool refresh: true}) {
     super.span(Dimensions.WIDTH_STAGE, Dimensions.HEIGHT_STAGE);
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void init({Map<String, String> params: null}) {
@@ -82,8 +76,6 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     onInitComplete();
   }
 
-  //----------------------------------------------------------------------------
-
   @override
   void refresh() {
     super.refresh();
@@ -121,8 +113,6 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     _fwdButton.y = Dimensions.HEIGHT_STAGE - 100;
   }
 
-  //----------------------------------------------------------------------------
-
   void _openMenu() {
     _modalBg.addEventListener(TouchEvent.TOUCH_BEGIN, _modalMouseDownAction);
     _modalBg.addEventListener(MouseEvent.CLICK, _modalMouseDownAction);
@@ -132,8 +122,6 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     _sidebar.visible = true;
     Rd.JUGGLER.addTween(_sidebar, .2, Transition.easeOutQuintic)..animate.x.to(0);
   }
-
-  //----------------------------------------------------------------------------
 
   void _subNavForward() {
     if (_subPageList == null) {
@@ -150,8 +138,6 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     new RdSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
   }
 
-  //----------------------------------------------------------------------------
-
   void _closeMenu([double duration = .1]) {
     _modalBg.alpha = 0;
     _modalBg.visible = false;
@@ -165,15 +151,11 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     }
   }
 
-  //----------------------------------------------------------------------------
-
   void _modalMouseDownAction(event) {
     _modalBg.removeEventListener(TouchEvent.TOUCH_BEGIN, _modalMouseDownAction);
     _modalBg.removeEventListener(MouseEvent.CLICK, _modalMouseDownAction);
     _closeMenu();
   }
-
-  //----------------------------------------------------------------------------
 
   void _onAddressSet(RdSignal e) {
     if (_sidebarShowingPermanently == false) {
@@ -231,8 +213,6 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     }
   }
 
-  //----------------------------------------------------------------------------
-
   _mousePointerShader() {
     if (Rd.STAGE.filters.length > 0) {
       Rd.STAGE.filters = [];
@@ -261,6 +241,5 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
         Rd.MATERIALIZE_REQUIRED = true;
       });
     }
-
   }
 }

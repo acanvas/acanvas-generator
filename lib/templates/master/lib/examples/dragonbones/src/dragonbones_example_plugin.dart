@@ -2,7 +2,7 @@ part of dragonbones_example;
 
 class DragonBonesExamplePlugin extends AbstractRdPlugin {
   int sorting;
-  DragonBonesExamplePlugin(this.sorting) : super(910) {}
+  DragonBonesExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {

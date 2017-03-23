@@ -8,8 +8,6 @@ class RdRenderLoop extends RenderLoop {
   ExitFrameEvent _exitFrameEvent = new ExitFrameEvent();
   RenderEvent _renderEvent = new RenderEvent();
 
-  //----------------------------------------------------------------------------
-
   void addStage(Stage stage) {
     if (stage.renderLoop != null) {
       stage.renderLoop.removeStage(stage);

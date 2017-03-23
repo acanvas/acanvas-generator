@@ -1,4 +1,4 @@
-# Rockdot Generator - Start new Dart+StageXL+Rockdot projects with ease!
+# Rockdot Generator - a CLI to start your Rockdot project with ease!
 
 ![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/lib/templates/basic/web/public/assets/autoload/rockdot.png)
 
@@ -7,11 +7,44 @@
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/rockdot-generator)
 
 
+Welcome Aboard!
+======================
+
+(install notes further down)
+
+With Rockdot, you write apps as well as games (or a mix of the two) in Pure Dart. No HTML, no CSS. 
+If you happen(ed) to be a Pure Actionscript developer, you will feel at home, immediately. 
+In fact, Rockdot was started as an ActionScript framework in 2009, and has been used in dozens of 
+apps served millions of pageviews in individual web apps, microsites and specials for brands such 
+as Mercedes-Benz, Nike, Bosch, Nikon.  
+
+Rockdot for Dart gives you 
+
+* pixel-precise control over the html CanvasElement (2D and WebGL) through StageXL, the Flash DisplayList API for HTML5, written in Dart
+* a blazing fast, industry proven IoC/DI/MVC+Command framework based on Spring ActionScript (no shit)
+* smart UI lifecycle management with runtimes for GAF (Flash Pro), Spine, DragonBones, Flump, babylonjs, and THREE.js (coming soon)
+* plugins for integration with facebook, google APIs (examples included!)
+* a codebase that has its roots in Pure ActionScript, and has been in continuous development for about six years (2008 - 2014),
+* a codebase that has served millions of pageviews in individual web apps, microsites and specials for brands such as Mercedes-Benz, Nike, Bosch, Nikon.
+* soon a generic frontend and backend solution for management of user generated content, for example to be used in sweepstakes, competitions.
+
+Got an old iPhone4, a brand new Pixel, or any web browser on any OS? Then be sure to fire up the 
+[Demo](http://rockdot.sounddesignz.com/template/).
+
+## Building Blocks
+* [Rockdot Framework](https://github.com/blockforest/rockdot-framework) Plugin System, UI Lifecycle and Asset Manager, i18n, Google and Facebook Integration, Generic User Generated Content backend communication
+* [Rockdot Spring](https://github.com/blockforest/rockdot-spring) IoC/DI container (ObjectFactory, ObjectFactory and Object Postprocessing, Interface Injection)
+* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Async library (FrontController and Commands/Operations, also sequences)
+* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Material Design Implementation
+* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) EventBus (with some tweaks to Operations to make them as effective as Signals)
+* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Logging
+* [StageXL](https://github.com/bp74/StageXL) - Flash API for Dart
+
 # Installation
 
 ### Requirements
 
-* Dart SDK 1.20 or greater on your path
+* Dart SDK 1.22 or greater on your path
 
 
 ### Install
@@ -22,14 +55,15 @@ This puts the executable `rockdot_generator` on your path.
 
 # Usage
 
-The purpose of Rockdot Generator is to take care of ALL THE THINGS required to start with development of Rockdot projects right away.
-Here is how you create the most basic Rockdot skeleton in your current directory:
+The purpose of Rockdot Generator is to take care of ALL THE THINGS required, 
+so you can jump into development right away.
+
+This is how you create the most basic Rockdot skeleton in your current directory:
 
     # directory name also serves as project name
     $> mkdir fancy_project
     $> cd fancy_project
     $> rockdot_generator basic
-
 
 The basic project skeleton will give you:
  
@@ -38,7 +72,7 @@ The basic project skeleton will give you:
  * best practice StageXL bootstrap
  * best practice Rockdot framework bootstrap
  * röckdöt framework's state and screen extensions
- * dart2js size: 120 KiB
+ * dart2js size: 120 KiB gzipped
  * deployment-ready
  
 It is possible to add extensions:
@@ -88,7 +122,8 @@ Finally, run pub:
     $> pub serve
 
 That's it, your project is up and running!
-Note: Point your browser to the public directory, for example http://localhost:8080/public/
+
+Note: Point your browser to the public subdirectory like this: http://localhost:8080/public/
 
 
 # Notes for generator developers (that's me)
@@ -102,6 +137,9 @@ Inner workings:
 - The generated project sports a `transformer`, which does two things:
      - collect all properties string from config/ directory and example subdirectories, and merge them into web/public/config
      - inspect all files and inject properties, if applicable (@some.property@ will be replaced by the matching string)
+     - when debugging, this should ideally be repeated with every Chromium refresh, and most  
+     unfortunately, in IDEA/WebStorm, transformers are not even guaranteed to get re-run upon starting a debug session.
+     - workaround: run pub serve from terminal, and once transformers completed, kill the process 
 
 To summarize, these steps are advised before pushing an update to github:
 
@@ -112,29 +150,7 @@ To summarize, these steps are advised before pushing an update to github:
     $> dart tool/grind.dart test
 
 
-What is Rockdot all about?
-======================
 
-The Rockdot family of libraries for Dart give you 
-
-* pixel-precise control over the html CanvasElement (2D and WebGL) through StageXL, the Flash DisplayList API for HTML5, written in Dart
-* a blazing fast, industry proven IoC/DI/MVC+Command framework based on Spring
-* smart UI lifecycle management with runtimes for GAF (Flash Pro), Spine, DragonBones, Flump, THREE.js (coming soon), babylonjs (coming soon)
-* a codebase that has its roots in Pure ActionScript, and has been in continuous development for about six years (2008 - 2014),
-* a codebase that has served millions of pageviews in individual web apps, microsites and specials for brands such as Mercedes-Benz, Nike, and Nikon.
-
-With Rockdot, you write apps as well as games (or a mix of the two) in Pure Dart. No HTML, no CSS.
-
-[Demo](http://rockdot.sounddesignz.com/template/).
-
-## Building Blocks
-* [Rockdot Framework](https://github.com/blockforest/rockdot-framework) Plugin System, UI Lifecycle and Asset Manager, i18n, Google and Facebook Integration, Generic User Generated Content backend communication
-* [Rockdot Spring](https://github.com/blockforest/rockdot-spring) IoC/DI container (ObjectFactory, ObjectFactory and Object Postprocessing, Interface Injection)
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Async library (FrontController and Commands/Operations, also sequences)
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Material Design Implementation
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) EventBus (with some tweaks to Operations to make them as effective as Signals)
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Logging
-* [StageXL](https://github.com/bp74/StageXL) - Flash API for Dart
 
 
 ## Mission Statements

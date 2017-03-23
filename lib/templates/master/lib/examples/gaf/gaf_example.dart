@@ -11,6 +11,7 @@ import 'dart:async';
 import 'dart:math';
 
 part 'src/gaf_example_plugin.dart';
+part 'src/model/gaf_assets.dart';
 part 'src/model/gaf_example_screen_ids.dart';
 part 'src/view/screen/gaf_bundle_zip.dart';
 
@@ -29,4 +30,6 @@ part 'src/view/screen/gaf_sound.dart';
 part 'src/view/screen/gaf_home.dart';
 // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
-// ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+part 'src/view/element/home_banner.dart';
+    // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+  

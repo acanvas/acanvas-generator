@@ -23,7 +23,7 @@ aliquyam erat, sed diam voluptua.""";
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextureAtlas("atlas", "assets/bitmapfont/common/images/font_atlas.json");
     _resourceManager.addTextFile("fnt1", "assets/bitmapfont/common/fonts/fnt/Luckiest_Guy.fnt");
@@ -32,7 +32,6 @@ aliquyam erat, sed diam voluptua.""";
     _resourceManager.addTextFile("fnt4", "assets/bitmapfont/common/fonts/fnt/Sigmar_One.fnt");
     await _resourceManager.load();
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

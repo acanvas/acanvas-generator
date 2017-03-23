@@ -11,13 +11,12 @@ class SpineGoblinsFfd extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("goblins", "assets/spine/goblins-ffd/goblins-mesh.json");
     _resourceManager.addTextureAtlas(
         "goblins", "assets/spine/goblins-ffd/goblins-mesh.atlas", TextureAtlasFormat.LIBGDX);
     await _resourceManager.load();
-    return true;
   }
 
   @override

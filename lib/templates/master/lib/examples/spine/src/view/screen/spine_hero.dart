@@ -13,12 +13,11 @@ class SpineHero extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addTextFile("hero", "assets/spine/hero/hero-mesh.json");
     _resourceManager.addTextureAtlas("hero", "assets/spine/hero/hero-mesh.atlas", TextureAtlasFormat.LIBGDX);
     await _resourceManager.load();
-    return true;
   }
 
   @override

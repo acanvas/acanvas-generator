@@ -1,6 +1,6 @@
 name: rockdot_template
-version: 0.9.8
-description: Project template ready to unleash awesomeness with Rockdot and StageXL/Dart.
+version: 0.9.10
+description: Project template created by Rockdot Generator.
 environment:
   sdk: '>=1.21.0'
 
@@ -38,7 +38,8 @@ dependency_overrides:
   #rockdot_physics:
    # path: /Users/ndoehring/Documents/WebstormProjects/rockdot-physics
   stagexl:
-    git: https://github.com/bp74/StageXL
+    #git: https://github.com/bp74/StageXL
+    path: /Users/ndoehring/Documents/WebstormProjects/StageXL
 
 transformers:
 - rockdot_template

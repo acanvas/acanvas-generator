@@ -16,9 +16,8 @@ class FlumpGuy extends AbstractReflowScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     flumpLibrary = await FlumpLibrary.load('assets/flump/guy/flumpLibrary.json');
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.
@@ -27,6 +26,14 @@ class FlumpGuy extends AbstractReflowScreen {
   @override
   void init({Map<String, String> params: null}) {
     super.init(params: params);
+
+    for(int i=1; i<3; i++){
+      MdText headline = Theme.getHeadline(getProperty("headline${i}"), size: 24);
+      reflow.addChild(headline);
+
+      MdText copy = Theme.getCopy(getProperty("copy${i}"), size: 16);
+      reflow.addChild(copy);
+    }
 
     addChild(reflow);
 
@@ -56,6 +63,7 @@ class FlumpGuy extends AbstractReflowScreen {
   @override
   void refresh() {
     super.refresh();
+
     _idle.x = 150;
     _idle.y = 350;
 
@@ -67,6 +75,9 @@ class FlumpGuy extends AbstractReflowScreen {
 
     _defeat.x = 400;
     _defeat.y = 500;
+
+    reflow.span(spanWidth - 2* padding, spanHeight - 550 - padding);
+    reflow.y = 550;
   }
 
   /// Put anything here that needs special disposal.

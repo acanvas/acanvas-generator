@@ -3,8 +3,6 @@ part of rockdot_template;
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 
 class AbstractReflowScreen extends AbstractScreen implements IModelAware {
-  //----------------------------------------------------------------------------
-
   /// AppModel as defined by interface. Will be injected by ApplicationContext/factory
 
   Model model;
@@ -34,7 +32,6 @@ class AbstractReflowScreen extends AbstractScreen implements IModelAware {
       ..autoRefresh = false;
 
     _headline = Theme.getHeadline(getProperty("headline"), size: 24);
-    _headline.inheritWidth = false;
     reflow.addChild(_headline);
 
     String copyText = getProperty("copy");

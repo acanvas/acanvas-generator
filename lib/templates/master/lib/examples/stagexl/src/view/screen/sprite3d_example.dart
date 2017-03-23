@@ -14,10 +14,9 @@ class Sprite3DExample extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _textureAtlas = await TextureAtlas.load('assets/stagexl/sprite3d/Flowers.json');
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

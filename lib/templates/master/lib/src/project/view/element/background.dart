@@ -5,14 +5,10 @@ part of rockdot_template;
 class Background extends RockdotLifecycleSprite {
   Shape _bg;
 
-  //----------------------------------------------------------------------------
-
   Background(String id) : super(id) {
     inheritSpan = true;
     inheritInit = true;
   }
-
-  //----------------------------------------------------------------------------
 
   /// Always span to maximum dimensions.
 
@@ -20,8 +16,6 @@ class Background extends RockdotLifecycleSprite {
   void span(num spanWidth, num spanHeight, {bool refresh: true}) {
     super.span(Dimensions.WIDTH_STAGE, Dimensions.HEIGHT_STAGE);
   }
-
-  //----------------------------------------------------------------------------
 
   @override
   void init({Map<String, String> params: null}) {
@@ -32,8 +26,6 @@ class Background extends RockdotLifecycleSprite {
 
     onInitComplete();
   }
-
-  //----------------------------------------------------------------------------
 
   /// Positioning logic
 

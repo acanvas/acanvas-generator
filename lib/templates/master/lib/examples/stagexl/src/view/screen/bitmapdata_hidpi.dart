@@ -13,13 +13,12 @@ class BitmapDataHiDPI extends AbstractScreen {
   }
 
   @override
-  Future<bool> load({Map params: null}) async {
+  Future load({Map params: null}) async {
     _resourceManager = new ResourceManager();
     _resourceManager.addBitmapData("background", "assets/stagexl/bitmapdata_hidpi/background@1x.jpg");
     _resourceManager.addTextureAtlas("atlas", "assets/stagexl/bitmapdata_hidpi/atlas@1x.json");
     await _resourceManager.load();
     onLoadComplete();
-    return true;
   }
 
   /// This is the place where you add anything to this method that needs initialization.

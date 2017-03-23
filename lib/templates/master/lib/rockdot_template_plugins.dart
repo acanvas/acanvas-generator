@@ -34,7 +34,7 @@ export 'examples/gaf/gaf_example.dart';
 
 //stagexl_dragonbones
 export 'package:stagexl_dragonbones/stagexl_dragonbones.dart' hide Curve;
-export 'examples/dragonbones/dragonbones_example.dart';
+export 'examples/dragonbones/dragonbones_example.dart' hide HomeBanner;
 
 //stagexl_flump
 export 'package:stagexl_flump/stagexl_flump.dart';
