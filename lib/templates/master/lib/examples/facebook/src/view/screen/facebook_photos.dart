@@ -38,7 +38,7 @@ class FacebookPhotos extends AbstractScreen implements IStateModelAware {
   }
 
   void _onItemClicked(FBPhotoVO dao) {
-    logger.debug("Item clicked. id: {0}, url_big: {1}", [dao.id, dao.source]);
+    Rd.log.info("Item clicked. id: {0}, url_big: {1}", [dao.id, dao.source]);
     // new RdSignal(StateEvents.ADDRESS_SET, "/layer").dispatch();
   }
 

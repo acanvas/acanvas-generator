@@ -5,8 +5,8 @@ part of rockdot_template;
  */
 class Navigation extends RockdotLifecycleSprite {
   MdTabs _tabs;
-  Headline _headline;
-  MdIconButton _menuButton;
+  MdText _headline;
+  MdFab _menuButton;
   List _tabButtons;
 
   Navigation(String id) : super(id) {
@@ -14,12 +14,12 @@ class Navigation extends RockdotLifecycleSprite {
   }
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _menuButton = new MdFab(MdIcon.white(MdIconSet.home), bgColor: MdColor.BLUE, radius: 20)
       ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, "/");
-    _headline = new Headline("", size: 32, color: Colors.WHITE);
+    _headline = Theme.getHeadline("", size: 32, color: Colors.WHITE);
     _headline.inheritWidth = false;
 
     _tabButtons = [ScreenIDs.HOME, ScreenIDs.TWO];

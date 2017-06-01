@@ -1,5 +1,9 @@
 # CHANGELOG ROCKDOT_GENERATOR
 
+## 0.9.11 2017-06-01
+
+- Improved Logger performance
+
 ## 0.9.10 2017-03-23
 
 - Example Intros for DragonBones and GAF

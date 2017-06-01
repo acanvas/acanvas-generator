@@ -47,8 +47,8 @@ class InjectProperties extends Transformer {
     //copy plugin language files to web folder
     Directory dir = new Directory('config/locale');
     var files = dir.listSync(recursive: false, followLinks: false);
-    files.where((e) => e is File).forEach((File file) {
-      file.copySync('web/public/config/locale/${path.basename(file.path)}');
+    files.where((e) => e is File).forEach((FileSystemEntity file) {
+      (file as File).copySync('web/public/config/locale/${path.basename(file.path)}');
     });
 
     //treat examples properties and examples
@@ -57,13 +57,13 @@ class InjectProperties extends Transformer {
       files = dir.listSync(recursive: true, followLinks: false);
 
       //copy examples language files to web folder (merge if existing)
-      files.where((e) => e is Directory && e.path.contains("locale")).forEach((Directory d) {
+      files.where((e) => e is Directory && e.path.contains("locale")).forEach((FileSystemEntity d) {
         _recursiveFolderCopySync(d.path, 'web/public/config/locale');
       });
 
       //copy examples assets files to web folder
       files = dir.listSync(recursive: false, followLinks: false);
-      files.where((e) => e is Directory).forEach((Directory d) {
+      files.where((e) => e is Directory).forEach((FileSystemEntity d) {
         _recursiveFolderCopySync(path.join(d.path, "assets"), 'web/public/assets/${path.basename(d.path)}/');
       });
     }

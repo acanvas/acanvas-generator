@@ -7,7 +7,7 @@ class Two extends AbstractScreen {
   Two(String id) : super(id) {}
 
   @override
-  void init({Map params: null}) {
+  void init({Map<String, String> params: null}) {
     super.init(params: params);
 
     _bmp = new ImageSprite()
@@ -38,7 +38,7 @@ class Two extends AbstractScreen {
   }
 
   @override
-  void dispose() {
+  void dispose({bool removeSelf: true}) {
     Rd.JUGGLER.removeTweens(this);
     super.dispose();
   }

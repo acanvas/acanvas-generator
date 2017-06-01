@@ -14,7 +14,7 @@ class Plugins {
 
     // The Plugins we want to use
 
-    plugins = [
+    plugins = <IObjectFactoryPostProcessor>[
       //----------------------------
 
       // Mandatory Plugins
