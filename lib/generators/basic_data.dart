@@ -3,7 +3,6 @@
 // license that can be found in the LICENSE file.
 String type = "basic";
 List<String> data = [
-  "web/public/assets/home/rockdot_spring_architecture.png",
   "config/debug/private.properties",
   "config/debug/public.properties",
   "config/locale/en.properties",
@@ -16,14 +15,12 @@ List<String> data = [
   "lib/src/project/view/screen/two.dart",
   "lib/transformer.dart",
   "pubspec.yaml",
-  "web/public/assets/autoload/block_forest.png",
-  "web/public/assets/autoload/block_forest@2x.png",
-  "web/public/assets/autoload/block_forest@3x.png",
   "web/public/assets/autoload/displacement_bubble.png",
-  "web/public/assets/autoload/logo_rockdot_small.png",
-  "web/public/assets/autoload/logo_rockdot_small@2x.png",
-  "web/public/assets/autoload/logo_rockdot_small@3x.png",
-  "web/public/assets/autoload/rockdot.png",
-  "web/public/assets/autoload/rockdot@2x.png",
-  "web/public/assets/autoload/rockdot@3x.png"
+  "web/public/assets/autoload/logo_rockdot_small@1.00x.png",
+  "web/public/assets/autoload/logo_rockdot_small@2.00x.png",
+  "web/public/assets/autoload/logo_rockdot_small@3.00x.png",
+  "web/public/assets/autoload/rockdot@1.00x.png",
+  "web/public/assets/autoload/rockdot@2.00x.png",
+  "web/public/assets/autoload/rockdot@3.00x.png",
+  "web/public/assets/home/rockdot_spring_architecture.png"
 ];

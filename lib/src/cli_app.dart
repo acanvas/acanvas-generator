@@ -178,6 +178,9 @@ class CliApp {
     _argsMap["particle"] = "Add Particle Extension to StageXL";
     _argsMap["particleExamples"] = "Install Particle Example";
 
+    //Demos
+    _argsMap["moppiFlower"] = "Install Flower Demo";
+
     _argsMap.forEach((flag, description) {
       argParser.addFlag(flag, negatable: false, help: description);
     });

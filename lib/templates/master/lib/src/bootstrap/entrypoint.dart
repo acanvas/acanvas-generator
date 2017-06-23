@@ -22,6 +22,15 @@ class Entrypoint {
     _stageEl = html.querySelector(qS);
 
     // Startup StageXL
+    var query = "(-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+
+    if (html.window.matchMedia(query).matches) {
+      // support high-dpi
+      StageXL.bitmapDataLoadOptions.pixelRatios = <double>[1.0, 2.0, 3.0];
+    }
+    else{
+      StageXL.bitmapDataLoadOptions.pixelRatios = <double>[1.0];
+    }
 
     var opts = new StageOptions();
     opts.maxPixelRatio = 3.0;

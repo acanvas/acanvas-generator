@@ -1,7 +1,7 @@
 library rockdot_template;
 
 import 'dart:html' as html;
-import 'dart:math' hide Rectangle;
+import 'dart:math' hide Rectangle, Point;
 import 'dart:async';
 
 import 'package:stagexl/stagexl.dart';
@@ -34,7 +34,8 @@ part 'src/project/view/screen/abstract_reflow_screen.dart';
 part 'src/project/view/screen/home.dart';
 //part 'src/project/view/screen/two.dart';
 
-// ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+    // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+  
 
 // VIEW:LAYER
 //part 'src/project/view/layer/abstract_layer.dart';
@@ -47,7 +48,12 @@ part 'src/project/view/element/navigation_sidebar.dart';
 part 'src/project/view/element/cell/list_menu_cell.dart';
 part 'src/project/view/element/pager/abstract_photo_pager.dart';
 
-// ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+    // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
+  
+  
+  
+  
+  
 
 // COMMANDS
 part 'src/project/command/event/project_events.dart';

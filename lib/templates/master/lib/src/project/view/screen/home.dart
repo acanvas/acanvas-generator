@@ -27,7 +27,7 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
       //..span(spanWidth, spanHeight, refresh: false)
       ..bitmapData = Assets.rockdot
       ..inheritSpan = false
-      ..autoSpan = false
+      ..autoSpan = true
       ..useHandCursor = true
       ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, (e) {
         new RdSignal(StateEvents.ADDRESS_SET, "https://github.com/block-forest/rockdot-generator").dispatch();
@@ -75,13 +75,15 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
 
   @override
   void refresh() {
-    _bmp.scaleToWidth(spanWidth - 2 * padding);
+    _bmp.refresh();
+
     if(_bmp2.loaded){
       _bmp2.scaleToWidth(spanWidth - 2 * padding);
     }
 
     _flow.span(spanWidth - 2 * padding, spanHeight);
     _flow.x = padding;
+    _bmp.x = (spanWidth/2 - _bmp.spanWidth/2).round();
 
     super.refresh();
   }

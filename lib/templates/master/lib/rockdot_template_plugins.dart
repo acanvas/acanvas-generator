@@ -51,3 +51,6 @@ export 'examples/isometric/isometric_example.dart';
 //stagexl_particle
 export 'package:stagexl_particle/stagexl_particle.dart';
 export 'examples/particle/particle_example.dart';
+
+//moppiflower demo
+export 'examples/moppiflower/moppiflower_example.dart';

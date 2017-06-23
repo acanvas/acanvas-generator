@@ -33,6 +33,7 @@ class InitCommand extends AbstractCommand implements IStateModelAware, IScreenSe
     _uiService.modalBackgroundFilter = new BlurFilter(6, 6);
 
     _stateModel.addressService.init();
+    //new RdSignal(StateEvents.ADDRESS_SET, getProperty(MoppiFlowerExampleScreenIDs.MOPPI_DEMO + ".url")).dispatch();
     dispatchCompleteEvent();
 
     return null;

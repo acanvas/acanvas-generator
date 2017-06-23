@@ -54,7 +54,8 @@ class BasicGenerator extends DefaultGenerator {
       "spine",
       "isometric",
       "particle",
-      "ugc"
+      "ugc",
+      "moppiFlower"
     ];
 
     // Remove example content assets from source list according to option

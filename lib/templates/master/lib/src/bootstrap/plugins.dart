@@ -81,6 +81,8 @@ class Plugins {
       //Rockdot Babylon - Examples
       new BabylonExamplePlugin(_exampleOrder++),
 
+      new MoppiFlowerExamplePlugin(_exampleOrder++),
+
       //Rockdot Framework - User Generated Content Backend Examples
       //new UGCExamplePlugin(_exampleOrder++),
 
