@@ -9,6 +9,8 @@ class MoppiFlowerExample extends AbstractScreen {
 
   Bitmap _background;
 
+  MdButton _button;
+
   MoppiFlowerExample(String id) : super(id) {
     requiresLoading = true;
   }
@@ -20,7 +22,7 @@ class MoppiFlowerExample extends AbstractScreen {
     _resourceManager.addBitmapData("flower_2", "assets/moppiflower/test_flower2.png");
     _resourceManager.addBitmapData("leaf", "assets/moppiflower/test_leaf.png");
     _resourceManager.addBitmapData("overlay", "assets/moppiflower/test_overlay.jpg");
-    _resourceManager.addSound("soundtrack", "assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3");
+    //_resourceManager.addSound("soundtrack", "assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3");
     await _resourceManager.load();
   }
 
@@ -33,13 +35,26 @@ class MoppiFlowerExample extends AbstractScreen {
     addChild(_background);
 
     if (SoundMixer.engine == SoundEngine.WebAudioApi) {
-      _soundAnalyzer = new SoundAnalyzer(_resourceManager.getSound("soundtrack"));
+      _soundAnalyzer = new SoundAnalyzer();
     }
     _flowerManager = new FlowerManager(_resourceManager);
 
     //Rd.STAGE.addEventListener(Event.ENTER_FRAME, _onEnterFrame);
     subs = Rd.JUGGLER.interval(1 / 22.0).listen((e) => _onEnterFrame(null));
+
+    if(Rd.IOS){
+      _button = new MdButton(getProperty("button01"), preset: MdButton.PRESET_BLUE)
+        ..submitCallback = _click
+        ..submitCallbackParams = [];
+      addChild(_button);
+    }
+
     onInitComplete();
+  }
+
+  _click() {
+    SoundMixer.unlockMobileAudio();
+    _soundAnalyzer._startIos();
   }
 
   void _onEnterFrame(Event e) {
@@ -66,6 +81,9 @@ class MoppiFlowerExample extends AbstractScreen {
 
     _background.width = spanWidth;
     _background.height = spanHeight;
+
+    _button?.x = spanWidth - _button.width - 10;
+    _button?.y = spanHeight - _button.height - 10;
   }
 
   @override
@@ -76,4 +94,6 @@ class MoppiFlowerExample extends AbstractScreen {
     _resourceManager.dispose();
     super.dispose();
   }
+
+
 }

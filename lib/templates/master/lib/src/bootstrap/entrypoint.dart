@@ -22,18 +22,19 @@ class Entrypoint {
     _stageEl = html.querySelector(qS);
 
     // Startup StageXL
-    var query = "(-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+    var opts = new StageOptions();
 
+    var query = "(-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
     if (html.window.matchMedia(query).matches) {
       // support high-dpi
-      StageXL.bitmapDataLoadOptions.pixelRatios = <double>[1.0, 2.0, 3.0];
+      opts.maxPixelRatio = 3.0;
+      //StageXL.bitmapDataLoadOptions.pixelRatios = <double>[1.0, 2.0, 3.0];
     }
     else{
-      StageXL.bitmapDataLoadOptions.pixelRatios = <double>[1.0];
+      opts.maxPixelRatio = 1.0;
+      //StageXL.bitmapDataLoadOptions.pixelRatios = <double>[1.0];
     }
 
-    var opts = new StageOptions();
-    opts.maxPixelRatio = 3.0;
     opts.stageScaleMode = StageScaleMode.NO_SCALE;
     opts.stageRenderMode = StageRenderMode.ONCE;
     opts.stageAlign = StageAlign.TOP_LEFT;

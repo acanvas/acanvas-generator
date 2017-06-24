@@ -6,7 +6,47 @@ class SoundAnalyzer {
   Sound _audio;
   SoundChannel _soundChannel;
 
-  SoundAnalyzer(this._audio) : super() {
+  bool _loaded = false;
+
+  SoundAnalyzer() : super() {
+
+    if(Rd.IOS){
+     // _startIos(); // TEST A
+      /*
+      TEST B:
+      if (SoundMixer.engine != "Mock")
+        AudioElementSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
+          _audio = sound;
+          _start();
+        });
+       */
+    }
+    else{
+      WebAudioApiSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
+        _audio = sound;
+        _startWebAudio();
+        });
+    }
+
+
+  }
+
+  void _startIos() {
+    WebAudioApiSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
+      _audio = sound;
+      _start();
+    });
+  }
+
+  void _startWebAudio() {
+    WebAudioApiSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
+      _audio = sound;
+      _start();
+    });
+  }
+
+  void _start() {
+
 
     _analyzer = WebAudioApiMixer.audioContext.createAnalyser();
     _analyzer.fftSize = 512; //32 - 32768
@@ -14,6 +54,8 @@ class SoundAnalyzer {
     _soundChannel = _audio.play();
 
     SoundMixer.webAudioApiMixer.inputNode.connectNode(_analyzer);
+
+    _loaded = true;
 
     /*
 
@@ -38,6 +80,11 @@ class SoundAnalyzer {
   }
 
   void update(MoppiFlowerModel m, {BoxSprite s: null}) {
+
+    if(!_loaded){
+      return;
+    }
+
     Uint8List arr = new Uint8List(_analyzer.frequencyBinCount);
     _analyzer.getByteFrequencyData(arr);
 
@@ -78,4 +125,5 @@ class SoundAnalyzer {
     _soundChannel.stop();
     _audio = null;
   }
+
 }
