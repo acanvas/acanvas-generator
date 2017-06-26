@@ -22,17 +22,18 @@ class SoundAnalyzer {
        */
     }
     else{
-      WebAudioApiSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
-        _audio = sound;
-        _startWebAudio();
-        });
+      _startWebAudio();
     }
 
 
   }
 
   void _startIos() {
-    WebAudioApiSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
+     _startWebAudio();
+  }
+
+  void _startAudioElement() {
+    AudioElementSound.load("assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3").then((sound) {
       _audio = sound;
       _start();
     });

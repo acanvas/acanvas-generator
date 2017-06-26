@@ -53,6 +53,7 @@ class MoppiFlowerExample extends AbstractScreen {
   }
 
   _click() {
+    _button.dispose();
     SoundMixer.unlockMobileAudio();
     _soundAnalyzer._startIos();
   }

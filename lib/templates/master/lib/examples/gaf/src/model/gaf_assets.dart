@@ -41,8 +41,8 @@ class GAFAssets {
   static Future load() async {
     _singleton.mgr.addBitmapData("full_animation", "assets/gaf/home/full_animation.png");
 		_singleton.mgr.addBitmapData("gaf_best", "assets/gaf/home/gaf_best.png");
-		_singleton.mgr.addBitmapData("gaf_companies", "assets/gaf/home/GAF_companies.jpg");
-		_singleton.mgr.addBitmapData("gaf_media_2", "assets/gaf/home/GAF_Media_2.png");
+		_singleton.mgr.addBitmapData("gaf_companies", "assets/gaf/home/gaf_companies.jpg");
+		_singleton.mgr.addBitmapData("gaf_media_2", "assets/gaf/home/gaf_media_2.png");
 		_singleton.mgr.addBitmapData("other_solutions", "assets/gaf/home/other_solutions.png");
 		_singleton.mgr.addBitmapData("perfromance_newest", "assets/gaf/home/perfromance_newest.png");
 		

@@ -28,7 +28,19 @@ dev_dependencies:
   barback: any
   grinder: '>=0.7.0 <0.7.1'
 
-
+dependency_overrides:
+   rockdot_commons:
+     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-commons
+   rockdot_framework:
+     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-framework
+   rockdot_spring:
+     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-spring
+   #rockdot_physics:
+    # path: /Users/ndoehring/Documents/WebstormProjects/rockdot-physics
+   #stagexl:
+    # git: https://github.com/bp74/StageXL
+     #path: /Users/ndoehring/Documents/WebstormProjects/StageXL
+ 
 transformers:
 - rockdot_template
 - $dart2js:
