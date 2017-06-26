@@ -16,11 +16,11 @@ List<String> data = [
   "lib/transformer.dart",
   "pubspec.yaml",
   "web/public/assets/autoload/displacement_bubble.png",
-  "web/public/assets/autoload/logo_rockdot_small@1.00x.png",
-  "web/public/assets/autoload/logo_rockdot_small@2.00x.png",
-  "web/public/assets/autoload/logo_rockdot_small@3.00x.png",
-  "web/public/assets/autoload/rockdot@1.00x.png",
-  "web/public/assets/autoload/rockdot@2.00x.png",
-  "web/public/assets/autoload/rockdot@3.00x.png",
+  "web/public/assets/autoload/logo_rockdot_small@1x.png",
+  "web/public/assets/autoload/logo_rockdot_small@2x.png",
+  "web/public/assets/autoload/logo_rockdot_small@3x.png",
+  "web/public/assets/autoload/rockdot@1x.png",
+  "web/public/assets/autoload/rockdot@2x.png",
+  "web/public/assets/autoload/rockdot@3x.png",
   "web/public/assets/home/rockdot_spring_architecture.png"
 ];
