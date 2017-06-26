@@ -3,7 +3,7 @@
 ## 0.9.12 2017-06-23
 
 - Fix for HiDPI
-- New example: Flower Demo inspired by Moppi Productions (add param --moppiFlower to install)
+- New example: Flower Demo inspired by Moppi Productions (add param --moppiFlowerExamples to install)
 
 ## 0.9.11 2017-06-01
 

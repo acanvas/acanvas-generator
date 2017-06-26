@@ -55,7 +55,7 @@ class BasicGenerator extends DefaultGenerator {
       "isometric",
       "particle",
       "ugc",
-      "moppiFlower"
+      "moppiFlower" //examples only
     ];
 
     // Remove example content assets from source list according to option
@@ -128,8 +128,8 @@ class BasicGenerator extends DefaultGenerator {
       if (file.path.contains("\/plugins.dart")) {
         //check flag values of extensions
         extensions.forEach((ext) {
-          //uninstall all from bootstrap
-          if (!options[ext]) {
+          //uninstall extension and examples from bootstrap
+          if (options.options.contains(ext) && !options[ext]) {
             file.content = _uninstallPluginBootstrap(ext, file.content);
             file.content = _uninstallPluginExamplesBootstrap(ext, file.content);
           }
@@ -147,7 +147,7 @@ class BasicGenerator extends DefaultGenerator {
         //check flag values of extensions
         extensions.forEach((ext) {
           //uninstall all imports
-          if (!options[ext]) {
+          if (options.options.contains(ext) && !options[ext]) {
             file.content = _uninstallPluginImports(ext, file.content);
             file.content = _uninstallPluginExamplesImports(ext, file.content);
           }
@@ -195,7 +195,7 @@ class BasicGenerator extends DefaultGenerator {
     //check flag values of extensions
     Future.forEach(extensions, (ext) async {
       //uninstall all from bootstrap
-      if (options[ext]) {
+      if (options.options.contains(ext) && options[ext]) {
         switch (ext) {
           case "material":
             await _installPluginData(material_data.type, material_data.data);
