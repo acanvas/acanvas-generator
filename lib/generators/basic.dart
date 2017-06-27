@@ -232,7 +232,7 @@ class BasicGenerator extends DefaultGenerator {
 
     addTemplateFile(pubspecTemplateFile);
 
-    setEntrypoint(getFile('web/public/index.html'));
+    setEntrypoint(getFile('web/index.html'));
   }
 
   /// Adds dependency to the project's root pubspec.yaml.
@@ -330,5 +330,5 @@ dependencies:
   }
 
   String getInstallInstructions() => "${super.getInstallInstructions()}\n"
-      "to run your app, use 'pub serve' and hit http://localhost:xxxx/public in the browser\n";
+      "to run your app, use 'pub serve' and hit http://localhost:xxxx in the browser\n";
 }

@@ -2,14 +2,14 @@ library google_example;
 
 import 'dart:math';
 
-import 'package:googleapis/plus/v1.dart' show Person;
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
+import 'package:rockdot_commons/rockdot_commons.dart' show IAsyncCommand, BehaveSprite, Button, ImageSprite, RdGraphics, Rd, UITextField, MdWrap, MdButton, RdSignal;
 
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_framework/src/io.dart';
-import 'package:rockdot_framework/src/google.dart';
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin, StateEvents;
+import 'package:rockdot_framework/src/plugin.io.dart' show DataProxy, DataRetrieveVO, IIOModelAware, IOModel, IOEvents
+;
+import 'package:googleapis/plus/v1.dart' show Person;
+import 'package:rockdot_framework/src/plugin.google.dart';
 import 'package:rockdot_template/rockdot_template.dart'
     show AbstractReflowScreen, AbstractPhotoPager, AbstractScreen, Colors, Dimensions, EffectIDs, Theme;
 

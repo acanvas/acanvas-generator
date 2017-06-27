@@ -2,13 +2,13 @@ library stagexl_example;
 
 import 'dart:math' hide Point;
 import 'dart:async' show StreamSubscription, Future, Completer;
-import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
 
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
+import 'package:stagexl/stagexl.dart';
+import 'package:rockdot_commons/rockdot_commons.dart' show Rd, MLifecycle, FlowOrientation;
+
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
 import 'package:rockdot_template/rockdot_template.dart'
-    show AbstractReflowScreen, AbstractScreen, Dimensions, EffectIDs, Theme;
+    show AbstractReflowScreen, AbstractScreen, Dimensions, EffectIDs;
 
 part 'src/stagexl_example_plugin.dart';
 part 'src/model/stagexl_example_screen_ids.dart';

@@ -1,9 +1,11 @@
 part of ugc_example;
 
 class UGCGallery extends AbstractScreen {
+  UGCGallery(String id) : super(id) {}
+ /*
   UGCPhotoPager _pager;
 
-  UGCGallery(String id) : super(id) {}
+
 
   @override
   void init({Map<String, String> params: null}) {
@@ -35,8 +37,9 @@ class UGCGallery extends AbstractScreen {
   }
 
   void _onItemClicked(UGCItemDTO dao) {
-    logger.debug("Item clicked. id: {0}, url_big: {1}", [dao.id, (dao.type_dao as UGCImageItemDTO).url_big]);
+    Rd.log.info("Item clicked. id: {0}, url_big: {1}", [dao.id, (dao.type_dao as UGCImageItemDTO).url_big]);
     //model.currentUGCItem = dao;
     //new RdSignal(StateEvents.ADDRESS_SET, "/image/view").dispatch();
   }
+   */
 }

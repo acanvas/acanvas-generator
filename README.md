@@ -1,6 +1,6 @@
 # Rockdot Generator - a CLI to start your Rockdot project with ease!
 
-![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/lib/templates/basic/web/public/assets/autoload/rockdot.png)
+![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/lib/templates/basic/web/assets/autoload/rockdot.png)
 
 [![Coverage Status](https://coveralls.io/repos/block-forest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/rockdot-generator)
 [![Travis Build Status](https://travis-ci.org/block-forest/rockdot-generator.svg?branch=master)](https://travis-ci.org/block-forest/rockdot-generator)
@@ -123,7 +123,7 @@ Finally, run pub:
 
 That's it, your project is up and running!
 
-Note: Point your browser to the public subdirectory like this: http://localhost:8080/public/
+Note: Point your browser to the public subdirectory like this: http://localhost:8080/
 
 
 # Notes for generator developers (that's me)
@@ -135,7 +135,7 @@ Inner workings:
 - Upon project generation, this array will get iterated over, and the files will be loaded via the `Resource` package, which is the only way to access files when running scripts via `pub`. The logic happens in `lib/generators/basic.dart`.
 - Also within `lib/generators/basic.dart`, some file manipulation will incur based on the command line options given. Basically, the master template, where all options are switched ON, will get stripped from every plugin and example that is not explicitly activated via command line options.
 - The generated project sports a `transformer`, which does two things:
-     - collect all properties string from config/ directory and example subdirectories, and merge them into web/public/config
+     - collect all properties string from config/ directory and example subdirectories, and merge them into web/config
      - inspect all files and inject properties, if applicable (@some.property@ will be replaced by the matching string)
      - when debugging, this should ideally be repeated with every Chromium refresh, and most  
      unfortunately, in IDEA/WebStorm, transformers are not even guaranteed to get re-run upon starting a debug session.

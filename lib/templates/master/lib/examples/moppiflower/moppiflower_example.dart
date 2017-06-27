@@ -1,15 +1,15 @@
 library moppiflower_example;
 
-import 'dart:web_audio';
-import 'dart:typed_data';
-import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
-
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart' show AbstractScreen, EffectIDs, Theme;
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:web_audio';
+import 'dart:typed_data';
+
+import 'package:stagexl/stagexl.dart';
+import 'package:rockdot_commons/rockdot_commons.dart' show Rd, BoxSprite, MdButton;
+
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractScreen, EffectIDs;
 
 part 'src/moppiflower_example_plugin.dart';
 part 'src/model/moppiflower_model.dart';

@@ -1,13 +1,12 @@
 library dragonbones_example;
 
-import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
-
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, AbstractScreen, Dimensions, EffectIDs, Theme;
-import 'package:stagexl_dragonbones/stagexl_dragonbones.dart';
 import 'dart:async';
+
+import 'package:stagexl/stagexl.dart';
+import 'package:stagexl_dragonbones/stagexl_dragonbones.dart';
+import 'package:rockdot_commons/rockdot_commons.dart' show MdText, ImageSprite, Rd, MdWrap, AlignH, MLifecycle, Wrap, ScrollOrientation;
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin, RockdotBoxSprite;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractScreen, Dimensions, EffectIDs, Theme;
 
 part 'src/dragonbones_example_plugin.dart';
 part 'src/model/dragonbones_assets.dart';

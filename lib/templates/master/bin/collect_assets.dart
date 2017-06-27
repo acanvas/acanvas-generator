@@ -14,7 +14,7 @@ const String ASSETNAM_SAFE_REPLACE_STRING = "@asset_stripped@";
 const String ASSETTYPE_REPLACE_STRING = "@type@";
 const String ASSETDIR_REPLACE_STRING = "@dir@";
 
-const String DEFAULT_SOURCE_DIR = "web/public/assets/autoload";
+const String DEFAULT_SOURCE_DIR = "web/assets/autoload";
 const String DEFAULT_TARGET_DIR = "lib/src/project/model";
 const String DEFAULT_TARGET_FILE = "assets.dart";
 
@@ -81,7 +81,7 @@ void _scanSource() {
                 .replaceAll(ASSETNAM_SAFE_REPLACE_STRING, baseNameStripped)
                 .replaceAll(ASSETTYPE_REPLACE_STRING, ext)
                 .replaceAll(ASSETDIR_REPLACE_STRING, dir)
-                .replaceAll('web\/public\/', '');
+                .replaceAll('web\/', '');
           }
           if (ext == "mp3") {
             generatedGetters += soundGetter.replaceAll(ASSETNAME_REPLACE_STRING, baseName);
@@ -89,7 +89,7 @@ void _scanSource() {
                 .replaceAll(ASSETNAME_REPLACE_STRING, baseName)
                 .replaceAll(ASSETTYPE_REPLACE_STRING, ext)
                 .replaceAll(ASSETDIR_REPLACE_STRING, dir)
-                .replaceAll('web\\/public\\/', '');
+                .replaceAll('web\\/', '');
           }
         }
       }

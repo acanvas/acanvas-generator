@@ -1,15 +1,14 @@
 library bitmapfont_example;
 
 import 'dart:html' as html;
-import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
-
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
-import 'package:stagexl_bitmapfont/stagexl_bitmapfont.dart';
 import 'dart:async';
 import 'dart:math';
+
+import 'package:stagexl/stagexl.dart';
+import 'package:stagexl_bitmapfont/stagexl_bitmapfont.dart';
+import 'package:rockdot_commons/rockdot_commons.dart' show Rd, FlowOrientation, MdText, RdSignal, MLifecycle;
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin, StateEvents;
+import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
 
 part 'src/bitmapfont_example_plugin.dart';
 part 'src/model/bitmapfont_example_screen_ids.dart';

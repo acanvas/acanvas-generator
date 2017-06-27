@@ -4,11 +4,10 @@ import 'dart:math' hide Point, Rectangle;
 import 'dart:async' show Timer;
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
+import 'package:rockdot_commons/rockdot_commons.dart' show BoxSprite, RdGraphics, Rd, MdDimensions, MdIcon, MdFab, MdColor, MdButton, MdIconSet, MLifecycle;
 import 'package:rockdot_physics/rockdot_physics.dart';
 
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
 import 'package:rockdot_template/rockdot_template.dart' show Colors, Theme, AbstractScreen, Dimensions, EffectIDs;
 
 part 'src/physics_example_plugin.dart';

@@ -1,15 +1,14 @@
 library material_example;
 
 import 'dart:math';
+import 'dart:async';
 
 import 'package:stagexl/stagexl.dart';
 import 'package:rockdot_commons/rockdot_commons.dart';
 
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin, RockdotLifecycleSprite, StateEvents, StateMessageVO;
 import 'package:rockdot_template/rockdot_template.dart'
     show AbstractReflowScreen, Assets, Colors, Dimensions, EffectIDs, Theme;
-import 'dart:async';
 
 part 'src/material_example_plugin.dart';
 part 'src/model/material_example_screen_ids.dart';

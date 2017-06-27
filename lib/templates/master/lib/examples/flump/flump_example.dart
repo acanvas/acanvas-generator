@@ -1,14 +1,11 @@
 library flump_example;
 
-import 'package:stagexl/stagexl.dart';
+import 'dart:async';
 import 'package:rockdot_commons/rockdot_commons.dart';
 
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
 import 'package:rockdot_template/rockdot_template.dart' show AbstractReflowScreen, EffectIDs, Theme;
 import 'package:stagexl_flump/stagexl_flump.dart';
-import 'dart:async';
-import 'dart:math';
 
 part 'src/flump_example_plugin.dart';
 part 'src/model/flump_example_screen_ids.dart';

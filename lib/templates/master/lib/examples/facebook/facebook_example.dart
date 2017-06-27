@@ -5,10 +5,9 @@ import 'dart:math' hide Rectangle;
 import 'package:stagexl/stagexl.dart';
 import 'package:rockdot_commons/rockdot_commons.dart';
 
-// ##### PLUGINS #####
-import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_framework/src/io.dart';
-import 'package:rockdot_framework/src/facebook.dart';
+import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin, StateEvents, IStateModelAware, StateModel;
+import 'package:rockdot_framework/src/plugin.io.dart' show DataProxy, DataRetrieveVO;
+import 'package:rockdot_framework/src/plugin.facebook.dart';
 import 'package:rockdot_template/rockdot_template.dart'
     show AbstractReflowScreen, AbstractPhotoPager, AbstractScreen, Assets, Colors, Dimensions, EffectIDs, Theme;
 

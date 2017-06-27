@@ -1,9 +1,9 @@
 //facebook
-export 'package:rockdot_framework/src/facebook.dart';
+export 'package:rockdot_framework/src/plugin.facebook.dart';
 export 'examples/facebook/facebook_example.dart';
 
 //google
-export 'package:rockdot_framework/src/google.dart';
+export 'package:rockdot_framework/src/plugin.google.dart';
 export 'examples/google/google_example.dart';
 
 //material
@@ -14,11 +14,11 @@ export 'package:rockdot_physics/rockdot_physics.dart';
 export 'examples/physics/physics_example.dart';
 
 //ugc
-export 'package:rockdot_framework/src/ugc.dart';
+export 'package:rockdot_framework/src/plugin.ugc.dart';
 export 'examples/ugc/ugc_example.dart';
 
 //babylon
-export 'package:rockdot_framework/src/babylon.dart';
+export 'package:rockdot_framework/src/plugin.babylon.dart';
 export 'examples/babylon/babylon_example.dart';
 
 //stagexl examples
@@ -41,7 +41,7 @@ export 'package:stagexl_flump/stagexl_flump.dart';
 export 'examples/flump/flump_example.dart';
 
 //stagexl_spine
-export 'package:stagexl_spine/stagexl_spine.dart' hide Event, Animation, Slot, Skin, Skeleton, Bone;
+export 'package:stagexl_spine/stagexl_spine.dart' hide Animation, Slot, Skin, Skeleton, Bone;
 export 'examples/spine/spine_example.dart';
 
 //stagexl_isometric

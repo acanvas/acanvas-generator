@@ -29,26 +29,26 @@ class InjectProperties extends Transformer {
      *  copy different properties
      */
 
-    _getDirectory('web/public/config/locale/');
+    _getDirectory('web/config/locale/');
 
     if ("@project.debug@" == "false" ? false : true) {
       //copy project.properties from config/debug to web/config
-      new File('config/debug/public.properties').copySync('web/public/config/project.properties');
+      new File('config/debug/public.properties').copySync('web/config/project.properties');
       //parse private.properties from config/debug
       _files.add('config/debug/private.properties');
     } else {
       //copy project.properties from config/release to web/config
-      new File('config/release/public.properties').copySync('web/public/config/project.properties');
+      new File('config/release/public.properties').copySync('web/config/project.properties');
       //parse private.properties from config/release
       _files.add('config/release/private.properties');
     }
-    _files.add('web/public/config/project.properties');
+    _files.add('web/config/project.properties');
 
     //copy plugin language files to web folder
     Directory dir = new Directory('config/locale');
     var files = dir.listSync(recursive: false, followLinks: false);
     files.where((e) => e is File).forEach((FileSystemEntity file) {
-      (file as File).copySync('web/public/config/locale/${path.basename(file.path)}');
+      (file as File).copySync('web/config/locale/${path.basename(file.path)}');
     });
 
     //treat examples properties and examples
@@ -58,13 +58,13 @@ class InjectProperties extends Transformer {
 
       //copy examples language files to web folder (merge if existing)
       files.where((e) => e is Directory && e.path.contains("locale")).forEach((FileSystemEntity d) {
-        _recursiveFolderCopySync(d.path, 'web/public/config/locale');
+        _recursiveFolderCopySync(d.path, 'web/config/locale');
       });
 
       //copy examples assets files to web folder
       files = dir.listSync(recursive: false, followLinks: false);
       files.where((e) => e is Directory).forEach((FileSystemEntity d) {
-        _recursiveFolderCopySync(path.join(d.path, "assets"), 'web/public/assets/${path.basename(d.path)}/');
+        _recursiveFolderCopySync(path.join(d.path, "assets"), 'web/assets/${path.basename(d.path)}/');
       });
     }
 

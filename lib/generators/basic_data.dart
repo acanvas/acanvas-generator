@@ -15,12 +15,12 @@ List<String> data = [
   "lib/src/project/view/screen/two.dart",
   "lib/transformer.dart",
   "pubspec.yaml",
-  "web/public/assets/autoload/displacement_bubble.png",
-  "web/public/assets/autoload/logo_rockdot_small@1x.png",
-  "web/public/assets/autoload/logo_rockdot_small@2x.png",
-  "web/public/assets/autoload/logo_rockdot_small@3x.png",
-  "web/public/assets/autoload/rockdot@1x.png",
-  "web/public/assets/autoload/rockdot@2x.png",
-  "web/public/assets/autoload/rockdot@3x.png",
-  "web/public/assets/home/rockdot_spring_architecture.png"
+  "web/assets/autoload/displacement_bubble.png",
+  "web/assets/autoload/logo_rockdot_small@1x.png",
+  "web/assets/autoload/logo_rockdot_small@2x.png",
+  "web/assets/autoload/logo_rockdot_small@3x.png",
+  "web/assets/autoload/rockdot@1x.png",
+  "web/assets/autoload/rockdot@2x.png",
+  "web/assets/autoload/rockdot@3x.png",
+  "web/assets/home/rockdot_spring_architecture.png"
 ];

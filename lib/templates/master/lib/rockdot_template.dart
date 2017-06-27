@@ -2,15 +2,15 @@ library rockdot_template;
 
 import 'dart:html' as html;
 import 'dart:math' hide Rectangle, Point;
-import 'dart:async';
+import 'dart:async' show Future, Timer;
 
 import 'package:stagexl/stagexl.dart';
 import 'package:rockdot_commons/rockdot_commons.dart';
-import 'package:rockdot_spring/rockdot_spring.dart';
+import 'package:rockdot_spring/rockdot_spring.dart' show IObjectFactory, LoaderInfo, IObjectFactoryPostProcessor, IObjectPostProcessor;
 
 // ##### ROCKDOT CORE #####
-import 'package:rockdot_framework/src/core.dart';
-import 'package:rockdot_framework/src/io.dart';
+import 'package:rockdot_framework/src/core.all.dart';
+import 'package:rockdot_framework/src/plugin.io.dart' show IOPlugin;
 
 import 'package:rockdot_template/rockdot_template_plugins.dart';
 

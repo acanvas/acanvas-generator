@@ -90,7 +90,7 @@ void test() {
         }
       }
 
-      File entrypoint = joinFile(fooDir, ['web', 'public', 'index.html']);
+      File entrypoint = joinFile(fooDir, ['web', 'index.html']);
       String filePath = _locateDartFile(entrypoint).path;
       filePath = filePath.replaceAll('projectName', 'foo');
 

@@ -11,7 +11,7 @@ build/
 .settings/
 lib/templates/master/config/
 lib/templates/master/web/application/
-lib/templates/master/web/public/assets/
-lib/templates/master/web/public/admin_assets/
-lib/templates/master/web/public/config/
-lib/templates/master/web/public/mysql/
+lib/templates/master/web/assets/
+lib/templates/master/web/admin_assets/
+lib/templates/master/web/config/
+lib/templates/master/web/mysql/

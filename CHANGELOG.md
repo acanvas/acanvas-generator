@@ -1,5 +1,23 @@
 # CHANGELOG ROCKDOT_GENERATOR
 
+## 0.11.0 Roadmap
+
+- Make Rockdot a Progressive Web App (PWA)
+- Make FlexBook a Custom Renderer for all Examples
+- Make MoppiFlower a Custom Renderer for all Examples
+
+## 0.10.0 Roadmap
+
+- Finalize UGC Backend / maybe move to Angel
+- Move more meta data into properties
+- Include custom Shaders in Examples (zoom/fire)
+
+## 0.9.13 2017-06-27
+
+- Templates now support 'pub serve' with Dart Dev Compiler by default – happy debugging in Chrome!
+- Content is now published to web/ instead of web/public/
+- Imports have been cleaned up
+
 ## 0.9.12 2017-06-23
 
 - Fix for HiDPI
@@ -77,7 +95,7 @@
 - StageXL BitmapFont Extension Example: Simple 
 - StageXL BitmapFont Extension Example: Texture Atlas 
 - StageXL BitmapFont Extension Example: Distance Field 
-- Changed root for collect_assets to web/public/assets/autoload  
+- Changed root for collect_assets to web/assets/autoload
 
 ## 0.9.0
 
