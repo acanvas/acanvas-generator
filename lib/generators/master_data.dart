@@ -3,20 +3,6 @@
 // license that can be found in the LICENSE file.
 String type = "master";
 List<String> data = [
-  "web/html/css/project.css",
-  "web/html/images/RCKDT_bg.jpg",
-  "web/html/images/RCKDT_share_128x128.jpg",
-  "web/html/images/RCKDT_share_1800.png",
-  "web/html/images/icon/RCKDT_ico_128.png",
-  "web/html/images/icon/RCKDT_ico_16.png",
-  "web/html/images/icon/RCKDT_ico_32.png",
-  "web/html/images/icon/apple-touch-icon-precomposed.png",
-  "web/html/images/icon/apple-touch-icon.png",
-  "web/html/images/icon/chrome-touch-icon-192x192.png",
-  "web/html/images/icon/favicon.ico",
-  "web/html/images/icon/ms-touch-icon-144x144-precomposed.png",
-  "web/index.html",
-  "web/project.dart",
   ".analysis_options",
   ".gitignore",
   "bin/add_command.dart",
