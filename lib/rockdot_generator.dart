@@ -85,7 +85,7 @@ abstract class Generator implements Comparable<Generator> {
     return files.firstWhere((file) => file.path == path, orElse: () => null);
   }
 
-  final RegExp _binaryFileTypes = new RegExp(r'\.(jpe?g|png|gif|ico|svg|ttf|eot|woff|woff2)$', caseSensitive: false);
+  final RegExp _binaryFileTypes = new RegExp(r'\.(jpe?g|png|gif|ico|svg|ttf|eot|woff|woff2|mp3|ogg)$', caseSensitive: false);
 
   /**
    * Returns true if the given [filename] matches common image file name patterns.

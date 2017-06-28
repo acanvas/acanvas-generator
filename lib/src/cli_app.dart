@@ -7,9 +7,11 @@ library rockdot_generator.cli_app;
 import 'dart:async';
 import 'dart:convert' show JSON;
 import 'dart:io' as io;
+import 'dart:io';
 import 'dart:math';
 
 import 'package:args/args.dart';
+import 'package:archive/archive.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
@@ -128,9 +130,35 @@ class CliApp {
     String author = options['author'];
     Map<String, String> vars = {'author': author};
 
+    if(options["ugc"]){
+
+      //TODO download zend.zip, extract to server/zend
+      HttpClientRequest request = await new HttpClient().getUrl(Uri.parse('http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
+      HttpClientResponse response = await request.close();
+      File file = new File(path.join(dir.path, 'server', 'rockdot-zend-library.zip'));
+      await response.pipe(file.openWrite());
+
+      List<int> bytes = new File('test.zip').readAsBytesSync();
+
+      // Decode the Zip file
+      Archive archive = new ZipDecoder().decodeBytes(bytes);
+
+      // Extract the contents of the Zip archive to disk.
+      for (ArchiveFile file in archive) {
+        String filename = file.name;
+        List<int> data = file.content;
+        new File(path.join(dir.path, 'server', 'zend', filename))
+          ..createSync(recursive: true)
+          ..writeAsBytesSync(data);
+      }
+
+    }
+
+
     Future f = generator.generate(projectName, target, additionalVars: vars);
     return f.then((_) {
       _out("${generator.numFiles()} files written.");
+
 
       String message = generator.getInstallInstructions();
       if (message != null && message.isNotEmpty) {

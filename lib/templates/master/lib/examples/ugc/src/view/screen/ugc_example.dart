@@ -1,6 +1,5 @@
 part of ugc_example;
 
-@retain
 class UGCExample extends AbstractReflowScreen {
   static const int WIDTH_BUTTON = 240;
 

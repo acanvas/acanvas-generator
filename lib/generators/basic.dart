@@ -6,6 +6,7 @@ library rockdot_generator.rockdot.basic;
 
 import '../rockdot_generator.dart';
 import '../src/common.dart';
+import 'dart:io';
 import 'dart:async';
 import 'master_data.dart' as master_data;
 import 'basic_data.dart' as basic_data;
@@ -213,6 +214,9 @@ class BasicGenerator extends DefaultGenerator {
           case "ugc":
             //TODO ugc example doesn't complete its Future
             await _installPluginData(ugc_data.type, ugc_data.data);
+
+
+
             break;
           case "babylon":
             _addLibraryToRootPubspec("babylonjs_facade", "https://github.com/blockforest/babylonjs-dart-facade");

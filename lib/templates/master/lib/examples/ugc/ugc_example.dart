@@ -1,6 +1,6 @@
 library ugc_example;
 
-import 'package:rockdot_commons/rockdot_commons.dart' show Rd;
+import 'package:rockdot_commons/rockdot_commons.dart' show Rd, MdWrap;
 
 import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
 import 'package:rockdot_template/rockdot_template.dart'
