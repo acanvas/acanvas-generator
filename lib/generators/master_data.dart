@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 String type = "master";
 List<String> data = [
+  "lib/src/project/view/element/pager/pager_prev_next_button.dart",
   ".analysis_options",
   ".gitignore",
   "bin/add_command.dart",
@@ -180,7 +181,6 @@ List<String> data = [
   "lib/examples/google/src/model/google_example_screen_ids.dart",
   "lib/examples/google/src/view/element/pager/google_plus_friend_photo_pager.dart",
   "lib/examples/google/src/view/element/pager/image_item_button.dart",
-  "lib/examples/google/src/view/element/pager/pager_prev_next_button.dart",
   "lib/examples/google/src/view/screen/google_example.dart",
   "lib/examples/google/src/view/screen/google_friends.dart",
   "lib/examples/isometric/config/locale/en.properties",

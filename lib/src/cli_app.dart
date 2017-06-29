@@ -123,37 +123,45 @@ class CliApp {
       target = new _DirectoryGeneratorTarget(logger, dir);
     }
 
+    _out("Preparing ${generator.id} application '${projectName}':");
     await generator.prepare(options);
 
-    _out("Creating ${generator.id} application '${projectName}':");
 
     String author = options['author'];
     Map<String, String> vars = {'author': author};
 
     if(options["ugc"]){
       //Download zend.zip, extract to server/target/Zend
+      _out("Downloading Zend for your UGC backend ...");
+
+      new Directory(path.join(dir.path, 'server', 'target', 'zend')).createSync(recursive: true);
 
       HttpClientRequest request = await new HttpClient().getUrl(Uri.parse('http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
       HttpClientResponse response = await request.close();
       File file = new File(path.join(dir.path, 'server', 'rockdot-zend-library.zip'));
       await response.pipe(file.openWrite());
 
-      List<int> bytes = new File('test.zip').readAsBytesSync();
+      _out("Extracting Zend for your UGC backend ...");
 
-      // Decode the Zip file
+      List<int> bytes = file.readAsBytesSync();
       Archive archive = new ZipDecoder().decodeBytes(bytes);
 
       // Extract the contents of the Zip archive to disk.
       for (ArchiveFile file in archive) {
-        String filename = file.name;
-        List<int> data = file.content;
-        new File(path.join(dir.path, 'server', 'target', 'zend', filename))
-          ..createSync(recursive: true)
-          ..writeAsBytesSync(data);
+        if(file.isFile){
+          String filename = file.name;
+          List<int> data = file.content;
+          new File(path.join(dir.path, 'server', 'target', filename))
+            ..createSync(recursive: true)
+            ..writeAsBytesSync(data);
+        }
       }
+
+      file.deleteSync();
 
     }
 
+    _out("Creating ${generator.id} application '${projectName}':");
 
     Future f = generator.generate(projectName, target, additionalVars: vars);
     return f.then((_) {
