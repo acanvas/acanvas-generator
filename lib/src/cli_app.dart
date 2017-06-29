@@ -131,8 +131,8 @@ class CliApp {
     Map<String, String> vars = {'author': author};
 
     if(options["ugc"]){
+      //Download zend.zip, extract to server/target/Zend
 
-      //TODO download zend.zip, extract to server/zend
       HttpClientRequest request = await new HttpClient().getUrl(Uri.parse('http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
       HttpClientResponse response = await request.close();
       File file = new File(path.join(dir.path, 'server', 'rockdot-zend-library.zip'));
@@ -147,7 +147,7 @@ class CliApp {
       for (ArchiveFile file in archive) {
         String filename = file.name;
         List<int> data = file.content;
-        new File(path.join(dir.path, 'server', 'zend', filename))
+        new File(path.join(dir.path, 'server', 'target', 'zend', filename))
           ..createSync(recursive: true)
           ..writeAsBytesSync(data);
       }

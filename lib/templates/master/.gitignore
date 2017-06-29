@@ -1,5 +1,6 @@
 build
 cache/
+server/target/
 deploy
 packages
 pubspec.lock

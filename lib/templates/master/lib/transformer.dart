@@ -39,7 +39,7 @@ class InjectProperties extends Transformer {
     _recursiveFolderCopySync("../facebook", ".");
     _recursiveFolderCopySync("../google", ".");
     _recursiveFolderCopySync("../physics", ".");
-    //_recursiveFolderCopySync("../ugc",".");
+    _recursiveFolderCopySync("../ugc/config","config");
 
     /**
      *  copy different properties

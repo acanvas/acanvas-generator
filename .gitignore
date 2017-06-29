@@ -10,8 +10,6 @@ build/
 .pub
 .settings/
 lib/templates/master/config/
-lib/templates/master/web/application/
+lib/templates/master/server/
 lib/templates/master/web/assets/
-lib/templates/master/web/admin_assets/
 lib/templates/master/web/config/
-lib/templates/master/web/mysql/
