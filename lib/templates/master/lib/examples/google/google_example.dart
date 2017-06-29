@@ -21,4 +21,3 @@ part 'src/view/screen/google_friends.dart';
 
 part 'src/view/element/pager/google_plus_friend_photo_pager.dart';
 part 'src/view/element/pager/image_item_button.dart';
-part 'src/view/element/pager/pager_prev_next_button.dart';

@@ -280,6 +280,9 @@ dependencies:
   /// Removes references to plugin examples from plugins.dart
   String _uninstallPluginExamplesBootstrap(String plugin, String content) {
     plugin = plugin[0].toUpperCase() + plugin.substring(1);
+    if(plugin == "Gaf"){
+      plugin = "GAF"; //stupid hack
+    }
     print("uninstalling ${plugin}");
     content = content.replaceAllMapped(
         new RegExp("new ${plugin}ExamplePlugin([^,]+)"), (m) => "//new ${plugin}ExamplePlugin${m[1]},");

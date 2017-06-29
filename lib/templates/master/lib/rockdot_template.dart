@@ -47,6 +47,7 @@ part 'src/project/view/element/navigation.dart';
 part 'src/project/view/element/navigation_sidebar.dart';
 part 'src/project/view/element/cell/list_menu_cell.dart';
 part 'src/project/view/element/pager/abstract_photo_pager.dart';
+part 'src/project/view/element/pager/pager_prev_next_button.dart';
 
     // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
   
