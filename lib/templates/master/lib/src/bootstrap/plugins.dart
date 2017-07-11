@@ -29,7 +29,7 @@ class Plugins {
       new IOPlugin(),
       new GooglePlugin(),
       new FacebookPlugin(),
-      //new UGCPlugin(),            /* persistency, requires Rockdot Zend backend */
+      new UGCPlugin(),            /* persistency, requires Rockdot Zend backend */
       new BabylonPlugin(autoInit: true),
 
       //----------------------------
@@ -84,7 +84,7 @@ class Plugins {
       new MoppiFlowerExamplePlugin(_exampleOrder++),
 
       //Rockdot Framework - User Generated Content Backend Examples
-      //new UGCExamplePlugin(_exampleOrder++),
+      new UGCExamplePlugin(_exampleOrder++),
 
       // Our project. Contains the Home Page. It's a plugin, too!
       new Project()

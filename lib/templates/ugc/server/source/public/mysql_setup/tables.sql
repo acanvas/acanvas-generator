@@ -62,9 +62,11 @@ CREATE TABLE IF NOT EXISTS `@accounts.dbtableprefix@_users_like_items` (
 
 CREATE TABLE IF NOT EXISTS `@accounts.dbtableprefix@_users_complain_items` (
   `uid` varchar(25) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `reason` tinytext NOT NULL default '',
   `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  KEY `uid` (`uid`)
+  KEY `uid` (`uid`),
+  KEY `item_id` (`item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -104,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `@accounts.dbtableprefix@_items` (
   `title` varchar(255) DEFAULT NULL,
   `description` tinytext DEFAULT NULL,
   `like_count` int(11) NOT NULL DEFAULT 0,
+  `rating` FLOAT(5,2) NOT NULL DEFAULT '0.0',
   `complain_count` int(11) NOT NULL DEFAULT 0,
   `flag` int(1) NOT NULL DEFAULT 0,
   `type` int(1) NOT NULL DEFAULT 0,

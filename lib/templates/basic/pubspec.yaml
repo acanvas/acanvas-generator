@@ -27,4 +27,4 @@ transformers:
 - $dart2js:
     commandLineOptions: ["--trust-type-annotations", "--trust-primitives"]
     minify: true
-    $exclude: ["bin/add_command.dart", "bin/add_element.dart", "bin/add_screen.dart", "bin/collect_assets.dart", "bin/add_plugin.dart"]
+    $exclude: ["bin/add_command.dart", "bin/add_element.dart", "bin/add_screen.dart", "bin/collect_assets.dart", "bin/add_plugin.dart", "bin/update_backend.dart"]

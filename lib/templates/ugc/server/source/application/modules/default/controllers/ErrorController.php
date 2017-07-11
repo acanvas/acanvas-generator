@@ -149,7 +149,7 @@ class ErrorController extends Zend_Controller_Action{
 		//handle bootstrap errors (maybe no view or some other dependecies not loaded)
 		if(APPLICATION_ENV !== 'production'){
 			if($this->view == NULL || ($this->getInvokeArg('bootstrap') === NULL && isset($this->_errors->exception))){
-				exit('<h1>Coder-Notice! RdBootstrap not loaded completely, chain broken! Application Exception!</h1><p>'.$this->_errors->exception->getMessage().'</p>');
+				exit('<h1>Coder-Notice! Bootstrap not loaded completely, chain broken! Application Exception!</h1><p>'.$this->_errors->exception->getMessage().'</p>');
 			}
 		}
 		elseif($this->view == NULL || ($this->getInvokeArg('bootstrap') === NULL)){

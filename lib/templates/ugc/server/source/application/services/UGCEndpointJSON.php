@@ -7,7 +7,7 @@ protected $sql_table_prefix;
 		//normally, we would extend Rockdot_DBTable, but then this class wouldn't work as an AMF Endpoint
 		$this->table = new Rockdot_DBTable();
 		
-		$this->sql_table_prefix = "rockdotdemo";//Zend_Registry::get('Application_Config')->db->prefix;
+		$this->sql_table_prefix = Zend_Registry::get('Application_Config')->db->prefix;
 	}
 	/* ########################################################
 		Read Item
@@ -34,7 +34,7 @@ protected $sql_table_prefix;
 		$rows["likers"] = $this->table->read(
 				'users_like_items',
 				array('item_id' => $rows["id"]),
-				array('users', 'uid', 'uid'),
+				array(/*'users', 'uid', 'uid'*/),
 				50, 0
 		);
 
@@ -128,38 +128,47 @@ protected $sql_table_prefix;
 	public function readItemContainer($json) {
 		$req = $this->_parseDTO($json);
 
+		/*
 		//GET CONTAINER
 		$rows = $this->table->adapter->fetchAll(
-				$this->table->adapter->find($req->id)
+				$this->table->find($req->id)
 				->from($this->sql_table_prefix . "_itemcontainers")
 		);
+		*/
+
+		$rows = $this->table->read(
+        					'itemcontainers',
+        					array('id' => $req->id),
+        					array(),
+        					0, 0
+        			);
 
 		if(!empty($rows))
 		{
 			//read items into ->items
-			$rows[0]->items = $this->read(
+			$rows[0]["items"] = $this->table->read(
 					'items',
-					array('container_id' => $rows[0]->id),
+					array('container_id' => $rows[0]["id"]),
 					array(),
 					0, 0
 			);
 				
 			//read roles into ->roles
-			$rows[0]->roles = $this->read(
+			$rows[0]["roles"] = $this->table->read(
 					'itemcontainer_roles',
-					array('container_id' => $rows[0]->id),
+					array('container_id' => $rows[0]["id"]),
 					array(),
 					0, 0
 			);
 
 			//read tasks into ->tasks
-			$rows[0]->task = $this->table->adapter->fetchAll(
+			$rows[0]["task"] = $this->table->adapter->fetchAll(
 					$this->table->adapter->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
-					->setIntegrityCheck(false)
+					//->setIntegrityCheck(false)
 					->from($this->sql_table_prefix . '_itemcontainers_tasks')
-					->where("container_id = ?", $rows[0]->id)
+					->where("container_id = ?", $rows[0]["id"])
 					->join($this->sql_table_prefix . '_tasks', $this->sql_table_prefix . '_itemcontainers_tasks.task_id = ' . $this->sql_table_prefix . '_tasks.id')
-					->join($this->sql_table_prefix . '_task_categories', $this->sql_table_prefix . '_itemcontainers_tasks.category_id = ' . $this->sql_table_prefix . '_task_categories.id')
+					->join($this->sql_table_prefix . '_task_categories', $this->sql_table_prefix . '_tasks.category_id = ' . $this->sql_table_prefix . '_task_categories.id')
 
 			);
 		}
@@ -188,9 +197,9 @@ protected $sql_table_prefix;
 	private function readItemContainersByUIDAndRole($uid, $role) {
 		return $this->table->adapter->fetchAll(
 				$this->table->adapter->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
-				->setIntegrityCheck(false)
+				//->setIntegrityCheck(false)
 				->from($this->sql_table_prefix . '_itemcontainers')
-				->where("container_id = ?", $rows[0]->id)
+			//	->where("container_id = ?", $rows[0]->id)
 				->join($this->sql_table_prefix . '_itemcontainer_roles', $this->sql_table_prefix . '_itemcontainers.id = ' . $this->sql_table_prefix . '_itemcontainer_roles.container_id')
 				->where($this->sql_table_prefix . "_itemcontainer_roles.uid = ?", $uid)
 				->where($this->sql_table_prefix . "_itemcontainer_roles.role = ?", $role)
@@ -275,12 +284,14 @@ protected $sql_table_prefix;
 					'pic' => $req->pic
 			);
 				
-			$where[] = "uid = '$req->uid'";
+			$where = array(
+                            'uid'      => '$req->uid'
+                        );
 				
 			$this->table->_update("users", $data, $where);
 		}
 
-		return $this->table->read("users", array("uid" => $req->uid), array(), 1, 0);
+		return $userInsertId; //$this->table->read("users", array("uid" => $req->uid), array(), 1, 0);
 	}
 	
 	private function _parseDTO($json) {
@@ -307,21 +318,21 @@ protected $sql_table_prefix;
 	public function sendMail($json) {
 		$req = $this->_parseDTO($json);
 		
-		$subject = mysql_real_escape_string($req->subject);
+		$subject = /* mysql_real_escape_string */($req->subject);
 		$subject='=?UTF-8?B?'.base64_encode($subject).'?=';
 
-		$sender = mysql_real_escape_string($req->sender);
-		$body = mysql_real_escape_string($req->body);
+		$sender = /* mysql_real_escape_string */($req->sender);
+		$body = /* mysql_real_escape_string */($req->body);
 		$body = str_replace("<br>", "\n", $body);
 		$body = str_replace("<br/>", "\n", $body);
 
-		$hash = mysql_real_escape_string($req->hash);
-		$email = mysql_real_escape_string($runObj->email);
+		$hash = /* mysql_real_escape_string */($req->hash);
+		$email = /* mysql_real_escape_string */($req->email);
 
 		$link = "http://backend.local.com:8888/confirm.php?e=". $email ."&h=" . $hash;
 		$header = 'Content-Type: text/plain; charset=UTF-8; format=flowed\r\n MIME-Version 1.0\r\n Content-Transfer-Encoding: 8bit' . "\r\n" .
 				'From: ' . $sender . "\r\n" .
-				'Reply-To: nilsdoehring@gmail.com' . "\r\n" .
+				'Reply-To: ' . Zend_Registry::get('Application_Config')->email->replyto . "\r\n" .
 				'X-Mailer: PHP/' . phpversion();
 
 		$res = ("Message delivery failed...");
@@ -330,8 +341,8 @@ protected $sql_table_prefix;
 		if (mail($email, $subject, $body, $header)) {
 			$res = ("Message successfully sent!");
 		}
-			
-			
+
+
 		return $res;
 
 	}
@@ -346,7 +357,7 @@ protected $sql_table_prefix;
 	 */
 	public function createUserExtended($json) {
 		$req = $this->_parseDTO($json);
-		
+
 		$res = $this->table->create("users_extended", $req );
 
 		/*
@@ -393,7 +404,7 @@ protected $sql_table_prefix;
 	 */
 	public function hasUserExtendedToday($json) {
 		$req = $this->_parseDTO($json);
-		
+
 		$rows = $this->table->read(
 				'users_extended',
 				array('uid' => $req->uid),
@@ -423,10 +434,10 @@ protected $sql_table_prefix;
 
 		$tbl = new stdClass();
 
-		$tbl->from_id = mysql_real_escape_string($req->uid);
-		$tbl->request_id = mysql_real_escape_string($req->request);
-		$tbl->data = mysql_real_escape_string($req->data);
-		$tbl->to_ids = mysql_real_escape_string($req->to_ids);
+		$tbl->from_id = /* mysql_real_escape_string */($req->uid);
+		$tbl->request_id = /* mysql_real_escape_string */($req->request);
+		$tbl->data = /* mysql_real_escape_string */($req->data);
+		$tbl->to_ids = /* mysql_real_escape_string */($req->to_ids);
 		$tbl->error_code = "";
 		$tbl->error_msg = "";
 
@@ -450,16 +461,16 @@ protected $sql_table_prefix;
 		$uid = $req->uid;
 		$id = $req->id;
 
-		$this->table->adapter->delete(array("uid" => $uid, "item_id" => $id))
-		->from($this->sql_table_prefix . "_users_like_items")
-		->where("uid", $uid);
+		$affectedRows = $this->table->_delete("users_like_items", array("uid" => $uid, "item_id" => $id));
 
-		if($this->table->adapter->getAffectedRows() == 0){
+		if($affectedRows == 0){
 			$data = array(
-					'like_count'      => 'like_count+1'
+                'like_count'      => 'like_count+1'
 			);
 				
-			$where[] = "id = '$id'";
+			$where = array(
+                'id'      => '$id'
+            );
 				
 			$this->table->_update("items", $data, $where);
 		}
@@ -484,18 +495,17 @@ protected $sql_table_prefix;
 		$uid = $req->uid;
 		$id = $req->id;
 
-		$this->table->adapter->delete(array("uid" => $uid, "item_id" => $id))
-		->from($this->sql_table_prefix . "_users_like_items")
-		->where("uid", $uid)
-		->where("item_id", $id);
+		$affectedRows = $this->table->_delete("users_like_items", array("uid" => $uid, "item_id" => $id));
 
-		if($this->table->adapter->getAffectedRows() == 0){
+        if($affectedRows == 0){
 			$data = array(
 					'like_count'      => 'like_count+1'
 			);
 				
-			$where[] = "id = '$id'";
-				
+			$where = array(
+                'id'      => '$id'
+            );
+
 			$this->table->_update("items", $data, $where);
 		}
 		return "ok";
@@ -518,8 +528,7 @@ protected $sql_table_prefix;
 		$rating = $req->rating;
 
 
-		$this->table->adapter->delete(array("uid" => $uid, "item_id" => $id))
-		->from($this->sql_table_prefix . "_users_like_items");
+        $this->table->_delete("users_like_items", array("uid" => $uid, "item_id" => $id));
 
 		$data = array(
 				'uid'      => $uid,
@@ -538,11 +547,13 @@ protected $sql_table_prefix;
 			$row = $rows[0];
 				
 			$data = array(
-					'like_count'      => $row[0]["sum"],
-					'liker_count'      => $row[0]["count"]
+					'rating'      => $row["sum"] / $row["count"],
+					'like_count'      => $row["count"]
 			);
 				
-			$where[] = "id = '$id'";
+			$where = array(
+                            'id'      => '$id'
+                        );
 				
 			$this->table->_update("items", $data, $where);
 		}
@@ -565,18 +576,18 @@ protected $sql_table_prefix;
 		$uid = $req->uid;
 		$id = $req->id;
 
-		$this->table->adapter->delete(array("uid" => $uid, "item_id" => $id))
-		->from($this->sql_table_prefix . "_users_complain_items");
+        $affectedRows = $this->table->_delete("users_complain_items", array("uid" => $uid, "item_id" => $id));
 
-
-		if($this->table->adapter->getAffectedRows() == 0){
+		if($affectedRows == 0){
 			$data = array(
 					'complain_count'      => 'complain_count+1'
 			);
 				
-			$where[] = "id = '$id'";
+			$where = array(
+                            'id'      => '$id'
+                        );
 				
-			$this->table->adapter->update("items", $data, $where);
+			$this->table->_update("items", $data, $where);
 		}
 
 		$data = array(
@@ -601,9 +612,11 @@ protected $sql_table_prefix;
 				'blocked_status'      => 2
 		);
 			
-		$where[] = "id = '$req->id'";
+		$where = array(
+                        'id'      => '$req->id'
+                    );
 			
-		$this->table->adapter->update("items", $data, $where);
+		$this->table->_update("items", $data, $where);
 
 		return "ok";
 	}

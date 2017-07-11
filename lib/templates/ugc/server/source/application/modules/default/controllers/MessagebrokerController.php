@@ -28,8 +28,9 @@ class MessagebrokerController extends Zend_Controller_Action
 		$server = new Zend_Json_Server();
 		$server->setClass('UGCEndpointJSON');
 
+		header("Access-Control-Allow-Origin: " . Zend_Registry::get('Application_Config')->page->domain);
 		header("Access-Control-Allow-Headers: Content-Type");
-		
+
 		if ("GET" == $_SERVER["REQUEST_METHOD"]) {
 			// Indicate the URL endpoint, and the JSON-RPC version used:
 			$server->setTarget("/messagebroker/json");

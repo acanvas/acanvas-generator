@@ -6,7 +6,7 @@
 | Author: Nils Döhring <nils.doehring@gmail.com>									|
 +---------------------------------------------------------------------------------------+
 *
-* @desc RdBootstrap initializes Application
+* @desc Bootstrap initializes Application
 * i.e. loads runtime resources, configuration, session setup, routing, caching, intrusion detection
 *
 * @author _________nils.doehring
@@ -38,7 +38,7 @@
 *
 */
 
-class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
+class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 	/*	+-----------------------------------------------------------------------------------+
 	 | 	member vars
 	+-----------------------------------------------------------------------------------+  */
@@ -194,7 +194,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			Zend_Controller_Front::getInstance()->throwExceptions(true);
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initConfig() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initConfig() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -244,7 +244,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			$autoloader->registerNamespace('Rockdot');
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initAutoload() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initAutoload() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -276,7 +276,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			}
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initSession() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initSession() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -308,7 +308,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//------------------------------------------------
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initLayout() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initLayout() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -354,7 +354,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			}
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initAdminRequests() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initAdminRequests() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -474,7 +474,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			}
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initLanguage() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initLanguage() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -528,7 +528,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			defined('APPLICATION_LANG') || define('APPLICATION_LANG', $locale->getLanguage());
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initLocale() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initLocale() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -597,7 +597,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			$controller->setRouter($router);
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initRoute() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initRoute() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -636,7 +636,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			Zend_Registry::set('dbAdapter', $db);
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initDatabase() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initDatabase() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -699,7 +699,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			Zend_Layout::getMvcInstance()->getView()->registerHelper(new Rockdot_Zend_View_Helper_Script(), 'script');	//footerscript parent of headscript
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initPluginsAndHelpers() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initPluginsAndHelpers() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -726,7 +726,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			Zend_Registry::set('Zend_Navigation', $navigation);
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initPluginsAndHelpers() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initPluginsAndHelpers() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -809,7 +809,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//---------------------------------------------------------
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initCache() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initCache() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
@@ -943,7 +943,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			}
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initPHPIDS() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initPHPIDS() failed with message('.$e->getMessage().')', 2000);
 		}
 		//reset includepath
 		set_include_path($includePath);
@@ -976,7 +976,7 @@ class RdBootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			}
 		}
 		catch(Exception $e){
-			throw new Zend_Application_Exception('RdBootstrap->initResponse() failed with message('.$e->getMessage().')', 2000);
+			throw new Zend_Application_Exception('Bootstrap->initResponse() failed with message('.$e->getMessage().')', 2000);
 		}
 	}
 
