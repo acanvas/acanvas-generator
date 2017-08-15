@@ -13,7 +13,9 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
   ImageSprite _bmp;
   ImageSprite _bmp2;
 
-  Home(String id) : super(id) {}
+  Home(String id) : super(id) {
+    print("fff");
+  }
 
   @override
   void init({Map<String, String> params: null}) {

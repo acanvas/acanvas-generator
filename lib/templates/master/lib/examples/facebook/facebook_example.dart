@@ -19,6 +19,4 @@ part 'src/view/screen/facebook_albums.dart';
 part 'src/view/screen/facebook_photos.dart';
 part 'src/view/element/cell/list_fb_album_cell.dart';
 
-part 'src/view/element/pager/abstract_polaroid_pager.dart';
 part 'src/view/element/pager/facebook_photo_polaroid_pager.dart';
-part 'src/view/element/pager/polaroid_item_button.dart';

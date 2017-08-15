@@ -2,10 +2,15 @@ part of rockdot_template;
 
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 
-class AbstractScreen extends RockdotLifecycleSprite {
+class AbstractScreen extends LifecycleSprite  with MApplicationContextAware{
   AbstractScreen(String id) : super(id) {
     padding = Rd.MOBILE ? 32 : 52;
     inheritSpan = true;
+  }
+
+  @override
+  String getProperty(String key, [bool omitPrefix = false, String prefix = ""]) {
+    return super.getProperty(key, omitPrefix, this.name);
   }
 
   /// This is the place where you add anything to this method that needs initialization.

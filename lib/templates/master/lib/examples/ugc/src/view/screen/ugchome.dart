@@ -1,22 +1,26 @@
 part of ugc_example;
 
-class UGCHome extends AbstractReflowScreen {
-  MdWrap _wrap01;
+class UGCHome extends AbstractScreen implements IUGCModelAware {
+  UGCGallery _photoPager;
+
+  UGCModel _ugcModel;
+  set ugcModel(UGCModel ugcModel) {
+    _ugcModel = ugcModel;
+  }
+
   UGCHome(String id) : super(id) {}
 
   @override
   void init({Map<String, String> params: null}) {
     super.init(params: params);
 
-    _wrap01 = new MdWrap(Theme.getHeadline(getProperty("col01").toUpperCase(), size: 18, color: Colors.WHITE),
-        panelColor: Colors.RED);
-    //_wrap01.addChild(new MdButton("DB Test", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)..submitEvent = new RdSignal(GoogleEvents.USER_LOGIN, new GoogleLoginVO(nextSignal: new RdSignal(StateEvents.ADDRESS_SET, getProperty(ScreenIDs.GOOGLE_FRIENDS + ".url", true)))));
-    _wrap01.addChild(new MdButton("DB Test", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE)..submitEvent = new RdSignal(UGCEvents.TEST));
-    _wrap01.span(300, 420);
-
-    reflow.addChild(_wrap01);
-
-    addChild(reflow);
+    _photoPager = new UGCGallery(applicationContext.getObject(UGCEvents.ITEMS_FILTER), 0, getProperty("pager.prev"),
+        getProperty("pager.next"), getProperty("pager.empty"));
+    _photoPager.submitCallback = _onItemClicked;
+    _photoPager.uploadButton.submitEvent =
+        new RdSignal(StateEvents.ADDRESS_SET, getProperty("${UGCExampleScreenIDs.UGC_LAYER_UPLOAD}.url", true));
+    addChild(_photoPager);
+    // _photoPager.resetAndLoad();
 
     onInitComplete();
   }
@@ -24,8 +28,13 @@ class UGCHome extends AbstractReflowScreen {
   @override
   void refresh() {
     super.refresh();
+    _photoPager.span(spanWidth, spanHeight);
+  }
 
-    // your redraw operations here
+  void _onItemClicked(UGCItemDTO dao) {
+    //this.log.debug("Item clicked. id: {0}, url_big: {1}", [dao.id, (dao.type_dao as UGCImageItemVO).url_big]);
+    _ugcModel.currentItemDAO = dao;
+    //new RdSignal(StateEvents.ADDRESS_SET, "/image/view").dispatch();
   }
 
   @override

@@ -25,7 +25,6 @@ class InitCommand extends AbstractCommand implements IStateModelAware, IScreenSe
 
     //App Navigation
     Navigation navigation = new Navigation("element.navigation");
-    RdContextUtil.wire(navigation);
     _uiService.navi.addChild(navigation);
     // navigation.init();
 

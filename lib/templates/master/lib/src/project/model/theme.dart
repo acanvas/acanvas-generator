@@ -54,6 +54,16 @@ class Theme {
         bgColor: bgColor, fontName: Theme.HEADLINE_FONT, fontColor: fontColor, width: width, shadow: shadow);
   }
 
+  static MdInput getInput(
+      {String label: "", String name: "", String required: "",
+      int textColor: Colors.GREY_MIDDLE, bool password: false}) {
+    MdInput input = new MdInput(label, fontName: Theme.COPY_FONT, textColor: textColor, password: password);
+    if(name != ""){
+      input.name = name;
+    };
+    return input;
+  }
+
   static MdWrap getWrap({String label: "", int panelColor: MD_BUTTON_COLOR, AlignH align: AlignH.LEFT}) {
     return new MdWrap(Theme.getHeadline(label.toUpperCase(), size: 18, color: Colors.WHITE),
         align: align, panelColor: panelColor);
