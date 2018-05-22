@@ -1,12 +1,12 @@
 name: rockdot_generator
-version: 0.9.13
+version: 0.10.0-dev
 authors:
 - Nils Döhring <nilsdoehring@gmail.com>
 description: |
   A CLI to generate skeletons of Canvas/WebGL projects based on StageXL and Rockdot. Supports activation of extensions and examples via command line options.
 homepage: https://github.com/block-forest/rockdot-generator
 environment:
-  sdk: '>=1.21.0'
+  sdk: '>=2.0.0-dev.55.0 <2.0.0'
 dependencies:
   args: '>=0.12.0+1 <0.13.0'
   archive: any
@@ -24,4 +24,4 @@ dev_dependencies:
   grinder: '>=0.7.0 <0.7.1'
   unittest: any
 executables:
-  rockdot_generator: null
+  rdgen: null

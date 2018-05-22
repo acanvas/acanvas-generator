@@ -19,7 +19,7 @@ void main(List<String> args) {
         io.exit(1);
       } else {
         print('Unexpected error: ${e}\n${st}');
-          io.exit(1);
+        io.exit(1);
       }
     }).whenComplete(() {
       // Always exit quickly after performing work. If the user has opted into

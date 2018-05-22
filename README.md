@@ -1,6 +1,6 @@
 # Rockdot Generator - a CLI to start your Rockdot project with ease!
 
-![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/lib/templates/basic/web/assets/autoload/rockdot.png)
+![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/templates/basic/web/assets/autoload/rockdot.png)
 
 [![Coverage Status](https://coveralls.io/repos/block-forest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/rockdot-generator)
 [![Travis Build Status](https://travis-ci.org/block-forest/rockdot-generator.svg?branch=master)](https://travis-ci.org/block-forest/rockdot-generator)
@@ -128,7 +128,7 @@ Note: Point your browser to the public subdirectory like this: http://localhost:
 
 # Notes for generator developers (that's me)
 
-Generator was built in a way that the 'master' template under `lib/templates/master/` can be directly opened as an IDEA project, with all plugins and examples activated, in order to allow for easy develop/debug of the master template. This decision stems from experience, and is less error prone than having to generate a project and merge back the changes (especially since package names will differ as well as content that has been auto-injected).
+Generator was built in a way that the 'master' template under `templates/master/` can be directly opened as an IDEA project, with all plugins and examples activated, in order to allow for easy develop/debug of the master template. This decision stems from experience, and is less error prone than having to generate a project and merge back the changes (especially since package names will differ as well as content that has been auto-injected).
 
 Inner workings:
 - Before pushing a new version, you need to run `dart tool/grind.dart` to generate Lists of String with the file uri's of the assets that need to end up in the target directory.

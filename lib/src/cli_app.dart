@@ -23,7 +23,8 @@ const String APP_NAME = 'rockdot_generator';
 // This version must be updated in tandem with the pubspec version.
 const String APP_VERSION = '0.9.3';
 
-const String APP_PUB_INFO = 'https://pub.dartlang.org/packages/${APP_NAME}.json';
+const String APP_PUB_INFO =
+    'https://pub.dartlang.org/packages/${APP_NAME}.json';
 
 class CliApp {
   final List<Generator> generators;
@@ -103,7 +104,8 @@ class CliApp {
     if (generator == null) {
       logger.stderr("'${generatorName}' is not a valid generator.\n");
       _usage(argParser);
-      return new Future.error(new ArgError("'${generatorName}' is not a valid generator."));
+      return new Future.error(
+          new ArgError("'${generatorName}' is not a valid generator."));
     }
 
     io.Directory dir = cwd;
@@ -126,19 +128,21 @@ class CliApp {
     _out("Preparing ${generator.id} application '${projectName}':");
     await generator.prepare(options);
 
-
     String author = options['author'];
     Map<String, String> vars = {'author': author};
 
-    if(options["ugc"]){
+    if (options["ugc"]) {
       //Download zend.zip, extract to server/target/Zend
       _out("Downloading Zend for your UGC backend ...");
 
-      new Directory(path.join(dir.path, 'server', 'target', 'zend')).createSync(recursive: true);
+      new Directory(path.join(dir.path, 'server', 'target', 'zend'))
+          .createSync(recursive: true);
 
-      HttpClientRequest request = await new HttpClient().getUrl(Uri.parse('http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
+      HttpClientRequest request = await new HttpClient().getUrl(Uri.parse(
+          'http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
       HttpClientResponse response = await request.close();
-      File file = new File(path.join(dir.path, 'server', 'rockdot-zend-library.zip'));
+      File file =
+          new File(path.join(dir.path, 'server', 'rockdot-zend-library.zip'));
       await response.pipe(file.openWrite());
 
       _out("Extracting Zend for your UGC backend ...");
@@ -148,7 +152,7 @@ class CliApp {
 
       // Extract the contents of the Zip archive to disk.
       for (ArchiveFile file in archive) {
-        if(file.isFile){
+        if (file.isFile) {
           String filename = file.name;
           List<int> data = file.content;
           new File(path.join(dir.path, 'server', 'target', filename))
@@ -158,7 +162,6 @@ class CliApp {
       }
 
       file.deleteSync();
-
     }
 
     _out("Creating ${generator.id} application '${projectName}':");
@@ -166,7 +169,6 @@ class CliApp {
     Future f = generator.generate(projectName, target, additionalVars: vars);
     return f.then((_) {
       _out("${generator.numFiles()} files written.");
-
 
       String message = generator.getInstallInstructions();
       if (message != null && message.isNotEmpty) {
@@ -183,7 +185,8 @@ class CliApp {
     _argsMap = new Map<String, String>();
 
     _argsMap["stagexl"] = "Install StageXL Minimal Template";
-    _argsMap["stagexlExamples"] = "Install StageXL Examples (sprite sheets, tweening, ect.)";
+    _argsMap["stagexlExamples"] =
+        "Install StageXL Examples (sprite sheets, tweening, ect.)";
 
     _argsMap["material"] = "Add Material Design Extension to Rockdot";
     _argsMap["materialExamples"] = "Install Material Design Examples";
@@ -193,7 +196,8 @@ class CliApp {
     _argsMap["facebookExamples"] = "Install Facebook API Examples";
     _argsMap["physics"] = "Add Physics Extension to Rockdot";
     _argsMap["physicsExamples"] = "Install Physics Examples";
-    _argsMap["ugc"] = "Add User Generated Content (UGC) Extension to Rockdot, needs LAMP";
+    _argsMap["ugc"] =
+        "Add User Generated Content (UGC) Extension to Rockdot, needs LAMP";
     _argsMap["ugcExamples"] = "Install UGC Examples";
     _argsMap["babylon"] = "Add BabylonJS Extension to Rockdot";
     _argsMap["babylonExamples"] = "Install BabylonJS Examples";
@@ -225,8 +229,11 @@ class CliApp {
     argParser.addFlag('machine', negatable: false, hide: true);
 
     argParser.addFlag('help', abbr: 'h', negatable: false, help: 'Help!');
-    argParser.addFlag('version', negatable: false, help: 'Display the version for ${APP_NAME}.');
-    argParser.addOption('author', defaultsTo: '<your name>', help: 'The author name to use for file headers.');
+    argParser.addFlag('version',
+        negatable: false, help: 'Display the version for ${APP_NAME}.');
+    argParser.addOption('author',
+        defaultsTo: '<your name>',
+        help: 'The author name to use for file headers.');
 
     // Really, really generate into the current directory.
     argParser.addFlag('override',
@@ -238,19 +245,26 @@ class CliApp {
   }
 
   void _usage(ArgParser argParser) {
-    _out('Röckdöt Generator will generate a Röckdöt project skeleton into the current directory.');
+    _out(
+        'Röckdöt Generator will generate a Röckdöt project skeleton into the current directory.');
     _out('');
     _out('usage: ${APP_NAME} <generator-name>');
     _out(argParser.usage);
     _out('');
     _out('Available generators:');
     int len = generators.map((g) => g.id.length).fold(0, (a, b) => max(a, b));
-    generators.map((g) => "  ${_pad(g.id, len)} - ${g.description}").forEach(logger.stdout);
+    generators
+        .map((g) => "  ${_pad(g.id, len)} - ${g.description}")
+        .forEach(logger.stdout);
   }
 
   String _createMachineInfo(List<Generator> generators) {
     Iterable itor = generators.map((Generator generator) {
-      Map m = {'name': generator.id, 'label': generator.label, 'description': generator.description};
+      Map m = {
+        'name': generator.id,
+        'label': generator.label,
+        'description': generator.description
+      };
 
       if (generator.entrypoint != null) {
         m['entrypoint'] = generator.entrypoint.path;
@@ -306,7 +320,9 @@ class _DirectoryGeneratorTarget extends GeneratorTarget {
 
     logger.stdout('  ${file.path}');
 
-    return file.create(recursive: true).then((_) => file.writeAsBytes(contents));
+    return file
+        .create(recursive: true)
+        .then((_) => file.writeAsBytes(contents));
   }
 }
 

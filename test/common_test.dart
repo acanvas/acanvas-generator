@@ -21,7 +21,6 @@ void defineTests() {
     test('substituteVars nosub', () {
       _expect('foo {{bar}} baz', {'aaa': 'bbb'}, 'foo {{bar}} baz');
     });
-
   });
 }
 

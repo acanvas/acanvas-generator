@@ -1,6 +1,0 @@
-analyzer:
-  strong-mode: true
-  exclude:
-    - web/**
-    - lib/examples/ugc/**
-    - lib/examples/sandbox/**

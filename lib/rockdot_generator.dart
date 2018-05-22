@@ -25,9 +25,9 @@ library rockdot_generator;
 import 'dart:async';
 import 'dart:convert';
 
-import 'src/common.dart';
-import 'generators/basic.dart';
 import 'package:args/args.dart';
+import 'generators/create_project.dart';
+import 'src/common.dart';
 
 /// A curated, prescriptive list of Dart project generators.
 final List<Generator> generators = [new BasicGenerator()];
@@ -36,10 +36,8 @@ Generator getGenerator(String id) {
   return generators.firstWhere((g) => g.id == id, orElse: () => null);
 }
 
-/**
- * An abstract class which both defines a template generator and can generate a
- * user project baed on this template.
- */
+/// An abstract class which both defines a template generator and can generate a
+/// user project baed on this template.
 abstract class Generator implements Comparable<Generator> {
   final String id;
   final String label;
@@ -51,22 +49,19 @@ abstract class Generator implements Comparable<Generator> {
 
   Generator(this.id, this.label, this.description, {this.categories: const []});
 
-  /**
-   * The entrypoint of the application; the main file for the project, which an
-   * IDE might open after creating the project.
-   */
+  /// The entrypoint of the application; the main file for the project, which an
+  /// IDE might open after creating the project.
   TemplateFile get entrypoint => _entrypoint;
 
-  /**
-   * Some Generators need command line args in order to be able to perform
-   */
+  /// Some Generators need command line args in order to be able to perform
   Future prepare(ArgResults options) async {}
 
   /**
    * Add a new template file.
    */
   TemplateFile addTemplateFile(TemplateFile file, [bool append = false]) {
-    TemplateFile existingFile = files.firstWhere((t) => t.path == file.path, orElse: () => null);
+    TemplateFile existingFile =
+        files.firstWhere((t) => t.path == file.path, orElse: () => null);
     if (existingFile != null) {
       files.removeWhere((t) => t.path == existingFile.path);
       if (append && !_isBinaryFile(existingFile.path)) {
@@ -85,7 +80,9 @@ abstract class Generator implements Comparable<Generator> {
     return files.firstWhere((file) => file.path == path, orElse: () => null);
   }
 
-  final RegExp _binaryFileTypes = new RegExp(r'\.(jpe?g|png|gif|ico|svg|ttf|eot|woff|woff2|mp3|ogg)$', caseSensitive: false);
+  final RegExp _binaryFileTypes = new RegExp(
+      r'\.(jpe?g|png|gif|ico|svg|ttf|eot|woff|woff2|mp3|ogg)$',
+      caseSensitive: false);
 
   /**
    * Returns true if the given [filename] matches common image file name patterns.
@@ -103,7 +100,8 @@ abstract class Generator implements Comparable<Generator> {
     this._entrypoint = entrypoint;
   }
 
-  Future generate(String projectName, GeneratorTarget target, {Map<String, String> additionalVars}) {
+  Future generate(String projectName, GeneratorTarget target,
+      {Map<String, String> additionalVars}) {
     Map<String, String> vars = {
       'projectName': projectName,
       'rockdot_template': projectName,
@@ -132,7 +130,8 @@ abstract class Generator implements Comparable<Generator> {
 
   int numFiles() => files.length;
 
-  int compareTo(Generator other) => this.id.toLowerCase().compareTo(other.id.toLowerCase());
+  int compareTo(Generator other) =>
+      this.id.toLowerCase().compareTo(other.id.toLowerCase());
 
   /**
    * Return some user facing instructions about how to finish installation of
@@ -184,7 +183,8 @@ class TemplateFile {
       return _binaryData;
     } else {
       //raw substitution of "rockdot_template" with "${projectName}"
-      String c_content = content.replaceAll('rockdot_template', vars['projectName']);
+      String c_content =
+          content.replaceAll('rockdot_template', vars['projectName']);
 
       return UTF8.encode(substituteVars(c_content, vars));
     }

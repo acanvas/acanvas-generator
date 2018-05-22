@@ -16,14 +16,17 @@ final Directory BUILD_DIR = new Directory('build');
 
 main(List<String> args) => grind(args);
 
-@DefaultTask('Concatenate the template files into data files that the generators can consume.')
+@DefaultTask(
+    'Concatenate the template files into data files that the generators can consume.')
 @Depends(checkInit)
 void prepare() {
-  Directory dir = new Directory('lib/templates');
+  Directory dir = new Directory('templates');
   dir.listSync(followLinks: false).forEach((element) {
     String templateName = path.basename(element.path);
     _concatenateFiles(
-        getDir('lib/templates/${templateName}'), getFile('lib/generators/${templateName}_data.dart'), templateName);
+        getDir('templates/${templateName}'),
+        getFile('lib/generators/data/${templateName}_data.g.dart'),
+        templateName);
   });
 }
 
@@ -38,7 +41,7 @@ void analyze() {
 
 @Task('Check that the generated init grind script analyzes well')
 checkInit() {
-  Analyzer.analyze(FilePath.current.join('tool', 'grind.dart').path, fatalWarnings: true);
+  // Analyzer.analyze(FilePath.current.join('tool', 'grind.dart').path, fatalWarnings: true);
 }
 
 @Task('Run each generator and analyze the output.')
@@ -48,7 +51,8 @@ void test() {
   Directory fooDir = new Directory('foo');
 
   try {
-    for (rockdot_generator.Generator generator in rockdot_generator.generators) {
+    for (rockdot_generator.Generator generator
+        in rockdot_generator.generators) {
       if (fooDir.existsSync()) fooDir.deleteSync(recursive: true);
       fooDir.createSync();
 
@@ -102,7 +106,6 @@ void test() {
       aargs.add('--fatal-warnings');
       aargs.add(filePath);
       run_lib.run(_sdkBin('dartanalyzer'), arguments: aargs);
-
     }
   } catch (e) {}
   try {
@@ -135,7 +138,15 @@ void coverage() {
 
   if (coverageToken != null) {
     PubApp coverallsApp = new PubApp.global('dart_coveralls');
-    coverallsApp.run(['report', '--token', coverageToken, '--retry', '2', '--exclude-test-files', 'test/all.dart']);
+    coverallsApp.run([
+      'report',
+      '--token',
+      coverageToken,
+      '--retry',
+      '2',
+      '--exclude-test-files',
+      'test/all.dart'
+    ]);
   } else {
     log('Skipping coverage task: no environment variable `COVERALLS_TOKEN` found.');
   }
@@ -158,7 +169,8 @@ void clean() {
 // These tasks require a frame buffer to run.
 
 @Task()
-Future testsWeb() => Tests.runWebTests(directory: 'web', htmlFile: 'index.html');
+Future testsWeb() =>
+    Tests.runWebTests(directory: 'web', htmlFile: 'index.html');
 
 @Task()
 Future testsBuildWeb() {
@@ -193,7 +205,6 @@ String _toStr(String s) {
   }
 }
 
-
 /// Returns a list of files that are considered to be part of this package.
 ///
 /// If [beneath] is passed, this will only return files beneath that path,
@@ -211,11 +222,22 @@ List<String> _listFiles({String beneath, bool recursive: true}) {
 
   // List all files that aren't gitignored, including those not checked in
   // to Git.
-  ProcessResult result = Process.runSync("git", ["ls-files", "--cached", "--others", "--exclude-standard",
-  relativeBeneath], workingDirectory: path.current);
+  ProcessResult result = Process.runSync(
+      "git",
+      [
+        "ls-files",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        relativeBeneath
+      ],
+      workingDirectory: path.current);
 
   // Create List with corrected relative path
-  List<String> lines = result.stdout.split("\n").map((line) => line.replaceFirst(new RegExp(r"\r$"), "")).toList();
+  List<String> lines = result.stdout
+      .split("\n")
+      .map((line) => line.replaceFirst(new RegExp(r"\r$"), ""))
+      .toList();
   lines = lines.map((file) {
     return file.replaceAll("$relativeBeneath/", "");
   }).toList();
@@ -225,11 +247,11 @@ List<String> _listFiles({String beneath, bool recursive: true}) {
   return lines;
 }
 
-
 File _locateDartFile(File file) {
   if (file.path.endsWith('.dart')) return file;
 
-  return _listSync(file.parent).firstWhere((f) => f.path.endsWith('.dart'), orElse: () => null);
+  return _listSync(file.parent)
+      .firstWhere((f) => f.path.endsWith('.dart'), orElse: () => null);
 }
 
 /**
@@ -237,8 +259,10 @@ File _locateDartFile(File file) {
  * (by sorting on the file path) in order to prevent large merge diffs in the
  * generated template data files.
  */
-List<FileSystemEntity> _listSync(Directory dir, {bool recursive: false, bool followLinks: true}) {
-  List<FileSystemEntity> results = dir.listSync(recursive: recursive, followLinks: followLinks);
+List<FileSystemEntity> _listSync(Directory dir,
+    {bool recursive: false, bool followLinks: true}) {
+  List<FileSystemEntity> results =
+      dir.listSync(recursive: recursive, followLinks: followLinks);
   results.sort((entity1, entity2) => entity1.path.compareTo(entity2.path));
   return results;
 }

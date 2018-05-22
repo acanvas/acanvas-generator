@@ -1,4 +1,5 @@
-.idea
+.dart-tool/
+.idea/
 .DS_Store
 foo/
 cache/
@@ -9,7 +10,6 @@ build/
 .buildlog
 .pub
 .settings/
-lib/templates/master/config/
-lib/templates/master/server/
-lib/templates/master/web/assets/
-lib/templates/master/web/config/
+templates/rdf-project/server/
+templates/rdf-server/target/
+templates/rdf-project/web/config/
