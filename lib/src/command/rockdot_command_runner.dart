@@ -25,13 +25,6 @@ class RockdotCommandRunner extends CommandRunner {
     addCommand(new ElementCommand(logger, writeTarget));
     addCommand(new PluginCommand(logger, writeTarget));
   }
-
-  @override
-  Future run(Iterable<String> args) async {
-    ArgResults argResults = argParser.parse(args);
-
-    return super.run(args);
-  }
 }
 
 class ArgError implements Exception {

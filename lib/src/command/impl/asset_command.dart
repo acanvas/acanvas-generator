@@ -1,7 +1,6 @@
 part of rockdot_generator;
 
 class AssetCommand extends RockdotCommand {
-
   static final String PACKAGE_REPLACE_STRING = "@package@";
   static final String GETTER_REPLACE_STRING = "@getter@";
   static final String MAPENTRY_REPLACE_STRING = "@entry@";
@@ -19,10 +18,12 @@ class AssetCommand extends RockdotCommand {
   String assetSourceDir = DEFAULT_ASSET_SOURCE_DIR;
   String assetClassFile = DEFAULT_ASSET_TARGET_FILE;
 
-  AssetCommand(CliLogger logger, Target writeTarget):super(logger, writeTarget) {
+  AssetCommand(CliLogger logger, Target writeTarget)
+      : super(logger, writeTarget) {
     packageName = _getPackageNameFromPubspec();
     name = "collect";
-    description = "Collect assets from a source path and generate an asset model class.";
+    description =
+        "Collect assets from a source path and generate an asset model class.";
 
     argParser.addOption('source',
         abbr: 's',
@@ -39,10 +40,9 @@ class AssetCommand extends RockdotCommand {
         valueHelp: 'targetfile', callback: (_targetFile) {
       assetClassFile = _targetFile;
     });
-
   }
 
-  // [run] may also return a Future.
+  @override
   void run() async {
     // [argResults] is set before [run()] is called and contains the options
     // passed to this command.
@@ -70,9 +70,7 @@ class AssetCommand extends RockdotCommand {
         "Done. You can now access Assets like this: \n\tBitmapData bmd = Assets.assetname \n\tSound snd = Assets.assetname");
   }
 
-
   String _scanAndInsert(String templateFile) {
-
     String imageGetter = '''
   static BitmapData get @asset_stripped@ {
     return _singleton.mgr.getBitmapData("@asset_stripped@");
@@ -99,7 +97,7 @@ class AssetCommand extends RockdotCommand {
           .listSync(recursive: true, followLinks: false)
           .forEach((FileSystemEntity entity) {
         if (FileSystemEntity.typeSync(entity.path) ==
-            FileSystemEntityType.FILE) {
+            FileSystemEntityType.file) {
           String ext = extension(entity.path).toLowerCase().substring(1);
           String dir = dirname(entity.path);
           String baseName = basenameWithoutExtension(entity.path).toLowerCase();

@@ -10,42 +10,42 @@ class ServerCommand extends RockdotCommand {
   String mode;
   Properties properties = new Properties();
 
-  ServerCommand(CliLogger logger, Target writeTarget):super(logger, writeTarget) {
-
-    argParser.addFlag('update',
-        abbr: 'u',
-        negatable: false,
-        help: "Update an existing server by copying from 'source' to 'target'.",
-      );
+  ServerCommand(CliLogger logger, Target writeTarget)
+      : super(logger, writeTarget) {
+    argParser.addFlag(
+      'update',
+      abbr: 'u',
+      negatable: false,
+      help: "Update an existing server by copying from 'source' to 'target'.",
+    );
 
     argParser.addOption('mode',
         abbr: 'm',
         defaultsTo: DEFAULT_MODE,
         help:
-        'The configuration mode to use. Can be either debug or release. Defaults to debug.',
+            'The configuration mode to use. Can be either debug or release. Defaults to debug.',
         valueHelp: 'mode', callback: (_mode) {
-          mode = _mode;
-        });
+      mode = _mode;
+    });
   }
 
-  // [run] may also return a Future.
+  @override
   void run() async {
-
-    if(argResults["update"]){
+    if (argResults["update"]) {
       _setupProperties(mode);
       String source = join(SERVER_DIR, 'source');
       String target = join(SERVER_DIR, 'target');
       _recursiveFolderCopySync(source, target);
-    }else{
+    } else {
       List<TemplateFile> templates =
-      await decodeConcanenatedData(server_data.data, server_data.type);
-      templates.forEach((t){
+          await decodeConcanenatedData(server_data.data, server_data.type);
+      templates.forEach((t) {
         addTemplateFile(t);
       });
 
       await generate(_getPackageNameFromPubspec());
+      _installUGC();
     }
-
   }
 
   void _setupProperties(String mode) {
@@ -101,7 +101,7 @@ class ServerCommand extends RockdotCommand {
     });
   }
 
-  void _installUGC() async{
+  void _installUGC() async {
     if (argResults["ugc"]) {
       //Download zend.zip, extract to server/target/Zend
       logger.stdout("Downloading Zend for your UGC backend ...");
@@ -112,8 +112,7 @@ class ServerCommand extends RockdotCommand {
       HttpClientRequest request = await new HttpClient().getUrl(Uri.parse(
           'http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
       HttpClientResponse response = await request.close();
-      File file =
-      new File(join('server', 'rockdot-zend-library.zip'));
+      File file = new File(join('server', 'rockdot-zend-library.zip'));
       await response.pipe(file.openWrite());
 
       logger.stdout("Extracting Zend for your UGC backend ...");

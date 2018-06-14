@@ -8,8 +8,7 @@ import 'package:args/command_runner.dart';
 import 'package:rockdot_generator/rockdot_generator.dart';
 
 void main(List<String> args) {
-
-  CommandRunner runner = new RockdotCommandRunner(new CliLogger(), new FileTarget());
+  CommandRunner runner =
+      new RockdotCommandRunner(new CliLogger(), new FileTarget());
   runner.run(args);
-
 }

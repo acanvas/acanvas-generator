@@ -1,8 +1,9 @@
 part of rockdot_generator;
 
-class FileTarget implements Target{
+class FileTarget implements Target {
   Directory _cwd = Directory.current;
-  @override Directory get cwd => _cwd;
+  @override
+  Directory get cwd => _cwd;
 
   @override
   Future createFile(String path, List<int> contents) {
@@ -15,11 +16,9 @@ class FileTarget implements Target{
         .create(recursive: true)
         .then((_) => file.writeAsBytes(contents));
   }
-
-
 }
 
-abstract class Target{
+abstract class Target {
   Directory get cwd;
   Future createFile(String path, List<int> contents);
 }

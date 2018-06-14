@@ -3,7 +3,6 @@ library rockdot_generator;
 import 'dart:async' show Future;
 import 'dart:convert' show utf8;
 import 'dart:io';
-import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:path/path.dart';
 import 'package:archive/archive.dart';

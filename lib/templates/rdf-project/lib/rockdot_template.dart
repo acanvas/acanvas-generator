@@ -20,7 +20,6 @@ import 'package:rockdot_framework/src/plugin.io.dart' show IOPlugin;
 import 'package:rockdot_template/rockdot_template_plugins.dart';
 // ## PLUGIN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
-
 // ------------##### PROJECT #####------------
 
 // ### BASIC SCREEN CONFIG
@@ -55,12 +54,10 @@ part 'src/project/view/screen/abstract_screen.dart';
 part 'src/project/view/screen/abstract_reflow_screen.dart';
 // ## SCREEN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
-
 // VIEW:BACKGROUND
 part 'src/project/view/element/background.dart';
 part 'src/project/view/element/navigation.dart';
 // ## ELEMENT INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-
 
 // COMMANDS
 part 'src/project/command/event/project_events.dart';
@@ -69,7 +66,6 @@ part 'src/project/command/init_command.dart';
 part 'src/project/command/message_show_command.dart';
 part 'src/project/command/message_hide_command.dart';
 // ## COMMAND INSERTION PLACEHOLDER - DO NOT REMOVE ## //
-
 
 // MODEL
 part 'src/project/inject/i_model_aware.dart';

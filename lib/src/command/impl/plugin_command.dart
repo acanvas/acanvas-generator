@@ -2,7 +2,7 @@ part of rockdot_generator;
 
 class PluginCommand extends RockdotCommand {
   static final String DEFAULT_PLUGIN_NAME = "GeneratedPlugin";
-  
+
   static final String TEMPLATE_DIR = "plugin/";
   static final String PACKAGE_REPLACE_STRING = "@package@";
 
@@ -13,7 +13,6 @@ class PluginCommand extends RockdotCommand {
   static final String PLUGIN_INSERTION_PLACEHOLDER =
       "// ## PLUGIN INSERTION PLACEHOLDER - DO NOT REMOVE ## //";
 
-
   static final String DIR_LIB = "lib";
   static final String DIR_BOOTSTRAP = "$DIR_LIB/src/bootstrap";
   static final String DIR_PROJECT = "$DIR_LIB/src/project";
@@ -22,36 +21,41 @@ class PluginCommand extends RockdotCommand {
   String pluginNameCamelCase;
   String pluginNameUnderscored;
   String pluginNameUnderscoredUppercase;
-  
-  PluginCommand(CliLogger logger, Target writeTarget):super(logger, writeTarget) {
+
+  PluginCommand(CliLogger logger, Target writeTarget)
+      : super(logger, writeTarget) {
     packageName = _getPackageNameFromDirectory();
     name = "plugin";
-    description = "Create a full rockdot project with optional plugins and examples.";
+    description =
+        "Create a full rockdot project with optional plugins and examples.";
 
     argParser.addOption('name',
         abbr: 'n',
         defaultsTo: DEFAULT_PLUGIN_NAME,
         help: 'The name (in CamelCase) of the plugin to be generated.',
         valueHelp: 'name', callback: (_pluginName) {
-          pluginNameCamelCase = _pluginName;
-        });
+      pluginNameCamelCase = _pluginName;
+    });
   }
 
-  // [run] may also return a Future.
+  @override
   void run() async {
     pluginNameUnderscored = _getPluginNameUnderscored();
     pluginNameUnderscoredUppercase = pluginNameUnderscored.toUpperCase();
-    
+
     await _prepare();
-    
+
     await generate(_getPackageNameFromPubspec());
 
-    logger.stdout("Done. You can now use the plugin like this: \n\t new RdSignal(${pluginNameCamelCase}Events.SAMPLE, new ${pluginNameCamelCase}VO('message').dispatch();");
+    _insertPlugin();
+
+    logger.stdout(
+        "Done. You can now use the plugin like this: \n\t new RdSignal(${pluginNameCamelCase}Events.SAMPLE, new ${pluginNameCamelCase}VO('message').dispatch();");
   }
 
-  Future _prepare() async{
-
-    var data = skeletons_data.data.where((e) => e.contains(TEMPLATE_DIR)).toList();
+  Future _prepare() async {
+    var data =
+        skeletons_data.data.where((e) => e.contains(TEMPLATE_DIR)).toList();
 
     String libraryParts = "";
     String dirName;
@@ -60,22 +64,22 @@ class PluginCommand extends RockdotCommand {
 
     // Copy all assets from source list (everything inside templates/rdf-skeletons/plugin/) to the target list
     List<TemplateFile> templates =
-    await decodeConcanenatedData(data, skeletons_data.type);
-    templates.forEach((e){
-      dirName =
-      dirname(e.path).replaceFirst(new RegExp(TEMPLATE_DIR), '');
+        await decodeConcanenatedData(data, skeletons_data.type);
+    templates.forEach((e) {
+      dirName = dirname(e.path).replaceFirst(new RegExp(TEMPLATE_DIR), '');
       baseName = basename(e.path);
-      baseName = baseName.replaceFirst(new RegExp("plugin"), pluginNameUnderscored);
+      baseName =
+          baseName.replaceFirst(new RegExp("plugin"), pluginNameUnderscored);
       normd =
-      normalize("src/plugin/$pluginNameUnderscored/${dirName}/${baseName}");
+          normalize("src/plugin/$pluginNameUnderscored/${dirName}/${baseName}");
 
       libraryParts += "part '$normd';\n";
 
       e.path = "lib/$normd";
       e.content =
           e.content.replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
-      e.content = e.content.replaceAll(
-          new RegExp(PLUGIN_REPLACE_STRING), pluginNameCamelCase);
+      e.content = e.content
+          .replaceAll(new RegExp(PLUGIN_REPLACE_STRING), pluginNameCamelCase);
       e.content = e.content.replaceAll(
           new RegExp(PLUGIN_LOWERCASE_REPLACE_STRING), pluginNameUnderscored);
       e.content = e.content.replaceAll(

@@ -40,7 +40,8 @@ void analyze() {
 
 @Task('Check that the generated init grind script analyzes well')
 checkInit() {
-   Analyzer.analyze(FilePath.current.join('tool', 'grind.dart').path, fatalWarnings: true);
+  Analyzer.analyze(FilePath.current.join('tool', 'grind.dart').path,
+      fatalWarnings: true);
 }
 
 @Task('Run each generator and analyze the output.')
@@ -50,15 +51,15 @@ void test() {
   Directory fooDir = new Directory('foo');
 
   try {
-      if (fooDir.existsSync()) fooDir.deleteSync(recursive: true);
-      fooDir.createSync();
+    if (fooDir.existsSync()) fooDir.deleteSync(recursive: true);
+    fooDir.createSync();
 
-      log('Running command "project" in directory ${fooDir.path}');
+    log('Running command "project" in directory ${fooDir.path}');
 
-      List<String> args = [
-        'project',
-        '--material',
-        /*
+    List<String> args = [
+      'project',
+      '--material',
+      /*
         '--materialExamples'
         '--google',
         '--facebook',
@@ -76,34 +77,33 @@ void test() {
         '--stagexlExamples',
         '--ugc',
         */
-      ];
+    ];
 
-      Dart.run(FilePath.current.join('bin', 'rockdot_generator.dart').path,
-          arguments: args, workingDirectory: fooDir.path);
+    Dart.run(FilePath.current.join('bin', 'rockdot_generator.dart').path,
+        arguments: args, workingDirectory: fooDir.path);
 
-      File pubspec = joinFile(fooDir, ['pubspec.yaml']);
+    File pubspec = joinFile(fooDir, ['pubspec.yaml']);
 
-      if (pubspec.existsSync()) {
-        if (Platform.isWindows) {
-          run('pub.bat', arguments: ['get'], workingDirectory: fooDir.path);
-        } else {
-          run('pub', arguments: ['get'], workingDirectory: fooDir.path);
-        }
+    if (pubspec.existsSync()) {
+      if (Platform.isWindows) {
+        run('pub.bat', arguments: ['get'], workingDirectory: fooDir.path);
+      } else {
+        run('pub', arguments: ['get'], workingDirectory: fooDir.path);
       }
+    }
 
-      File entrypoint = joinFile(fooDir, ['web', 'index.html']);
-      String filePath = _locateDartFile(entrypoint).path;
-      filePath = filePath.replaceAll('projectName', 'foo');
+    File entrypoint = joinFile(fooDir, ['web', 'index.html']);
+    String filePath = _locateDartFile(entrypoint).path;
+    filePath = filePath.replaceAll('projectName', 'foo');
 
-      // Analyzer doesn't support package config file, workaround further down
-      /* Analyzer.analyze(filePath, fatalWarnings: true); */
+    // Analyzer doesn't support package config file, workaround further down
+    /* Analyzer.analyze(filePath, fatalWarnings: true); */
 
-      List<String> aargs = [];
-      aargs.add('--packages=foo/.packages');
-      aargs.add('--fatal-warnings');
-      aargs.add(filePath);
-      run_lib.run(_sdkBin('dartanalyzer'), arguments: aargs);
-
+    List<String> aargs = [];
+    aargs.add('--packages=foo/.packages');
+    aargs.add('--fatal-warnings');
+    aargs.add(filePath);
+    run_lib.run(_sdkBin('dartanalyzer'), arguments: aargs);
   } catch (e) {}
   try {
     fooDir.deleteSync(recursive: true);
@@ -209,7 +209,7 @@ String _toStr(String s) {
 /// [recursive] is true, this will return all files beneath that path;
 /// otherwise, it will only return files one level beneath it.
 ///
-/// Note that the returned paths won't always be beneath [dir]. To safely
+/// Note that the returned paths won't always be beneath [beneath]. To safely
 /// convert them to paths relative to the package root, use [relative].
 
 List<String> _listFiles({String beneath, bool recursive: true}) {

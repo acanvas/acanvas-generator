@@ -18,7 +18,8 @@ class Two extends AbstractScreen {
     addChild(_bmp);
 
     _button = new MdButton(getProperty("button"), preset: MdButton.PRESET_BLUE);
-    _button.submitEvent = new RdSignal(StateEvents.ADDRESS_SET, getProperty("layer.photo.url", true));
+    _button.submitEvent = new RdSignal(
+        StateEvents.ADDRESS_SET, getProperty("layer.photo.url", true));
     addChild(_button);
 
     onInitComplete();

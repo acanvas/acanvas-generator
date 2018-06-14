@@ -237,13 +237,15 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
 
     Rd.STAGE.filters = [filter];
     if (Rd.MOBILE) {
-      Rd.STAGE.addEventListener<InputEvent>(TouchEvent.TOUCH_MOVE, (InputEvent e) {
+      Rd.STAGE.addEventListener<InputEvent>(TouchEvent.TOUCH_MOVE,
+          (InputEvent e) {
         filter.matrix.tx = e.stageX - 285;
         filter.matrix.ty = e.stageY - 185;
         Rd.MATERIALIZE_REQUIRED = true;
       });
     } else {
-      Rd.STAGE.addEventListener<InputEvent>(MouseEvent.MOUSE_MOVE, (InputEvent e) {
+      Rd.STAGE.addEventListener<InputEvent>(MouseEvent.MOUSE_MOVE,
+          (InputEvent e) {
         filter.matrix.tx = e.stageX - 285;
         filter.matrix.ty = e.stageY - 185;
         Rd.MATERIALIZE_REQUIRED = true;

@@ -26,41 +26,38 @@ class ScreenCommand extends RockdotCommand {
   String screenNameUnderscoredUppercase;
 
   ScreenCommand(CliLogger logger, Target writeTarget)
-      :super(logger, writeTarget) {
+      : super(logger, writeTarget) {
     packageName = _getPackageNameFromPubspec();
     name = "screen";
     description =
-    "Create a Screen class. Also adds Properties and registration to Context.";
+        "Create a Screen class. Also adds Properties and registration to Context.";
 
     argParser.addOption('name',
         abbr: 'n',
         defaultsTo: DEFAULT_SCREEN_NAME,
         help: 'The name (in CamelCase) of the screen to be generated.',
-        valueHelp: 'name',
-        callback: (_commandName) {
-          screenNameCamelCase = _commandName;
-        });
+        valueHelp: 'name', callback: (_commandName) {
+      screenNameCamelCase = _commandName;
+    });
 
     argParser.addOption('target',
         abbr: 't',
         defaultsTo: DIR_SCREEN,
         help: 'The target path of the screen to be generated.',
-        valueHelp: 'target',
-        callback: (_path) {
-          targetPath = _path;
-        });
+        valueHelp: 'target', callback: (_path) {
+      targetPath = _path;
+    });
 
     argParser.addOption('url',
         abbr: 'u',
         defaultsTo: DEFAULT_SCREEN_URL,
         help: 'The rockdot-url of the screen to be generated.',
-        valueHelp: 'url',
-        callback: (_url) {
-          screenUrl = _url;
-        });
+        valueHelp: 'url', callback: (_url) {
+      screenUrl = _url;
+    });
   }
 
-  // [run] may also return a Future.
+  @override
   void run() async {
     screenNameDashed = _getDashed();
     screenNameUnderscored = _getUnderscored();
@@ -68,11 +65,11 @@ class ScreenCommand extends RockdotCommand {
 
     String targetFile = join(targetPath, '$screenNameUnderscored.dart');
     screenUrl =
-    screenUrl == DEFAULT_SCREEN_URL ? '/$screenNameDashed' : screenUrl;
+        screenUrl == DEFAULT_SCREEN_URL ? '/$screenNameDashed' : screenUrl;
 
     // just decode skeletons_data.data["assets.dart"]
-    String assetClassFilePath = skeletons_data.data
-        .firstWhere((path) => path == TEMPLATE_SCREEN_FILE);
+    String assetClassFilePath =
+        skeletons_data.data.firstWhere((path) => path == TEMPLATE_SCREEN_FILE);
 
     List<TemplateFile> templates = await decodeConcanenatedData(
         <String>[assetClassFilePath], skeletons_data.type);
@@ -81,11 +78,10 @@ class ScreenCommand extends RockdotCommand {
     templateFile.path = targetFile;
 
     //add command from template to DIR_COMMAND
-    templateFile.content = templateFile.content.replaceAll(
-        new RegExp(SCREEN_REPLACE_STRING), screenNameCamelCase);
-    templateFile.content =
-        templateFile.content.replaceAll(
-            new RegExp(PACKAGE_REPLACE_STRING), packageName);
+    templateFile.content = templateFile.content
+        .replaceAll(new RegExp(SCREEN_REPLACE_STRING), screenNameCamelCase);
+    templateFile.content = templateFile.content
+        .replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
 
     addTemplateFile(templateFile);
 
@@ -106,8 +102,8 @@ class ScreenCommand extends RockdotCommand {
     //add class to event mapping to $DIR_PROJECT/project.dart
     _registerScreen();
 
-    logger.stdout(
-        "Done. You can now access your new screen at URL #$screenUrl");
+    logger
+        .stdout("Done. You can now access your new screen at URL #$screenUrl");
   }
 
   void _insertProperties() {
@@ -130,9 +126,9 @@ $SCREEN_PROPERTIES_PLACEHOLDER
     file.writeAsStringSync(fileContent);
   }
 
-
   void _addToPackage() {
-    String replace = "part 'src/project/view/screen/$screenNameUnderscored.dart';\n$SCREEN_INSERTION_PLACEHOLDER";
+    String replace =
+        "part 'src/project/view/screen/$screenNameUnderscored.dart';\n$SCREEN_INSERTION_PLACEHOLDER";
 
     File file = new File("$DIR_LIB/$packageName.dart");
     String fileContent = file.readAsStringSync();
@@ -142,7 +138,8 @@ $SCREEN_PROPERTIES_PLACEHOLDER
   }
 
   void _registerScreenID() {
-    String replace = 'static const String $screenNameUnderscoredUppercase = "screen.$screenNameUnderscored";\n\t$SCREEN_INSERTION_PLACEHOLDER';
+    String replace =
+        'static const String $screenNameUnderscoredUppercase = "screen.$screenNameUnderscored";\n\t$SCREEN_INSERTION_PLACEHOLDER';
 
     File file = new File("$DIR_PROJECT/model/screen_ids.dart");
     String fileContent = file.readAsStringSync();
@@ -154,7 +151,7 @@ $SCREEN_PROPERTIES_PLACEHOLDER
   void _registerScreen() {
     //parses to: addScreen(ScreenIDs.HOME, () => new Home(ScreenIDs.HOME), tree_order: 1);
     String replace =
-    '''addScreen(ScreenIDs.$screenNameUnderscoredUppercase, () => new $screenNameCamelCase(ScreenIDs.$screenNameUnderscoredUppercase), transition: EffectIDs.DEFAULT, tree_order: 0);
+        '''addScreen(ScreenIDs.$screenNameUnderscoredUppercase, () => new $screenNameCamelCase(ScreenIDs.$screenNameUnderscoredUppercase), transition: EffectIDs.DEFAULT, tree_order: 0);
     $SCREEN_INSERTION_PLACEHOLDER''';
 
     File file = new File("$DIR_PROJECT/project.dart");
@@ -163,7 +160,6 @@ $SCREEN_PROPERTIES_PLACEHOLDER
         new RegExp(SCREEN_INSERTION_PLACEHOLDER), replace);
     file.writeAsStringSync(fileContent);
   }
-
 
   String _getDashed() {
     return screenNameCamelCase

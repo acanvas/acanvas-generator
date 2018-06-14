@@ -70,11 +70,11 @@ class CliLoggerMock implements CliLogger {
   String getStderr() => _stderr.toString();
 }
 
-
 class FileTargetMock implements Target {
   int createdCount = 0;
   final Directory _cwd = new Directory('test');
-  @override Directory get cwd => _cwd;
+  @override
+  Directory get cwd => _cwd;
 
   @override
   Future createFile(String path, List<int> contents) {
@@ -85,5 +85,4 @@ class FileTargetMock implements Target {
 
     return new Future.value();
   }
-
 }

@@ -26,33 +26,29 @@ class ElementCommand extends RockdotCommand {
   String elementNameUnderscoredUppercase;
 
   ElementCommand(CliLogger logger, Target writeTarget)
-      :super(logger, writeTarget) {
+      : super(logger, writeTarget) {
     packageName = _getPackageNameFromPubspec();
     name = "element";
-    description =
-    "Create a view Element class. Also adds Properties.";
+    description = "Create a view Element class. Also adds Properties.";
 
     argParser.addOption('name',
         abbr: 'n',
         defaultsTo: DEFAULT_ELEMENT_NAME,
         help: 'The name (in CamelCase) of the view element to be generated.',
-        valueHelp: 'name',
-        callback: (_commandName) {
-          elementNameCamelCase = _commandName;
-        });
+        valueHelp: 'name', callback: (_commandName) {
+      elementNameCamelCase = _commandName;
+    });
 
     argParser.addOption('target',
         abbr: 't',
         defaultsTo: DIR_ELEMENT,
         help: 'The target path of the view element to be generated.',
-        valueHelp: 'target',
-        callback: (_path) {
-          targetPath = _path;
-        });
-
+        valueHelp: 'target', callback: (_path) {
+      targetPath = _path;
+    });
   }
 
-  // [run] may also return a Future.
+  @override
   void run() async {
     elementNameDashed = _getDashed();
     elementNameUnderscored = _getUnderscored();
@@ -61,8 +57,8 @@ class ElementCommand extends RockdotCommand {
     String targetFile = join(targetPath, '$elementNameUnderscored.dart');
 
     // just decode skeletons_data.data["assets.dart"]
-    String assetClassFilePath = skeletons_data.data
-        .firstWhere((path) => path == TEMPLATE_ELEMENT_FILE);
+    String assetClassFilePath =
+        skeletons_data.data.firstWhere((path) => path == TEMPLATE_ELEMENT_FILE);
 
     List<TemplateFile> templates = await decodeConcanenatedData(
         <String>[assetClassFilePath], skeletons_data.type);
@@ -71,11 +67,10 @@ class ElementCommand extends RockdotCommand {
     templateFile.path = targetFile;
 
     //add command from template to DIR_COMMAND
-    templateFile.content = templateFile.content.replaceAll(
-        new RegExp(ELEMENT_REPLACE_STRING), elementNameCamelCase);
-    templateFile.content =
-        templateFile.content.replaceAll(
-            new RegExp(PACKAGE_REPLACE_STRING), packageName);
+    templateFile.content = templateFile.content
+        .replaceAll(new RegExp(ELEMENT_REPLACE_STRING), elementNameCamelCase);
+    templateFile.content = templateFile.content
+        .replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
 
     addTemplateFile(templateFile);
 
@@ -113,9 +108,9 @@ $ELEMENT_PROPERTIES_PLACEHOLDER
     file.writeAsStringSync(fileContent);
   }
 
-
   void _addToPackage() {
-    String replace = "part 'src/project/view/element/$elementNameUnderscored.dart';\n$ELEMENT_INSERTION_PLACEHOLDER";
+    String replace =
+        "part 'src/project/view/element/$elementNameUnderscored.dart';\n$ELEMENT_INSERTION_PLACEHOLDER";
 
     File file = new File("$DIR_LIB/$packageName.dart");
     String fileContent = file.readAsStringSync();

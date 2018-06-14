@@ -17,40 +17,39 @@ class CommandCommand extends RockdotCommand {
   String commandNameCamelCase;
   String commandNameUnderscored;
   String commandNameUnderscoredUppercase;
-  
-  CommandCommand(CliLogger logger, Target writeTarget):super(logger, writeTarget) {
+
+  CommandCommand(CliLogger logger, Target writeTarget)
+      : super(logger, writeTarget) {
     packageName = _getPackageNameFromPubspec();
     name = "command";
-    description =
-        "Create a Command class. Also adds an Event type.";
+    description = "Create a Command class. Also adds an Event type.";
 
     argParser.addOption('name',
         abbr: 'n',
         defaultsTo: DEFAULT_COMMAND_NAME,
         help: 'The name (in CamelCase) of the command to be generated.',
         valueHelp: 'name', callback: (_commandName) {
-          commandNameCamelCase = _commandName;
-        });
+      commandNameCamelCase = _commandName;
+    });
 
     argParser.addOption('target',
         abbr: 't',
         defaultsTo: DIR_COMMAND,
         help: 'The target path of the command to be generated.',
         valueHelp: 'target', callback: (_path) {
-          targetPath = _path;
-        });
+      targetPath = _path;
+    });
   }
-  // [run] may also return a Future.
+  @override
   void run() async {
-
     commandNameUnderscored = _getCommandNameUnderscored();
     commandNameUnderscoredUppercase = commandNameUnderscored.toUpperCase();
 
     String targetFile = join(targetPath, '$commandNameUnderscored.dart');
 
     // just decode skeletons_data.data["assets.dart"]
-    String assetClassFilePath = skeletons_data.data
-        .firstWhere((path) => path == TEMPLATE_COMMAND_FILE);
+    String assetClassFilePath =
+        skeletons_data.data.firstWhere((path) => path == TEMPLATE_COMMAND_FILE);
 
     List<TemplateFile> templates = await decodeConcanenatedData(
         <String>[assetClassFilePath], skeletons_data.type);
@@ -59,15 +58,16 @@ class CommandCommand extends RockdotCommand {
     templateFile.path = targetFile;
 
     //add command from template to DIR_COMMAND
-    templateFile.content = templateFile.content.replaceAll(
-        new RegExp(COMMAND_REPLACE_STRING), commandNameCamelCase);
-    templateFile.content =
-        templateFile.content.replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
+    templateFile.content = templateFile.content
+        .replaceAll(new RegExp(COMMAND_REPLACE_STRING), commandNameCamelCase);
+    templateFile.content = templateFile.content
+        .replaceAll(new RegExp(PACKAGE_REPLACE_STRING), packageName);
 
     addTemplateFile(templateFile);
 
     //this writes to templateFile.content
-    logger.stdout("Writing Command class '$commandNameCamelCase' to file '$targetFile'.");
+    logger.stdout(
+        "Writing Command class '$commandNameCamelCase' to file '$targetFile'.");
     await generate(_getPackageNameFromPubspec());
 
     //add const to events
@@ -84,7 +84,7 @@ class CommandCommand extends RockdotCommand {
 
   void _insertEvent() {
     String replace =
-    'static const String $commandNameUnderscoredUppercase = "ProjectEvents.$commandNameUnderscoredUppercase";\n\t$COMMAND_INSERTION_PLACEHOLDER';
+        'static const String $commandNameUnderscoredUppercase = "ProjectEvents.$commandNameUnderscoredUppercase";\n\t$COMMAND_INSERTION_PLACEHOLDER';
 
     File file = new File("$DIR_COMMAND/event/project_events.dart");
     String fileContent = file.readAsStringSync();
@@ -95,7 +95,8 @@ class CommandCommand extends RockdotCommand {
 
   /// Adds Command class part to library definition
   void _addToPackage() {
-    String replace = "part 'src/project/command/$commandNameUnderscored.dart';\n$COMMAND_INSERTION_PLACEHOLDER";
+    String replace =
+        "part 'src/project/command/$commandNameUnderscored.dart';\n$COMMAND_INSERTION_PLACEHOLDER";
 
     File file = new File("$DIR_LIB/$packageName.dart");
     String fileContent = file.readAsStringSync();
@@ -108,7 +109,7 @@ class CommandCommand extends RockdotCommand {
   void _insertEventMapping() {
     //parses to: commandMap[ProjectEvents.APP_INIT] = () => new InitCommand();
     String replace =
-    'commandMap[ProjectEvents.$commandNameUnderscoredUppercase] = () => new $commandNameCamelCase();\n\t\t$COMMAND_INSERTION_PLACEHOLDER';
+        'commandMap[ProjectEvents.$commandNameUnderscoredUppercase] = () => new $commandNameCamelCase();\n\t\t$COMMAND_INSERTION_PLACEHOLDER';
 
     File file = new File("$DIR_PROJECT/project.dart");
     String fileContent = file.readAsStringSync();

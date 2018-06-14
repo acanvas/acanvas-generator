@@ -57,7 +57,7 @@ abstract class RockdotCommand extends Command {
   }
 
   Future _createFile(String filePath, List<int> contents) {
-    writeTarget.createFile(filePath, contents);
+    return writeTarget.createFile(filePath, contents);
   }
 
   final RegExp _binaryFileTypes = new RegExp(
@@ -114,7 +114,7 @@ abstract class RockdotCommand extends Command {
   }
 
   String _getPackageNameFromPubspec() {
-    if(!new File('pubspec.yaml').existsSync()){
+    if (!new File('pubspec.yaml').existsSync()) {
       return "this_name_should_not_happen";
     }
     File pubspecRootFile = new File('pubspec.yaml').absolute;
