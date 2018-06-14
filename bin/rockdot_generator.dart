@@ -9,6 +9,6 @@ import 'package:rockdot_generator/rockdot_generator.dart';
 
 void main(List<String> args) {
   CommandRunner runner =
-      new RockdotCommandRunner(new CliLogger(), new FileTarget());
+      new RockdotCommandRunner(new CliLoggerPrint(), new FileTarget());
   runner.run(args);
 }

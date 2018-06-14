@@ -27,7 +27,7 @@ class PluginCommand extends RockdotCommand {
     packageName = _getPackageNameFromDirectory();
     name = "plugin";
     description =
-        "Create a full rockdot project with optional plugins and examples.";
+        "Create a rockdot plugin within your project.";
 
     argParser.addOption('name',
         abbr: 'n',

@@ -80,7 +80,7 @@ abstract class RockdotCommand extends Command {
           'package:rockdot_generator/templates/${pack}/${path}',
           loader: loader);
 
-      print("${counter} - template: ${pack}, resource: $path");
+      logger.stdout("${counter} - template: ${pack}, resource: $path");
 
       if (_isBinaryFile(path)) {
         try {
@@ -89,7 +89,7 @@ abstract class RockdotCommand extends Command {
           results.add(templateFile);
           //results.add(new TemplateFile.fromBinary(path, decoded));
         } catch (e) {
-          print("${counter} - error: $e");
+          logger.stderr("${counter} - error: $e");
         }
       } else {
         try {
@@ -97,7 +97,7 @@ abstract class RockdotCommand extends Command {
           //String source = UTF8.decode(decoded);
           results.add(new TemplateFile(path, source));
         } catch (e) {
-          print("${counter} - error: $e");
+          logger.stderr("${counter} - error: $e");
         }
       }
       myResource = null;
