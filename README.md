@@ -53,7 +53,7 @@ Got an old iPhone4, a brand new Pixel, or any web browser on any OS? Then be sur
 
 This puts the executable `rdgen` on your path.
 
-# Usage
+# Project Generator
 
 The purpose of Rockdot Generator is to take care of ALL THE THINGS to jump into development right away.
 
@@ -109,6 +109,7 @@ Additionally, you can choose to install example pages:
  * gafExamples: Install GAF Examples
  * spineExamples: Install Spine Examples
  
+ 
     # one plugin and examples
     $> rdgen project--material --materialExamples
     
@@ -123,6 +124,21 @@ Finally, run pub:
 
 See, your project is up and running!
 
+# Project Helpers
+
+A fast way to create classes and link them into your project.
+
+    # Create a Command
+    $> rdgen command --name MyCommand
+    
+    # Create a Screen
+    $> rdgen screen --name MyScreen
+    
+    # Create a view Element
+    $> rdgen element --name MyElement
+    
+    # Collect Assets into Autoloader
+    $> rdgen collect
 
 # Notes for generator developers (that's me)
 
