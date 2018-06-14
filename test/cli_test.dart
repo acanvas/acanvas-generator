@@ -27,7 +27,7 @@ void defineTests() {
       //expect(logger.getStderr(), isEmpty);
       //expect(logger.getStdout(), isNot(isEmpty));
     }
-
+/*
     Future _expectError(Future f, [bool hasStdout = true]) {
       return f.then((_) => fail('error expected')).catchError((e) {
         expect(logger.getStderr(), isNot(isEmpty));
@@ -38,7 +38,7 @@ void defineTests() {
         }
       });
     }
-
+*/
     test('no args', () {
       return app.run(['--help']).then(_expectOk);
     });
