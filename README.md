@@ -44,26 +44,27 @@ Got an old iPhone4, a brand new Pixel, or any web browser on any OS? Then be sur
 
 ### Requirements
 
-* Dart SDK 1.22 or greater on your path
+* Dart SDK 2.0.0-dev.55.0 or greater on your path
 
 
 ### Install
 
-    $> pub global activate --source git https://github.com/blockforest/rockdot-generator
+    $> pub global activate --source git https://github.com/block-forest/rockdot-generator
 
-This puts the executable `rockdot_generator` on your path.
+This puts the executable `rdgen` on your path.
 
 # Usage
 
-The purpose of Rockdot Generator is to take care of ALL THE THINGS required, 
-so you can jump into development right away.
+The purpose of Rockdot Generator is to take care of ALL THE THINGS to jump into development right away.
+
+## Basic Project
 
 This is how you create the most basic Rockdot skeleton in your current directory:
 
     # directory name also serves as project name
-    $> mkdir fancy_project
-    $> cd fancy_project
-    $> rockdot_generator basic
+    $> mkdir fancy-project
+    $> cd fancy-project
+    $> rdgen project
 
 The basic project skeleton will give you:
  
@@ -75,12 +76,13 @@ The basic project skeleton will give you:
  * dart2js size: 120 KiB gzipped
  * deployment-ready
  
-It is possible to add extensions:
+## Advanced Project
+ 
+For a list of optional plugins and examples to install, type:
     
-    # replace <extension> with an identifier from the list below
-    $> rockdot_generator basic --<extension>
+    $> rdgen project --help
 
-
+Following plugins are available:
  * material: Material Design reference library
  * google: Full access to Google APIs
  * facebook Plugin: Full access to Facebook APIs
@@ -92,9 +94,7 @@ It is possible to add extensions:
  * gaf: Add GAF Extension to StageXL
  * spine: Add Spine Extension to StageXL
 
-Of course, you can combine these extensions
-
-    $> rockdot_generator basic --material --google --facebook --physics --ugc
+## Advanced Project Examples
 
 Additionally, you can choose to install example pages:
 
@@ -109,21 +109,19 @@ Additionally, you can choose to install example pages:
  * gafExamples: Install GAF Examples
  * spineExamples: Install Spine Examples
  
- 
-    # one extension and examples
-    $> rockdot_generator basic --material --materialExamples
+    # one plugin and examples
+    $> rdgen project--material --materialExamples
     
-    # all extensions and examples
-    $> rockdot_generator basic --material --materialExamples --google --googleExamples --facebook --facebookExamples --physics --physicsExamples --ugc --ugcExamples --bitmapFont --bitmapFontExamples --dragonBones --dragonBonesExamples --flump --flumpExamples --gaf --gafExamples --spine --spineExamples 
+    # all plugins and examples
+    $> rdgen project --material --materialExamples --google --googleExamples --facebook --facebookExamples --physics --physicsExamples --ugc --ugcExamples --bitmapFont --bitmapFontExamples --dragonBones --dragonBonesExamples --flump --flumpExamples --gaf --gafExamples --spine --spineExamples 
 
 Finally, run pub:
 
     $> pub get
-    $> pub serve
+    $> pub global activate webdev
+    $> webdev serve
 
-That's it, your project is up and running!
-
-Note: Point your browser to the public subdirectory like this: http://localhost:8080/
+See, your project is up and running!
 
 
 # Notes for generator developers (that's me)
@@ -132,14 +130,9 @@ Generator was built in a way that the 'master' template under `templates/master/
 
 Inner workings:
 - Before pushing a new version, you need to run `dart tool/grind.dart` to generate Lists of String with the file uri's of the assets that need to end up in the target directory.
-- Upon project generation, this array will get iterated over, and the files will be loaded via the `Resource` package, which is the only way to access files when running scripts via `pub`. The logic happens in `lib/generators/basic.dart`.
-- Also within `lib/generators/basic.dart`, some file manipulation will incur based on the command line options given. Basically, the master template, where all options are switched ON, will get stripped from every plugin and example that is not explicitly activated via command line options.
-- The generated project sports a `transformer`, which does two things:
-     - collect all properties string from config/ directory and example subdirectories, and merge them into web/config
-     - inspect all files and inject properties, if applicable (@some.property@ will be replaced by the matching string)
-     - when debugging, this should ideally be repeated with every Chromium refresh, and most  
-     unfortunately, in IDEA/WebStorm, transformers are not even guaranteed to get re-run upon starting a debug session.
-     - workaround: run pub serve from terminal, and once transformers completed, kill the process 
+- Upon project generation, this array will get iterated over, and the files will be loaded via the `Resource` package, which is the only way to access files when running scripts via `pub`.
+- Additionally, some file manipulation will be done according to command line options. Basically, the master template, where all options are switched ON, will get stripped from every plugin and example that is not explicitly activated via command line options.
+- The generated project sports a `builder`, which collects all properties string from lib/config/ directory and merge them into web/config whenever 'webdev serve' or 'webdev build' is run.
 
 To summarize, these steps are advised before pushing an update to github:
 
@@ -151,9 +144,7 @@ To summarize, these steps are advised before pushing an update to github:
 
 
 
-
-
-## Mission Statements
+## Rockdot Framework Mission Statements
 
 #### Best of breed. Built for speed.
 Rockdot loads extra fast. The minified/gzipped JS comes at a mere 120 KByte, including Material Design UI components.
