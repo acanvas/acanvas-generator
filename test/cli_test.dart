@@ -8,20 +8,18 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:rockdot_generator/rockdot_generator.dart';
-import 'package:rockdot_generator/src/cli_app.dart';
 import 'package:unittest/unittest.dart';
 
 void defineTests() {
   group('cli', () {
-    CliApp app;
+    RockdotCommandRunner app;
     CliLoggerMock logger;
-    GeneratorTargetMock target;
+    FileTargetMock target;
 
     setUp(() {
       logger = new CliLoggerMock();
-      target = new GeneratorTargetMock();
-      app = new CliApp(generators, logger, target);
-      app.cwd = new Directory('test');
+      target = new FileTargetMock();
+      app = new RockdotCommandRunner(logger, target);
     });
 
     void _expectOk([_]) {
@@ -41,22 +39,22 @@ void defineTests() {
     }
 
     test('no args', () {
-      return app.process([]).then(_expectOk);
+      return app.run([]).then(_expectOk);
     });
 
     test('one arg', () {
-      return app.process([generators.first.id, "--override"]).then((_) {
+      return app.run(['project', "--override"]).then((_) {
         _expectOk();
         expect(target.createdCount, isPositive);
       });
     });
 
-    test('one arg (bad)', () {
-      return _expectError(app.process(['bad_generator']));
+    test('non-existing command (bad)', () {
+      return _expectError(app.run(['bad_command']));
     });
 
-    test('two args (bad)', () {
-      return _expectError(app.process([generators.first.id, 'foobar']));
+    test('non-existing flag for command (bad)', () {
+      return _expectError(app.run(['project', '--foobar']));
     });
   });
 }
@@ -72,9 +70,13 @@ class CliLoggerMock implements CliLogger {
   String getStderr() => _stderr.toString();
 }
 
-class GeneratorTargetMock implements GeneratorTarget {
-  int createdCount = 0;
 
+class FileTargetMock implements Target {
+  int createdCount = 0;
+  final Directory _cwd = new Directory('test');
+  @override Directory get cwd => _cwd;
+
+  @override
   Future createFile(String path, List<int> contents) {
     expect(contents, isNot(isEmpty));
     expect(path, isNot(startsWith('/')));
@@ -83,4 +85,5 @@ class GeneratorTargetMock implements GeneratorTarget {
 
     return new Future.value();
   }
+
 }

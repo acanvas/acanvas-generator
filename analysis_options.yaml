@@ -1,17 +1,20 @@
 analyzer:
   strong-mode: true
   exclude:
-    - 'templates/rdf-minimal/**'
-    - 'templates/rdf-project/**'
-    - 'templates/rdf-server/**'
-    - 'templates/web-stagexl/**'
+    - 'lib/generators/**'
+    - 'lib/src/old/**'
+    - 'lib/templates/rdf-minimal/**'
+    - 'lib/templates/rdf-project/**'
+    - 'lib/templates/rdf-server/**'
+    - 'lib/templates/rdf-skeletons/**'
+    - 'lib/templates/web-stagexl/**'
 
 # Lint rules and documentation, see http://dart-lang.github.io/linter/lints
   errors:
-    unused_element: error
     unused_import: error
-    unused_local_variable: error
-    dead_code: error
+    unused_element: info
+    unused_local_variable: info
+    dead_code: info
 linter:
   rules:
     # Errors
@@ -42,7 +45,6 @@ linter:
     - library_names
     - library_prefixes
     - non_constant_identifier_names
-    - omit_local_variable_types
     - only_throw_errors
     - prefer_final_fields
     - prefer_is_not_empty

@@ -71,7 +71,7 @@ The basic project skeleton will give you:
  * best practice index.html
  * best practice StageXL bootstrap
  * best practice Rockdot framework bootstrap
- * röckdöt framework's state and screen extensions
+ * rockdot framework's state and screen extensions
  * dart2js size: 120 KiB gzipped
  * deployment-ready
  

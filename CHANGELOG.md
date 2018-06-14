@@ -2,15 +2,19 @@
 
 ## 0.11.0 Roadmap
 
-- Make Rockdot a Progressive Web App (PWA)
-- Make FlexBook a Custom Renderer for all Examples
-- Make MoppiFlower a Custom Renderer for all Examples
-
-## 0.10.0 Roadmap
-
-- Finalize UGC Backend / maybe move to Angel
-- Move more meta data into properties
+- Finalize UGC Backend
+- Rockdot Progressive Web App (PWA) Example
+- FlexBook as Custom Renderer for all Examples
+- MoppiFlower as Custom Renderer for all Examples
 - Include custom Shaders in Examples (zoom/fire)
+
+## 0.10.0-dev 2018-06-14
+
+- Migrated to Dart 2.0
+- Complete rewrite of Generators to Commands (from args package)
+- Moved code generation to main project
+- Rewrite of Project transformer and file structure
+- Move more meta data into properties
 
 ## 0.9.13 2017-06-27
 

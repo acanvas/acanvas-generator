@@ -1,0 +1,16 @@
+cache/
+server/target/
+deploy/
+build/
+.pub/
+.dart_tool/
+.idea/
+packages
+pubspec.lock
+.DS_Store
+.settings
+.project
+.packages
+lib/config/development
+*.iml
+*.mp3

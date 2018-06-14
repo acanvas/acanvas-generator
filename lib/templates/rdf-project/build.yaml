@@ -1,0 +1,42 @@
+# Read about `build.yaml` at https://pub.dartlang.org/packages/build_config
+targets:
+
+  $default:
+    sources:
+      {"exclude" : ["bin/**"]}
+    builders:
+      build_web_compilers|dart2js_archive_extractor:
+        options:
+          filter_outputs: false
+      build_web_compilers|entrypoint:
+        generate_for:
+          - web/project.dart
+        dev_options:
+          compiler: dartdevc
+        release_options:
+          compiler: dart2js
+          dart2js_args:
+           # See https://webdev.dartlang.org/tools/dart2js#size-and-speed-options
+           # - --dump-info
+           # - --fast-startup
+            - --minify
+            - --no-frequency-based-minification
+            - --no-source-maps
+            - --show-package-warnings
+            - --trust-primitives
+            - --trust-type-annotations
+
+builders:
+  configBuilder:
+    import: "package:rockdot_template/config_builder.dart"
+    builder_factories: ["configBuilder"]
+    build_extensions: {".buildConfig": [".tar.gz"]}
+    build_to: source
+    auto_apply: root_package
+    defaults:
+      dev_options: {"mode" : "development"}
+      release_options: {"mode" : "release"}
+      generate_for:
+        # Only apply to lib/placeholder.buildConfig
+        include:
+        - lib/placeholder.buildConfig

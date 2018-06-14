@@ -10,7 +10,6 @@ import 'package:which/which.dart';
 import 'package:grinder/src/run.dart' as run_lib;
 import 'package:ghpages_generator/ghpages_generator.dart' as ghpages;
 import 'package:path/path.dart' as path;
-import 'package:rockdot_generator/rockdot_generator.dart' as rockdot_generator;
 
 final Directory BUILD_DIR = new Directory('build');
 
@@ -20,12 +19,12 @@ main(List<String> args) => grind(args);
     'Concatenate the template files into data files that the generators can consume.')
 @Depends(checkInit)
 void prepare() {
-  Directory dir = new Directory('templates');
+  Directory dir = new Directory('lib/templates');
   dir.listSync(followLinks: false).forEach((element) {
     String templateName = path.basename(element.path);
     _concatenateFiles(
-        getDir('templates/${templateName}'),
-        getFile('lib/generators/data/${templateName}_data.g.dart'),
+        getDir('lib/templates/${templateName}'),
+        getFile('lib/src/template/data/${templateName}_data.g.dart'),
         templateName);
   });
 }
@@ -41,7 +40,7 @@ void analyze() {
 
 @Task('Check that the generated init grind script analyzes well')
 checkInit() {
-  // Analyzer.analyze(FilePath.current.join('tool', 'grind.dart').path, fatalWarnings: true);
+   Analyzer.analyze(FilePath.current.join('tool', 'grind.dart').path, fatalWarnings: true);
 }
 
 @Task('Run each generator and analyze the output.')
@@ -51,15 +50,13 @@ void test() {
   Directory fooDir = new Directory('foo');
 
   try {
-    for (rockdot_generator.Generator generator
-        in rockdot_generator.generators) {
       if (fooDir.existsSync()) fooDir.deleteSync(recursive: true);
       fooDir.createSync();
 
-      log('${generator.id} template:');
+      log('Running command "project" in directory ${fooDir.path}');
 
       List<String> args = [
-        generator.id,
+        'project',
         '--material',
         /*
         '--materialExamples'
@@ -106,7 +103,7 @@ void test() {
       aargs.add('--fatal-warnings');
       aargs.add(filePath);
       run_lib.run(_sdkBin('dartanalyzer'), arguments: aargs);
-    }
+
   } catch (e) {}
   try {
     fooDir.deleteSync(recursive: true);
