@@ -1,4 +1,4 @@
-.dart-tool/
+.dart_tool/
 .idea/
 .DS_Store
 foo/
