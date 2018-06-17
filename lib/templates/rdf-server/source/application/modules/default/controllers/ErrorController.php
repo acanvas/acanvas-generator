@@ -192,8 +192,8 @@ class ErrorController extends Zend_Controller_Action{
 			Zend_Controller_Front::getInstance()->setParam('noViewRenderer', true);
 			//-----------------------------------------------------------------------------------------
 			//navigation
-			$navigation = Zend_Controller_Front::getInstance()->getPlugin('Rockdot_Zend_View_Helper_Page');
-			if(!$navigation instanceof Rockdot_Zend_View_Helper_Page){
+			$navigation = Zend_Controller_Front::getInstance()->getPlugin('Acanvas_Zend_View_Helper_Page');
+			if(!$navigation instanceof Acanvas_Zend_View_Helper_Page){
 				throw new Exception('rendering default error, plugins not found', 6001);	
 			}
 			//-----------------------------------------------------------------------------------------
@@ -238,11 +238,11 @@ class ErrorController extends Zend_Controller_Action{
 			$dump = strtolower($this->getRequest()->_dump);
 			//full error object can lead to bufferoverflow (Allowed memory size)
 			if(isset($this->_errors->request) && strstr($dump, 'full')){ 
-				Rockdot_Debug::dump($this->_errors, 'ERROR_OBJECT::FULL');
+				Acanvas_Debug::dump($this->_errors, 'ERROR_OBJECT::FULL');
 			}
 			else{
 				if(isset($this->_errors->exception)){
-					Rockdot_Debug::dump(
+					Acanvas_Debug::dump(
 						array(
 							'type' => $this->exceptionType.' ('.$this->statusCode.')',
 							'message' => $this->_errors->exception->getMessage(),
@@ -253,11 +253,11 @@ class ErrorController extends Zend_Controller_Action{
 						'ERROR_OBJECT::'.$this->exceptionType
 					);
 					if(strstr($dump, 'exception')){
-						Rockdot_Debug::dump($this->_errors->exception, 'ERROR_OBJECT::EXCEPTION');
+						Acanvas_Debug::dump($this->_errors->exception, 'ERROR_OBJECT::EXCEPTION');
 					}
 				}
 				if(isset($this->_errors->request) && strstr($dump, 'request')){
-					Rockdot_Debug::dump($this->_errors->request, 'ERROR_OBJECT::REQUEST');	
+					Acanvas_Debug::dump($this->_errors->request, 'ERROR_OBJECT::REQUEST');
 				}
 			}
 		}

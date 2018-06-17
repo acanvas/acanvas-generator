@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
 * Hide Status Message
@@ -16,7 +16,7 @@ class MessageHideCommand extends AbstractCommand
   }
 
   @override
-  dynamic execute([RdSignal event = null]) {
+  dynamic execute([AcSignal event = null]) {
     super.execute(event);
 
     String id = event.data;

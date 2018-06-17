@@ -9,7 +9,7 @@ class SoundAnalyzer {
   bool _loaded = false;
 
   SoundAnalyzer() : super() {
-    if (Rd.IOS) {
+    if (Ac.IOS) {
       _startWebAudio();
       /*
       TEST B:

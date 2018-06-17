@@ -1,15 +1,15 @@
 <?php 
 $configuration = Zend_Registry::get('Application_Config');
 $configuration_locale = Zend_Registry::get('Application_Config_Locale');
-$rockdot_registry = Rockdot_Registry::getInstance();
+$acanvas_registry = Acanvas_Registry::getInstance();
 ?>
 <!DOCTYPE html>
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo $rockdot_registry->get('language') ?>" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo $rockdot_registry->get('language') ?>" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo $acanvas_registry->get('language') ?>" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo $acanvas_registry->get('language') ?>" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml> <![endif]-->
 
 <!--[if gt IE 8]><!-->
 <html
-	class="no-js" lang="<?php echo $rockdot_registry->get('language') ?>"
+	class="no-js" lang="<?php echo $acanvas_registry->get('language') ?>"
 	xmlns:og="http://ogp.me/ns#"
 <!--<![endif]-->
 <head>
@@ -35,7 +35,7 @@ $rockdot_registry = Rockdot_Registry::getInstance();
 	content="<?php echo $configuration_locale->meta_author ?>">
 <meta name="copyright"
 	content="<?php echo $configuration_locale->meta_copyright ?>">
-<meta name="language" content="<?php echo $rockdot_registry->language ?>">
+<meta name="language" content="<?php echo $acanvas_registry->language ?>">
 <meta name="revisit-after" content="3 days">
 <meta http-equiv="imagetoolbar" content="no">
 
@@ -57,7 +57,7 @@ $rockdot_registry = Rockdot_Registry::getInstance();
 <!-- 'Add to homescreen' for Safari on iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="rockdot_maximal">
+<meta name="apple-mobile-web-app-title" content="acanvas_maximal">
 <link rel="apple-touch-icon-precomposed" href="<?php echo $this->baseUrl('/');?>assets/html/images/icon/apple-touch-icon-precomposed.png">
 
 <!-- Tile icon for Win8 (144x144 + tile color) -->

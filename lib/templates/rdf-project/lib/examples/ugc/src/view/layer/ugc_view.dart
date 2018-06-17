@@ -23,7 +23,7 @@ class UGCView extends UGCAbstractLayer {
 
     _reflow.addChild(new MdButton(getProperty("button.close"),
         preset: MdButton.PRESET_GREEN, shadow: false)
-      ..submitEvent = new RdSignal(StateEvents.STATE_VO_BACK)
+      ..submitEvent = new AcSignal(StateEvents.STATE_VO_BACK)
       ..inheritSpan = false);
 
     onInitComplete();

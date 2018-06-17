@@ -4,8 +4,8 @@ protected $table;
 protected $sql_table_prefix;
 	
 	function __construct() {
-		//normally, we would extend Rockdot_DBTable, but then this class wouldn't work as an AMF Endpoint
-		$this->table = new Rockdot_DBTable();
+		//normally, we would extend Acanvas_DBTable, but then this class wouldn't work as an AMF Endpoint
+		$this->table = new Acanvas_DBTable();
 		
 		$this->sql_table_prefix = Zend_Registry::get('Application_Config')->db->prefix;
 	}

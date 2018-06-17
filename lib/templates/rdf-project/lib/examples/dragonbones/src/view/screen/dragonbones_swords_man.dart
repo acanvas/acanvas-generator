@@ -40,7 +40,7 @@ class DragonBonesSwordsMan extends AbstractScreen {
     _skeleton.setSkin(textureAtlas);
     _skeleton.play("steady2");
     _skeleton.showBones = false;
-    Rd.JUGGLER.add(_skeleton);
+    Ac.JUGGLER.add(_skeleton);
     addChild(_skeleton);
 
     onInitComplete();
@@ -63,7 +63,7 @@ class DragonBonesSwordsMan extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeleton);
+    Ac.JUGGLER.remove(_skeleton);
     super.dispose();
   }
 

@@ -26,7 +26,7 @@ class GafRocket extends AbstractScreen {
     _miniGame.play(true);
 
     addChild(_miniGame);
-    Rd.JUGGLER.add(_miniGame);
+    Ac.JUGGLER.add(_miniGame);
 
     // initialize the rockets
 
@@ -61,9 +61,9 @@ class GafRocket extends AbstractScreen {
   void dispose({bool removeSelf: true}) {
     _miniGame.stop(true);
 
-    Rd.JUGGLER.remove(_miniGame);
+    Ac.JUGGLER.remove(_miniGame);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

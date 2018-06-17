@@ -42,7 +42,7 @@ class SpineGoblinsFfd extends AbstractScreen {
     _skeletonAnimation.state.setAnimationByName(0, "walk", true);
     _skeletonAnimation.skeleton.skinName = "goblin";
     addChild(_skeletonAnimation);
-    Rd.JUGGLER.add(_skeletonAnimation);
+    Ac.JUGGLER.add(_skeletonAnimation);
 
     // feature: change the skin used for the skeleton
 
@@ -71,9 +71,9 @@ class SpineGoblinsFfd extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeletonAnimation);
+    Ac.JUGGLER.remove(_skeletonAnimation);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

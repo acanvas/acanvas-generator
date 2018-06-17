@@ -28,7 +28,7 @@ class GafGunSwap extends AbstractScreen {
     _robot.mouseChildren = false;
     _robot.mouseCursor = MouseCursor.POINTER;
     addChild(_robot);
-    Rd.JUGGLER.add(_robot);
+    Ac.JUGGLER.add(_robot);
     _robot.play(true);
 
     // prepare gun swap
@@ -65,8 +65,8 @@ class GafGunSwap extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     _robot.stop(true);
-    Rd.JUGGLER.remove(_robot);
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.remove(_robot);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

@@ -84,8 +84,8 @@ aliquyam erat, sed diam voluptua.""";
       bitmap.y += bitmap.pivotY;
     }
 
-    Rd.JUGGLER.onElapsedTimeChange.listen((num elapsedTime) {
-      Rd.MATERIALIZE_REQUIRED = true;
+    Ac.JUGGLER.onElapsedTimeChange.listen((num elapsedTime) {
+      Ac.MATERIALIZE_REQUIRED = true;
       for (var bitmap in bitmapText.children) {
         bitmap.rotation = 0.2 * sin(elapsedTime * 8 + bitmap.x);
       }

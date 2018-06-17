@@ -1,6 +1,6 @@
 part of spine_example;
 
-class SpineExamplePlugin extends AbstractRdPlugin {
+class SpineExamplePlugin extends AbstractAcPlugin {
   int sorting;
   SpineExamplePlugin(this.sorting) : super(900 + sorting) {}
 

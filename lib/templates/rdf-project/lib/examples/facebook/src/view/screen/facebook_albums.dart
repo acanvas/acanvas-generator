@@ -9,7 +9,7 @@ class FacebookAlbums extends AbstractScreen {
   void init({Map<String, String> params: null}) {
     super.init(params: params);
 
-    new RdSignal(FBEvents.ALBUMS_GET, null, (List albums) {
+    new AcSignal(FBEvents.ALBUMS_GET, null, (List albums) {
       _list = new MdMenu(albums, cell: new ListFBAlbumCell(), shadow: true);
       _list.submitCallback = _onCellCommit;
       addChild(_list);
@@ -29,6 +29,6 @@ class FacebookAlbums extends AbstractScreen {
     FBAlbumVO vo = cell.data as FBAlbumVO;
     String url =
         getProperty("${FacebookExampleScreenIDs.FACEBOOK_PHOTOS}.url", true);
-    new RdSignal(StateEvents.ADDRESS_SET, "${url}?id=${vo.id}").dispatch();
+    new AcSignal(StateEvents.ADDRESS_SET, "${url}?id=${vo.id}").dispatch();
   }
 }

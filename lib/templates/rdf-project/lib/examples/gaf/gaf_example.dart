@@ -5,12 +5,12 @@ import 'dart:math';
 
 import 'package:stagexl/stagexl.dart';
 import 'package:stagexl_gaf/stagexl_gaf.dart';
-import 'package:rockdot_commons/rockdot_commons.dart'
-    show ImageSprite, Rd, MLifecycle, Wrap, ScrollOrientation, MdText;
+import 'package:acanvas_commons/acanvas_commons.dart'
+    show ImageSprite, Ac, MLifecycle, Wrap, ScrollOrientation, MdText;
 
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, RockdotBoxSprite;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, AcanvasBoxSprite;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractScreen, EffectIDs, Theme;
 
 part 'src/gaf_example_plugin.dart';

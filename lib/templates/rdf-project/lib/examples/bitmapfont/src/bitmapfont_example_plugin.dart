@@ -1,6 +1,6 @@
 part of bitmapfont_example;
 
-class BitmapFontExamplePlugin extends AbstractRdPlugin {
+class BitmapFontExamplePlugin extends AbstractAcPlugin {
   int sorting;
   BitmapFontExamplePlugin(this.sorting) : super(900 + sorting) {}
 

@@ -1,10 +1,10 @@
 library particle_example;
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
+import 'package:acanvas_commons/acanvas_commons.dart';
 
-import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart' show AbstractAcPlugin;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractReflowScreen, EffectIDs;
 import 'package:stagexl_particle/stagexl_particle.dart';
 

@@ -4,19 +4,19 @@ import 'dart:async';
 
 import 'package:stagexl/stagexl.dart';
 import 'package:stagexl_dragonbones/stagexl_dragonbones.dart';
-import 'package:rockdot_commons/rockdot_commons.dart'
+import 'package:acanvas_commons/acanvas_commons.dart'
     show
         MdText,
         ImageSprite,
-        Rd,
+        Ac,
         MdWrap,
         AlignH,
         MLifecycle,
         Wrap,
         ScrollOrientation;
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, RockdotBoxSprite;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, AcanvasBoxSprite;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractScreen, Dimensions, EffectIDs, Theme;
 
 part 'src/dragonbones_example_plugin.dart';

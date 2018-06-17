@@ -6,11 +6,11 @@ import 'dart:math';
 
 import 'package:stagexl/stagexl.dart';
 import 'package:stagexl_bitmapfont/stagexl_bitmapfont.dart';
-import 'package:rockdot_commons/rockdot_commons.dart'
-    show Rd, FlowOrientation, MdText, RdSignal, MLifecycle;
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, StateEvents;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_commons/acanvas_commons.dart'
+    show Ac, FlowOrientation, MdText, AcSignal, MLifecycle;
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, StateEvents;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
 
 part 'src/bitmapfont_example_plugin.dart';

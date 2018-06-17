@@ -1,6 +1,6 @@
-part of rockdot_template;
+part of acanvas_template;
 
-class RdRenderLoop extends RenderLoop {
+class AcRenderLoop extends RenderLoop {
   bool _invalidate = false;
   num _currentTime = 0.0;
 
@@ -31,21 +31,21 @@ class RdRenderLoop extends RenderLoop {
   void advanceTime(num deltaTime) {
     _currentTime += deltaTime;
 
-    if (Rd.JUGGLER.hasAnimatables) {
-      _setRenderMode(Rd.STAGE);
+    if (Ac.JUGGLER.hasAnimatables) {
+      _setRenderMode(Ac.STAGE);
     }
 
     _enterFrameEvent.passedTime = deltaTime;
     _enterFrameEvent.dispatch();
 
-    Rd.JUGGLER.advanceTime(deltaTime);
+    Ac.JUGGLER.advanceTime(deltaTime);
 
     if (_invalidate) {
       _invalidate = false;
       _renderEvent.dispatch();
     }
 
-    Rd.STAGE.materialize(_currentTime, deltaTime);
+    Ac.STAGE.materialize(_currentTime, deltaTime);
 
     _exitFrameEvent.dispatch();
   }

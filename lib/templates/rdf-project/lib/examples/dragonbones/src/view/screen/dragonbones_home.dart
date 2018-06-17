@@ -73,7 +73,7 @@ class DragonbonesHome extends AbstractScreen {
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

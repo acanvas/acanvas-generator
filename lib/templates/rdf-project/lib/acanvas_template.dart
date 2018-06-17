@@ -1,23 +1,23 @@
-library rockdot_template;
+library acanvas_template;
 
 import 'dart:html' as html;
 import 'dart:math' hide Rectangle, Point;
 import 'dart:async' show Future, Timer;
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
-import 'package:rockdot_spring/rockdot_spring.dart'
+import 'package:acanvas_commons/acanvas_commons.dart';
+import 'package:acanvas_spring/acanvas_spring.dart'
     show
         IObjectFactory,
         LoaderInfo,
         IObjectFactoryPostProcessor,
         IObjectPostProcessor;
 
-// ##### ROCKDOT CORE #####
-import 'package:rockdot_framework/src/core.all.dart';
-import 'package:rockdot_framework/src/plugin.io.dart' show IOPlugin;
+// ##### ACANVAS CORE #####
+import 'package:acanvas_framework/src/core.all.dart';
+import 'package:acanvas_framework/src/plugin.io.dart' show IOPlugin;
 
-import 'package:rockdot_template/rockdot_template_plugins.dart';
+import 'package:acanvas_template/acanvas_template_plugins.dart';
 // ## PLUGIN INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 // ------------##### PROJECT #####------------
@@ -42,8 +42,8 @@ part 'src/project/view/element/pager/pager_prev_next_button.dart';
 part 'src/project/project.dart';
 
 // BOOTSTRAP
-part 'src/bootstrap/rd_render_loop.dart';
-part 'src/bootstrap/rd_bootstrap.dart';
+part 'src/bootstrap/ac_render_loop.dart';
+part 'src/bootstrap/ac_bootstrap.dart';
 part 'src/bootstrap/entrypoint.dart';
 part 'src/bootstrap/plugins.dart';
 part 'src/bootstrap/load_screen.dart';

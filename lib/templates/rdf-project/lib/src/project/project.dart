@@ -1,10 +1,10 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /*
  * This is the application's plugin.
- * It is set up the same way as any other plugin of Rockdot.
+ * It is set up the same way as any other plugin of Acanvas.
  */
-class Project extends AbstractRdPlugin {
+class Project extends AbstractAcPlugin {
   static const String MODEL = "Project.MODEL";
 
   Project() : super(1000) {}
@@ -12,7 +12,7 @@ class Project extends AbstractRdPlugin {
   /**
    * Registers Commands with FrontController
    * You can then access them from anywhere:
-   * new RdSignal(ProjectEvents.SOME_COMMAND, optionalParam, optionalFunctionCallback).dispatch();
+   * new AcSignal(ProjectEvents.SOME_COMMAND, optionalParam, optionalFunctionCallback).dispatch();
    */
   @override
   void configureCommands() {
@@ -21,7 +21,7 @@ class Project extends AbstractRdPlugin {
     commandMap[StateEvents.MESSAGE_HIDE] = () => new MessageHideCommand();
     // ## COMMAND INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
-    /* Add this Project's Init Command to RdBootstrap Command Sequence */
+    /* Add this Project's Init Command to AcBootstrap Command Sequence */
     projectInitCommand = ProjectEvents.APP_INIT;
   }
 
@@ -33,7 +33,7 @@ class Project extends AbstractRdPlugin {
    */
   @override
   void configureInjectors() {
-    RdContextUtil.registerInstance(objectFactory, MODEL, new Model());
+    AcContextUtil.registerInstance(objectFactory, MODEL, new Model());
     objectFactory.addObjectPostProcessor(new ModelInjector(objectFactory));
   }
 
@@ -50,7 +50,7 @@ class Project extends AbstractRdPlugin {
 
   /**
    * The screens (read: pages) used by this Project.
-   * In Rockdot Actionscript, these were defined in XML.
+   * In Acanvas Actionscript, these were defined in XML.
    * We have yet to come up with an approach for Dart - XML doesn't make sense.
    */
   @override

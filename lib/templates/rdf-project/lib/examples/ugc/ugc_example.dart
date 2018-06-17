@@ -2,7 +2,7 @@ library ugc_example;
 
 import 'dart:html' hide Event;
 import 'dart:math' as math;
-import 'package:rockdot_commons/rockdot_commons.dart'
+import 'package:acanvas_commons/acanvas_commons.dart'
     show
         AbstractPolaroidPager,
         BoxSprite,
@@ -14,18 +14,18 @@ import 'package:rockdot_commons/rockdot_commons.dart'
         MdText,
         MdWrap,
         PolaroidItemButton,
-        Rd,
-        RdSignal,
+        Ac,
+        AcSignal,
         ScrollOrientation,
         Wrap;
 
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, RdConstants, RockdotLifecycleSprite, StateEvents;
-import 'package:rockdot_framework/src/plugin.facebook.dart';
-import 'package:rockdot_framework/src/plugin.google.dart';
-import 'package:rockdot_framework/src/plugin.io.dart';
-import 'package:rockdot_framework/src/plugin.ugc.dart';
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, AcConstants, AcanvasLifecycleSprite, StateEvents;
+import 'package:acanvas_framework/src/plugin.facebook.dart';
+import 'package:acanvas_framework/src/plugin.google.dart';
+import 'package:acanvas_framework/src/plugin.io.dart';
+import 'package:acanvas_framework/src/plugin.ugc.dart';
+import 'package:acanvas_template/acanvas_template.dart'
     show
         AbstractReflowScreen,
         AbstractScreen,

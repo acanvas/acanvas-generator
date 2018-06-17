@@ -1,6 +1,6 @@
-name: rockdot_template
-version: 0.9.13
-description: Project template created by Rockdot Generator.
+name: acanvas_template
+version: 0.10.0-dev
+description: Project template created by Acanvas Generator.
 environment:
   sdk: '>=2.0.0-dev.55.0 <2.0.0'
 
@@ -9,8 +9,16 @@ dependencies:
   browser: any
   path: any
   crypto: any
-  rockdot_framework:
-    git: https://github.com/blockforest/rockdot-framework
+  acanvas_framework:
+    git: https://github.com/acanvas/acanvas-framework
+  ### PHYSICS
+  acanvas_physics:
+    git: https://github.com/acanvas/acanvas-physics
+  ### END PHYSICS
+  ### BABYLON
+  babylonjs_facade:
+    git: https://github.com/block-forest/babylonjs-dart-facade
+  ### END BABYLON
   ### BITMAPFONT
   stagexl_bitmapfont: any
   ### END BITMAPFONT
@@ -29,52 +37,37 @@ dependencies:
   ### PARTICLE
   stagexl_particle: any
   ### END PARTICLE
-  ### PHYSICS
-  rockdot_physics:
-    git: https://github.com/blockforest/rockdot-physics
-  ### END PHYSICS
   ### ISOMETRIC
   stagexl_isometric:
     git: https://github.com/bp74/StageXL_Isometric
   ### END ISOMETRIC
-  ### BABYLON
-  babylonjs_facade:
-    git: https://github.com/blockforest/babylonjs-dart-facade
-  ### END BABYLON
 
 dev_dependencies:
-  #-------- Dart 1.24.3 --------
-  #barback: any
-  #grinder: any #'>=0.7.0 <0.7.1'
   #-------- Dart 2.0.0-dev --------
   build_runner: ^0.8.9
   build_test: ^0.10.2
   build_web_compilers: ^0.4.0+3
 
+# bleeding edge development
 dependency_overrides:
-   rockdot_commons:
-     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-commons
-   rockdot_framework:
-     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-framework
-   rockdot_spring:
-     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-spring
-   babylonjs_facade:
-     path: /Users/ndoehring/Documents/WebstormProjects/babylonjs-dart-facade
-   rockdot_physics:
-     path: /Users/ndoehring/Documents/WebstormProjects/rockdot-physics
+   acanvas_commons:
+     path: /Users/ndoehring/Documents/AcanvasProjects/acanvas-commons
+   acanvas_framework:
+     path: /Users/ndoehring/Documents/AcanvasProjects/acanvas-framework
+   acanvas_spring:
+     path: /Users/ndoehring/Documents/AcanvasProjects/acanvas-spring
+ #  acanvas_physics:
+ #    path: /Users/ndoehring/Documents/AcanvasProjects/acanvas-physics
    stagexl:
      version: 1.3.2-dev
      git: https://github.com/bp74/StageXL
-     #path: /Users/ndoehring/Documents/WebstormProjects/StageXL
    stagexl_dragonbones:
-     path: /Users/ndoehring/Documents/IdeaProjects/StageXL_DragonBones
-#   stagexl_flump:
-#     path: /Users/ndoehring/Documents/WebstormProjects/StageXL_Flump
+     git: https://github.com/bp74/StageXL_DragonBones
+   stagexl_flump:
+     git: https://github.com/bp74/StageXL_Flump
    stagexl_gaf:
-     path: /Users/ndoehring/Documents/WebstormProjects/StageXL_GAF
-#   stagexl_isometric:
-#     path: /Users/ndoehring/Documents/WebstormProjects/StageXL_Isometric
-#   stagexl_particle:
-#     path: /Users/ndoehring/Documents/WebstormProjects/StageXL_Particle
-   #stagexl_spine:
-    # path: /Users/ndoehring/Documents/WebstormProjects/StageXL_Spine
+     git: https://github.com/bp74/StageXL_GAF
+   stagexl_particle:
+     git: https://github.com/bp74/StageXL_Particle
+   stagexl_spine:
+     git: https://github.com/bp74/StageXL_Spine

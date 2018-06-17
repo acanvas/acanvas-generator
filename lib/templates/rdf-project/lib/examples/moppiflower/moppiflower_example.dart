@@ -6,11 +6,11 @@ import 'dart:web_audio';
 import 'dart:typed_data';
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart'
-    show Rd, BoxSprite, MdButton;
+import 'package:acanvas_commons/acanvas_commons.dart'
+    show Ac, BoxSprite, MdButton;
 
-import 'package:rockdot_framework/src/core.all.dart' show AbstractRdPlugin;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart' show AbstractAcPlugin;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractScreen, EffectIDs;
 
 part 'src/moppiflower_example_plugin.dart';

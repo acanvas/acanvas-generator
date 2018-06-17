@@ -1,8 +1,8 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /// The top bar. Always there.
 
-class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
+class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
   MdAppBar _appBar;
   MdText _headline;
   MdFab _menuButton;
@@ -49,7 +49,7 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     _headline.inheritWidth = false;
     _appBar.addHeadline(_headline);
 
-    if (Rd.WEBGL) {
+    if (Ac.WEBGL) {
       _fxButton = new MdFab(MdIcon.white(MdIconSet.search),
           bgColor: Colors.BF_BASE_GREEN, radius: 20)
         ..submitCallback = _mousePointerShader
@@ -68,14 +68,14 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     addChild(_appBar);
 
     _modalBg =
-        RdGraphics.rectangle(0, 0, spanWidth, spanHeight, color: MdColor.BLACK);
+        AcGraphics.rectangle(0, 0, spanWidth, spanHeight, color: MdColor.BLACK);
     addChild(_modalBg);
 
     _sidebar = new NavigationSidebar("sidebar");
     addChild(_sidebar);
 
     _closeMenu(0.0);
-    new RdSignal(StateEvents.STATE_VO_SET, null, _onAddressSet).listen();
+    new AcSignal(StateEvents.STATE_VO_SET, null, _onAddressSet).listen();
     onInitComplete();
   }
 
@@ -119,11 +119,11 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
   void _openMenu() {
     _modalBg.addEventListener(TouchEvent.TOUCH_BEGIN, _modalMouseDownAction);
     _modalBg.addEventListener(MouseEvent.CLICK, _modalMouseDownAction);
-    Rd.JUGGLER.addTween(_modalBg, .4)..animate.alpha.to(.5);
+    Ac.JUGGLER.addTween(_modalBg, .4)..animate.alpha.to(.5);
 
     _modalBg.visible = true;
     _sidebar.visible = true;
-    Rd.JUGGLER.addTween(_sidebar, .2, Transition.easeOutQuintic)
+    Ac.JUGGLER.addTween(_sidebar, .2, Transition.easeOutQuintic)
       ..animate.x.to(0);
   }
 
@@ -139,7 +139,7 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     StateVO vo = _subPageList.elementAt(_listIndex);
     _listIndex++;
 
-    new RdSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
+    new AcSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
   }
 
   void _closeMenu([double duration = .1]) {
@@ -147,7 +147,7 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     _modalBg.visible = false;
 
     if (duration > 0) {
-      Rd.JUGGLER.addTween(_sidebar, duration, Transition.easeInQuintic)
+      Ac.JUGGLER.addTween(_sidebar, duration, Transition.easeInQuintic)
         ..animate.x.to(-_sidebar.spanWidth)
         ..onComplete = () => _sidebar.visible = false;
     } else {
@@ -161,7 +161,7 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     _closeMenu();
   }
 
-  void _onAddressSet(RdSignal e) {
+  void _onAddressSet(AcSignal e) {
     if (_sidebarShowingPermanently == false) {
       _closeMenu();
     }
@@ -205,7 +205,7 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
       //title animation
       int leHeight =
           (MdDimensions.HEIGHT_APP_BAR / 2 - _headline.textHeight / 2).round();
-      Rd.JUGGLER.addTween(_headline, .1, Transition.easeInQuintic)
+      Ac.JUGGLER.addTween(_headline, .1, Transition.easeInQuintic)
         ..animate.y.to(leHeight - 15)
         ..animate.alpha.to(0)
         ..onComplete = () {
@@ -213,7 +213,7 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
           _headline.y = leHeight + 15;
 
           Tween tw =
-              Rd.JUGGLER.addTween(_headline, .2, Transition.easeOutQuintic);
+              Ac.JUGGLER.addTween(_headline, .2, Transition.easeOutQuintic);
           tw.animate.y.to(leHeight);
           tw.animate.alpha.to(1);
         };
@@ -221,9 +221,9 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
   }
 
   _mousePointerShader() {
-    if (Rd.STAGE.filters.length > 0) {
-      Rd.STAGE.filters = [];
-      Rd.MATERIALIZE_REQUIRED = false;
+    if (Ac.STAGE.filters.length > 0) {
+      Ac.STAGE.filters = [];
+      Ac.MATERIALIZE_REQUIRED = false;
       return;
     }
 
@@ -235,20 +235,20 @@ class Navigation extends RockdotLifecycleSprite implements IStateModelAware {
     DisplacementMapFilter filter =
         new DisplacementMapFilter(bitmapData, matrix, 100, 100);
 
-    Rd.STAGE.filters = [filter];
-    if (Rd.MOBILE) {
-      Rd.STAGE.addEventListener<InputEvent>(TouchEvent.TOUCH_MOVE,
+    Ac.STAGE.filters = [filter];
+    if (Ac.MOBILE) {
+      Ac.STAGE.addEventListener<InputEvent>(TouchEvent.TOUCH_MOVE,
           (InputEvent e) {
         filter.matrix.tx = e.stageX - 285;
         filter.matrix.ty = e.stageY - 185;
-        Rd.MATERIALIZE_REQUIRED = true;
+        Ac.MATERIALIZE_REQUIRED = true;
       });
     } else {
-      Rd.STAGE.addEventListener<InputEvent>(MouseEvent.MOUSE_MOVE,
+      Ac.STAGE.addEventListener<InputEvent>(MouseEvent.MOUSE_MOVE,
           (InputEvent e) {
         filter.matrix.tx = e.stageX - 285;
         filter.matrix.ty = e.stageY - 185;
-        Rd.MATERIALIZE_REQUIRED = true;
+        Ac.MATERIALIZE_REQUIRED = true;
       });
     }
   }

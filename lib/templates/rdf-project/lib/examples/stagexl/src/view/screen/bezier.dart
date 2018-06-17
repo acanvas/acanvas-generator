@@ -18,9 +18,9 @@ class BezierExample extends AbstractScreen {
       var curve = new Curve(curveData1, curveData2);
 
       addChild(curve);
-      Rd.JUGGLER.add(curve);
+      Ac.JUGGLER.add(curve);
 
-      var x = Rd.JUGGLER.interval(1.5).listen((_) {
+      var x = Ac.JUGGLER.interval(1.5).listen((_) {
         var cp = new CurveData.fromRandom(random);
         curve.animateTo(cp);
       });

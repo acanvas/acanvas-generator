@@ -2,7 +2,7 @@ part of @package@;
 
 class @command@ extends AbstractCommand{
 		
-	@override void execute([RdSignal event=null])
+	@override void execute([AcSignal event=null])
 	 {
 		super.execute(event);
 

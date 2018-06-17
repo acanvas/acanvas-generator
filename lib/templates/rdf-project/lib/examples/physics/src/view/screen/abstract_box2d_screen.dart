@@ -65,13 +65,13 @@ class AbstractBox2dScreen extends AbstractScreen with MBox2dHelper {
   }
 
   void start() {
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
     _timer = new Timer.periodic(
         new Duration(milliseconds: (m_timeStep * 1000).round()), onTimer);
   }
 
   void stop() {
-    Rd.MATERIALIZE_REQUIRED = false;
+    Ac.MATERIALIZE_REQUIRED = false;
     if (_timer != null) {
       _timer.cancel();
     }
@@ -83,7 +83,7 @@ class AbstractBox2dScreen extends AbstractScreen with MBox2dHelper {
     if (debugDrawActive) {
       m_world.DrawDebugData();
     }
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
     //FRateLimiter.limitFrame(FPS.toInt());
   }
 

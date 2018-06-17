@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class Colors {
   static const int BLACK = 0xFF000000;

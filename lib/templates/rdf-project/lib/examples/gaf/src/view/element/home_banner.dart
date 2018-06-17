@@ -1,6 +1,6 @@
 part of gaf_example;
 
-class HomeBanner extends RockdotBoxSprite {
+class HomeBanner extends AcanvasBoxSprite {
   ImageSprite spr1;
 
   HomeBanner() : super() {
@@ -28,7 +28,7 @@ class HomeBanner extends RockdotBoxSprite {
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose(removeSelf: removeSelf);
   }
 }

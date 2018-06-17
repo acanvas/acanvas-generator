@@ -18,15 +18,15 @@ class AbstractBox2dElement extends BoxSprite with MBox2dHelper {
     this.spanHeight = spanHeight;
 
     Sprite bg =
-        RdGraphics.rectangle(0, 0, spanWidth, spanHeight, color: 0x00000000);
+        AcGraphics.rectangle(0, 0, spanWidth, spanHeight, color: 0x00000000);
     addChild(bg);
 
     addEventListener(
-        Rd.TOUCH ? TouchEvent.TOUCH_BEGIN : MouseEvent.MOUSE_DOWN, _onPress);
+        Ac.TOUCH ? TouchEvent.TOUCH_BEGIN : MouseEvent.MOUSE_DOWN, _onPress);
     addEventListener(
-        Rd.TOUCH ? TouchEvent.TOUCH_MOVE : MouseEvent.MOUSE_MOVE, _onMove);
+        Ac.TOUCH ? TouchEvent.TOUCH_MOVE : MouseEvent.MOUSE_MOVE, _onMove);
     addEventListener(
-        Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, _onRelease);
+        Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, _onRelease);
   }
 
   void _onPress(InputEvent e) {
@@ -102,11 +102,11 @@ class AbstractBox2dElement extends BoxSprite with MBox2dHelper {
   @override
   void dispose({bool removeSelf: true}) {
     removeEventListener(
-        Rd.TOUCH ? TouchEvent.TOUCH_BEGIN : MouseEvent.MOUSE_DOWN, _onPress);
+        Ac.TOUCH ? TouchEvent.TOUCH_BEGIN : MouseEvent.MOUSE_DOWN, _onPress);
     removeEventListener(
-        Rd.TOUCH ? TouchEvent.TOUCH_MOVE : MouseEvent.MOUSE_MOVE, _onMove);
+        Ac.TOUCH ? TouchEvent.TOUCH_MOVE : MouseEvent.MOUSE_MOVE, _onMove);
     removeEventListener(
-        Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, _onRelease);
+        Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP, _onRelease);
     super.dispose();
   }
 }

@@ -61,8 +61,8 @@ class Sprite3DExample extends AbstractScreen {
     _cube.perspectiveProjection = new PerspectiveProjection.fromDepth(1000, 2);
     _cube.addTo(this);
 
-    _subscription = Rd.JUGGLER.timespan(3600.0).listen((time) {
-      Rd.MATERIALIZE_REQUIRED = true;
+    _subscription = Ac.JUGGLER.timespan(3600.0).listen((time) {
+      Ac.MATERIALIZE_REQUIRED = true;
       _cube.x = spanWidth / 2 + sin(time) * 80;
       _cube.y = spanHeight / 2 + cos(time) * 80;
       _cube.rotationX = time * 0.5;

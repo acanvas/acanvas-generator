@@ -39,7 +39,7 @@ class SpineVine extends AbstractScreen {
     _skeletonAnimation.state.setAnimationByName(0, "animation", true);
 
     addChild(_skeletonAnimation);
-    Rd.JUGGLER.add(_skeletonAnimation);
+    Ac.JUGGLER.add(_skeletonAnimation);
 
     onInitComplete();
   }
@@ -56,8 +56,8 @@ class SpineVine extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeletonAnimation);
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.remove(_skeletonAnimation);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

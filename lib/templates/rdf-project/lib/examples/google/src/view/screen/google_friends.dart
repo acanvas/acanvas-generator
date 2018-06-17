@@ -37,8 +37,8 @@ class GoogleFriends extends AbstractScreen implements IGoogleModelAware {
   }
 
   void _onItemClicked(Person dao) {
-    Rd.log.info("Item clicked. id: {0}, url_big: {1}", [dao.id, dao.image.url]);
-    //new RdSignal(StateEvents.ADDRESS_SET, "/image/view").dispatch();
+    Ac.log.info("Item clicked. id: {0}, url_big: {1}", [dao.id, dao.image.url]);
+    //new AcSignal(StateEvents.ADDRESS_SET, "/image/view").dispatch();
   }
 
   @override

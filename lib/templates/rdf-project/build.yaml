@@ -28,7 +28,7 @@ targets:
 
 builders:
   configBuilder:
-    import: "package:rockdot_template/config_builder.dart"
+    import: "package:acanvas_template/config_builder.dart"
     builder_factories: ["configBuilder"]
     build_extensions: {".buildConfig": [".tar.gz"]}
     build_to: source

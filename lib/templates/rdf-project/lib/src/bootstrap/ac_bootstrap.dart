@@ -1,12 +1,12 @@
-part of rockdot_template;
+part of acanvas_template;
 
-///  The RdBootstrap class manages instantiation of and programmatic additions to our [ApplicationContext].
+///  The AcBootstrap class manages instantiation of and programmatic additions to our [ApplicationContext].
 ///  Most often, you will instantiate and load this class in [Entrypoint]
 
-class RdBootstrap extends AbstractRdBootstrap {
+class AcBootstrap extends AbstractAcBootstrap {
   int _exampleOrder;
 
-  RdBootstrap(Stage stage) : super(stage) {
+  AcBootstrap(Stage stage) : super(stage) {
     // Defaults are injected from public.properties
     // TODO add support for setting these via GET
 
@@ -14,14 +14,14 @@ class RdBootstrap extends AbstractRdBootstrap {
     loaderInfo.language = "";
     loaderInfo.country = "";
     loaderInfo.market = "";
-    RdConstants.setLoaderInfo(loaderInfo);
+    AcConstants.setLoaderInfo(loaderInfo);
 
     //----------------------------
 
     // The Property Files we want to load initially
 
     propertyFiles = [
-      "config/locale/${RdConstants.LANGUAGE}.properties",
+      "config/locale/${AcConstants.LANGUAGE}.properties",
       "config/project.properties"
     ];
 
@@ -34,11 +34,11 @@ class RdBootstrap extends AbstractRdBootstrap {
 
   Future load() async {
     // Add Fonts to load
-    RdFontUtil.addFont(Fonts.ROBOTO_LOADSTRING);
+    AcFontUtil.addFont(Fonts.ROBOTO_LOADSTRING);
 
     await Assets.load();
     // TODO detect internet connectivity
-    //await RdFontUtil.loadFonts();
+    //await AcFontUtil.loadFonts();
     await loadApplicationContext();
   }
 }

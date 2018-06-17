@@ -11,7 +11,7 @@ set -e
 pub get
 
 # Verify that the libraries are error free.
-dartanalyzer --fatal-warnings bin/rockdot_generator.dart lib/rockdot_generator.dart test/all.dart
+dartanalyzer --fatal-warnings bin/acanvas_generator.dart lib/acanvas_generator.dart test/all.dart
 
 # Run the tests.
 dart -c test/all.dart

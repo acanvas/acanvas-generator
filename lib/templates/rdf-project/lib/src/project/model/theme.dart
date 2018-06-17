@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class Theme {
   static const int COLOR_BASE = Colors.BF_BASE_GREEN;

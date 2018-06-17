@@ -48,7 +48,7 @@ class SpineHero extends AbstractScreen {
         new SkeletonAnimation(skeletonData, animationStateData);
     _skeletonAnimation.state.setAnimationByName(0, "Idle", true);
     addChild(_skeletonAnimation);
-    Rd.JUGGLER.add(_skeletonAnimation);
+    Ac.JUGGLER.add(_skeletonAnimation);
 
     // Add TextField to show user information
 
@@ -111,9 +111,9 @@ class SpineHero extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeletonAnimation);
+    Ac.JUGGLER.remove(_skeletonAnimation);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

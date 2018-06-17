@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class Two extends AbstractScreen {
   ImageSprite _bmp;
@@ -18,7 +18,7 @@ class Two extends AbstractScreen {
     addChild(_bmp);
 
     _button = new MdButton(getProperty("button"), preset: MdButton.PRESET_BLUE);
-    _button.submitEvent = new RdSignal(
+    _button.submitEvent = new AcSignal(
         StateEvents.ADDRESS_SET, getProperty("layer.photo.url", true));
     addChild(_button);
 
@@ -41,7 +41,7 @@ class Two extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

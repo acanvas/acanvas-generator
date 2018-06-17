@@ -4,10 +4,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
+import 'package:acanvas_commons/acanvas_commons.dart';
 
-import 'package:rockdot_framework/src/core.all.dart';
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart';
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractReflowScreen, AbstractScreen, EffectIDs, Theme;
 import 'package:stagexl_spine/stagexl_spine.dart';
 

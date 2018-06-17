@@ -19,8 +19,8 @@ class BitmapFontHome extends AbstractReflowScreen {
 
       copy = Theme.getCopy(getProperty("tool${i}.url"), size: 16);
       copy.addEventListener(
-          Rd.MOBILE ? TouchEvent.TOUCH_BEGIN : MouseEvent.CLICK, (e) {
-        new RdSignal(StateEvents.ADDRESS_SET, copy.text).dispatch();
+          Ac.MOBILE ? TouchEvent.TOUCH_BEGIN : MouseEvent.CLICK, (e) {
+        new AcSignal(StateEvents.ADDRESS_SET, copy.text).dispatch();
       });
       reflow.addChild(copy);
     }
@@ -41,7 +41,7 @@ class BitmapFontHome extends AbstractReflowScreen {
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 

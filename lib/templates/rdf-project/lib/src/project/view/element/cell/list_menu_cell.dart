@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
  * @author Nils Doehring (nilsdoehring@gmail.com)

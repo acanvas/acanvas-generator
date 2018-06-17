@@ -79,7 +79,7 @@ void test() {
         */
     ];
 
-    Dart.run(FilePath.current.join('bin', 'rockdot_generator.dart').path,
+    Dart.run(FilePath.current.join('bin', 'acanvas_generator.dart').path,
         arguments: args, workingDirectory: fooDir.path);
 
     File pubspec = joinFile(fooDir, ['pubspec.yaml']);

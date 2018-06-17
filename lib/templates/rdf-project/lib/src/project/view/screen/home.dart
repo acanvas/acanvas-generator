@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class Home extends AbstractReflowScreen implements IScreenServiceAware {
   IScreenService _uiService;
@@ -27,14 +27,14 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
 
     _bmp = new ImageSprite()
       //..span(spanWidth, spanHeight, refresh: false)
-      ..bitmapData = Assets.rockdot
+      ..bitmapData = Assets.acanvas
       ..inheritSpan = false
       ..autoSpan = true
       ..useHandCursor = true
-      ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
+      ..addEventListener(Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
           (e) {
-        new RdSignal(StateEvents.ADDRESS_SET,
-                "https://github.com/block-forest/rockdot-generator")
+        new AcSignal(StateEvents.ADDRESS_SET,
+                "https://github.com/block-forest/acanvas-generator")
             .dispatch();
       });
     _flow.addChild(_bmp);
@@ -55,14 +55,14 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
         size: 24, color: Colors.ARCTIC_BLUE));
     _bmp2 = new ImageSprite()
       //..span(spanWidth, spanHeight, refresh: false)
-      ..href = "assets/home/rockdot_spring_architecture.png"
+      ..href = "assets/home/acanvas_spring_architecture.png"
       ..inheritSpan = false
       ..autoSpan = false
       ..useHandCursor = true
-      ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
+      ..addEventListener(Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
           (e) {
-        new RdSignal(StateEvents.ADDRESS_SET,
-                "http://rockdot.sounddesignz.com/template/assets/home/rockdot_spring_architecture.png")
+        new AcSignal(StateEvents.ADDRESS_SET,
+                "http://acanvas.sounddesignz.com/template/assets/home/acanvas_spring_architecture.png")
             .dispatch();
       })
       ..addEventListener(Event.COMPLETE, (e) {
@@ -102,7 +102,7 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 
@@ -123,11 +123,11 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
     reflow.pivotX = spanWidth;
     reflow.x = spanWidth;
 
-    Rd.JUGGLER.addTween(reflow, 2.8, Transition.easeOutQuintic)
+    Ac.JUGGLER.addTween(reflow, 2.8, Transition.easeOutQuintic)
       ..animate3D.rotationY.to(20 * pi / 180)
       ..animate3D.offsetZ.to(50);
 
-    Rd.JUGGLER.addTween(reflow, 2.8, Transition.easeOutQuintic)
+    Ac.JUGGLER.addTween(reflow, 2.8, Transition.easeOutQuintic)
       ..animate3D.offsetY.to(spanHeight)
       ..delay = 2.0;
     */

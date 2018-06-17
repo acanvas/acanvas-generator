@@ -1,6 +1,6 @@
 part of dragonbones_example;
 
-class DragonBonesExamplePlugin extends AbstractRdPlugin {
+class DragonBonesExamplePlugin extends AbstractAcPlugin {
   int sorting;
   DragonBonesExamplePlugin(this.sorting) : super(900 + sorting) {}
 

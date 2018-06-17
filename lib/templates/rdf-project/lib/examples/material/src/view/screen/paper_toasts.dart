@@ -28,7 +28,7 @@ class MdToasts extends AbstractReflowScreen {
         fontColor: MdColor.WHITE,
         bgColor: Colors.PINK,
         icon: MdIcon.white(MdIconSet.done));
-    button01.submitEvent = new RdSignal(
+    button01.submitEvent = new AcSignal(
         StateEvents.MESSAGE_SHOW,
         new StateMessageVO(toast_id, getProperty("toast03"), 0,
             type: StateMessageVO.TYPE_INFO));
@@ -39,7 +39,7 @@ class MdToasts extends AbstractReflowScreen {
         bgColor: MdColor.TRANSPARENT,
         shadow: false,
         icon: MdIcon.color(MdIconSet.cancel, Colors.PINK));
-    button02.submitEvent = new RdSignal(StateEvents.MESSAGE_HIDE, toast_id);
+    button02.submitEvent = new AcSignal(StateEvents.MESSAGE_HIDE, toast_id);
     wrap02.addChild(button02);
 
     wrap02.span(220, 340);

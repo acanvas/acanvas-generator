@@ -41,9 +41,9 @@ class SpineRaptor extends AbstractScreen {
     _skeletonAnimation.state.setAnimationByName(0, "walk", true);
 
     addChild(_skeletonAnimation);
-    Rd.JUGGLER.add(_skeletonAnimation);
+    Ac.JUGGLER.add(_skeletonAnimation);
 
-    _subscription = Rd.JUGGLER.onElapsedTimeChange.listen((time) {
+    _subscription = Ac.JUGGLER.onElapsedTimeChange.listen((time) {
       _skeletonAnimation.timeScale = 0.7 + 0.5 * sin(time / 2);
     });
 
@@ -64,9 +64,9 @@ class SpineRaptor extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     _subscription.cancel();
-    Rd.JUGGLER.remove(_skeletonAnimation);
+    Ac.JUGGLER.remove(_skeletonAnimation);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

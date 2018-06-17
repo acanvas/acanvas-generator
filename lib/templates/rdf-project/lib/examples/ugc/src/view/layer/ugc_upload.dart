@@ -27,14 +27,14 @@ class UGCUpload extends UGCAbstractLayer {
     _reflow.addChild(_button);
 
     onInitComplete();
-    new RdSignal(IOEvents.FILE_SELECT_CREATE, null, _onSelectCreated)
+    new AcSignal(IOEvents.FILE_SELECT_CREATE, null, _onSelectCreated)
         .dispatch();
   }
 
   _onSelectCreated(DivElement div) {
     _inputDiv = div;
     refresh();
-    new RdSignal(IOEvents.FILE_SELECT_OBSERVE, new IOImageFileObserveVO(),
+    new AcSignal(IOEvents.FILE_SELECT_OBSERVE, new IOImageFileObserveVO(),
             _onFilesSelected)
         .dispatch();
   }
@@ -43,7 +43,7 @@ class UGCUpload extends UGCAbstractLayer {
     model.imageToUpload = bmd;
 
     _button.visible = true;
-    _button.submitEvent = new RdSignal(StateEvents.ADDRESS_SET,
+    _button.submitEvent = new AcSignal(StateEvents.ADDRESS_SET,
         getProperty("${UGCExampleScreenIDs.UGC_LAYER_REGISTER}.url", true));
 
     _pic = new ImageSprite();
@@ -63,7 +63,7 @@ class UGCUpload extends UGCAbstractLayer {
 
   void _onImageLoadComplete(Event event) {
     _pic.removeEventListener(Event.COMPLETE, _onImageLoadComplete);
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
     refresh();
   }
 

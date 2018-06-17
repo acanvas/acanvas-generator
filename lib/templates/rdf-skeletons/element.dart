@@ -1,6 +1,6 @@
 part of @package@;
 
-class @element@ extends RockdotBoxSprite {
+class @element@ extends AcanvasBoxSprite {
 
     @element@() : super() {
         //prefix used for retrieval of properties
@@ -24,7 +24,7 @@ class @element@ extends RockdotBoxSprite {
 
       // your cleanup operations here
 
-      Rd.JUGGLER.removeTweens(this);
+      Ac.JUGGLER.removeTweens(this);
       super.dispose(removeSelf: removeSelf);
     }
 }

@@ -1,6 +1,6 @@
 part of physics_example;
 
-class PhysicsExamplePlugin extends AbstractRdPlugin {
+class PhysicsExamplePlugin extends AbstractAcPlugin {
   int sorting;
   PhysicsExamplePlugin(this.sorting) : super(900 + sorting) {}
 

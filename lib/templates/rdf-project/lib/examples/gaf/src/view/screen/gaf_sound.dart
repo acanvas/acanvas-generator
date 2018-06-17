@@ -27,7 +27,7 @@ class GafSound extends AbstractScreen {
     _tank.play(true);
 
     addChild(_tank);
-    Rd.JUGGLER.add(_tank);
+    Ac.JUGGLER.add(_tank);
 
     onInitComplete();
   }
@@ -47,9 +47,9 @@ class GafSound extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     _tank.stop(true);
-    Rd.JUGGLER.remove(_tank);
+    Ac.JUGGLER.remove(_tank);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

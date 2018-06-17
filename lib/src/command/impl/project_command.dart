@@ -1,12 +1,12 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class ProjectCommand extends RockdotCommand {
+class ProjectCommand extends AcanvasCommand {
   ProjectCommand(CliLogger logger, Target writeTarget)
       : super(logger, writeTarget) {
     packageName = _getPackageNameFromDirectory();
     name = "project";
     description =
-        "Create a full rockdot project with optional plugins and examples.";
+        "Create a full acanvas project with optional plugins and examples.";
 
     Map<String, String> argsMap = new Map<String, String>();
 
@@ -14,18 +14,18 @@ class ProjectCommand extends RockdotCommand {
     argsMap["stagexlExamples"] =
         "Install StageXL Examples (sprite sheets, tweening, ect.)";
 
-    argsMap["material"] = "Add Material Design Extension to Rockdot";
+    argsMap["material"] = "Add Material Design Extension to Acanvas";
     argsMap["materialExamples"] = "Install Material Design Examples";
-    argsMap["google"] = "Add Google API Extension to Rockdot";
+    argsMap["google"] = "Add Google API Extension to Acanvas";
     argsMap["googleExamples"] = "Install Google API Examples";
-    argsMap["facebook"] = "Add Facebook Extension to Rockdot";
+    argsMap["facebook"] = "Add Facebook Extension to Acanvas";
     argsMap["facebookExamples"] = "Install Facebook API Examples";
-    argsMap["physics"] = "Add Physics Extension to Rockdot";
+    argsMap["physics"] = "Add Physics Extension to Acanvas";
     argsMap["physicsExamples"] = "Install Physics Examples";
     argsMap["ugc"] =
-        "Add User Generated Content (UGC) Extension to Rockdot, needs LAMP";
+        "Add User Generated Content (UGC) Extension to Acanvas, needs LAMP";
     argsMap["ugcExamples"] = "Install UGC Examples";
-    argsMap["babylon"] = "Add BabylonJS Extension to Rockdot";
+    argsMap["babylon"] = "Add BabylonJS Extension to Acanvas";
     argsMap["babylonExamples"] = "Install BabylonJS Examples";
 
     //StageXL Options
@@ -132,11 +132,11 @@ class ProjectCommand extends RockdotCommand {
         await decodeConcanenatedData(project_data.data, project_data.type);
 
     TemplateFile packageImports =
-        templates.firstWhere((t) => t.path.contains("rockdot_template.dart"));
+        templates.firstWhere((t) => t.path.contains("acanvas_template.dart"));
     TemplateFile projectConfig =
         templates.firstWhere((t) => t.path.contains("\/project.dart"));
     TemplateFile pluginImports = templates
-        .firstWhere((t) => t.path.contains("rockdot_template_plugins.dart"));
+        .firstWhere((t) => t.path.contains("acanvas_template_plugins.dart"));
     TemplateFile pluginBootstrap =
         templates.firstWhere((t) => t.path.contains("\/plugins.dart"));
     TemplateFile pubspec =

@@ -29,7 +29,7 @@ class GafSequences extends AbstractScreen {
     _robot.play(true);
 
     addChild(_robot);
-    Rd.JUGGLER.add(_robot);
+    Ac.JUGGLER.add(_robot);
 
     // change sequence on click
 
@@ -69,9 +69,9 @@ class GafSequences extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     _robot.stop(true);
-    Rd.JUGGLER.remove(_robot);
+    Ac.JUGGLER.remove(_robot);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

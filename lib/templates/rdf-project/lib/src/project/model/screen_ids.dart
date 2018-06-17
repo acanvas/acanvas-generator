@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class ScreenIDs {
   static const String HOME = "screen.home";

@@ -111,11 +111,11 @@ class SpineTextureAtlas extends AbstractScreen {
           addChild(_skeletonAnimations[1]);
           addChild(_skeletonAnimations[3]);
 
-          Rd.JUGGLER.add(_skeletonAnimations[0]);
-          Rd.JUGGLER.add(_skeletonAnimations[1]);
-          Rd.JUGGLER.add(_skeletonAnimations[2]);
-          Rd.JUGGLER.add(_skeletonAnimations[3]);
-          Rd.JUGGLER.add(_skeletonAnimations[4]);
+          Ac.JUGGLER.add(_skeletonAnimations[0]);
+          Ac.JUGGLER.add(_skeletonAnimations[1]);
+          Ac.JUGGLER.add(_skeletonAnimations[2]);
+          Ac.JUGGLER.add(_skeletonAnimations[3]);
+          Ac.JUGGLER.add(_skeletonAnimations[4]);
 
           onInitComplete();
         }
@@ -160,13 +160,13 @@ class SpineTextureAtlas extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeletonAnimations[0]);
-    Rd.JUGGLER.remove(_skeletonAnimations[1]);
-    Rd.JUGGLER.remove(_skeletonAnimations[2]);
-    Rd.JUGGLER.remove(_skeletonAnimations[3]);
-    Rd.JUGGLER.remove(_skeletonAnimations[4]);
+    Ac.JUGGLER.remove(_skeletonAnimations[0]);
+    Ac.JUGGLER.remove(_skeletonAnimations[1]);
+    Ac.JUGGLER.remove(_skeletonAnimations[2]);
+    Ac.JUGGLER.remove(_skeletonAnimations[3]);
+    Ac.JUGGLER.remove(_skeletonAnimations[4]);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

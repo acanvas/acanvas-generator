@@ -42,10 +42,10 @@ class MoppiFlowerExample extends AbstractScreen {
     }
     _flowerManager = new FlowerManager(_resourceManager);
 
-    //Rd.STAGE.addEventListener(Event.ENTER_FRAME, _onEnterFrame);
-    subs = Rd.JUGGLER.interval(1 / 22.0).listen((e) => _onEnterFrame(null));
+    //Ac.STAGE.addEventListener(Event.ENTER_FRAME, _onEnterFrame);
+    subs = Ac.JUGGLER.interval(1 / 22.0).listen((e) => _onEnterFrame(null));
 
-    if (Rd.IOS) {
+    if (Ac.IOS) {
       _button =
           new MdButton(getProperty("button01"), preset: MdButton.PRESET_BLUE)
             ..submitCallback = _click
@@ -77,7 +77,7 @@ class MoppiFlowerExample extends AbstractScreen {
 
     //_background.alpha = math.min(.5 + _flowerManager.model.mid/2, 1.0);
 
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
   }
 
   @override
@@ -94,7 +94,7 @@ class MoppiFlowerExample extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     subs.cancel();
-    Rd.STAGE.removeEventListener(Event.ENTER_FRAME, _onEnterFrame);
+    Ac.STAGE.removeEventListener(Event.ENTER_FRAME, _onEnterFrame);
     _soundAnalyzer?.dispose();
     _resourceManager.dispose();
     super.dispose();

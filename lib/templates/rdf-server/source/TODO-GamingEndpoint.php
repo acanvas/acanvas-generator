@@ -13,7 +13,7 @@ class GamingEndpoint extends CRUDEndpoint {
 	 */
 	public function checkPermissionToPlay( $uid) {
 		
-		$result = mysql_query ("SELECT COUNT( score ) AS loginstoday FROM rockdotdemo_user_games WHERE uid='$uid' AND DATE(timestamp) = CURDATE()");
+		$result = mysql_query ("SELECT COUNT( score ) AS loginstoday FROM acanvasdemo_user_games WHERE uid='$uid' AND DATE(timestamp) = CURDATE()");
 		$row = mysql_fetch_assoc ( $result );
 		$rowObj = $this->_asObj($row);
 		
@@ -44,7 +44,7 @@ class GamingEndpoint extends CRUDEndpoint {
 		$uid = $gameObj->uid;
 		$locale = $gameObj->locale;
 		
-		$result = mysql_query ("SELECT COUNT( score ) AS loginstoday FROM rockdotdemo_user_games WHERE uid='$uid' AND DATE(timestamp) = CURDATE() AND control = '$locale'");
+		$result = mysql_query ("SELECT COUNT( score ) AS loginstoday FROM acanvasdemo_user_games WHERE uid='$uid' AND DATE(timestamp) = CURDATE() AND control = '$locale'");
 		$row = mysql_fetch_assoc ( $result );
 		$rowObj = $this->_asObj($row);
 		
@@ -72,7 +72,7 @@ class GamingEndpoint extends CRUDEndpoint {
 	 */
 	public function saveGame( $gameObj) {
 		
-		$result = $this->create($gameObj, "rockdotdemo_user_games");
+		$result = $this->create($gameObj, "acanvasdemo_user_games");
 		return true;
 	}
 	
@@ -93,19 +93,19 @@ class GamingEndpoint extends CRUDEndpoint {
 		
 		$uid = $gameObj->uid;
 		
-		$result = $this->update($gameObj, "rockdotdemo_user_games", "WHERE uid='$uid' AND level=$gameObj->level");
+		$result = $this->update($gameObj, "acanvasdemo_user_games", "WHERE uid='$uid' AND level=$gameObj->level");
 		if($result == 0){
-			$result = $this->create($gameObj, "rockdotdemo_user_games");
+			$result = $this->create($gameObj, "acanvasdemo_user_games");
 		}
 		
-		$result = mysql_query ("SELECT SUM( score ) AS sum_score FROM rockdotdemo_user_games WHERE uid='$uid' ");
+		$result = mysql_query ("SELECT SUM( score ) AS sum_score FROM acanvasdemo_user_games WHERE uid='$uid' ");
 		$row = mysql_fetch_assoc ( $result );
 		
 		$asObj = $this->_getRank( $uid );
 		$rowObj = $this->_asObj($row);
 		$asObj->score = $rowObj->sum_score;	
 				
-		mysql_query ( "UPDATE rockdotdemo_users_extended SET score=$asObj->score WHERE uid='$uid'" );
+		mysql_query ( "UPDATE acanvasdemo_users_extended SET score=$asObj->score WHERE uid='$uid'" );
 		
 		return $asObj;
 	}
@@ -127,13 +127,13 @@ class GamingEndpoint extends CRUDEndpoint {
 		if(!empty($uid)){
 			//user's rank and score
 			$ret = $this->_getRank($uid);
-			$result = mysql_query ( "SELECT score FROM rockdotdemo_users_extended WHERE uid='$uid'"  );
+			$result = mysql_query ( "SELECT score FROM acanvasdemo_users_extended WHERE uid='$uid'"  );
 			$row = mysql_fetch_assoc ( $result );
 			$ret->score = $this->_asObj($row)->score;
 		}
 		
 		$ret->topTen = array();
-		$result = mysql_query ( "SELECT * FROM rockdotdemo_users_extended ORDER BY score, scoredate ASC DESC LIMIT 10" );
+		$result = mysql_query ( "SELECT * FROM acanvasdemo_users_extended ORDER BY score, scoredate ASC DESC LIMIT 10" );
 		while ( $row = mysql_fetch_assoc ( $result ) ) {
 			array_push ( $ret->topTen,  $this->_asObj($row));
 		}
@@ -141,7 +141,7 @@ class GamingEndpoint extends CRUDEndpoint {
 		if(!empty($friends)){
 			$strFriends = "\"" . implode("\",\"", $friends) . "\"";
 			$ret->topFiveFriends = array();
-			$result = mysql_query ( "SELECT * FROM rockdotdemo_users_extended WHERE uid IN ($strFriends) ORDER BY score DESC, scoredate ASC LIMIT 5" );
+			$result = mysql_query ( "SELECT * FROM acanvasdemo_users_extended WHERE uid IN ($strFriends) ORDER BY score DESC, scoredate ASC LIMIT 5" );
 			while ( $row = mysql_fetch_assoc ( $result ) ) {
 				array_push ( $ret->topFiveFriends,  $this->_asObj($row));
 			}
@@ -153,7 +153,7 @@ class GamingEndpoint extends CRUDEndpoint {
 	
 	private function _getRank($score){
 		$score = mysql_real_escape_string($score);
-		$str = "SELECT COUNT( * ) + 1 AS rank FROM rockdotdemo_users_extended WHERE score>$score";
+		$str = "SELECT COUNT( * ) + 1 AS rank FROM acanvasdemo_users_extended WHERE score>$score";
 		$result = mysql_query ($str);
 		$row = mysql_fetch_assoc ( $result );
 		return $this->_asObj($row);

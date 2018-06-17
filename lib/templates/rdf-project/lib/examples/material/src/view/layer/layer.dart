@@ -3,7 +3,7 @@ part of material_example;
 /**
  * @author nilsdoehring
  */
-class Layer extends RockdotLifecycleSprite {
+class Layer extends AcanvasLifecycleSprite {
   static const int LAYER_WIDTH_MAX = 480;
   num LAYER_HEIGHT = 0;
 
@@ -36,7 +36,7 @@ class Layer extends RockdotLifecycleSprite {
 
     _button = new MdButton(closeButtonLabel,
         preset: MdButton.PRESET_GREEN, shadow: false)
-      ..submitEvent = new RdSignal(StateEvents.STATE_VO_BACK)
+      ..submitEvent = new AcSignal(StateEvents.STATE_VO_BACK)
       ..inheritSpan = false;
     addChild(_button);
 

@@ -1,4 +1,4 @@
-import 'package:rockdot_template/rockdot_template.dart';
+import 'package:acanvas_template/acanvas_template.dart';
 
 void main() {
   Entrypoint entrypoint = new Entrypoint();

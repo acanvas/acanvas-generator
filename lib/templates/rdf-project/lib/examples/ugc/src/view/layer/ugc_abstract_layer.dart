@@ -3,7 +3,7 @@ part of ugc_example;
 /**
  * @author nilsdoehring
  */
-class UGCAbstractLayer extends RockdotLifecycleSprite
+class UGCAbstractLayer extends AcanvasLifecycleSprite
     implements IModelAware, IUGCModelAware {
   static const int LAYER_WIDTH_MAX = 440;
   static const int LAYER_HEIGHT_MAX = 580;

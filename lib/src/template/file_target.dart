@@ -1,4 +1,4 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
 class FileTarget implements Target {
   Directory _cwd = Directory.current;

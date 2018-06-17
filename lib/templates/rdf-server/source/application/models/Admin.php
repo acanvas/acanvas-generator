@@ -13,14 +13,14 @@
  * @lastmodified___$Date: $ 
  * @revision_______$Revision: $ 
  * @copyright______Copyright (c) Block Forest
- * @package________Rockdot_Model
+ * @package________Acanvas_Model
  *
  * @dependencies
- * @import: Rockdot_Zend_Db_Table	 
+ * @import: Acanvas_Zend_Db_Table
  */
-require_once('Rockdot/DBTable.php');
+require_once('Acanvas/DBTable.php');
 
-class Rockdot_Model_Admin extends Rockdot_DBTable{
+class Acanvas_Model_Admin extends Acanvas_DBTable{
 /*	+-----------------------------------------------------------------------------------+
 	| 	member vars
 	+-----------------------------------------------------------------------------------+  */

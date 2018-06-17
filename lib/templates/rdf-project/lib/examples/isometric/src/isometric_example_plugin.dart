@@ -1,6 +1,6 @@
 part of isometric_example;
 
-class IsometricExamplePlugin extends AbstractRdPlugin {
+class IsometricExamplePlugin extends AbstractAcPlugin {
   int sorting;
   IsometricExamplePlugin(this.sorting) : super(900 + sorting) {}
 

@@ -1,6 +1,6 @@
 part of facebook_example;
 
-class FacebookExamplePlugin extends AbstractRdPlugin {
+class FacebookExamplePlugin extends AbstractAcPlugin {
   int sorting;
   FacebookExamplePlugin(this.sorting) : super(900 + sorting) {}
 

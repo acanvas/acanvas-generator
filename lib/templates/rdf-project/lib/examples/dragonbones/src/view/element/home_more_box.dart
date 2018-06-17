@@ -1,6 +1,6 @@
 part of dragonbones_example;
 
-class HomeMoreBox extends RockdotBoxSprite {
+class HomeMoreBox extends AcanvasBoxSprite {
   int id;
   MdWrap wrap01;
   ImageSprite image;
@@ -47,7 +47,7 @@ class HomeMoreBox extends RockdotBoxSprite {
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose(removeSelf: removeSelf);
   }
 }

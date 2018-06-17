@@ -1,6 +1,6 @@
 part of moppiflower_example;
 
-class MoppiFlowerExamplePlugin extends AbstractRdPlugin {
+class MoppiFlowerExamplePlugin extends AbstractAcPlugin {
   static const String MODEL = "MoppiFlowerExample.MODEL";
 
   int sorting;

@@ -41,7 +41,7 @@ class SpineBoyMesh extends AbstractScreen {
         new SkeletonAnimation(skeletonData, animationStateData);
     _skeletonAnimation.state.setAnimationByName(0, "fly", true);
     addChild(_skeletonAnimation);
-    Rd.JUGGLER.add(_skeletonAnimation);
+    Ac.JUGGLER.add(_skeletonAnimation);
 
     onInitComplete();
   }
@@ -59,7 +59,7 @@ class SpineBoyMesh extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeletonAnimation);
+    Ac.JUGGLER.remove(_skeletonAnimation);
     super.dispose();
     _resourceManager = null;
   }

@@ -165,7 +165,7 @@ abstract class MBox2dHelper {
         break;
       case Box2DRenderMode.GRAPHICS:
       default:
-        sprite = RdGraphics.circle(0, 0, r, color: MdColor.RED);
+        sprite = AcGraphics.circle(0, 0, r, color: MdColor.RED);
         break;
     }
     return sprite;
@@ -212,7 +212,7 @@ abstract class MBox2dHelper {
         sprite.graphics.fillColor(Theme.COLOR_BASE);
         sprite.graphics.closePath();
 
-        if (Rd.WEBGL) {
+        if (Ac.WEBGL) {
           //sprite.applyCache(-(sprite.width/2).round(), -(sprite.height/2).round(), sprite.width.round(), sprite.height.round());
         }
         break;

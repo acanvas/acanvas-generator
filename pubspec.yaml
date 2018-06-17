@@ -1,10 +1,10 @@
-name: rockdot_generator
+name: acanvas_generator
 version: 0.10.0-dev
 authors:
 - Nils Döhring <nilsdoehring@gmail.com>
 description: |
-  A CLI to generate skeletons of Canvas/WebGL projects based on StageXL and Rockdot. Supports in-project asset-collection, and generation of commands, views, plugins.
-homepage: https://github.com/block-forest/rockdot-generator
+  A CLI to generate skeletons of Canvas/WebGL projects based on StageXL and Acanvas. Supports in-project asset-collection, and generation of commands, views, plugins.
+homepage: https://github.com/block-forest/acanvas-generator
 environment:
   sdk: '>=2.0.0-dev.55.0 <2.0.0'
 dependencies:
@@ -24,4 +24,4 @@ dev_dependencies:
   grinder: '>=0.7.0 <0.7.1'
   unittest: any
 executables:
-  rdgen: rockdot_generator
+  acgen: acanvas_generator

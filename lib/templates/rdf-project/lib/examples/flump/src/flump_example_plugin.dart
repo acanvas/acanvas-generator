@@ -1,6 +1,6 @@
 part of flump_example;
 
-class FlumpExamplePlugin extends AbstractRdPlugin {
+class FlumpExamplePlugin extends AbstractAcPlugin {
   int sorting;
   FlumpExamplePlugin(this.sorting) : super(900 + sorting) {}
 

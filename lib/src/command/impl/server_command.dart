@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class ServerCommand extends RockdotCommand {
+class ServerCommand extends AcanvasCommand {
   final String SERVER_DIR = "server";
   final String DEFAULT_MODE = "debug";
 
@@ -110,9 +110,9 @@ class ServerCommand extends RockdotCommand {
           .createSync(recursive: true);
 
       HttpClientRequest request = await new HttpClient().getUrl(Uri.parse(
-          'http://rockdot.sounddesignz.com/downloads/rockdot-zend-library.zip'));
+          'http://acanvas.sounddesignz.com/downloads/acanvas-zend-library.zip'));
       HttpClientResponse response = await request.close();
-      File file = new File(join('server', 'rockdot-zend-library.zip'));
+      File file = new File(join('server', 'acanvas-zend-library.zip'));
       await response.pipe(file.openWrite());
 
       logger.stdout("Extracting Zend for your UGC backend ...");

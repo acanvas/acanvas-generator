@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class CommandCommand extends RockdotCommand {
+class CommandCommand extends AcanvasCommand {
   static final String DEFAULT_COMMAND_NAME = "GeneratedCommand";
   static final String TEMPLATE_COMMAND_FILE = "command.dart";
   static final String PACKAGE_REPLACE_STRING = "@package@";

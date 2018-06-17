@@ -47,7 +47,7 @@ class GafNamedParts extends AbstractScreen {
     });
 
     addChild(_gafMovieClip1);
-    Rd.JUGGLER.add(_gafMovieClip1);
+    Ac.JUGGLER.add(_gafMovieClip1);
 
     // load and show the nesting robot asset
 
@@ -67,7 +67,7 @@ class GafNamedParts extends AbstractScreen {
     });
 
     addChild(_gafMovieClip2);
-    Rd.JUGGLER.add(_gafMovieClip2);
+    Ac.JUGGLER.add(_gafMovieClip2);
 
     // show some info texts
 
@@ -120,12 +120,12 @@ class GafNamedParts extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     _gafMovieClip1.stop(true);
-    Rd.JUGGLER.remove(_gafMovieClip1);
+    Ac.JUGGLER.remove(_gafMovieClip1);
 
     _gafMovieClip2.stop(true);
-    Rd.JUGGLER.remove(_gafMovieClip2);
+    Ac.JUGGLER.remove(_gafMovieClip2);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

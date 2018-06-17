@@ -1,6 +1,6 @@
 part of dragonbones_example;
 
-class HomeSection1 extends RockdotBoxSprite {
+class HomeSection1 extends AcanvasBoxSprite {
   ImageSprite spr1;
   MdText hl1;
   MdText cpy1;
@@ -62,7 +62,7 @@ class HomeSection1 extends RockdotBoxSprite {
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose(removeSelf: removeSelf);
   }
 }

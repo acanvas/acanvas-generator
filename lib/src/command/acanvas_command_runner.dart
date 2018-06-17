@@ -1,9 +1,9 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class RockdotCommandRunner extends CommandRunner {
-  RockdotCommandRunner(CliLogger logger, Target writeTarget)
-      : super('rockdot_generator',
-            'A CLI to generate rockdot projects and other elements.') {
+class AcanvasCommandRunner extends CommandRunner {
+  AcanvasCommandRunner(CliLogger logger, Target writeTarget)
+      : super('acanvas_generator',
+            'A CLI to generate acanvas projects and other elements.') {
     // Flags
 
     argParser.addFlag('override',

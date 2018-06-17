@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 

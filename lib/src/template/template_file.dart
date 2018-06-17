@@ -1,4 +1,4 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
 /**
  * This class represents a file in a generator template. The contents could
@@ -28,9 +28,9 @@ class TemplateFile {
     if (isBinary) {
       return _binaryData;
     } else {
-      //raw substitution of "rockdot_template" with "${projectName}"
+      //raw substitution of "acanvas_template" with "${projectName}"
       String c_content =
-          content.replaceAll('rockdot_template', vars['projectName']);
+          content.replaceAll('acanvas_template', vars['projectName']);
 
       return utf8.encode(substituteVars(c_content, vars));
     }

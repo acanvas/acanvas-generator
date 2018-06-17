@@ -5,7 +5,7 @@ class IndexController extends Zend_Controller_Action {
 	}
 	public function indexAction() {
 		$config = Zend_Registry::get ( 'Application_Config' );
-		$rckdt_registry = Rockdot_Registry::getInstance ();
+		$rckdt_registry = Acanvas_Registry::getInstance ();
 		
 		$fb_sig = $rckdt_registry->get ( 'fb_sig_data' );
 		$app_data = $rckdt_registry->get ( 'app_data' );

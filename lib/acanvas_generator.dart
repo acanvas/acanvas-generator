@@ -1,4 +1,4 @@
-library rockdot_generator;
+library acanvas_generator;
 
 import 'dart:async' show Future;
 import 'dart:convert' show utf8;
@@ -20,8 +20,8 @@ part 'src/command/impl/plugin_command.dart';
 part 'src/command/impl/project_command.dart';
 part 'src/command/impl/screen_command.dart';
 part 'src/command/impl/server_command.dart';
-part 'src/command/rockdot_command.dart';
-part 'src/command/rockdot_command_runner.dart';
+part 'src/command/acanvas_command.dart';
+part 'src/command/acanvas_command_runner.dart';
 part 'src/template/cli_logger.dart';
 part 'src/template/file_contents.dart';
 part 'src/template/file_target.dart';

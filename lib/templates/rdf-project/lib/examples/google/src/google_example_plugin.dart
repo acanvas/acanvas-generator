@@ -1,6 +1,6 @@
 part of google_example;
 
-class GoogleExamplePlugin extends AbstractRdPlugin {
+class GoogleExamplePlugin extends AbstractAcPlugin {
   int sorting;
   GoogleExamplePlugin(this.sorting) : super(900 + sorting) {}
 

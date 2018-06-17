@@ -37,11 +37,11 @@ class FlowerManager {
      */
     Stem stem;
     stem = new Stem(20, 10.0, new Point(400, 400), new Point(5, -10),
-        (Rd.JUGGLER.elapsedTime * 1000.0).round(), this);
+        (Ac.JUGGLER.elapsedTime * 1000.0).round(), this);
     whiteStems.add(stem);
 
     stem = new Stem(20, 10.0, new Point(350, 450), new Point(5, -10),
-        (Rd.JUGGLER.elapsedTime * 1000.0).round(), this,
+        (Ac.JUGGLER.elapsedTime * 1000.0).round(), this,
         color: Color.Black);
     blackStems.add(stem);
   }
@@ -106,7 +106,7 @@ class FlowerManager {
       Stem stem = whiteStems.last;
       int startTime = stem.getStartTime();
       int growDuration = stem.getGrowDuration().round();
-      int time = (Rd.JUGGLER.elapsedTime * 1000.0).round();
+      int time = (Ac.JUGGLER.elapsedTime * 1000.0).round();
       if (time >= (startTime + growDuration)) {
         //spawn new stem
         int stemLength = new math.Random().nextInt(10) + 14;

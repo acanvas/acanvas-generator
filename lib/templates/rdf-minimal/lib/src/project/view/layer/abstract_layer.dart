@@ -1,9 +1,9 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
  * @author nilsdoehring
  */
-class AbstractLayer extends RockdotLifecycleSprite implements IModelAware {
+class AbstractLayer extends AcanvasLifecycleSprite implements IModelAware {
   static const int LAYER_WIDTH_MAX = 480;
   num LAYER_HEIGHT = 0;
 

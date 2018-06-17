@@ -2,13 +2,13 @@
 // All rights reserved. Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-library rockdot_generator.cli;
+library acanvas_generator.cli;
 
 import 'package:args/command_runner.dart';
-import 'package:rockdot_generator/rockdot_generator.dart';
+import 'package:acanvas_generator/acanvas_generator.dart';
 
 void main(List<String> args) {
   CommandRunner runner =
-      new RockdotCommandRunner(new CliLoggerPrint(), new FileTarget());
+      new AcanvasCommandRunner(new CliLoggerPrint(), new FileTarget());
   runner.run(args);
 }

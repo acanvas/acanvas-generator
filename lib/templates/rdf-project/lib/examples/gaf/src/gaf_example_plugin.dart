@@ -1,6 +1,6 @@
 part of gaf_example;
 
-class GAFExamplePlugin extends AbstractRdPlugin {
+class GAFExamplePlugin extends AbstractAcPlugin {
   int sorting;
   GAFExamplePlugin(this.sorting) : super(900 + sorting) {}
 

@@ -33,10 +33,10 @@ class ImageItemButton extends Button {
     _image.y = 5;
     _image.span(spanWidth - 6, spanHeight - 6);
 
-    RdGraphics.rectangle(0, 0, spanWidth, spanHeight,
+    AcGraphics.rectangle(0, 0, spanWidth, spanHeight,
         color: Theme.BACKGROUND_COLOR, sprite: _bg);
 
-    RdGraphics.rectangle(0, 0, spanWidth, spanHeight,
+    AcGraphics.rectangle(0, 0, spanWidth, spanHeight,
         color: Theme.COLOR_BASE, sprite: _bgOver);
     _bgOver.alpha = 0;
 
@@ -46,8 +46,8 @@ class ImageItemButton extends Button {
   @override
   void rollOverAction([InputEvent event = null]) {
     if (stage != null) {
-      Rd.JUGGLER.removeTweens(_bgOver);
-      Rd.JUGGLER.addTween(_bgOver, 0.3)..animate.alpha.to(1);
+      Ac.JUGGLER.removeTweens(_bgOver);
+      Ac.JUGGLER.addTween(_bgOver, 0.3)..animate.alpha.to(1);
     } else if (_bgOver != null) {
       _bgOver.alpha = 1;
     }
@@ -56,7 +56,7 @@ class ImageItemButton extends Button {
   @override
   void rollOutAction([InputEvent event = null]) {
     if (stage != null) {
-      Rd.JUGGLER.addTween(_bgOver, 0.3)..animate.alpha.to(0);
+      Ac.JUGGLER.addTween(_bgOver, 0.3)..animate.alpha.to(0);
     } else if (_bgOver != null) {
       _bgOver.alpha = 1;
     }
@@ -68,6 +68,6 @@ class ImageItemButton extends Button {
     Tween tween = new Tween(this, 0.8, Transition.easeInCubic)
       ..delay = new Random().nextDouble()
       ..animate.alpha.to(1);
-    Rd.JUGGLER.add(tween);
+    Ac.JUGGLER.add(tween);
   }
 }

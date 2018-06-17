@@ -6,11 +6,11 @@ class Buoyancy extends AbstractBox2dElement implements IBox2dElement {
 
   Buoyancy(b2World world, double worldScale, num spanWidth, num spanHeight)
       : super(world, worldScale, spanWidth, spanHeight) {
-    Sprite waterLine = RdGraphics.line(spanWidth, 0, color: Colors.WHITE);
+    Sprite waterLine = AcGraphics.line(spanWidth, 0, color: Colors.WHITE);
     waterLine.y = spanHeight / 2;
     addChild(waterLine);
 
-    Sprite water = RdGraphics.rectangle(0, 0, spanWidth, spanHeight / 2,
+    Sprite water = AcGraphics.rectangle(0, 0, spanWidth, spanHeight / 2,
         color: 0x440000ff);
     water.y = spanHeight / 2;
     addChild(water);

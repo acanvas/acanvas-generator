@@ -1,6 +1,6 @@
 part of material_example;
 
-class MaterialExamplePlugin extends AbstractRdPlugin {
+class MaterialExamplePlugin extends AbstractAcPlugin {
   int sorting;
   MaterialExamplePlugin(this.sorting) : super(900 + sorting) {}
 

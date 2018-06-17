@@ -21,7 +21,7 @@ class UGCHome extends AbstractScreen implements IUGCModelAware {
         getProperty("pager.next"),
         getProperty("pager.empty"));
     _photoPager.submitCallback = _onItemClicked;
-    _photoPager.uploadButton.submitEvent = new RdSignal(StateEvents.ADDRESS_SET,
+    _photoPager.uploadButton.submitEvent = new AcSignal(StateEvents.ADDRESS_SET,
         getProperty("${UGCExampleScreenIDs.UGC_LAYER_UPLOAD}.url", true));
     addChild(_photoPager);
     // _photoPager.resetAndLoad();
@@ -38,14 +38,14 @@ class UGCHome extends AbstractScreen implements IUGCModelAware {
   void _onItemClicked(UGCItemDTO dao) {
     //this.log.debug("Item clicked. id: {0}, url_big: {1}", [dao.id, (dao.type_dao as UGCImageItemVO).url_big]);
     _ugcModel.currentItemDAO = dao;
-    //new RdSignal(StateEvents.ADDRESS_SET, "/image/view").dispatch();
+    //new AcSignal(StateEvents.ADDRESS_SET, "/image/view").dispatch();
   }
 
   @override
   void dispose({bool removeSelf: true}) {
     // your cleanup operations here
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

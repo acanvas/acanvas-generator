@@ -75,19 +75,19 @@ class MdAppBarExample extends AbstractReflowScreen {
         bgColor: Theme.MD_BUTTON_COLOR,
         fontColor: Theme.MD_BUTTON_FONT_COLOR,
         shadow: false));
-    // ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, getProperty("$value.url", true))
+    // ..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, getProperty("$value.url", true))
     //);
     tabs.addTab(new MdButton(getProperty("tab02").toUpperCase(),
         bgColor: Theme.MD_BUTTON_COLOR,
         fontColor: Theme.MD_BUTTON_FONT_COLOR,
         shadow: false));
-    // ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, getProperty("$value.url", true))
+    // ..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, getProperty("$value.url", true))
     //);
     tabs.addTab(new MdButton(getProperty("tab03").toUpperCase(),
         bgColor: Theme.MD_BUTTON_COLOR,
         fontColor: Theme.MD_BUTTON_FONT_COLOR,
         shadow: false));
-    // ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, getProperty("$value.url", true))
+    // ..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, getProperty("$value.url", true))
     //);
     appBar04.addMdTabs(tabs);
     reflow.addChild(appBar04);

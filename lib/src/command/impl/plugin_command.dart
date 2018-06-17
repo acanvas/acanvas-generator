@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class PluginCommand extends RockdotCommand {
+class PluginCommand extends AcanvasCommand {
   static final String DEFAULT_PLUGIN_NAME = "GeneratedPlugin";
 
   static final String TEMPLATE_DIR = "plugin/";
@@ -27,7 +27,7 @@ class PluginCommand extends RockdotCommand {
     packageName = _getPackageNameFromDirectory();
     name = "plugin";
     description =
-        "Create a rockdot plugin within your project.";
+        "Create a acanvas plugin within your project.";
 
     argParser.addOption('name',
         abbr: 'n',
@@ -50,7 +50,7 @@ class PluginCommand extends RockdotCommand {
     _insertPlugin();
 
     logger.stdout(
-        "Done. You can now use the plugin like this: \n\t new RdSignal(${pluginNameCamelCase}Events.SAMPLE, new ${pluginNameCamelCase}VO('message').dispatch();");
+        "Done. You can now use the plugin like this: \n\t new AcSignal(${pluginNameCamelCase}Events.SAMPLE, new ${pluginNameCamelCase}VO('message').dispatch();");
   }
 
   Future _prepare() async {
@@ -92,12 +92,12 @@ class PluginCommand extends RockdotCommand {
     _addToPackage(libraryParts);
   }
 
-  ///add plugin instantiation call to [DIR_BOOTSTRAP]/rd_bootstrap.dart
+  ///add plugin instantiation call to [DIR_BOOTSTRAP]/ac_bootstrap.dart
   void _insertPlugin() {
     String replace = '''new ${pluginNameCamelCase}Plugin(),
       $PLUGIN_INSERTION_PLACEHOLDER''';
 
-    File file = new File("$DIR_BOOTSTRAP/rd_bootstrap.dart");
+    File file = new File("$DIR_BOOTSTRAP/ac_bootstrap.dart");
     String fileContent = file.readAsStringSync();
     fileContent = fileContent.replaceFirst(
         new RegExp(PLUGIN_INSERTION_PLACEHOLDER), replace);

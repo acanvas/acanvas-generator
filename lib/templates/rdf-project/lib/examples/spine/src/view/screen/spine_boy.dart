@@ -57,7 +57,7 @@ class SpineBoy extends AbstractScreen {
         new SkeletonAnimation(skeletonData, animationStateData);
     _skeletonAnimation.state.setAnimationByName(0, "idle", true);
     addChild(_skeletonAnimation);
-    Rd.JUGGLER.add(_skeletonAnimation);
+    Ac.JUGGLER.add(_skeletonAnimation);
 
     // change the animation on every mouse click
 
@@ -116,9 +116,9 @@ class SpineBoy extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeletonAnimation);
+    Ac.JUGGLER.remove(_skeletonAnimation);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

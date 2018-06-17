@@ -1,6 +1,6 @@
-part of rockdot_template;
+part of acanvas_template;
 
-/// The application's entrypoint manages StageXL initalization and Preloading of Rockdot.
+/// The application's entrypoint manages StageXL initalization and Preloading of Acanvas.
 /// In most cases, you'll leave this untouched.
 
 class Entrypoint {
@@ -14,7 +14,7 @@ class Entrypoint {
   Entrypoint() {
     // Enables/Disables Logging
     //TODO solve with vars
-    RdConstants.DEBUG = "@project.debug@" == "false" ? false : true;
+    AcConstants.DEBUG = "@project.debug@" == "false" ? false : true;
   }
 
   // Invoked by web/project.dart
@@ -47,20 +47,20 @@ class Entrypoint {
       opts.renderEngine = RenderEngine.WebGL;
     } else if (Uri.base.queryParameters['gl'] == "0") {
       opts.renderEngine = RenderEngine.Canvas2D;
-    } else if (Rd.MOBILE) {
+    } else if (Ac.MOBILE) {
       opts.renderEngine = RenderEngine.Canvas2D;
     } else {
       opts.renderEngine = RenderEngine.WebGL;
     }
 
-    opts.antialias = Rd.MOBILE ? false : true;
+    opts.antialias = Ac.MOBILE ? false : true;
 
     //----------------------------
 
     // Events and Event Default behaviour
 
     opts.inputEventMode =
-        Rd.MOBILE ? InputEventMode.TouchOnly : InputEventMode.MouseOnly;
+        Ac.MOBILE ? InputEventMode.TouchOnly : InputEventMode.MouseOnly;
     opts.preventDefaultOnTouch = true;
     opts.preventDefaultOnWheel = true;
     opts.preventDefaultOnKeyboard = false;
@@ -70,9 +70,9 @@ class Entrypoint {
     // RenderLoop
 
     _stage = new Stage(_stageEl, options: opts);
-    _renderLoop = new RdRenderLoop();
+    _renderLoop = new AcRenderLoop();
     _renderLoop.addStage(_stage);
-    Rd.STAGE = _stage;
+    Ac.STAGE = _stage;
 
     //----------------------------
 
@@ -91,29 +91,29 @@ class Entrypoint {
 
     // init load animation and bootstrap setup procedure
     _initPreloader();
-    _initRdBootstrap();
+    _initAcBootstrap();
   }
 
-  /// Show Load Screen and initialize the project's RdBootstrap
+  /// Show Load Screen and initialize the project's AcBootstrap
 
   void _initPreloader() {
-    // For the moment, we're loading all classes first, then the loader appears, then Assets are loaded (see RdBootstrap)
+    // For the moment, we're loading all classes first, then the loader appears, then Assets are loaded (see AcBootstrap)
 
     _sprPreloader = new LoadScreen();
     _stage.addChild(_sprPreloader);
   }
 
-  /// Initiate load operations in RdBootstrap (properties, assets)
+  /// Initiate load operations in AcBootstrap (properties, assets)
 
-  Future _initRdBootstrap() async {
-    RdBootstrap bootstrap = new RdBootstrap(_stage);
+  Future _initAcBootstrap() async {
+    AcBootstrap bootstrap = new AcBootstrap(_stage);
     bootstrap.init();
 
     await bootstrap.load().catchError((error) {
-      print("RdBootstrap class could not be loaded.\n ${error}");
+      print("AcBootstrap class could not be loaded.\n ${error}");
     });
 
-    Rd.JUGGLER.addTween(_sprPreloader, .5, Transition.easeOutBack)
+    Ac.JUGGLER.addTween(_sprPreloader, .5, Transition.easeOutBack)
       ..animate.alpha.to(0.0)
       ..onComplete = () {
         _sprPreloader.cancel();
@@ -128,7 +128,7 @@ class Entrypoint {
     num windowWidth = 0;
     num windowHeight = 0;
 
-    if (Rd.MOBILE) {
+    if (Ac.MOBILE) {
       /// Adjust DevicePixelRatio if screen too small
       if (html.window.innerWidth < Dimensions.WIDTH_MIN) {
         html.Element h = html.querySelector("#viewport");
@@ -160,6 +160,6 @@ class Entrypoint {
     holder.style.maxWidth = "${windowWidth}px";
     holder.style.maxHeight = "${windowHeight}px";
 
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
   }
 }

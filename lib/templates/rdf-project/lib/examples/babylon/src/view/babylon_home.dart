@@ -40,7 +40,7 @@ class BabylonHome extends AbstractScreen {
 
     var activeCamera = _babylonBitmapData.babylonScene.activeCamera;
     if (activeCamera is BABYLON.UniversalCamera) {
-      if (Rd.MOBILE) {
+      if (Ac.MOBILE) {
         activeCamera.attachControl(html.querySelector('#stage'), false);
       } else {
         activeCamera.attachControl(html.querySelector('#stage'), false);
@@ -55,7 +55,7 @@ class BabylonHome extends AbstractScreen {
     }
 
     _enterFrameSubscription =
-        this.onEnterFrame.listen((e) => Rd.MATERIALIZE_REQUIRED = true);
+        this.onEnterFrame.listen((e) => Ac.MATERIALIZE_REQUIRED = true);
 
     onInitComplete();
   }
@@ -64,7 +64,7 @@ class BabylonHome extends AbstractScreen {
   void refresh() {
     super.refresh();
 
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
 
     // your redraw operations here
 
@@ -86,7 +86,7 @@ class BabylonHome extends AbstractScreen {
     // your cleanup operations here
     _enterFrameSubscription?.cancel();
     _enterFrameSubscription = null;
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

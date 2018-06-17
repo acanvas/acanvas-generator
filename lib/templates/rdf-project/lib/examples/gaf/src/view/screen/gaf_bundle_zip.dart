@@ -38,7 +38,7 @@ class GafBundleZip extends AbstractScreen {
 
     _skeleton.alignPivot(HorizontalAlign.Center, VerticalAlign.Center);
     addChild(_skeleton);
-    Rd.JUGGLER.add(_skeleton);
+    Ac.JUGGLER.add(_skeleton);
     _skeleton.play(true);
 
     // get ufo-monster from bundle and start animation
@@ -48,7 +48,7 @@ class GafBundleZip extends AbstractScreen {
 
     _monster.alignPivot(HorizontalAlign.Center, VerticalAlign.Center);
     addChild(_monster);
-    Rd.JUGGLER.add(_monster);
+    Ac.JUGGLER.add(_monster);
     _monster.play(true);
 
     onInitComplete();
@@ -73,8 +73,8 @@ class GafBundleZip extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeleton);
-    Rd.JUGGLER.remove(_monster);
+    Ac.JUGGLER.remove(_skeleton);
+    Ac.JUGGLER.remove(_monster);
 
     _skeleton.stop(true);
     _monster.stop(true);

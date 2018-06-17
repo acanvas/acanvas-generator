@@ -1,4 +1,4 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
 class CliLoggerPrint implements CliLogger{
   void stdout(String message) => print(message);

@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
 * Show Status Message
@@ -16,7 +16,7 @@ class MessageShowCommand extends AbstractCommand
   }
 
   @override
-  dynamic execute([RdSignal event = null]) {
+  dynamic execute([AcSignal event = null]) {
     super.execute(event);
 
     StateMessageVO vo = event.data;
@@ -52,7 +52,7 @@ class MessageShowCommand extends AbstractCommand
         _stateModel.currentStateVO.substate != StateConstants.SUB_MODAL) {
       _uiService.blur();
       if (vo.timeBox > 0) {
-        Rd.JUGGLER.delayCall(_uiService.unblur, vo.timeBox);
+        Ac.JUGGLER.delayCall(_uiService.unblur, vo.timeBox);
       }
     }
 

@@ -1,9 +1,9 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
 	 * @author Nils Doehring (nilsdoehring(gmail as at).com)
 	 */
-class Background extends RockdotLifecycleSprite {
+class Background extends AcanvasLifecycleSprite {
   Shape _bg;
 
   Background(String id) : super(id) {

@@ -4,11 +4,11 @@ import 'dart:math';
 import 'dart:async';
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart';
+import 'package:acanvas_commons/acanvas_commons.dart';
 
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, RockdotLifecycleSprite, StateEvents, StateMessageVO;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, AcanvasLifecycleSprite, StateEvents, StateMessageVO;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractReflowScreen, Assets, Colors, Dimensions, EffectIDs, Theme;
 
 part 'src/material_example_plugin.dart';

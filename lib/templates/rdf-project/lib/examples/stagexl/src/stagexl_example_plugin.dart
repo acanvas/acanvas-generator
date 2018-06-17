@@ -1,6 +1,6 @@
 part of stagexl_example;
 
-class StagexlExamplePlugin extends AbstractRdPlugin {
+class StagexlExamplePlugin extends AbstractAcPlugin {
   int sorting;
   StagexlExamplePlugin(this.sorting) : super(910) {}
 
@@ -16,7 +16,7 @@ class StagexlExamplePlugin extends AbstractRdPlugin {
             new BitmapDataHiDPI(StageXLExampleScreenIDs.BASIC_BITMAPDATA_HIDPI),
         transition: EffectIDs.DEFAULT,
         tree_parent: sorting);
-    if (Rd.WEBGL) {
+    if (Ac.WEBGL) {
       addScreen(StageXLExampleScreenIDs.BASIC_SPRITE3D,
           () => new Sprite3DExample(StageXLExampleScreenIDs.BASIC_SPRITE3D),
           transition: EffectIDs.DEFAULT, tree_parent: sorting);

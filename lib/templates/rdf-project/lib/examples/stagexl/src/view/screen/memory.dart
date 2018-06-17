@@ -35,7 +35,7 @@ class MemoryExample extends AbstractScreen implements Animatable {
 
     _startGame();
 
-    Rd.JUGGLER.add(this);
+    Ac.JUGGLER.add(this);
 
     onInitComplete();
   }
@@ -74,7 +74,7 @@ class MemoryExample extends AbstractScreen implements Animatable {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(this);
+    Ac.JUGGLER.remove(this);
     super.dispose();
   }
 

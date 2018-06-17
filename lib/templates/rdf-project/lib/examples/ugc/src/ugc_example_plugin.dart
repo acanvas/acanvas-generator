@@ -1,6 +1,6 @@
 part of ugc_example;
 
-class UGCExamplePlugin extends AbstractRdPlugin {
+class UGCExamplePlugin extends AbstractAcPlugin {
   int sorting;
   UGCExamplePlugin(this.sorting) : super(940) {}
 

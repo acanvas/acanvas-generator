@@ -16,7 +16,7 @@ class SpawnItem {
     return dead;
   }
 
-  double elapsedTimeInMilliseconds() => Rd.JUGGLER.elapsedTime * 1000.0;
+  double elapsedTimeInMilliseconds() => Ac.JUGGLER.elapsedTime * 1000.0;
 
   double radians(double atanVal) {
     return atanVal * (math.pi / 180);

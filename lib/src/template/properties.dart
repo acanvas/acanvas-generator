@@ -1,4 +1,4 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
 /**
  * The <code>Properties</code> class represents a collection of properties

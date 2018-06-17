@@ -20,7 +20,7 @@
 * APPLICATION_PATH_TEMP    //application path temp
 * APPLICATION_PATH_ROOT	//application path to first accessible node on server
 * APPLICATION_PATH_HTDOCS  //application path to hddocs | www (webroot)
-* APPLICATION_PATH_LIBRARY //application path to libraries (Zend | Rockdot | Tools)
+* APPLICATION_PATH_LIBRARY //application path to libraries (Zend | Acanvas | Tools)
 * APPLICATION_URI			//application url
 * APPLICATION_ENV	 		//application envrionment
 * APPLICATION_ENC	 		//application encoding
@@ -112,7 +112,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 		$this->response = new Zend_Controller_Response_Http();
 		//----------------------------------------------------
 		//configure debugging-output
-		Rockdot_Debug::setOptions(
+		Acanvas_Debug::setOptions(
 		array(
 		'enableEcho' 	=> false,
 		'enableBuffer' 	=> (APPLICATION_ENV !== 'production') ? true : false,
@@ -217,7 +217,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//init models
 			$resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 					'basePath'      => APPLICATION_PATH,
-					'namespace'     => 'Rockdot',
+					'namespace'     => 'Acanvas',
 					'resourceTypes' => array(
 							'model' => array(
 									'path'      => 'models/',
@@ -229,7 +229,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//init forms
 			$resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 					'basePath'      => APPLICATION_PATH,
-					'namespace'     => 'Rockdot',
+					'namespace'     => 'Acanvas',
 					'resourceTypes' => array(
 							'model' => array(
 									'path'      => 'forms/',
@@ -241,7 +241,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//init autoload
 			$autoloader = Zend_Loader_Autoloader::getInstance();
 			$autoloader->suppressNotFoundWarnings((APPLICATION_ENV === 'production') ? true : false);
-			$autoloader->registerNamespace('Rockdot');
+			$autoloader->registerNamespace('Acanvas');
 		}
 		catch(Exception $e){
 			throw new Zend_Application_Exception('Bootstrap->initAutoload() failed with message('.$e->getMessage().')', 2000);
@@ -269,7 +269,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//start session
 			Zend_Session::start();
 			//avoid session fixiation
-			$this->sessionNamespace = new Zend_Session_Namespace('Rockdot_System');
+			$this->sessionNamespace = new Zend_Session_Namespace('Acanvas_System');
 			if(!isset($this->sessionNamespace->initialized)){
 				Zend_Session::regenerateId();
 				$this->sessionNamespace->initialized = true;
@@ -328,7 +328,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			if(
 			//XXX admin IP limitation commented out
 			$this->request->isGet() /* &&
-			in_array(Rockdot_Http_Request::getIp(), Zend_Registry::get('Application_Config')->page->admin_ips->toArray()) */
+			in_array(Acanvas_Http_Request::getIp(), Zend_Registry::get('Application_Config')->page->admin_ips->toArray()) */
 			){
 				$_params = 	$this->request->getParams();
 				foreach($_params as $name => $value){
@@ -445,7 +445,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 				$this->language = $language;
 
 				//set language cookie
-				Rockdot_Http_Cookie::setCookie(
+				Acanvas_Http_Cookie::setCookie(
 				array(
 				'name'  	=> 'lang',
 				'value' 	=> $this->language,
@@ -455,7 +455,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 				)
 				);
 
-				$rckdt_registry = Rockdot_Registry::getInstance();
+				$rckdt_registry = Acanvas_Registry::getInstance();
 
 				//add values to configuration
 				$rckdt_registry->set('fb_sig_data', $data);
@@ -512,7 +512,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 	 */
 	private function initLocale(){
 		try{
-			$rckdt_registry = Rockdot_Registry::getInstance();
+			$rckdt_registry = Acanvas_Registry::getInstance();
 
 			//create locale object with the passed configuration
 			$locale = new Zend_Locale($rckdt_registry->get('locale') );
@@ -654,31 +654,31 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//---------------------
 			//register Loginstate
 			Zend_Controller_Front::getInstance()->registerPlugin(
-			new Rockdot_Zend_Plugin_LoginStatus()
+			new Acanvas_Zend_Plugin_LoginStatus()
 			);
 			//---------------------
 			//register Rewrite/Mock Current IP Adress
 			Zend_Controller_Front::getInstance()->registerPlugin(
-			new Rockdot_Zend_Plugin_RewriteIp()
+			new Acanvas_Zend_Plugin_RewriteIp()
 			);
 			//---------------------
 			//register Permanent-SSL-Switch
 			Zend_Controller_Front::getInstance()->registerPlugin(
-			new Rockdot_Zend_Plugin_SslSwitch(Zend_Registry::get('Application_Config')->page->sslenvironments)
+			new Acanvas_Zend_Plugin_SslSwitch(Zend_Registry::get('Application_Config')->page->sslenvironments)
 			);
 			//---------------------
 			//register MobileDetection-Plugin
 			Zend_Controller_Front::getInstance()->registerPlugin(
-			new Rockdot_Zend_Plugin_DetectMobile()
+			new Acanvas_Zend_Plugin_DetectMobile()
 			);
 			//---------------------
 			//register Interim-Plugin (maintenance)
 			if(isset(Zend_Registry::get('Application_Config')->page->maintenance) && Zend_Registry::get('Application_Config')->page->maintenance === 'on'){
-				Zend_Controller_Front::getInstance()->registerPlugin(new Rockdot_Zend_Plugin_Maintenance());
+				Zend_Controller_Front::getInstance()->registerPlugin(new Acanvas_Zend_Plugin_Maintenance());
 			}
 			//---------------------
 			//global available ViewHelper
-			$navigationHelper = new Rockdot_Zend_View_Helper_Page(
+			$navigationHelper = new Acanvas_Zend_View_Helper_Page(
 					array(
 							'doctype' => Zend_Registry::get('Application_Config')->page->doctype, //change global doctype here - default is 'XHTML5'
 							'charset' => Zend_Registry::get('Application_Config')->page->charset,
@@ -695,8 +695,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			//---------------------
 			Zend_Layout::getMvcInstance()->getView()->registerHelper($navigationHelper, 'link');//(linkhandler)
 			Zend_Layout::getMvcInstance()->getView()->registerHelper($navigationHelper, 'page');//(get currentpagevalues)
-			Zend_Layout::getMvcInstance()->getView()->registerHelper(new Rockdot_Zend_View_Helper_FormText(), 'FormText');//(renders html5 form elements) //if doctype XHTML5
-			Zend_Layout::getMvcInstance()->getView()->registerHelper(new Rockdot_Zend_View_Helper_Script(), 'script');	//footerscript parent of headscript
+			Zend_Layout::getMvcInstance()->getView()->registerHelper(new Acanvas_Zend_View_Helper_FormText(), 'FormText');//(renders html5 form elements) //if doctype XHTML5
+			Zend_Layout::getMvcInstance()->getView()->registerHelper(new Acanvas_Zend_View_Helper_Script(), 'script');	//footerscript parent of headscript
 		}
 		catch(Exception $e){
 			throw new Zend_Application_Exception('Bootstrap->initPluginsAndHelpers() failed with message('.$e->getMessage().')', 2000);
@@ -718,7 +718,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 				throw new Zend_Application_Exception('chosen language not available', 1000);
 			}
 			$navigation = new Zend_Navigation(
-					Rockdot_Loader::import(
+					Acanvas_Loader::import(
 							APPLICATION_PATH.'/configs/'.Zend_Registry::get('Zend_Locale')->getLanguage().'/navigation.php'
 					)
 			);
@@ -891,7 +891,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 				//there are errors in iterator after cleanup
 				if(count($_iterator) > 0 && $impact > 10){
 					if(APPLICATION_ENV !== 'production'){
-						Rockdot_Debug::dump($result, 'IMPACT:'. $impact);
+						Acanvas_Debug::dump($result, 'IMPACT:'. $impact);
 					}
 					//preparing the errorlog
 					$logstring = '';

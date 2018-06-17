@@ -1,9 +1,9 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
  * @author Nils Doehring (nilsdoehring(gmail as at).com)
  */
-class NavigationSidebar extends RockdotLifecycleSprite
+class NavigationSidebar extends AcanvasLifecycleSprite
     implements IStateModelAware {
   StateModel _stateModel;
   ImageSprite _logo;
@@ -19,13 +19,13 @@ class NavigationSidebar extends RockdotLifecycleSprite
     super.init(params: params);
 
     _logo = new ImageSprite()
-      ..bitmapData = Assets.logo_rockdot_small
+      ..bitmapData = Assets.logo_acanvas_small
       ..inheritSpan = false
       ..autoSpan = false
       ..useHandCursor = true
-      ..addEventListener(Rd.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
+      ..addEventListener(Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
           (e) {
-        new RdSignal(StateEvents.ADDRESS_SET,
+        new AcSignal(StateEvents.ADDRESS_SET,
                 getProperty("${ScreenIDs.HOME}.url", true))
             .dispatch();
       });
@@ -50,7 +50,7 @@ class NavigationSidebar extends RockdotLifecycleSprite
   void refresh() {
     super.refresh();
 
-    RdGraphics.rectangle(0, 0, spanWidth, spanHeight,
+    AcGraphics.rectangle(0, 0, spanWidth, spanHeight,
         sprite: this, color: Colors.GREY_DARK);
 
     _logo.y = 0;
@@ -64,7 +64,7 @@ class NavigationSidebar extends RockdotLifecycleSprite
   _sideBarCellSelectAction(SelectableButton cell) {
     StateVO vo = cell.data;
     _blockSelectionByAddressCallback = true;
-    new RdSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
+    new AcSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
   }
 
   void setVO(StateVO vo) {

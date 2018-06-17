@@ -68,13 +68,13 @@ class MapFilter extends AbstractScreen {
     stage.onTouchBegin.listen(_setLightPosition);
     stage.onTouchMove.listen(_setLightPosition);
 
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
 
     onInitComplete();
   }
 
   void _setLightPosition(InputEvent e) {
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
     var stagePosition = new Point<num>(e.stageX, e.stageY);
     var guyPosition = _guy.globalToLocal(stagePosition);
     _normalMapFilter.lightX = guyPosition.x;

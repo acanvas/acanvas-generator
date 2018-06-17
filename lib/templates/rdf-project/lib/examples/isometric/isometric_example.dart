@@ -1,12 +1,12 @@
 library isometric_example;
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart'
-    show Wrap, MdText, Rd, ScrollOrientation, MLifecycle;
+import 'package:acanvas_commons/acanvas_commons.dart'
+    show Wrap, MdText, Ac, ScrollOrientation, MLifecycle;
 
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, RockdotLifecycleSprite;
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, AcanvasLifecycleSprite;
+import 'package:acanvas_template/acanvas_template.dart'
     show AbstractReflowScreen, Theme, Dimensions, EffectIDs, IModelAware, Model;
 import 'package:stagexl_isometric/stagexl_isometric.dart';
 

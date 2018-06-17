@@ -49,7 +49,7 @@ class ParticleExample extends AbstractReflowScreen {
     _particleEmitter = new ParticleEmitter(particleConfig);
     _particleEmitter.setEmitterLocation(spanWidth / 2, spanHeight / 2);
     addChild(_particleEmitter);
-    Rd.JUGGLER.add(_particleEmitter);
+    Ac.JUGGLER.add(_particleEmitter);
 
     //-------------------------
 
@@ -80,7 +80,7 @@ class ParticleExample extends AbstractReflowScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_particleEmitter);
+    Ac.JUGGLER.remove(_particleEmitter);
     super.dispose();
   }
 

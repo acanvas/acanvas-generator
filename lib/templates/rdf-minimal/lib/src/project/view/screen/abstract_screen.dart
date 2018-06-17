@@ -1,10 +1,10 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 
 class AbstractScreen extends LifecycleSprite with MApplicationContextAware {
   AbstractScreen(String id) : super(id) {
-    padding = Rd.MOBILE ? 32 : 52;
+    padding = Ac.MOBILE ? 32 : 52;
     inheritSpan = true;
   }
 
@@ -34,7 +34,7 @@ class AbstractScreen extends LifecycleSprite with MApplicationContextAware {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 

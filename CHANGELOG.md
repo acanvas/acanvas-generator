@@ -1,9 +1,9 @@
-# CHANGELOG ROCKDOT_GENERATOR
+# CHANGELOG ACANVAS_GENERATOR
 
 ## 0.11.0 Roadmap
 
 - Finalize UGC Backend
-- Rockdot Progressive Web App (PWA) Example
+- Acanvas Progressive Web App (PWA) Example
 - FlexBook as Custom Renderer for all Examples
 - MoppiFlower as Custom Renderer for all Examples
 - Include custom Shaders in Examples (zoom/fire)
@@ -69,7 +69,7 @@
 - New Extension and Example: StageXL Isometric Runtime
 - New Extension and Example: StageXL Particle Engine
 - Fixed a bug in add_screen helper script
-- Refactored add_element helper script to extend RockdotBoxSprite instead of RockdotLifecycleSprite
+- Refactored add_element helper script to extend AcanvasBoxSprite instead of AcanvasLifecycleSprite
 
 ## 0.9.3
 
@@ -108,7 +108,7 @@
 
 ## 0.8.1
 
-- Added support for project generation via Rockdot IntelliJ IDEA Plugin
+- Added support for project generation via Acanvas IntelliJ IDEA Plugin
 
 ## 0.8.0
 
@@ -121,13 +121,13 @@
 - Reorganized generators: Only BasicGenerator left, takes options for plugin and demo addons.
 - Reorganized templates: Duplicate data eliminated.
 - Reorganized plugins and demos: Can get installed independently of demos
-- Demos are now Rockdot Plugins
-- templates/template can be opened/edited as project, with full features. Makes it easier to develop rockdot_generator demos.
+- Demos are now Acanvas Plugins
+- templates/template can be opened/edited as project, with full features. Makes it easier to develop acanvas_generator demos.
 
 ## 0.6.0
 
-- templates now work as projects inside rockdot_generator (makes development of rockdot_generator templates easier and less error prone)
-- Added rockdot-zend template (called 'server') UNFINISHED BUSINESS
+- templates now work as projects inside acanvas_generator (makes development of acanvas_generator templates easier and less error prone)
+- Added acanvas-zend template (called 'server') UNFINISHED BUSINESS
 
 ## 0.5.0
 
@@ -141,7 +141,7 @@
 
 ## 0.2.0
 
-- Enhancements to generate Rockdot/StageXL projects
+- Enhancements to generate Acanvas/StageXL projects
 - Fixed all CI services: drone, appveyor, travis
 - Added minimal template
 - Included additional variable substitutions
@@ -191,13 +191,13 @@
 - Removed the `-o` option; we now generate the selected template into the
   current directory
 - Added pre-generated css to the `webapp` template
-- some changes to better support rockdot_generator being driven by existing tooling
+- some changes to better support acanvas_generator being driven by existing tooling
   (IDEs)
 - The `polymer` template was renamed to `polymerapp`
 
 ## 0.1.1
 
-- Changed to allow rockdot_generator to generate a project into an existing directory
+- Changed to allow acanvas_generator to generate a project into an existing directory
 
 ## 0.1.0
 

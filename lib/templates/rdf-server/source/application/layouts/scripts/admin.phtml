@@ -74,8 +74,8 @@
 	}
 	//debug / dumps output_buffer only on devel/local context
 	if(APPLICATION_ENV !== 'production' && ($this->system_debug === 'on' || $this->system_debug === '1')){
-		Rockdot_Debug::dump($this->activePage, 'ACTIVE_PAGE');
-		Rockdot_Debug::dump(
+		Acanvas_Debug::dump($this->activePage, 'ACTIVE_PAGE');
+		Acanvas_Debug::dump(
 		array(
 		'APPLICATION_LANG' => APPLICATION_LANG,
 		'APPLICATION_URI' => APPLICATION_URI,
@@ -91,11 +91,11 @@
 		),
 		'PAGE_CONSTANTS'
                 			);
-                			Rockdot_Debug::dump(memory_get_usage(true)/1024/1024, 'MEMORY_USAGE');
-                			Rockdot_Debug::dump(memory_get_peak_usage(true)/1024/1024, 'MEMORY_PEAK_USAGE');
-                			#Rockdot_Debug::dump(get_included_files(), 'INCLUDED_FILES');
-                			Rockdot_Debug::dump($_SESSION, 'SESSION');
-                			echo '<div style="margin:40px 0 0 0; border:1px solid grey; padding: 5px; font-size:12px; background:#F5F5F5;border-radius:4px">'.Rockdot_Debug::getBufferString().'</div>';
+                			Acanvas_Debug::dump(memory_get_usage(true)/1024/1024, 'MEMORY_USAGE');
+                			Acanvas_Debug::dump(memory_get_peak_usage(true)/1024/1024, 'MEMORY_PEAK_USAGE');
+                			#Acanvas_Debug::dump(get_included_files(), 'INCLUDED_FILES');
+                			Acanvas_Debug::dump($_SESSION, 'SESSION');
+                			echo '<div style="margin:40px 0 0 0; border:1px solid grey; padding: 5px; font-size:12px; background:#F5F5F5;border-radius:4px">'.Acanvas_Debug::getBufferString().'</div>';
 	}
 	//----------------------------------------------------
 	?>

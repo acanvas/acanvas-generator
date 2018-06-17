@@ -3,25 +3,25 @@ library google_example;
 import 'dart:math';
 
 import 'package:stagexl/stagexl.dart';
-import 'package:rockdot_commons/rockdot_commons.dart'
+import 'package:acanvas_commons/acanvas_commons.dart'
     show
         IAsyncCommand,
         BehaveSprite,
         Button,
         ImageSprite,
-        RdGraphics,
-        Rd,
+        AcGraphics,
+        Ac,
         MdWrap,
         MdButton,
-        RdSignal;
+        AcSignal;
 
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, StateEvents;
-import 'package:rockdot_framework/src/plugin.io.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, StateEvents;
+import 'package:acanvas_framework/src/plugin.io.dart'
     show DataProxy, DataRetrieveVO, IIOModelAware, IOModel, IOEvents;
 import 'package:googleapis/plus/v1.dart' show Person;
-import 'package:rockdot_framework/src/plugin.google.dart';
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/plugin.google.dart';
+import 'package:acanvas_template/acanvas_template.dart'
     show
         AbstractReflowScreen,
         AbstractPhotoPager,

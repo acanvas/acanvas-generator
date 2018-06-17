@@ -29,7 +29,7 @@ class GafSlotMachine extends AbstractScreen {
     _slotMachineGame = new SlotMachineGame(slotMachine);
 
     addChild(_slotMachineGame);
-    Rd.JUGGLER.add(_slotMachineGame);
+    Ac.JUGGLER.add(_slotMachineGame);
 
     onInitComplete();
   }
@@ -48,9 +48,9 @@ class GafSlotMachine extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_slotMachineGame);
+    Ac.JUGGLER.remove(_slotMachineGame);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

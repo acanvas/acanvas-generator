@@ -126,7 +126,7 @@ class ShaderExample extends AbstractReflowScreen {
       return;
     }
     _animating = true;
-    Rd.STAGE.juggler.addTween(_hbox6, 15)
+    Ac.STAGE.juggler.addTween(_hbox6, 15)
       ..animate3D.rotationX.to(360 * pi / 180)
       ..onComplete = () {
         _animating = false;

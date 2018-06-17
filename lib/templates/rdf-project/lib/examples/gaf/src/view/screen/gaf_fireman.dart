@@ -24,7 +24,7 @@ class GafFireman extends AbstractScreen {
 
     _fireman = new GAFMovieClip(gafTimeline);
     addChild(_fireman);
-    Rd.JUGGLER.add(_fireman);
+    Ac.JUGGLER.add(_fireman);
     _fireman.play(true);
 
     // listen to custom events on the fireman MovieClip
@@ -60,9 +60,9 @@ class GafFireman extends AbstractScreen {
   @override
   void dispose({bool removeSelf: true}) {
     _fireman.stop(true);
-    Rd.JUGGLER.remove(_fireman);
+    Ac.JUGGLER.remove(_fireman);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

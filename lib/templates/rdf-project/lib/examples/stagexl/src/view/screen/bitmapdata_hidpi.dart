@@ -41,7 +41,7 @@ class BitmapDataHiDPI extends AbstractScreen {
     _flipbook.play();
 
     addChild(_flipbook);
-    Rd.JUGGLER.add(_flipbook);
+    Ac.JUGGLER.add(_flipbook);
 
     onInitComplete();
   }
@@ -66,7 +66,7 @@ class BitmapDataHiDPI extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_flipbook);
+    Ac.JUGGLER.remove(_flipbook);
     _flipbook.stop();
     super.dispose();
     _flipbook = null;

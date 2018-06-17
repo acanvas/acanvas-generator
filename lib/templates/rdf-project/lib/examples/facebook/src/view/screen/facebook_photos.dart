@@ -13,7 +13,7 @@ class FacebookPhotos extends AbstractScreen implements IStateModelAware {
     if (params == null || !(params is Map) || params["id"] == null) {
       if (_stateModel.currentStateVO.params == null ||
           _stateModel.currentStateVO.params["id"] == null) {
-        new RdSignal(StateEvents.ADDRESS_SET,
+        new AcSignal(StateEvents.ADDRESS_SET,
                 getProperty("${FacebookExampleScreenIDs.FACEBOOK_ALBUMS}.url"))
             .dispatch();
         return;
@@ -44,8 +44,8 @@ class FacebookPhotos extends AbstractScreen implements IStateModelAware {
   }
 
   void _onItemClicked(FBPhotoVO dao) {
-    Rd.log.info("Item clicked. id: {0}, url_big: {1}", [dao.id, dao.source]);
-    // new RdSignal(StateEvents.ADDRESS_SET, "/layer").dispatch();
+    Ac.log.info("Item clicked. id: {0}, url_big: {1}", [dao.id, dao.source]);
+    // new AcSignal(StateEvents.ADDRESS_SET, "/layer").dispatch();
   }
 
   @override

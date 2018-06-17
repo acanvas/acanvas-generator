@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class LoadScreen extends Sprite {
   /* Constructor Params */
@@ -30,13 +30,13 @@ class LoadScreen extends Sprite {
 
     addEventListener(Event.ENTER_FRAME, _onEnterFrame);
 
-    Rd.JUGGLER.addTween(this, 0.4, Transition.easeInQuintic)
+    Ac.JUGGLER.addTween(this, 0.4, Transition.easeInQuintic)
       ..delay = .3
       ..animate.alpha.to(1.0);
   }
 
   void _onEnterFrame(Event event) {
-    Rd.MATERIALIZE_REQUIRED = true;
+    Ac.MATERIALIZE_REQUIRED = true;
 
     x = stage.stageWidth / 2;
     y = stage.stageHeight / 2;
@@ -60,7 +60,7 @@ class LoadScreen extends Sprite {
 
   void cancel() {
     removeEventListener(Event.ENTER_FRAME, _onEnterFrame);
-    Rd.MATERIALIZE_REQUIRED = false;
+    Ac.MATERIALIZE_REQUIRED = false;
 
     if (_timer != null) {
       _timer.cancel();
@@ -80,7 +80,7 @@ class LoadScreen extends Sprite {
         _sprPreloader.addChild(theShape);
       }
     }
-    if (Rd.WEBGL) {
+    if (Ac.WEBGL) {
       //_sprPreloader.applyCache(-25, -25, 50, 50);
     }
   }

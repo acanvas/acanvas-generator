@@ -2,7 +2,7 @@ part of isometric_example;
 
 /// The AbstractScreen class contains settings applicable to all screens of an application.
 
-class AbstractIsometricScreen extends RockdotLifecycleSprite
+class AbstractIsometricScreen extends AcanvasLifecycleSprite
     implements IModelAware {
   /// AppModel as defined by interface. Will be injected by ApplicationContext/factory
 
@@ -18,7 +18,7 @@ class AbstractIsometricScreen extends RockdotLifecycleSprite
   MdText _copy;
 
   AbstractIsometricScreen(String id) : super(id) {
-    padding = 52; // Rd.MOBILE ? 8 : 32;
+    padding = 52; // Ac.MOBILE ? 8 : 32;
     inheritSpan = true;
   }
 
@@ -62,7 +62,7 @@ class AbstractIsometricScreen extends RockdotLifecycleSprite
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 

@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-abstract class RockdotCommand extends Command {
+abstract class AcanvasCommand extends Command {
   final List<TemplateFile> files = [];
   String packageName;
   // The [name] and [description] properties must be defined by every
@@ -12,7 +12,7 @@ abstract class RockdotCommand extends Command {
   CliLogger logger;
   Target writeTarget;
 
-  RockdotCommand(this.logger, this.writeTarget);
+  AcanvasCommand(this.logger, this.writeTarget);
 
   /// Add a new template file.
   TemplateFile addTemplateFile(TemplateFile file, [bool append = false]) {
@@ -32,7 +32,7 @@ abstract class RockdotCommand extends Command {
   Future generate(String projectName, {Map<String, String> additionalVars}) {
     Map<String, String> vars = {
       'projectName': projectName,
-      'rockdot_template': projectName,
+      'acanvas_template': projectName,
       'description': description,
       'year': new DateTime.now().year.toString()
     };
@@ -50,7 +50,7 @@ abstract class RockdotCommand extends Command {
     return Future.forEach(files, (TemplateFile file) {
       var resultFile = file.runSubstitution(vars);
       String filePath = resultFile.path;
-      filePath = filePath.replaceAll('rockdot_template', projectName);
+      filePath = filePath.replaceAll('acanvas_template', projectName);
 
       return _createFile(filePath, resultFile.content);
     });
@@ -77,7 +77,7 @@ abstract class RockdotCommand extends Command {
       await new Future.delayed(const Duration(milliseconds: 100));
 
       myResource = new Resource(
-          'package:rockdot_generator/templates/${pack}/${path}',
+          'package:acanvas_generator/templates/${pack}/${path}',
           loader: loader);
 
       logger.stdout("${counter} - template: ${pack}, resource: $path");

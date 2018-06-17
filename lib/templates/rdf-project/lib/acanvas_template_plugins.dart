@@ -1,10 +1,10 @@
 //facebook
-export 'package:rockdot_framework/src/plugin.facebook.dart';
+export 'package:acanvas_framework/src/plugin.facebook.dart';
 //facebook-example
 export 'examples/facebook/facebook_example.dart';
 
 //google
-export 'package:rockdot_framework/src/plugin.google.dart';
+export 'package:acanvas_framework/src/plugin.google.dart';
 //google-example
 export 'examples/google/google_example.dart';
 
@@ -12,17 +12,17 @@ export 'examples/google/google_example.dart';
 export 'examples/material/material_example.dart';
 
 //physics
-export 'package:rockdot_physics/rockdot_physics.dart';
+export 'package:acanvas_physics/acanvas_physics.dart';
 //physics-example
 export 'examples/physics/physics_example.dart';
 
 //ugc
-export 'package:rockdot_framework/src/plugin.ugc.dart';
+export 'package:acanvas_framework/src/plugin.ugc.dart';
 //ugc-example
 export 'examples/ugc/ugc_example.dart';
 
 //babylon
-export 'package:rockdot_framework/src/plugin.babylon.dart';
+export 'package:acanvas_framework/src/plugin.babylon.dart';
 //babylon-example
 export 'examples/babylon/babylon_example.dart';
 

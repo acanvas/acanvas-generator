@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class Dimensions {
   static const int WIDTH_SIDEBAR = 224; //MdDimensions.WIDTH_MENU;
@@ -7,7 +7,7 @@ class Dimensions {
   static const int HEIGHT_RASTER = 100;
   static const int SPACER = 10;
 
-  static int get X_PAGES => 0; //Rd.MOBILE ? 10 : 50;
+  static int get X_PAGES => 0; //Ac.MOBILE ? 10 : 50;
   static const int Y_PAGES = MdDimensions.HEIGHT_APP_BAR; // + 4 * SPACER;
 
   static const int WIDTH_MIN = 400;
@@ -20,11 +20,11 @@ class Dimensions {
       min(WIDTH_STAGE - X_PAGES, WIDTH_MAX - X_PAGES);
   static int get HEIGHT_CONTENT => HEIGHT_STAGE - Y_PAGES;
 
-  static int get WIDTH_STAGE_REAL => RdConstants.getStage().stageWidth;
-  static int get HEIGHT_STAGE_REAL => RdConstants.getStage().stageHeight;
+  static int get WIDTH_STAGE_REAL => AcConstants.getStage().stageWidth;
+  static int get HEIGHT_STAGE_REAL => AcConstants.getStage().stageHeight;
 
   static int get WIDTH_STAGE =>
-      min(WIDTH_MAX, max(WIDTH_MIN, RdConstants.getStage().stageWidth));
+      min(WIDTH_MAX, max(WIDTH_MIN, AcConstants.getStage().stageWidth));
   static int get HEIGHT_STAGE =>
-      min(HEIGHT_MAX, max(HEIGHT_MIN, RdConstants.getStage().stageHeight));
+      min(HEIGHT_MAX, max(HEIGHT_MIN, AcConstants.getStage().stageHeight));
 }

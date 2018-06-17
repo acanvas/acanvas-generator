@@ -1,9 +1,9 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
  * @author Nils Doehring (nilsdoehring(gmail as at).com)
  */
-class Navigation extends RockdotLifecycleSprite {
+class Navigation extends AcanvasLifecycleSprite {
   MdTabs _tabs;
   MdText _headline;
   MdFab _menuButton;
@@ -19,7 +19,7 @@ class Navigation extends RockdotLifecycleSprite {
 
     _menuButton = new MdFab(MdIcon.white(MdIconSet.home),
         bgColor: MdColor.BLUE, radius: 20)
-      ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, "/");
+      ..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, "/");
     _headline = Theme.getHeadline("", size: 32, color: Colors.WHITE);
     _headline.inheritWidth = false;
 
@@ -35,13 +35,13 @@ class Navigation extends RockdotLifecycleSprite {
     _tabButtons.forEach((value) {
       _tabs.addTab(new MdButton(getProperty("$value.title", true).toUpperCase(),
           preset: MdButton.PRESET_BLUE, shadow: false)
-        ..submitEvent = new RdSignal(
+        ..submitEvent = new AcSignal(
             StateEvents.ADDRESS_SET, getProperty("$value.url", true)));
     });
     appBar.addMdTabs(_tabs);
     addChild(appBar);
 
-    new RdSignal(StateEvents.STATE_VO_SET, null, _onAddressSet).listen();
+    new AcSignal(StateEvents.STATE_VO_SET, null, _onAddressSet).listen();
 
     onInitComplete();
   }
@@ -59,19 +59,19 @@ class Navigation extends RockdotLifecycleSprite {
     // _tabs.span(spanWidth, Dimensions.HEIGHT_RASTER);
   }
 
-  void _onAddressSet(RdSignal e) {
+  void _onAddressSet(AcSignal e) {
     StateVO vo = e.data;
 
     if (vo.url.indexOf("layer") == -1) {
       //title animation
-      Rd.JUGGLER.addTween(_headline, .1)
+      Ac.JUGGLER.addTween(_headline, .1)
         ..animate.y.to(-15)
         ..animate.alpha.to(0)
         ..onComplete = () {
           _headline.text = vo.title;
           _headline.y = 15;
 
-          Tween tw = Rd.JUGGLER.addTween(_headline, .1);
+          Tween tw = Ac.JUGGLER.addTween(_headline, .1);
           tw.animate.y.to(5);
           tw.animate.alpha.to(1);
         };
@@ -81,10 +81,10 @@ class Navigation extends RockdotLifecycleSprite {
 
     switch (vo.url) {
       case "/":
-        Rd.JUGGLER.addTween(_menuButton, .5)..animate.alpha.to(0);
+        Ac.JUGGLER.addTween(_menuButton, .5)..animate.alpha.to(0);
         break;
       default:
-        Rd.JUGGLER.addTween(_menuButton, .5)..animate.alpha.to(1);
+        Ac.JUGGLER.addTween(_menuButton, .5)..animate.alpha.to(1);
         break;
     }
   }

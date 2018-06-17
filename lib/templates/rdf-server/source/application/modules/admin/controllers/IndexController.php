@@ -55,7 +55,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 	 */
 	public function init(){
 		try{
-			Rockdot_Debug::dump( $this->_request->getParams(), 'REQUEST_INIT' );
+			Acanvas_Debug::dump( $this->_request->getParams(), 'REQUEST_INIT' );
 			//----------------------------------------------------------------------
 			//switch layout
 			$this->_helper->layout->setLayout('admin');
@@ -96,7 +96,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 			);
 		}
 		catch(Exception $e){
-			Rockdot_Debug::dump($e->getMessage(), 'EXCEPTION@init()');
+			Acanvas_Debug::dump($e->getMessage(), 'EXCEPTION@init()');
 		}
 	}
 
@@ -128,7 +128,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 		try{
 			//----------------------------------------------------------------------
 			//basic ip-protection
-			if(!in_array(Rockdot_Http_Request::getIp(), Zend_Registry::get('Application_Config')->page->admin_ips->toArray())){
+			if(!in_array(Acanvas_Http_Request::getIp(), Zend_Registry::get('Application_Config')->page->admin_ips->toArray())){
 				//XXX no ip restriction for now
 				//$this->_redirect('/');
 			}
@@ -218,7 +218,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 		if(isset($this->_request->id) && preg_match('/[A-Za-z0-9]/', $this->_request->id)){
 			//-----------------------------------------------
 			//init profile model
-			$model = new Rockdot_Model_Admin(
+			$model = new Acanvas_Model_Admin(
 					array( 'metadataCache' => Zend_Registry::get('Cache') )
 			);
 			$_entry = $model->read('items',
@@ -269,10 +269,10 @@ class Admin_IndexController extends Zend_Controller_Action{
 	public function indexAction(){
 		try{
 			//init index_session
-			$session = new Zend_Session_Namespace('Rockdot_Admin_Controller_Index_Toplist');
+			$session = new Zend_Session_Namespace('Acanvas_Admin_Controller_Index_Toplist');
 			//-----------------------------------------------
 			//init profile model
-			$profile = new Rockdot_Model_Admin(
+			$profile = new Acanvas_Model_Admin(
 					array( 'metadataCache' => Zend_Registry::get('Cache') )
 			);
 			//-----------------------------------------------
@@ -309,7 +309,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 			//Model Requests
 			//-----------------------------------------------
 			//view profiles
-			$this->view->items = new Rockdot_Data(
+			$this->view->items = new Acanvas_Data(
 					$profile->setLimit($session->perpage)
 					->setSortOrder($sortOrder)
 					->getItems(0, $sortBy, $session->date_start, $session->date_end)
@@ -327,7 +327,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 			$this->view->date_end = $this->_request->date_end;
 		}
 		catch(Exception $e){
-			Rockdot_Debug::dump($e, 'Exception');
+			Acanvas_Debug::dump($e, 'Exception');
 		}
 		$this->_helper->flashMessenger->clearCurrentMessages();
 	}
@@ -343,10 +343,10 @@ class Admin_IndexController extends Zend_Controller_Action{
 	public function userlistAction(){
 		try{
 			//init index_session
-			$session = new Zend_Session_Namespace('Rockdot_Admin_Controller_Index');
+			$session = new Zend_Session_Namespace('Acanvas_Admin_Controller_Index');
 			//-----------------------------------------------
 			//init profile model
-			$profile = new Rockdot_Model_Admin(
+			$profile = new Acanvas_Model_Admin(
 					array( 'metadataCache' => Zend_Registry::get('Cache') )
 			);
 			//-----------------------------------------------
@@ -390,7 +390,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 			//Model Requests
 			//-----------------------------------------------
 			//view profiles
-			$this->view->items = new Rockdot_Data(
+			$this->view->items = new Acanvas_Data(
 					$profile->setLimit($session->perpage)
 					->setSortOrder($session->sortOrder)
 					->getItems(($session->page-1), $session->sortBy)
@@ -415,7 +415,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 				Zend_View_Helper_PaginationControl::setDefaultViewPartial('partials/pager.phtml');
 				//add to view
 				$this->view->paginator = $paginator;
-				$this->view->showPerPage = new Rockdot_Form_PerPage(
+				$this->view->showPerPage = new Acanvas_Form_PerPage(
 						array(
 								'config' =>	array(
 										'perpage' => array(
@@ -441,7 +441,7 @@ class Admin_IndexController extends Zend_Controller_Action{
 			//-----------------------------------------------
 		}
 		catch(Exception $e){
-			Rockdot_Debug::dump($e, 'Exception');
+			Acanvas_Debug::dump($e, 'Exception');
 		}
 		$this->_helper->flashMessenger->clearCurrentMessages();
 	}

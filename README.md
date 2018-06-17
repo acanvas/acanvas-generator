@@ -1,120 +1,103 @@
-# Rockdot Generator - a CLI to start your Rockdot project with ease!
+# Acanvas Generator
 
-![Rockdot Generator banner](https://raw.githubusercontent.com/blockforest/rockdot-generator/master/templates/basic/web/assets/autoload/rockdot.png)
+*Acanvas Generator – for Dart 2.0 and StageXL.*
 
-[![Coverage Status](https://coveralls.io/repos/block-forest/rockdot-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/rockdot-generator)
-[![Travis Build Status](https://travis-ci.org/block-forest/rockdot-generator.svg?branch=master)](https://travis-ci.org/block-forest/rockdot-generator)
-[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/rockdot-generator)
+*Acanvas Generator* lets you generate *[Acanvas Framework](http://acanvas.sounddesignz.com/acanvas-framework/)* layered architecture projects [(diagram)](http://acanvas.sounddesignz.com/template/assets/home/acanvas_spring_architecture.png).
+* Blazing fast IoC/DI/MVC UI framework for WebGL and Canvas2D, written in Dart.
+* Write web apps, games, or both, in pure Dart. No HTML, no CSS, no JS.
 
 
-Welcome Aboard!
-======================
+[![Coverage Status](https://coveralls.io/repos/block-forest/acanvas-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/acanvas-generator)
+[![Travis Build Status](https://travis-ci.org/block-forest/acanvas-generator.svg?branch=master)](https://travis-ci.org/block-forest/acanvas-generator)
+[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/acanvas-generator)
 
-(install notes further down)
 
-With Rockdot, you write apps as well as games (or a mix of the two) in Pure Dart. No HTML, no CSS. 
-If you happen(ed) to be a Pure Actionscript developer, you will feel at home, immediately. 
-In fact, Rockdot was started as an ActionScript framework in 2009, and has been used in dozens of 
-apps served millions of pageviews in individual web apps, microsites and specials for brands such 
+### Features
+
+The purpose of *Acanvas Generator* is to take care of ALL THE THINGS to jump into *Acanvas* development right away.
+With *Acanvas*, you write apps, games, or both, in Dart. No HTML, no CSS, JS. 
+
+* Pixel-precise control over the html *CanvasElement (2D and WebGL)* through StageXL, the Flash DisplayList API for HTML5, written in Dart.
+* A blazing fast, industry proven *IoC/DI/MVC+Command framework* based on Spring ActionScript (no shit).
+* Smart *UI lifecycle management* with runtimes for GAF (Flash Pro), Spine, DragonBones, Flump, babylonjs, and THREE.js (coming soon).
+* Plugins for integration with facebook, google APIs (examples included!).
+* A generic frontend and backend solution for management of user generated content, for example to be used in sweepstakes, competitions. *WIP*.
+
+*Acanvas* started as an ActionScript framework in 2009, and has been used in dozens of 
+apps serving millions of pageviews in individual web apps, microsites and specials for brands such 
 as Mercedes-Benz, Nike, Bosch, Nikon.  
 
-Rockdot for Dart gives you 
+### Examples
 
-* pixel-precise control over the html CanvasElement (2D and WebGL) through StageXL, the Flash DisplayList API for HTML5, written in Dart
-* a blazing fast, industry proven IoC/DI/MVC+Command framework based on Spring ActionScript (no shit)
-* smart UI lifecycle management with runtimes for GAF (Flash Pro), Spine, DragonBones, Flump, babylonjs, and THREE.js (coming soon)
-* plugins for integration with facebook, google APIs (examples included!)
-* a codebase that has its roots in Pure ActionScript, and has been in continuous development for about six years (2008 - 2014),
-* a codebase that has served millions of pageviews in individual web apps, microsites and specials for brands such as Mercedes-Benz, Nike, Bosch, Nikon.
-* soon a generic frontend and backend solution for management of user generated content, for example to be used in sweepstakes, competitions.
+Got an old iPhone4, a brand new Pixel, or any web browser on any OS? Then you're all set to fire up the 
+[Demo](http://acanvas.sounddesignz.com/acanvas-demo/).
 
-Got an old iPhone4, a brand new Pixel, or any web browser on any OS? Then be sure to fire up the 
-[Demo](http://rockdot.sounddesignz.com/template/).
+### Installation
 
-## Building Blocks
-* [Rockdot Framework](https://github.com/blockforest/rockdot-framework) Plugin System, UI Lifecycle and Asset Manager, i18n, Google and Facebook Integration, Generic User Generated Content backend communication
-* [Rockdot Spring](https://github.com/blockforest/rockdot-spring) IoC/DI container (ObjectFactory, ObjectFactory and Object Postprocessing, Interface Injection)
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Async library (FrontController and Commands/Operations, also sequences)
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Material Design Implementation
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) EventBus (with some tweaks to Operations to make them as effective as Signals)
-* [Rockdot Commons](https://github.com/blockforest/rockdot-commons) Logging
-* [StageXL](https://github.com/bp74/StageXL) - Flash API for Dart
+    $> pub global activate --source git https://github.com/block-forest/acanvas-generator
 
-# Installation
+This puts the executable `acgen` on your path.
 
-### Requirements
+### Usage: Basic Project
 
-* Dart SDK 2.0.0-dev.55.0 or greater on your path
+This is how you create the most basic Acanvas skeleton in your current directory:
 
-
-### Install
-
-    $> pub global activate --source git https://github.com/block-forest/rockdot-generator
-
-This puts the executable `rdgen` on your path.
-
-# Project Generator
-
-The purpose of Rockdot Generator is to take care of ALL THE THINGS to jump into development right away.
-
-## Basic Project
-
-This is how you create the most basic Rockdot skeleton in your current directory:
-
-    # directory name also serves as project name
+    # directory name serves as project name
     $> mkdir fancy-project
     $> cd fancy-project
-    $> rdgen project
+    $> acgen project
 
 The basic project skeleton will give you:
  
- * directory structure according to Dart specs
- * best practice index.html
- * best practice StageXL bootstrap
- * best practice Rockdot framework bootstrap
- * rockdot framework's state and screen extensions
- * dart2js size: 120 KiB gzipped
- * deployment-ready
+ * Directory structure according to Dart specs.
+ * Best practice index.html.
+ * Best practice StageXL bootstrap.
+ * Best practice Acanvas framework bootstrap.
+ * Acanvas framework's state and screen extensions.
+ * Dart2JS size: 120 KiB gzipped.
+ * Deployment-ready.
  
-## Advanced Project
+### Usage: Advanced Project
  
 For a list of optional plugins and examples to install, type:
     
-    $> rdgen project --help
+    $> acgen project --help
 
 Following plugins are available:
- * material: Material Design reference library
- * google: Full access to Google APIs
- * facebook Plugin: Full access to Facebook APIs
- * physics: Physics engine based on Box2D
- * ugc: Persist User Generated Content and create leaderboards (work in progress)
- * bitmapFont: Add BitmapFont Extension to StageXL
- * dragonBones: Add Dragonbones Extension to StageXL
- * flump: Add Flump Extension to StageXL
- * gaf: Add GAF Extension to StageXL
- * spine: Add Spine Extension to StageXL
+ * *material*: Material Design reference library
+ * *google*: Full access to Google APIs
+ * *facebook Plugin*: Full access to Facebook APIs
+ * *physics*: Physics engine based on Box2D
+ * *ugc*: Persist User Generated Content and create leaderboards (work in progress)
+ * *bitmapFont*: Add BitmapFont Extension to StageXL
+ * *dragonBones*: Add Dragonbones Extension to StageXL
+ * *flump*: Add Flump Extension to StageXL
+ * *gaf*: Add GAF Extension to StageXL
+ * *spine*: Add Spine Extension to StageXL
 
-## Advanced Project Examples
+### Usage: Advanced Project Examples
 
 Additionally, you can choose to install example pages:
 
- * materialExamples: Material Design reference library
- * googleExamples: Full access to Google APIs
- * facebookExamples Plugin: Full access to Facebook APIs
- * physicsExamples: Physics engine based on Box2D
- * ugcExamples: Persist User Generated Content and create leaderboards
- * bitmapFontExamples: Install BitmapFont Examples
- * dragonBonesExamples: Install Dragonbones Examples
- * flumpExamples: Install Flump Examples
- * gafExamples: Install GAF Examples
- * spineExamples: Install Spine Examples
+ * *materialExamples*: Material Design reference library
+ * *googleExamples*: Full access to Google APIs
+ * *facebookExamples Plugin*: Full access to Facebook APIs
+ * *physicsExamples*: Physics engine based on Box2D
+ * *ugcExamples*: Persist User Generated Content and create leaderboards
+ * *bitmapFontExamples*: Install BitmapFont Examples
+ * *dragonBonesExamples*: Install Dragonbones Examples
+ * *flumpExamples*: Install Flump Examples
+ * *gafExamples*: Install GAF Examples
+ * *spineExamples*: Install Spine Examples
  
  
     # one plugin and examples
-    $> rdgen project--material --materialExamples
+    $> acgen project--material --materialExamples
     
     # all plugins and examples
-    $> rdgen project --material --materialExamples --google --googleExamples --facebook --facebookExamples --physics --physicsExamples --ugc --ugcExamples --bitmapFont --bitmapFontExamples --dragonBones --dragonBonesExamples --flump --flumpExamples --gaf --gafExamples --spine --spineExamples 
+    $> acgen project --material --materialExamples --google --googleExamples --facebook --facebookExamples --physics --physicsExamples --ugc --ugcExamples --bitmapFont --bitmapFontExamples --dragonBones --dragonBonesExamples --flump --flumpExamples --gaf --gafExamples --spine --spineExamples 
+
+### Usage: Final Step
 
 Finally, run pub:
 
@@ -124,23 +107,37 @@ Finally, run pub:
 
 See, your project is up and running!
 
-# Project Helpers
+### Usage: Project Helpers
 
 A fast way to create classes and link them into your project.
 
     # Create a Command
-    $> rdgen command --name MyCommand
+    $> acgen command --name MyCommand
     
     # Create a Screen
-    $> rdgen screen --name MyScreen
+    $> acgen screen --name MyScreen
     
     # Create a view Element
-    $> rdgen element --name MyElement
+    $> acgen element --name MyElement
     
     # Collect Assets into Autoloader
-    $> rdgen collect
+    $> acgen collect
 
-# Notes for generator developers (that's me)
+
+# Acanvas Framework – Layered Architecture
+
+*Acanvas Framework* is part of a layered architecture built upon the following components. 
+
+* [Acanvas Framework](https://github.com/acanvas/acanvas-framework) Plugin System, UI Lifecycle and Asset Manager, i18n, Google and Facebook Integration, Generic User Generated Content backend communication.
+* [Acanvas Spring](https://github.com/acanvas/acanvas-spring) IoC container (ObjectFactory, Postprocessing, Interface Injection).
+* [Acanvas Commons](https://github.com/acanvas/acanvas-commons) Async library (FrontController and Commands/Operations, also sequences).
+* [Acanvas Commons](https://github.com/acanvas/acanvas-commons) EventBus (with some tweaks to Operations to make them as effective as Signals).
+* [Acanvas Commons](https://github.com/acanvas/acanvas-commons) Logging.
+* [StageXL](https://github.com/bp74/StageXL) - Flash display list API for Dart.
+* Dart 2.0.
+
+# Notes for generator developers 
+(that's me)
 
 Generator was built in a way that the 'master' template under `templates/master/` can be directly opened as an IDEA project, with all plugins and examples activated, in order to allow for easy develop/debug of the master template. This decision stems from experience, and is less error prone than having to generate a project and merge back the changes (especially since package names will differ as well as content that has been auto-injected).
 
@@ -158,82 +155,3 @@ To summarize, these steps are advised before pushing an update to github:
     # You can test locally with
     $> dart tool/grind.dart test
 
-
-
-## Rockdot Framework Mission Statements
-
-#### Best of breed. Built for speed.
-Rockdot loads extra fast. The minified/gzipped JS comes at a mere 120 KByte, including Material Design UI components.
-Rockdot's UI components were built by some of the best ActionScript programmers in the field, resulting in snappy performance - even on an iPhone 4. 
-Rockdot generally animates at 60 fps, but has an idle mode to save on cpu load whenever possible.
-
-#### Innovation
-Rockdot takes technology out of the way, so that teams can focus on UX and jaw dropping designs.
-
-#### Total Control
-With Rockdot, you define what happens when - control every pixel and every millisecond, and make art direction
-happy. Because _everything_ is built in Dart, you get full cycle introspection from logic to layout and back again.
-No media breach. No magic functions. No WTFs.
-
-#### Extreme Flexibility
-Rockdot has been used for microsites, facebook apps, and mobile apps (Adobe AIR). Thanks to Spring's IoC container and smart conventions, 
-you can plug everything together with everything else. No matter what, things won't get messy. You write Rockdot code once, and it runs anywhere.
-
-#### Rapid Scalability
-A Rockdot project team usually only requires a single 'system architect', responsible for its bootstrap and creation of commands and services. 
-All other developers can focus on the frontend and will feel at home, instantly.
-There have been cases where teams were scaled from one to six frontend developers without framework experience within a single day.
-
-#### Inherent Reusability
-How often did you hear yourself saying: "some time after the project is done, i will clean up and reuse this and that killer feature"?
-Exactly, too often. Rockdot's architecture enables you to code in a sustainable fashion without losing speed.
-
-#### 10x faster to market than traditional html/js/css
-No kidding. Not only will you have more certainty about what's feasible, but also way, way, way less QA.
-
-
-## The Story behind Rockdot
-
-So Rockdot was originally created in ActionScript and started somewhere around 2007. It has served millions of pageviews for dozens of clients in the form of
-high fidelity, highly interactive, specialized browser apps. Life was good. 
-As Flash Player's demise became evident, the quest for a succeeding technology was started. 
-
-And in summer of 2014, it was found in StageXL, an implementation of Flash's diplay list for the Canvas element, written in Dart. 
-
-With Dart's syntax and StageXL's APIs being quite similar to ActionScript, the project was started by finding a way to 
-port code over to Dart in the laziest way possible, with as much automation as possible.
-Abstract Syntax Tree conversion was quickly dropped in favor of good old search and replace via Regular Expressions, 
-making it possible to manually compare the converted file with the original in case of errors (which occur). 
-The resulting converter automates most of what's possible, more than enough to rely on the Dart Analyzer to identify any remaining conversion errors or incompatible APIs.
-Since then, everything has been refactored and optimized for Dart.
-
-Here's that tool: [Actionscript to StageXL Conversion Helper](https://github.com/blockforest/stagexl-converter-pubglobal)
-
-Thanks to it, about 500 classes of AS3 Commons, Spring Actionscript, and Rockdot found their way to Dart without pain.
-The rest was just optimization. Almost two years of night coding, actually :-)
-
-
-## TL;DR What was Rockdot's USP again?
-* Focus on highly interactive rich media applications
-* Mature UI lifecycle management
-* Asset load management
-* i18n
-* Plugin system
-* LOTS of examples
-* Generic User Generated Content backend (soon!)
-
-
-## Issues and bugs
-
-Please file reports on the
-[GitHub Issue Tracker](https://github.com/blockforest/rockdot_generator/issues).
-
-## Disclaimer
-
-We're in beta!
-
-## Next Steps
-
-* Add full persistency backend (Zend/MySQL)
-* Provide StageXL-only skeletons
-* Optimize Rockdot even more

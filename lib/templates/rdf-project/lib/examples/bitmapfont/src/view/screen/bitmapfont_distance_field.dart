@@ -58,8 +58,8 @@ evil Queen and Jack.""";
       _bitmapText.filters.add(filters[filterIndex]);
     });
 
-    _listener = Rd.JUGGLER.onElapsedTimeChange.listen((num elapsedTime) {
-      Rd.MATERIALIZE_REQUIRED = true;
+    _listener = Ac.JUGGLER.onElapsedTimeChange.listen((num elapsedTime) {
+      Ac.MATERIALIZE_REQUIRED = true;
       var scale = 2.0 + 1.5 * sin(elapsedTime * 0.5);
       _bitmapText.scaleX = _bitmapText.scaleY = scale;
     });

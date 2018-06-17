@@ -1,13 +1,13 @@
 library facebook_example;
 
-import 'package:rockdot_commons/rockdot_commons.dart';
+import 'package:acanvas_commons/acanvas_commons.dart';
 
-import 'package:rockdot_framework/src/core.all.dart'
-    show AbstractRdPlugin, StateEvents, IStateModelAware, StateModel;
-import 'package:rockdot_framework/src/plugin.io.dart'
+import 'package:acanvas_framework/src/core.all.dart'
+    show AbstractAcPlugin, StateEvents, IStateModelAware, StateModel;
+import 'package:acanvas_framework/src/plugin.io.dart'
     show DataProxy, DataRetrieveVO;
-import 'package:rockdot_framework/src/plugin.facebook.dart';
-import 'package:rockdot_template/rockdot_template.dart'
+import 'package:acanvas_framework/src/plugin.facebook.dart';
+import 'package:acanvas_template/acanvas_template.dart'
     show
         AbstractReflowScreen,
         AbstractScreen,

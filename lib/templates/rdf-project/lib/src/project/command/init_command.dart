@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
 	 * Called by the initialization Command Sequence inside of @see Application
@@ -16,7 +16,7 @@ class InitCommand extends AbstractCommand
   }
 
   @override
-  void execute([RdSignal event = null]) {
+  void execute([AcSignal event = null]) {
     super.execute(event);
 
     //App Background
@@ -33,7 +33,7 @@ class InitCommand extends AbstractCommand
     _uiService.modalBackgroundFilter = new BlurFilter(6, 6);
 
     _stateModel.addressService.init();
-    //new RdSignal(StateEvents.ADDRESS_SET, getProperty(MoppiFlowerExampleScreenIDs.MOPPI_DEMO + ".url")).dispatch();
+    //new AcSignal(StateEvents.ADDRESS_SET, getProperty(MoppiFlowerExampleScreenIDs.MOPPI_DEMO + ".url")).dispatch();
     dispatchCompleteEvent();
 
     return null;

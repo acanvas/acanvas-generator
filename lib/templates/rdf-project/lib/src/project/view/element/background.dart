@@ -1,8 +1,8 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /// The Background panel. Always visible. Reacts to changes of Hash_URLs
 
-class Background extends RockdotLifecycleSprite {
+class Background extends AcanvasLifecycleSprite {
   Shape _bg;
 
   Background(String id) : super(id) {

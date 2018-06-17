@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class EffectIDs {
   //DO NOT CHANGE THE FOLLOWING TWO LINES

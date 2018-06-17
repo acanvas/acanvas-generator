@@ -26,7 +26,7 @@ class Logo extends AbstractScreen {
     num delay = 0.1;
     Random random = new Random();
 
-    _subscription = Rd.JUGGLER.interval(delay).take(666).listen((int counter) {
+    _subscription = Ac.JUGGLER.interval(delay).take(666).listen((int counter) {
       var rect = stage.contentRectangle;
       var hue = random.nextDouble() * 2.0 - 1.0;
       var hueFilter = new ColorMatrixFilter.adjust(hue: hue);
@@ -43,11 +43,11 @@ class Logo extends AbstractScreen {
         ..scaleY = 0.0
         ..addTo(this);
 
-      Rd.JUGGLER.addTween(logoBitmap, 1.0, Transition.easeOutBack)
+      Ac.JUGGLER.addTween(logoBitmap, 1.0, Transition.easeOutBack)
         ..animate.scaleX.to(1.0)
         ..animate.scaleY.to(1.0);
 
-      Rd.JUGGLER.addTween(logoBitmap, 1.0, Transition.easeInBack)
+      Ac.JUGGLER.addTween(logoBitmap, 1.0, Transition.easeInBack)
         ..delay = 1.5
         ..animate.scaleX.to(0.0)
         ..animate.scaleY.to(0.0)

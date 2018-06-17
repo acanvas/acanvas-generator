@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class ScreenCommand extends RockdotCommand {
+class ScreenCommand extends AcanvasCommand {
   static final String DEFAULT_SCREEN_NAME = "GeneratedScreen";
   static final String DEFAULT_SCREEN_URL = "/generated-screen";
 
@@ -51,7 +51,7 @@ class ScreenCommand extends RockdotCommand {
     argParser.addOption('url',
         abbr: 'u',
         defaultsTo: DEFAULT_SCREEN_URL,
-        help: 'The rockdot-url of the screen to be generated.',
+        help: 'The acanvas-url of the screen to be generated.',
         valueHelp: 'url', callback: (_url) {
       screenUrl = _url;
     });

@@ -35,7 +35,7 @@ class MdDialogs extends AbstractReflowScreen {
     MdWrap wrap01 = Theme.getWrap(label: getProperty("col01"));
     wrap01.addChild(new MdButton(getProperty("button01"),
         bgColor: Colors.ORANGE, fontColor: Colors.WHITE, width: 240)
-      ..submitEvent = new RdSignal(StateEvents.ADDRESS_SET, "/paper-layer"));
+      ..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, "/paper-layer"));
     wrap01.addChild(new MdButton(getProperty("button02"),
         bgColor: Colors.GREEN, fontColor: Colors.WHITE, width: 240)
       ..submitCallback = _openDialog01);
@@ -102,7 +102,7 @@ class MdDialogs extends AbstractReflowScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

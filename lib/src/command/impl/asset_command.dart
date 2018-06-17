@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class AssetCommand extends RockdotCommand {
+class AssetCommand extends AcanvasCommand {
   static final String PACKAGE_REPLACE_STRING = "@package@";
   static final String GETTER_REPLACE_STRING = "@getter@";
   static final String MAPENTRY_REPLACE_STRING = "@entry@";

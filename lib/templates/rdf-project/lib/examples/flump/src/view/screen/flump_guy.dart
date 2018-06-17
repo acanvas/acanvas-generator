@@ -43,19 +43,19 @@ class FlumpGuy extends AbstractReflowScreen {
 
     _idle = new FlumpMovie(flumpLibrary, 'idle');
     addChild(_idle);
-    Rd.JUGGLER.add(_idle);
+    Ac.JUGGLER.add(_idle);
 
     _walk = new FlumpMovie(flumpLibrary, 'walk');
     addChild(_walk);
-    Rd.JUGGLER.add(_walk);
+    Ac.JUGGLER.add(_walk);
 
     _attack = new FlumpMovie(flumpLibrary, 'attack');
     addChild(_attack);
-    Rd.JUGGLER.add(_attack);
+    Ac.JUGGLER.add(_attack);
 
     _defeat = new FlumpMovie(flumpLibrary, 'defeat');
     addChild(_defeat);
-    Rd.JUGGLER.add(_defeat);
+    Ac.JUGGLER.add(_defeat);
 
     onInitComplete();
   }
@@ -87,10 +87,10 @@ class FlumpGuy extends AbstractReflowScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_idle);
-    Rd.JUGGLER.remove(_walk);
-    Rd.JUGGLER.remove(_attack);
-    Rd.JUGGLER.remove(_defeat);
+    Ac.JUGGLER.remove(_idle);
+    Ac.JUGGLER.remove(_walk);
+    Ac.JUGGLER.remove(_attack);
+    Ac.JUGGLER.remove(_defeat);
 
     super.dispose();
   }

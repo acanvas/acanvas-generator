@@ -25,7 +25,7 @@ class @screen@ extends AbstractScreen {
 
       // your cleanup operations here
 
-      Rd.JUGGLER.removeTweens(this);
+      Ac.JUGGLER.removeTweens(this);
       super.dispose(removeSelf: removeSelf);
     }
 }

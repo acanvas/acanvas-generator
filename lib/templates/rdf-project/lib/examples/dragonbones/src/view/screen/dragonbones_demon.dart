@@ -40,7 +40,7 @@ class DragonBonesDemon extends AbstractScreen {
     //skeleton.play("run");
     _skeleton.play("uniqueAttack");
     //skeleton.showBones = true;
-    Rd.JUGGLER.add(_skeleton);
+    Ac.JUGGLER.add(_skeleton);
     addChild(_skeleton);
 
     onInitComplete();
@@ -63,7 +63,7 @@ class DragonBonesDemon extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeleton);
+    Ac.JUGGLER.remove(_skeleton);
     _skeleton.removeCache();
     super.dispose();
   }

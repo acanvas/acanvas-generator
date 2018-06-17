@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 class Fonts {
   static const int ROBOTO_WEIGHT_BOLD = 300;

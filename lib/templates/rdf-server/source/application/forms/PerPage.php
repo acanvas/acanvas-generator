@@ -6,7 +6,7 @@
 | Author: Nils Döhring <nils.doehring@gmail.com>									|
 +---------------------------------------------------------------------------------------+ 
  *
- * @desc Rockdot_Form_PerPage (pagination helper)
+ * @desc Acanvas_Form_PerPage (pagination helper)
  * 
  * @author_________nils.doehring
  * @version________1.0        
@@ -17,9 +17,9 @@
  * @dependencies (autoloding enabled)
  * @import: Zend_Form
  */
-require_once 'Rockdot/Zend/Form.php';
+require_once 'Acanvas/Zend/Form.php';
 
-class Rockdot_Form_PerPage extends Rockdot_Zend_Form{
+class Acanvas_Form_PerPage extends Acanvas_Zend_Form{
 /*	+-----------------------------------------------------------------------------------+
 	| 	class constructor /init- set init-parameters
 	+-----------------------------------------------------------------------------------+  */	
@@ -70,7 +70,7 @@ class Rockdot_Form_PerPage extends Rockdot_Zend_Form{
 			//------------------------------------------------------------------
 		}
 		catch(Exception $e){
-			Rockdot_Debug::dump($e, $e->getMessage());	
+			Acanvas_Debug::dump($e, $e->getMessage());
 		}
 	}
 }

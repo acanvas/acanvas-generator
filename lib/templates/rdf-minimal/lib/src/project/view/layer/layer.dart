@@ -1,4 +1,4 @@
-part of rockdot_template;
+part of acanvas_template;
 
 /**
  * @author nilsdoehring
@@ -30,7 +30,7 @@ class Layer extends AbstractLayer {
 
     _button = new MdButton(closeButtonLabel,
         preset: MdButton.PRESET_GREEN, shadow: false)
-      ..submitEvent = new RdSignal(StateEvents.STATE_VO_BACK)
+      ..submitEvent = new AcSignal(StateEvents.STATE_VO_BACK)
       ..inheritSpan = false;
     addChild(_button);
 

@@ -7,7 +7,7 @@ class @plugin@Plugin extends AbstractPlugin {
   /**
    * Registers Commands with FrontController 
    * You can then access them from anywhere:
-   * new RdSignal(@plugin@Events.SOME_COMMAND, optionalParam, optionalCompleteCallback).dispatch();
+   * new AcSignal(@plugin@Events.SOME_COMMAND, optionalParam, optionalCompleteCallback).dispatch();
    */
   @override void configureCommands() {
 
@@ -16,7 +16,7 @@ class @plugin@Plugin extends AbstractPlugin {
     // ## COMMAND INSERTION PLACEHOLDER - DO NOT REMOVE ## //
 
 
-    /* Add this Plugin's Init Command to RdBootstrap Command Sequence */
+    /* Add this Plugin's Init Command to AcBootstrap Command Sequence */
     projectInitCommand = @plugin@Events.INIT;
   }
 
@@ -27,7 +27,7 @@ class @plugin@Plugin extends AbstractPlugin {
      * Feel free to add more injectors. 
      */
   @override void configureInjectors() {
-    RdContextUtil.registerInstance(objectFactory, @plugin@Constants.MODEL_@pluginUpperCase@, new @plugin@Model());
+    AcContextUtil.registerInstance(objectFactory, @plugin@Constants.MODEL_@pluginUpperCase@, new @plugin@Model());
     objectFactory.addObjectPostProcessor(new @plugin@ModelInjector(objectFactory));
   }
 

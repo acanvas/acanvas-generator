@@ -1,12 +1,12 @@
 part of babylon_example;
 
-class BabylonExamplePlugin extends AbstractRdPlugin {
+class BabylonExamplePlugin extends AbstractAcPlugin {
   int sorting;
   BabylonExamplePlugin(this.sorting) : super(900 + sorting) {}
 
   @override
   void configureScreens() {
-    if (!Rd.WEBGL) {
+    if (!Ac.WEBGL) {
       return;
     }
 

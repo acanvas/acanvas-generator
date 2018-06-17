@@ -1,6 +1,6 @@
-part of rockdot_generator;
+part of acanvas_generator;
 
-class ElementCommand extends RockdotCommand {
+class ElementCommand extends AcanvasCommand {
   static final String DEFAULT_ELEMENT_NAME = "GeneratedElement";
 
   static final String TEMPLATE_ELEMENT_FILE = "element.dart";

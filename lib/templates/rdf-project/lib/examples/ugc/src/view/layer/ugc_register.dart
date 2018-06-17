@@ -40,9 +40,9 @@ class UGCRegister extends UGCAbstractLayer
         size: 20, color: Colors.BLACK));
     _reflow.addChild(Theme.getButton(label: getProperty("button.fb"))
       ..submitEvent =
-          new RdSignal(FBEvents.USER_LOGIN, new FacebookLoginVO(), _onFB));
+          new AcSignal(FBEvents.USER_LOGIN, new FacebookLoginVO(), _onFB));
     _reflow.addChild(Theme.getButton(label: getProperty("button.gplus"))
-      ..submitEvent = new RdSignal(
+      ..submitEvent = new AcSignal(
           GoogleEvents.USER_LOGIN,
           new GoogleLoginVO(scopes: [
             getProperty("plugin.ugc.user.google.scopes.profile", true),
@@ -100,7 +100,7 @@ class UGCRegister extends UGCAbstractLayer
     user.uid = _fbModel.user.uid;
     user.locale = _fbModel.user.locale;
 
-    new RdSignal(UGCEvents.USER_REGISTER, user).dispatch();
+    new AcSignal(UGCEvents.USER_REGISTER, user).dispatch();
 
     UGCUserExtendedDTO ext = new UGCUserExtendedDTO();
     ext.uid = _fbModel.user.uid;
@@ -108,7 +108,7 @@ class UGCRegister extends UGCAbstractLayer
     ext.email = _fbModel.user.email;
     ext.email_confirmed = 1;
 
-    new RdSignal(UGCEvents.USER_REGISTER_EXTENDED, ext).dispatch();
+    new AcSignal(UGCEvents.USER_REGISTER_EXTENDED, ext).dispatch();
 
     _createUGCItem();
   }
@@ -135,7 +135,7 @@ class UGCRegister extends UGCAbstractLayer
     user.uid = _googleModel.user.id;
     user.locale = _googleModel.user.language;
 
-    new RdSignal(UGCEvents.USER_REGISTER, user).dispatch();
+    new AcSignal(UGCEvents.USER_REGISTER, user).dispatch();
 
     UGCUserExtendedDTO ext = new UGCUserExtendedDTO();
     ext.uid = _googleModel.user.id;
@@ -143,7 +143,7 @@ class UGCRegister extends UGCAbstractLayer
     ext.email = email;
     ext.email_confirmed = 1;
 
-    new RdSignal(UGCEvents.USER_REGISTER_EXTENDED, ext).dispatch();
+    new AcSignal(UGCEvents.USER_REGISTER_EXTENDED, ext).dispatch();
 
     _createUGCItem();
   }
@@ -155,9 +155,9 @@ class UGCRegister extends UGCAbstractLayer
       user.name = _user.getText();
       user.pic = null;
       user.uid = _email.getText();
-      user.locale = RdConstants.MARKET;
+      user.locale = AcConstants.MARKET;
 
-      new RdSignal(UGCEvents.USER_REGISTER, user).dispatch();
+      new AcSignal(UGCEvents.USER_REGISTER, user).dispatch();
 
       UGCUserExtendedDTO ext = new UGCUserExtendedDTO();
       ext.uid = _googleModel.user.id;
@@ -165,7 +165,7 @@ class UGCRegister extends UGCAbstractLayer
       ext.email = _email.getText();
       ext.email_confirmed = 1;
 
-      new RdSignal(UGCEvents.USER_REGISTER_EXTENDED, ext).dispatch();
+      new AcSignal(UGCEvents.USER_REGISTER_EXTENDED, ext).dispatch();
 
       _createUGCItem();
     }
@@ -186,17 +186,17 @@ class UGCRegister extends UGCAbstractLayer
     itemDAO.type = UGCItemDTO.TYPE_IMAGE;
     itemDAO.type_dao = imageDAO;
 
-    new RdSignal(UGCEvents.CREATE_ITEM, itemDAO, _uploadImage).dispatch();
+    new AcSignal(UGCEvents.CREATE_ITEM, itemDAO, _uploadImage).dispatch();
   }
 
   void _uploadImage() {
     IOImageUploadVO vo = new IOImageUploadVO(_imageName, model.imageToUpload,
         getProperty("project.host.upload", true));
-    new RdSignal(IOEvents.UPLOAD_IMAGE, vo, _onImageUploaded).dispatch();
+    new AcSignal(IOEvents.UPLOAD_IMAGE, vo, _onImageUploaded).dispatch();
   }
 
   void _onImageUploaded() {
-    new RdSignal(StateEvents.ADDRESS_SET,
+    new AcSignal(StateEvents.ADDRESS_SET,
             getProperty("${UGCExampleScreenIDs.UGCHOME}.url", true))
         .dispatch();
   }

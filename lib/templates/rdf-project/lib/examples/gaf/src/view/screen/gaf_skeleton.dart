@@ -26,7 +26,7 @@ class GafSkeleton extends AbstractScreen {
     _skeleton.alignPivot(HorizontalAlign.Center, VerticalAlign.Center);
 
     addChild(_skeleton);
-    Rd.JUGGLER.add(_skeleton);
+    Ac.JUGGLER.add(_skeleton);
     _skeleton.play(true);
 
     onInitComplete();
@@ -46,10 +46,10 @@ class GafSkeleton extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    Rd.JUGGLER.remove(_skeleton);
+    Ac.JUGGLER.remove(_skeleton);
     _skeleton.stop(true);
 
-    Rd.JUGGLER.removeTweens(this);
+    Ac.JUGGLER.removeTweens(this);
     super.dispose();
   }
 }

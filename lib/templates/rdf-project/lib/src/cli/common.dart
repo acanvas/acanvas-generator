@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*      Helper classes extracted from rockdot_spring                     */
+/*      Helper classes extracted from acanvas_spring                     */
 /*************************************************************************/
 
 /**

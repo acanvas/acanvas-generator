@@ -1,6 +1,6 @@
-part of rockdot_template;
+part of acanvas_template;
 
-///  The RdBootstrap class manages instantiation of and programmatic additions to our [ApplicationContext].
+///  The AcBootstrap class manages instantiation of and programmatic additions to our [ApplicationContext].
 ///  Most often, you will instantiate and load this class in [Entrypoint]
 
 class Plugins {
