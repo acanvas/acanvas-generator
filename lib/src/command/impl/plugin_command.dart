@@ -26,8 +26,7 @@ class PluginCommand extends AcanvasCommand {
       : super(logger, writeTarget) {
     packageName = _getPackageNameFromDirectory();
     name = "plugin";
-    description =
-        "Create a acanvas plugin within your project.";
+    description = "Create a acanvas plugin within your project.";
 
     argParser.addOption('name',
         abbr: 'n',

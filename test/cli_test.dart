@@ -27,6 +27,7 @@ void defineTests() {
       //expect(logger.getStderr(), isEmpty);
       //expect(logger.getStdout(), isNot(isEmpty));
     }
+
 /*
     Future _expectError(Future f, [bool hasStdout = true]) {
       return f.then((_) => fail('error expected')).catchError((e) {

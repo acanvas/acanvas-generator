@@ -1,6 +1,6 @@
 part of acanvas_generator;
 
-class CliLoggerPrint implements CliLogger{
+class CliLoggerPrint implements CliLogger {
   void stdout(String message) => print(message);
   void stderr(String message) => print(message);
 }
