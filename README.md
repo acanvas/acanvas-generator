@@ -4,7 +4,7 @@
 
 *Acanvas Generator* lets you generate *[Acanvas Framework](http://acanvas.sounddesignz.com/acanvas-framework/)* layered architecture projects [(diagram)](http://acanvas.sounddesignz.com/template/assets/home/acanvas_spring_architecture.png).
 * Blazing fast IoC/DI/MVC UI framework for WebGL and Canvas2D, written in Dart.
-* Write web apps, games, or both, in pure Dart. No HTML, no CSS, no JS.
+* Write web apps, games, or both, in pure Dart. No HTML, no CSS, no JS, no shit.
 
 
 [![Coverage Status](https://coveralls.io/repos/block-forest/acanvas-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/acanvas-generator)
