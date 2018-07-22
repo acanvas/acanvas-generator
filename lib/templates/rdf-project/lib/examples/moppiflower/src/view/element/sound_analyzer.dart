@@ -43,7 +43,7 @@ class SoundAnalyzer {
     _analyzer.fftSize = 512; //32 - 32768
 
     _soundChannel = _audio.play();
-    SoundMixer.webAudioApiMixer.inputNode.connectNode(_analyzer);
+    //SoundMixer.webAudioApiMixer.inputNode.connectNode(_analyzer);
     //WebAudioApiMixer.audioContext.destination.connectNode(_analyzer);
     //_analyzer.connectNode(WebAudioApiMixer.audioContext.destination);
 

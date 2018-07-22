@@ -36,7 +36,7 @@ class Background extends AcanvasLifecycleSprite {
     if (_bg != null) {
       _bg.graphics.clear();
       _bg.graphics.rectRound(0, 0, spanWidth, spanHeight, 8, 8);
-      _bg.graphics.fillColor(Theme.BACKGROUND_COLOR);
+      _bg.graphics.fillColor(Theme.BG);
       // _bg.applyCache(0, 0, spanWidth.round(), spanHeight.round());
     }
   }

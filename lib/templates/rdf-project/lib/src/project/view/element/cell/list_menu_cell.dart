@@ -4,16 +4,16 @@ part of acanvas_template;
  * @author Nils Doehring (nilsdoehring@gmail.com)
  */
 class ListMenuCell extends SelectableButton {
-  UITextField title;
+  UITextField label;
   int fontColor;
 
-  ListMenuCell([this.fontColor = Colors.ARCTIC_BLUE]) : super() {
+  ListMenuCell([this.fontColor = Theme.MD_BUTTON_FONT_COLOR]) : super() {
     selfSelect = false;
-    MdRipple ripple = new MdRipple(color: Colors.BF_BASE_GREEN)..opacity = 1;
+    MdRipple ripple = new MdRipple(color: Theme.HIGHLIGHT_MAIN_COMP)..opacity = 1;
     addChild(ripple);
 
-    title = Theme.getHeadline("empty", size: 14, color: fontColor);
-    addChild(title);
+    label = Theme.getHeadline("empty", size: 14, color: fontColor);
+    addChild(label);
   }
 
   @override
@@ -24,7 +24,7 @@ class ListMenuCell extends SelectableButton {
     if (newdata != data) {
       super.data = newdata;
       if (data != null && data is StateVO) {
-        title.text = (data as StateVO).title;
+        label.text = (data as StateVO).title;
         refresh();
       }
     }
@@ -37,15 +37,15 @@ class ListMenuCell extends SelectableButton {
 
   @override
   void refresh() {
-    title.text = title.text.toUpperCase();
-    title.width = spanWidth - 10;
-    title.x = 2 * Dimensions.SPACER;
-    title.y = (spanHeight / 2 - title.textHeight / 2).round();
+    label.text = label.text.toUpperCase();
+    label.width = spanWidth - 10;
+    label.x = 2 * Dimensions.SPACER;
+    label.y = (spanHeight / 2 - label.textHeight / 2).round();
 
     graphics.clear();
     graphics.rect(0, 0, spanWidth, spanHeight);
     graphics.fillColor(selected
-        ? Theme.COLOR_BASE
+        ? Theme.HIGHLIGHT_MAIN
         : (id % 2 == 0 ? Colors.GREY_DARK : Colors.GREY_MIDDLE));
 
     super.refresh();
@@ -55,14 +55,14 @@ class ListMenuCell extends SelectableButton {
   void selectAction() {
     downAction();
     mouseEnabled = false;
-    title.defaultTextFormat = title.defaultTextFormat..color = Colors.WHITE;
+    label.defaultTextFormat = label.defaultTextFormat..color = Colors.WHITE;
   }
 
   @override
   void deselectAction() {
     mouseEnabled = true;
     upAction(null, false);
-    title.defaultTextFormat = title.defaultTextFormat
-      ..color = Colors.ARCTIC_BLUE;
+    label.defaultTextFormat = label.defaultTextFormat
+      ..color = Theme.HIGHLIGHT_MAIN;
   }
 }

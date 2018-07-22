@@ -75,7 +75,7 @@ class UGCUpload extends UGCAbstractLayer {
       _imageBg.graphics
         ..clear()
         ..rect(0, 0, imageWH, imageWH)
-        ..fillColor(Colors.BF_TRIAD_BLUE);
+        ..fillColor(Theme.EXAMPLES_HIGHLIGHT_MAIN);
     }
 
     if (_inputDiv != null) {

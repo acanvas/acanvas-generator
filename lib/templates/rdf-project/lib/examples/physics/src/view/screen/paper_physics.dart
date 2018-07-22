@@ -16,7 +16,7 @@ class MdPhysics extends AbstractBox2dScreen {
     super.init(params: params);
 
     _cycleButton = new MdButton(getProperty("button01"),
-        fontColor: MdColor.WHITE, shadow: true, bgColor: Theme.COLOR_BASE);
+        fontColor: MdColor.WHITE, shadow: true, bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN);
     _cycleButton.submitCallback = _onCycleButtonPress;
     addChild(_cycleButton);
 

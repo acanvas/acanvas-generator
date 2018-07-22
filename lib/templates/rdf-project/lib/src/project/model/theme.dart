@@ -1,21 +1,22 @@
 part of acanvas_template;
 
 class Theme {
-  static const int COLOR_BASE = Colors.BF_BASE_GREEN;
-  static const int COLOR_TRIAD_GREEN = Colors.BF_TRIAD_GREEN;
-  static const int COLOR_TRIAD_BLUE = Colors.BF_TRIAD_BLUE;
-  static const int COLOR_TRIAD_BROWN = Colors.BF_TRIAD_BROWN;
-  static const int COLOR_TRIAD_ORANGE = Colors.BF_TRIAD_ORANGE;
+  static const int HIGHLIGHT_MAIN = Colors.AC_BLUE;
+  static const int HIGHLIGHT_MAIN_COMP = Colors.AC_BLUE_BOOM;
 
-  static const int HEADLINE_COLOR = Colors.WHITE;
-  static const int HEADLINE_SIZE = 28;
+  static const int BG = Colors.GREY_MIDDLE;
+
+  static const int TOP_BAR_BG = Colors.GREY_MIDDLE;
+
   static const String HEADLINE_FONT = Fonts.ROBOTO_FONTNAME;
+  static const int HEADLINE_SIZE = 24;
+  static const int HEADLINE_COLOR = Colors.WHITE;
 
-  static const int COPY_COLOR = Colors.WHITE;
-  static const int COPY_SIZE = 14;
   static const String COPY_FONT = Fonts.ROBOTO_FONTNAME;
+  static const int COPY_SIZE = 16;
+  static const int COPY_COLOR = Colors.WHITE;
 
-  static const int MD_BUTTON_COLOR = COLOR_BASE;
+  static const int MD_BUTTON_COLOR = HIGHLIGHT_MAIN;
   static const int MD_BUTTON_WIDTH = 240;
   static const int MD_BUTTON_RIPPLE_COLOR = Colors.WHITE;
   static const int MD_BUTTON_FONT_COLOR = Colors.WHITE;
@@ -24,9 +25,15 @@ class Theme {
   static const int MD_WRAP_COLOR = 0xFF000000;
   static const int MD_WRAP_FONT_COLOR = 0xFF000000;
 
-  static const int BACKGROUND_COLOR = Colors.GREY_MIDDLE;
 
-  //----------------------------
+
+  static const int EXAMPLES_HIGHLIGHT_MAIN = Colors.AC_BLUE;
+  static const int EXAMPLES_HIGHLIGHT_MAIN_ALT = Colors.AC_BLUE_BOOM;
+  static const int EXAMPLES_BG = Colors.GREY_MIDDLE;
+  static const int EXAMPLES_HEADLINE_COLOR = Colors.WHITE;
+  static const int EXAMPLES_MD_BUTTON_COLOR = HIGHLIGHT_MAIN;
+  static const int EXAMPLES_MD_BUTTON_FONT_COLOR = Colors.WHITE;
+  static const int EXAMPLES_MD_BUTTON_ICON_COLOR = Colors.WHITE;
 
   static MdText getHeadline(String text,
       {int size: HEADLINE_SIZE,

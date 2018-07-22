@@ -14,10 +14,6 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
 
   List<StateVO> _subPageList;
 
-  MdFab _fwdButton;
-
-  int _listIndex = 0;
-
   @override
   void set stateModel(StateModel stateModel) {
     _stateModel = stateModel;
@@ -40,7 +36,7 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
     _appBar = new MdAppBar(bgColor: Colors.GREY_DARK);
 
     _menuButton = new MdFab(MdIcon.white(MdIconSet.menu),
-        bgColor: Theme.COLOR_BASE, radius: 20)
+        bgColor: Theme.TOP_BAR_BG, radius: 20)
       ..submitCallback = _openMenu
       ..submitCallbackParams = [];
     _appBar.addToTL(_menuButton);
@@ -51,19 +47,11 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
 
     if (Ac.WEBGL) {
       _fxButton = new MdFab(MdIcon.white(MdIconSet.search),
-          bgColor: Colors.BF_BASE_GREEN, radius: 20)
+          bgColor: Theme.TOP_BAR_BG, radius: 20)
         ..submitCallback = _mousePointerShader
         ..submitCallbackParams = [];
       _appBar.addToTR(_fxButton);
     }
-
-    _fwdButton = new MdFab(MdIcon.black(MdIconSet.forward),
-        bgColor: Colors.WHITE, shadowColor: Colors.BLACK, radius: 30)
-      ..submitCallback = _subNavForward
-      ..submitCallbackParams = []
-      ..inheritEnabled = false
-      ..enable();
-    addChild(_fwdButton);
 
     addChild(_appBar);
 
@@ -112,8 +100,6 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
     _modalBg.width = spanWidth;
     _modalBg.height = spanHeight;
 
-    _fwdButton.x = Dimensions.WIDTH_STAGE - 100;
-    _fwdButton.y = Dimensions.HEIGHT_STAGE - 100;
   }
 
   void _openMenu() {
@@ -125,21 +111,6 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
     _sidebar.visible = true;
     Ac.JUGGLER.addTween(_sidebar, .2, Transition.easeOutQuintic)
       ..animate.x.to(0);
-  }
-
-  void _subNavForward() {
-    if (_subPageList == null) {
-      return;
-    }
-
-    if (_listIndex >= _subPageList.length) {
-      _listIndex = 0;
-    }
-
-    StateVO vo = _subPageList.elementAt(_listIndex);
-    _listIndex++;
-
-    new AcSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
   }
 
   void _closeMenu([double duration = .1]) {
@@ -167,49 +138,62 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
     }
 
     StateVO vo = e.data;
+    StateVO topVo = vo;
+    String appBarTitle = vo.title;
 
-    //if current page is on first level below home
-    if (vo.tree_parent == 0) {
-      //get list of child pages
-      _subPageList = _stateModel.getStateVOList(true, vo.tree_order);
-    }
-    //if current page is second level (i.e. a subpage below a subpage below home)
-    else if (vo.tree_parent > 0) {
-      //if this subpage is the first ever loaded, get list of its siblings
-      if (_subPageList == null) {
-        _subPageList = _stateModel.getStateVOList(true, vo.tree_parent);
-        //set index of list accordingly
-        _listIndex = _subPageList.indexOf(
-            _subPageList.firstWhere((v) => v.tree_order == vo.tree_order));
-      }
-    }
-    //if current page is the home page
-    else if (vo.tree_parent == -1) {
-      //reset
+    // if current page is the home page
+    if (vo.tree_parent == -1) {
+      // reset
       _subPageList = null;
     }
 
-    // if no subpages
-    if (_subPageList == null || _subPageList.length == 0) {
-      _fwdButton.visible = false;
-      _listIndex = 0;
-    } else {
-      _fwdButton.visible = true;
+    // if current page is on first level below home
+    else if (vo.tree_parent == 0) {
+      // get list of child pages
+      _subPageList = _stateModel.getStateVOList(true, vo.tree_order);
     }
 
-    //send vo to sidebar so we can highlight the current url's button (if applicable)
+    // if current page is second level (i.e. a subpage below a subpage below home)
+    else if (vo.tree_parent > 0) {
+      // if this subpage is the first ever loaded, get list of its siblings
+      _subPageList = _stateModel.getStateVOList(true, vo.tree_parent);
+      topVo = _stateModel.getStateVOList(true, 0).firstWhere((v) => v.tree_order == vo.tree_parent);
+      appBarTitle = "${topVo.title} >${vo.title}";
+    }
+
+
+    // if no subpages
+    if (_subPageList == null || _subPageList.length == 0) {
+
+      _sidebar.closeSubmenu();
+
+    }
+
+    else {
+
+      _subPageList.forEach((vo){
+        if(!vo.title.contains("   ")) vo.title = "   ${vo.title}";
+      });
+      // add root and category home entries
+      _subPageList.insert(0, topVo);
+
+      _sidebar.openSubmenu(_subPageList);
+
+    }
+
+    // send vo to sidebar so we can highlight the current url's button (if applicable)
     _sidebar.setVO(vo);
 
-    //if page is a layer
+    // if page is not a layer
     if (vo.url.indexOf("layer") == -1) {
-      //title animation
+      // title animation
       int leHeight =
           (MdDimensions.HEIGHT_APP_BAR / 2 - _headline.textHeight / 2).round();
       Ac.JUGGLER.addTween(_headline, .1, Transition.easeInQuintic)
         ..animate.y.to(leHeight - 15)
         ..animate.alpha.to(0)
         ..onComplete = () {
-          _headline.text = vo.title;
+          _headline.text = appBarTitle;
           _headline.y = leHeight + 15;
 
           Tween tw =

@@ -22,7 +22,7 @@ class MessageShowCommand extends AbstractCommand
     StateMessageVO vo = event.data;
 
     int fontColor = MdColor.WHITE;
-    int bgColor = Theme.COLOR_BASE;
+    int bgColor = Theme.HIGHLIGHT_MAIN;
     switch (vo.type) {
       case StateMessageVO.TYPE_ERROR:
         bgColor = MdColor.RED;

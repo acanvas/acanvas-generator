@@ -34,10 +34,10 @@ class ImageItemButton extends Button {
     _image.span(spanWidth - 6, spanHeight - 6);
 
     AcGraphics.rectangle(0, 0, spanWidth, spanHeight,
-        color: Theme.BACKGROUND_COLOR, sprite: _bg);
+        color: Theme.EXAMPLES_BG, sprite: _bg);
 
     AcGraphics.rectangle(0, 0, spanWidth, spanHeight,
-        color: Theme.COLOR_BASE, sprite: _bgOver);
+        color: Theme.EXAMPLES_HIGHLIGHT_MAIN, sprite: _bgOver);
     _bgOver.alpha = 0;
 
     super.refresh();

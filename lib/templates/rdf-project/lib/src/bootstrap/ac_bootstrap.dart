@@ -38,7 +38,7 @@ class AcBootstrap extends AbstractAcBootstrap {
 
     await Assets.load();
     // TODO detect internet connectivity
-    //await AcFontUtil.loadFonts();
+    await AcFontUtil.loadFonts();
     await loadApplicationContext();
   }
 }

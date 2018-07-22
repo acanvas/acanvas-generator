@@ -61,7 +61,7 @@ class MdDialogs extends AbstractReflowScreen {
         background: false)
       ..submitCallback = (_) => dialog.dispose());
     dialog.addButton(new MdButton("ACCEPT",
-        bgColor: Theme.COLOR_BASE,
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         fontColor: Colors.WHITE,
         width: 90,
         background: false)

@@ -11,7 +11,7 @@ class PagerPrevNextButton extends Button {
       [int w = 0,
       int h = Dimensions.HEIGHT_RASTER,
       int size = 24,
-      int color = Theme.COLOR_BASE])
+      int color = Theme.HIGHLIGHT_MAIN])
       : super() {
     _color = color;
 

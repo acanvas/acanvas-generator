@@ -3,6 +3,17 @@
 // license that can be found in the LICENSE file.
 String type = "rdf-project";
 List<String> data = [
+  "web/assets/autoload/acanvas-logo-wide-bnw@1x.png",
+  "web/assets/autoload/acanvas-logo-wide-bnw@2x.png",
+  "web/assets/autoload/acanvas-logo-wide-bnw@3x.png",
+  "web/assets/autoload/acanvas-logotype-white@1x.png",
+  "web/assets/autoload/acanvas-logotype-white@2x.png",
+  "web/assets/autoload/acanvas-logotype-white@3x.png",
+  "web/html/images/acanvas-share-128x128.png",
+  "web/html/images/acanvas-share-1800.jpg",
+  "web/html/images/icon/acanvas-icon-128.png",
+  "web/html/images/icon/acanvas-icon-16.png",
+  "web/html/images/icon/acanvas-icon-32.png",
   ".gitignore",
   "analysis_options.yaml",
   "build.yaml",

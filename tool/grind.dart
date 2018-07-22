@@ -2,12 +2,9 @@
 // All rights reserved. Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-import 'dart:async';
 import 'dart:io';
 
 import 'package:grinder/grinder.dart';
-import 'package:which/which.dart';
-import 'package:grinder/src/run.dart' as run_lib;
 import 'package:ghpages_generator/ghpages_generator.dart' as ghpages;
 import 'package:path/path.dart' as path;
 
@@ -30,7 +27,7 @@ void prepare() {
 }
 
 @Task()
-@Depends(checkInit, analyze, test, coverage, clean)
+@Depends(checkInit, analyze, coverage, clean)
 void buildbot() => null;
 
 @Task()
@@ -44,90 +41,6 @@ checkInit() {
       fatalWarnings: true);
 }
 
-@Task('Run each generator and analyze the output.')
-void test() {
-  Tests.runCliTests();
-
-  Directory fooDir = new Directory('foo');
-
-  try {
-    if (fooDir.existsSync()) fooDir.deleteSync(recursive: true);
-    fooDir.createSync();
-
-    log('Running command "project" in directory ${fooDir.path}');
-
-    List<String> args = [
-      'project',
-      '--material',
-      /*
-        '--materialExamples'
-        '--google',
-        '--facebook',
-        '--physics',
-        '--bitmapFont',
-        '--bitmapFontExamples',
-        '--dragonBones',
-        '--dragonBonesExamples',
-        '--flump',
-        '--flumpExamples',
-        '--gaf',
-        '--gafExamples',
-        '--spine',
-        '--spineExamples',
-        '--stagexlExamples',
-        '--ugc',
-        */
-    ];
-
-    Dart.run(FilePath.current.join('bin', 'acanvas_generator.dart').path,
-        arguments: args, workingDirectory: fooDir.path);
-
-    File pubspec = joinFile(fooDir, ['pubspec.yaml']);
-
-    if (pubspec.existsSync()) {
-      if (Platform.isWindows) {
-        run('pub.bat', arguments: ['get'], workingDirectory: fooDir.path);
-      } else {
-        run('pub', arguments: ['get'], workingDirectory: fooDir.path);
-      }
-    }
-
-    File entrypoint = joinFile(fooDir, ['web', 'index.html']);
-    String filePath = _locateDartFile(entrypoint).path;
-    filePath = filePath.replaceAll('projectName', 'foo');
-
-    // Analyzer doesn't support package config file, workaround further down
-    /* Analyzer.analyze(filePath, fatalWarnings: true); */
-
-    List<String> aargs = [];
-    aargs.add('--packages=foo/.packages');
-    aargs.add('--fatal-warnings');
-    aargs.add(filePath);
-    run_lib.run(_sdkBin('dartanalyzer'), arguments: aargs);
-  } catch (e) {}
-  try {
-    fooDir.deleteSync(recursive: true);
-  } catch (_) {}
-}
-
-/// Taken from grinder package because of workaround
-String _sdkBin(String name) {
-  bool _sdkOnPath;
-  if (Platform.isWindows) {
-    return name == 'dart' ? 'dart.exe' : '${name}.bat';
-  } else if (Platform.isMacOS) {
-    // If `dart` is not visible, we should join the sdk path and `bin/$name`.
-    // This is only necessary in unusual circumstances, like when the script is
-    // run from the Editor on macos.
-    if (_sdkOnPath == null) {
-      _sdkOnPath = whichSync('dart', orElse: () => null) != null;
-    }
-
-    return _sdkOnPath ? name : '${sdkDir.path}/bin/${name}';
-  } else {
-    return name;
-  }
-}
 
 @Task('Gather and send coverage data.')
 void coverage() {
@@ -161,19 +74,6 @@ void updateGhPages() {
 void clean() {
   // Delete the build/ dir.
   delete(BUILD_DIR);
-}
-
-// These tasks require a frame buffer to run.
-
-@Task()
-Future testsWeb() =>
-    Tests.runWebTests(directory: 'web', htmlFile: 'index.html');
-
-@Task()
-Future testsBuildWeb() {
-  return Pub.buildAsync(directories: ['web']).then((_) {
-    return Tests.runWebTests(directory: 'build/web', htmlFile: 'index.html');
-  });
 }
 
 void _concatenateFiles(Directory src, File target, [String generator_id]) {
@@ -231,7 +131,7 @@ List<String> _listFiles({String beneath, bool recursive: true}) {
       workingDirectory: path.current);
 
   // Create List with corrected relative path
-  List<String> lines = result.stdout
+  List<String> lines = (result.stdout as String)
       .split("\n")
       .map((line) => line.replaceFirst(new RegExp(r"\r$"), ""))
       .toList();
@@ -242,24 +142,4 @@ List<String> _listFiles({String beneath, bool recursive: true}) {
   if (!lines.isEmpty && lines.last == "") lines.removeLast();
 
   return lines;
-}
-
-File _locateDartFile(File file) {
-  if (file.path.endsWith('.dart')) return file;
-
-  return _listSync(file.parent)
-      .firstWhere((f) => f.path.endsWith('.dart'), orElse: () => null);
-}
-
-/**
- * Return the list of children for the given directory. This list is normalized
- * (by sorting on the file path) in order to prevent large merge diffs in the
- * generated template data files.
- */
-List<FileSystemEntity> _listSync(Directory dir,
-    {bool recursive: false, bool followLinks: true}) {
-  List<FileSystemEntity> results =
-      dir.listSync(recursive: recursive, followLinks: followLinks);
-  results.sort((entity1, entity2) => entity1.path.compareTo(entity2.path));
-  return results;
 }

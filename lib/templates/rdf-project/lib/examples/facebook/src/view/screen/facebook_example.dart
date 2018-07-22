@@ -56,6 +56,6 @@ class FacebookHome extends AbstractReflowScreen implements IFBModelAware {
       ..submitEvent = new AcSignal(
           FBEvents.PHOTO_UPLOAD,
           new VOFBPhotoUpload(getProperty("upload.filename"), firstAlbum.id,
-              bmd: Assets.acanvas, message: getProperty("upload.message"))));
+              bmd: Assets.acanvas_logo_wide_bnw, message: getProperty("upload.message"))));
   }
 }

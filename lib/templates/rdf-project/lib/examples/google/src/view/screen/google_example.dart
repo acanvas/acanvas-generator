@@ -23,9 +23,9 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
     _wrap01 = new MdWrap(
         Theme.getHeadline(getProperty("col01").toUpperCase(),
             size: 18, color: Colors.WHITE),
-        panelColor: Colors.RED);
+        panelColor: Colors.WRAP_01);
     _wrap01.addChild(new MdButton("Show My Google+ Friends",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(
           GoogleEvents.USER_LOGIN,
           new GoogleLoginVO(
@@ -34,14 +34,14 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
                   getProperty(
                       GoogleExampleScreenIDs.GOOGLE_FRIENDS + ".url", true)))));
     _wrap01.addChild(new MdButton("Google Plus Me",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       ..submitEvent =
           new AcSignal(GoogleEvents.PLUS_USER_GET, "me", _onGoogleDataMe));
     _wrap01.addChild(new MdButton("Google Share",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(GoogleEvents.PLUS_SHARE_RENDER));
     _wrap01.addChild(new MdButton("Google People Me",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(
           GoogleEvents.PLUS_PEOPLE_GET, "me", _onGoogleDataFriends));
     _wrap01.span(300, 420);
@@ -53,7 +53,7 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
     MdButton sendButton;
 
     recordButton = new MdButton("Record Mic",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(IOEvents.MIC_RECORD_START)
       ..submitCallback = (_) {
         recordButton.disable();
@@ -61,7 +61,7 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
       };
 
     stopButton = new MdButton("Stop Recording",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(IOEvents.MIC_RECORD_STOP)
       ..submitCallback = (_) {
         stopButton.disable();
@@ -70,7 +70,7 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
       ..disable();
 
     sendButton = new MdButton("Recognize",
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
       //..submitEvent = new AcSignal(GoogleEvents.SPEECH_RECOGNIZE, _ioModel.mic_recorded_blob)
       ..submitCallback = (_) {
         new AcSignal(GoogleEvents.SPEECH_RECOGNIZE, _ioModel.mic_recorded_blob)
@@ -83,7 +83,7 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
     _wrap02 = new MdWrap(
         Theme.getHeadline(getProperty("col02").toUpperCase(),
             size: 18, color: Colors.WHITE),
-        panelColor: Colors.RED);
+        panelColor: Colors.WRAP_02);
     _wrap02.addChild(recordButton);
     _wrap02.addChild(stopButton);
     _wrap02.addChild(sendButton);
@@ -93,7 +93,7 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
     reflow.addChild(_wrap02);
 
     /*
-    _vbox.addChild(new MdButton("DB Test", bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE)..submitEvent = new AcSignal(UGCEvents.TEST));
+    _vbox.addChild(new MdButton("DB Test", bgColor: Theme.EXAMPLES_COLOR_BASE, fontColor: Colors.WHITE)..submitEvent = new AcSignal(UGCEvents.TEST));
     */
 
     addChild(reflow);

@@ -181,7 +181,7 @@ abstract class MBox2dHelper {
             height: vertices[2].y * m_physScale * 2,
             fontColor: Colors.WHITE,
             shadow: false,
-            bgColor: Theme.COLOR_BASE,
+            bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
             icon: MdIcon.white(_randomIcon()))
           ..submitCallbackParams = [body]
           ..submitCallback = (b2Body bd) {
@@ -209,7 +209,7 @@ abstract class MBox2dHelper {
         sprite.graphics
             .lineTo(vertices[0].x * m_physScale, vertices[0].y * m_physScale);
         //sprite.graphics.strokeColor(MdColor.RED, 3.0);
-        sprite.graphics.fillColor(Theme.COLOR_BASE);
+        sprite.graphics.fillColor(Theme.EXAMPLES_HIGHLIGHT_MAIN);
         sprite.graphics.closePath();
 
         if (Ac.WEBGL) {
@@ -224,7 +224,7 @@ abstract class MBox2dHelper {
     int random = new Random().nextInt(4);
     List<int> col = [
       MdColor.BLACK,
-      Theme.COLOR_BASE,
+      Theme.EXAMPLES_HIGHLIGHT_MAIN,
       MdColor.RED,
       MdColor.GREEN,
       MdColor.GREY_DARK,

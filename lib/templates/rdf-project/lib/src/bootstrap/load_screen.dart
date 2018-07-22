@@ -15,7 +15,7 @@ class LoadScreen extends Sprite {
     return _numProgress;
   }
 
-  LoadScreen({this.color: Colors.BF_BASE_GREEN}) : super() {
+  LoadScreen({this.color: Colors.AC_BLUE}) : super() {
     alpha = 0;
     addEventListener(Event.ADDED_TO_STAGE, _onAddedToStage);
   }

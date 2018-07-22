@@ -42,10 +42,9 @@ class Project extends AbstractAcPlugin {
    */
   @override
   void configureTransitions() {
-    addTransition(EffectIDs.DEFAULT, new BasicEffect(), .4,
-        ScreenConstants.TRANSITION_PARALLEL);
+    addTransition(EffectIDs.DEFAULT, new HLeftSwipeTransition(), 1.6, ScreenConstants.TRANSITION_PARALLEL, 1);
     addTransition(EffectIDs.DEFAULT_MODAL, new CenterZoomTransition(), .5);
-    addTransition(EffectIDs.SWIPE, new HLeftSwipeTransition(), .6);
+    addTransition(EffectIDs.SWIPE, new HRightSwipeTransition(), 1.6, ScreenConstants.TRANSITION_PARALLEL, 1);
   }
 
   /**
@@ -56,7 +55,7 @@ class Project extends AbstractAcPlugin {
   @override
   void configureScreens() {
     addScreen(ScreenIDs.HOME, () => new Home(ScreenIDs.HOME),
-        tree_order: 0, tree_parent: -1);
+        tree_order: 0, tree_parent: -1, transition: EffectIDs.SWIPE);
 
     // ### BASIC SCREEN CONFIG
     /*

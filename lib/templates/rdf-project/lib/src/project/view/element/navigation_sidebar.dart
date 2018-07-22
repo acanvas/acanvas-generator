@@ -8,7 +8,10 @@ class NavigationSidebar extends AcanvasLifecycleSprite
   StateModel _stateModel;
   ImageSprite _logo;
   MdMenu _itemList;
+  MdMenu _subList;
   bool _blockSelectionByAddressCallback = false;
+
+  SelectableButton _selectedCell;
 
   NavigationSidebar(String id) : super(id) {
     inheritSpan = true;
@@ -19,7 +22,7 @@ class NavigationSidebar extends AcanvasLifecycleSprite
     super.init(params: params);
 
     _logo = new ImageSprite()
-      ..bitmapData = Assets.logo_acanvas_small
+      ..bitmapData = Assets.acanvas_logotype_white
       ..inheritSpan = false
       ..autoSpan = false
       ..useHandCursor = true
@@ -31,11 +34,7 @@ class NavigationSidebar extends AcanvasLifecycleSprite
       });
     addChild(_logo);
 
-    _itemList = new MdMenu(_stateModel.getStateVOList(),
-        cell: new ListMenuCell(),
-        shadow: false,
-        backgroundColor: Colors.GREY_DARK);
-    _itemList.submitCallback = _sideBarCellSelectAction;
+    _itemList = _createList(_stateModel.getStateVOList(true, 0), _sideBarCellSelectAction);
     addChild(_itemList);
 
     onInitComplete();
@@ -59,23 +58,67 @@ class NavigationSidebar extends AcanvasLifecycleSprite
 
     _itemList.y = MdDimensions.HEIGHT_APP_BAR + Dimensions.SPACER;
     _itemList.span(spanWidth, spanHeight - _itemList.y);
+
+    _subList?.y = MdDimensions.HEIGHT_APP_BAR + Dimensions.SPACER;
+    _subList?.span(spanWidth, spanHeight - _itemList.y);
   }
 
   _sideBarCellSelectAction(SelectableButton cell) {
+    _selectedCell = cell;
     StateVO vo = cell.data;
     _blockSelectionByAddressCallback = true;
+
     new AcSignal(StateEvents.ADDRESS_SET, vo.url).dispatch();
   }
 
   void setVO(StateVO vo) {
-    if (!_blockSelectionByAddressCallback) {
-      _itemList.selectCellByVO(vo);
-    }
+
+  //  if (!_blockSelectionByAddressCallback) {
+     // _itemList.selectCellByVO(vo);
+      _subList?.selectCellByVO(vo);
+    //}
     _blockSelectionByAddressCallback = false;
+
+/*    if(_itemList.visible){
+      //todo itemList animate left
+
+      var children = _stateModel.getStateVOList(true, vo.tree_order);
+      if(children.length > 0){
+        //todo scroll _itemList cell to top, then flyout
+        _subList.dispose();
+        _subList = _createList(_stateModel.getStateVOList(true, 0), _sideBarCellSelectAction);
+        addChild(_subList);
+      }
+    }*/
   }
 
   @override
   void set stateModel(StateModel stateModel) {
     _stateModel = stateModel;
+  }
+
+  MdMenu _createList(List<StateVO> stateVOList, Function(SelectableButton cell) cellSelectAction) {
+    var itemList =  new MdMenu(stateVOList,
+        cell: new ListMenuCell(),
+        shadow: false,
+        backgroundColor: Colors.GREY_DARK);
+    itemList.submitCallback = cellSelectAction;
+    return itemList;
+  }
+
+  void openSubmenu(List<StateVO> subPageList) {
+    //TODO create submenu, animate out rootmenu
+    _itemList.visible = false;
+    //todo scroll _itemList cell to top, then flyout
+    _subList?.dispose();
+    _subList = _createList(subPageList, _sideBarCellSelectAction);
+    addChild(_subList);
+    _subList.init();
+    refresh();
+  }
+  void closeSubmenu() {
+    //TODO destroy submenu, animate rootmenu
+    _subList?.dispose();
+    _itemList.visible = true;
   }
 }

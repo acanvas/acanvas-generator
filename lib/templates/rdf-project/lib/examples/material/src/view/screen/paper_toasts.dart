@@ -14,7 +14,7 @@ class MdToasts extends AbstractReflowScreen {
         label: getProperty("radio01"), activeColor: Colors.RED));
     radioGroupV.addChild(new MdRadioButton(label: getProperty("radio02")));
     radioGroupV.addChild(new MdRadioButton(
-        label: getProperty("radio03"), activeColor: Theme.COLOR_TRIAD_BLUE));
+        label: getProperty("radio03"), activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN_ALT));
     radioGroupV.addEventListener(
         RadioGroupEvent.BUTTON_SELECTED, _onRadioButtonSelected);
     wrap01.addChild(radioGroupV);
@@ -61,7 +61,7 @@ class MdToasts extends AbstractReflowScreen {
       case 2:
         new MdToast(getProperty("toast02"), stage,
             fontColor: MdColor.WHITE,
-            bgColor: Theme.COLOR_TRIAD_BLUE,
+            bgColor: Colors.GREEN,
             position: MdToast.BR);
         break;
     }

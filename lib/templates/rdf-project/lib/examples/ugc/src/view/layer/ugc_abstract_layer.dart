@@ -65,7 +65,7 @@ class UGCAbstractLayer extends AcanvasLifecycleSprite
     _bg.graphics.clear();
     _bg.graphics.rect(0, 0, spanWidth, LAYER_HEIGHT);
     _bg.graphics.fillColor(Colors.WHITE);
-    _bg.graphics.strokeColor(Theme.BACKGROUND_COLOR, 2.0);
+    _bg.graphics.strokeColor(Theme.EXAMPLES_BG, 2.0);
 
     pivotX = _bg.width / 2;
     pivotY = _bg.height / 2;

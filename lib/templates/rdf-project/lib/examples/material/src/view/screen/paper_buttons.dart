@@ -12,7 +12,7 @@ class MdButtons extends AbstractReflowScreen {
     wrap01.addChild(new MdButton(getProperty("button01"),
         fontColor: Colors.BLACK, shadow: false, bgColor: MdColor.TRANSPARENT));
     wrap01.addChild(new MdButton(getProperty("button02"),
-        fontColor: Theme.COLOR_BASE,
+        fontColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         shadow: false,
         bgColor: MdColor.TRANSPARENT));
     wrap01.addChild(new MdButton(getProperty("button03"),
@@ -26,10 +26,10 @@ class MdButtons extends AbstractReflowScreen {
         ripple: false,
         bgColor: MdColor.TRANSPARENT));
     wrap01.addChild(new MdButton(getProperty("button05"),
-        fontColor: Theme.COLOR_BASE,
+        fontColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         shadow: false,
         bgColor: MdColor.TRANSPARENT,
-        icon: MdIcon.color(MdIconSet.done, Theme.COLOR_BASE)));
+        icon: MdIcon.color(MdIconSet.done, Theme.EXAMPLES_HIGHLIGHT_MAIN)));
     wrap01.addChild(new MdButton(getProperty("button06"),
         fontColor: Colors.BLACK,
         shadow: false,
@@ -42,7 +42,7 @@ class MdButtons extends AbstractReflowScreen {
     wrap02.addChild(new MdButton(getProperty("button01"),
         fontColor: Colors.BLACK, shadow: true, bgColor: MdColor.WHITE));
     wrap02.addChild(new MdButton(getProperty("button02"),
-        fontColor: Colors.WHITE, shadow: true, bgColor: Theme.COLOR_BASE));
+        fontColor: Colors.WHITE, shadow: true, bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap02.addChild(new MdButton(getProperty("button03"),
         fontColor: Colors.GREY_LIGHT,
         shadow: false,
@@ -56,7 +56,7 @@ class MdButtons extends AbstractReflowScreen {
     wrap02.addChild(new MdButton(getProperty("button05"),
         fontColor: Colors.WHITE,
         shadow: true,
-        bgColor: Theme.COLOR_BASE,
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         icon: MdIcon.color(MdIconSet.done, Colors.WHITE)));
     wrap02.addChild(new MdButton(getProperty("button06"),
         fontColor: Colors.BLACK,
@@ -74,19 +74,19 @@ class MdButtons extends AbstractReflowScreen {
         fontColor: Colors.BLACK, shadow: true, bgColor: MdColor.WHITE)
       ..selfSelect = true);
     wrap03.addChild(new MdButton(getProperty("button02"),
-        fontColor: Theme.HEADLINE_COLOR,
+        fontColor: Theme.EXAMPLES_HEADLINE_COLOR,
         shadow: false,
         ripple: false,
-        bgColor: Theme.COLOR_TRIAD_GREEN)
+        bgColor: Colors.AC_PINK)
       ..selfSelect = true);
     wrap03.addChild(new MdButton(getProperty("button02"),
-        fontColor: Colors.WHITE, shadow: true, bgColor: Theme.COLOR_TRIAD_GREEN)
+        fontColor: Colors.WHITE, shadow: true, bgColor: Colors.AC_CYAN)
       ..selfSelect = true);
     wrap03.addChild(new MdButton(getProperty("button05"),
-        fontColor: Theme.COLOR_BASE,
+        fontColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         shadow: false,
         bgColor: MdColor.TRANSPARENT,
-        icon: MdIcon.color(MdIconSet.done, Theme.COLOR_BASE))
+        icon: MdIcon.color(MdIconSet.done, Theme.EXAMPLES_HIGHLIGHT_MAIN))
       ..selfSelect = true);
     wrap03.addChild(new MdButton(getProperty("button06"),
         fontColor: Colors.BLACK,

@@ -39,7 +39,7 @@ class ShaderExample extends AbstractReflowScreen {
     hbox1.addChild(button2);
 
     MdButton button3 = new MdButton(getProperty("button03"),
-        bgColor: Theme.COLOR_BASE, fontColor: Colors.WHITE)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE)
       ..submitCallback = (b) {
         _hbox6.filters = [new ColorMatrixFilter.adjust(hue: 0.5)];
         _animate();
@@ -88,7 +88,7 @@ class ShaderExample extends AbstractReflowScreen {
         width: 90,
         background: false));
     dialog.addButton(new MdButton("ACCEPT",
-        bgColor: Theme.COLOR_BASE,
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         fontColor: Colors.WHITE,
         width: 90,
         background: false));

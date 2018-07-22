@@ -11,31 +11,31 @@ class MdCheckboxes extends AbstractReflowScreen {
     wrap01.addChild(new MdCheckbox(
         label: getProperty("checkbox01"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false);
     wrap01.addChild(new MdCheckbox(
         label: getProperty("checkbox02"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false);
     wrap01.addChild(new MdCheckbox(
         label: getProperty("checkbox03"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false);
     wrap01.addChild(new MdCheckbox(
         label: getProperty("checkbox04"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false);
     wrap01.addChild(new MdCheckbox(
         label: getProperty("checkbox05"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = true);
     wrap01.span(230, 480);
@@ -44,35 +44,35 @@ class MdCheckboxes extends AbstractReflowScreen {
     wrap02.addChild(new MdCheckbox(
         label: getProperty("checkbox01"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false
       ..disable());
     wrap02.addChild(new MdCheckbox(
         label: getProperty("checkbox02"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false
       ..disable());
     wrap02.addChild(new MdCheckbox(
         label: getProperty("checkbox03"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = true
       ..disable());
     wrap02.addChild(new MdCheckbox(
         label: getProperty("checkbox04"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false
       ..disable());
     wrap02.addChild(new MdCheckbox(
         label: getProperty("checkbox05"),
         boxColor: MdColor.BLACK,
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false
       ..disable());
@@ -81,9 +81,9 @@ class MdCheckboxes extends AbstractReflowScreen {
     MdWrap wrap03 = Theme.getWrap(label: getProperty("col03"));
     wrap03.addChild(new MdCheckbox(
         label: getProperty("checkbox01"),
-        boxColor: Theme.COLOR_BASE,
-        activeColor: Theme.COLOR_BASE,
-        rippleColor: Theme.COLOR_BASE)
+        boxColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        rippleColor: Theme.EXAMPLES_HIGHLIGHT_MAIN)
       ..selected = true);
     wrap03.addChild(new MdCheckbox(
         label: getProperty("checkbox02"),
@@ -105,9 +105,9 @@ class MdCheckboxes extends AbstractReflowScreen {
       ..selected = false);
     wrap03.addChild(new MdCheckbox(
         label: getProperty("checkbox05"),
-        boxColor: Theme.COLOR_BASE,
-        activeColor: Theme.COLOR_BASE,
-        rippleColor: Theme.COLOR_BASE)
+        boxColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        rippleColor: Theme.EXAMPLES_HIGHLIGHT_MAIN)
       ..selected = false);
     wrap03.span(230, 480);
 

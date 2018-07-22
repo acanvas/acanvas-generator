@@ -32,7 +32,7 @@ class Plugins {
       //new GooglePlugin(),
 
       //facebook
-      new FacebookPlugin(),
+     // new FacebookPlugin(),
 
       //ugc
       new UGCPlugin(),
@@ -66,7 +66,7 @@ class Plugins {
       new GAFExamplePlugin(_exampleOrder++),
 
       //spine-example
-      //new SpineExamplePlugin(_exampleOrder++),
+      new SpineExamplePlugin(_exampleOrder++),
 
       //flump-example
       new FlumpExamplePlugin(_exampleOrder++),
@@ -78,7 +78,7 @@ class Plugins {
       new ParticleExamplePlugin(_exampleOrder++),
 
       //facebook-example
-      new FacebookExamplePlugin(_exampleOrder++),
+     // new FacebookExamplePlugin(_exampleOrder++),
 
       //google-example
       //new GoogleExamplePlugin(_exampleOrder++),

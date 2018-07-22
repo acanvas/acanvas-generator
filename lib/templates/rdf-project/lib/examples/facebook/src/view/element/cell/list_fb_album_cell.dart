@@ -51,7 +51,7 @@ class ListFBAlbumCell extends SelectableButton {
     graphics.clear();
     graphics.rect(0, 0, spanWidth, CELL_HEIGHT);
     graphics.fillColor(selected
-        ? Colors.ORANGE
+        ? Theme.EXAMPLES_HIGHLIGHT_MAIN
         : (id % 2 == 0 ? Colors.GREY_DARK : Colors.GREY_MIDDLE));
   }
 }

@@ -102,7 +102,7 @@ class AssetCommand extends AcanvasCommand {
           String dir = dirname(entity.path);
           String baseName = basenameWithoutExtension(entity.path).toLowerCase();
           if (!baseName.contains(new RegExp("@[23]+x"))) {
-            String baseNameStripped = baseName.replaceFirst("@1x", "");
+            String baseNameStripped = baseName.replaceFirst("@1x", "").replaceAll("-", "_");
             if (ext == "jpg" || ext == "png") {
               generatedGetters += imageGetter
                   .replaceAll(ASSETNAME_REPLACE_STRING, baseName)

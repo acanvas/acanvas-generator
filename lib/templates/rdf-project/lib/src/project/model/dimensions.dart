@@ -7,8 +7,8 @@ class Dimensions {
   static const int HEIGHT_RASTER = 100;
   static const int SPACER = 10;
 
-  static int get X_PAGES => 0; //Ac.MOBILE ? 10 : 50;
-  static const int Y_PAGES = MdDimensions.HEIGHT_APP_BAR; // + 4 * SPACER;
+  static const int X_PAGES = 0;
+  static const int Y_PAGES = MdDimensions.HEIGHT_APP_BAR;
 
   static const int WIDTH_MIN = 400;
   static const int HEIGHT_MIN = 480;

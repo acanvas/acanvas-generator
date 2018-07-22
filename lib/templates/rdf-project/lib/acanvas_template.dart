@@ -15,7 +15,7 @@ import 'package:acanvas_spring/acanvas_spring.dart'
 
 // ##### ACANVAS CORE #####
 import 'package:acanvas_framework/src/core.all.dart';
-import 'package:acanvas_framework/src/plugin.io.dart' show IOPlugin;
+import 'package:acanvas_framework/src/plugin.io.dart' show IOEvents, IOPlugin;
 
 import 'package:acanvas_template/acanvas_template_plugins.dart';
 // ## PLUGIN INSERTION PLACEHOLDER - DO NOT REMOVE ## //

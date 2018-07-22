@@ -13,7 +13,7 @@ class HomeMoreBox extends AcanvasBoxSprite {
     wrap01 = new MdWrap(
         Theme.getHeadline(getProperty("headline").toUpperCase(), size: 18),
         align: AlignH.LEFT,
-        panelColor: Theme.MD_BUTTON_COLOR,
+        panelColor: Theme.EXAMPLES_MD_BUTTON_COLOR,
         spacing: 0,
         padding: 5,
         bgColor: Color.White)

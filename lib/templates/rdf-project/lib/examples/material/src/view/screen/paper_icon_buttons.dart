@@ -49,7 +49,7 @@ class MdIconButtons extends AbstractReflowScreen {
     MdWrap wrap03 =
         Theme.getWrap(label: getProperty("col03"), align: AlignH.CENTER);
     wrap03.addChild(new MdIconButton(
-        MdIcon.color(MdIconSet.menu, Theme.COLOR_BASE),
+        MdIcon.color(MdIconSet.menu, Theme.EXAMPLES_HIGHLIGHT_MAIN),
         rippleColor: MdColor.GREY_DARK));
     wrap03.addChild(new MdIconButton(
         MdIcon.color(MdIconSet.favorite, Colors.RED),
@@ -61,7 +61,7 @@ class MdIconButtons extends AbstractReflowScreen {
         MdIcon.color(MdIconSet.arrow_forward, Colors.GREEN),
         rippleColor: MdColor.GREY_DARK));
     wrap03.addChild(new MdIconButton(
-        MdIcon.color(MdIconSet.close, Theme.COLOR_BASE),
+        MdIcon.color(MdIconSet.close, Theme.EXAMPLES_HIGHLIGHT_MAIN),
         rippleColor: MdColor.GREY_DARK));
     wrap03.addChild(new MdIconButton(
         MdIcon.color(MdIconSet.polymer, Colors.RED),

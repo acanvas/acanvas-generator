@@ -39,7 +39,7 @@ class Entrypoint {
     opts.stageScaleMode = StageScaleMode.NO_SCALE;
     opts.stageRenderMode = StageRenderMode.ONCE;
     opts.stageAlign = StageAlign.TOP_LEFT;
-    opts.backgroundColor = Theme.BACKGROUND_COLOR;
+    opts.backgroundColor = Theme.BG;
 
     // Due to performance reasons, we use Canvas2D on mobile by default
     // You can add ?gl=0|1 to force GL off or on

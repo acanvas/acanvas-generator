@@ -11,24 +11,24 @@ class MdRadioButtons extends AbstractReflowScreen {
     RadioGroup radioGroupV = new RadioGroup(spacing: 10.0);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio01"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = true);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio02"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK));
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio03"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK));
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio04"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK));
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio05"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK));
     radioGroupV.inheritSpan = true;
     wrap01.addChild(radioGroupV);
@@ -38,27 +38,27 @@ class MdRadioButtons extends AbstractReflowScreen {
     radioGroupV = new RadioGroup(spacing: 10.0);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio01"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio02"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = false);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio03"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = true);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio04"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = true);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio05"),
-        activeColor: Theme.COLOR_BASE,
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
         rippleColor: MdColor.GREY_DARK)
       ..selected = true);
     wrap02.addChild(radioGroupV);
@@ -68,8 +68,8 @@ class MdRadioButtons extends AbstractReflowScreen {
     radioGroupV = new RadioGroup(spacing: 10.0);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio01"),
-        activeColor: Theme.COLOR_BASE,
-        rippleColor: Theme.COLOR_BASE)
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        rippleColor: Theme.EXAMPLES_HIGHLIGHT_MAIN)
       ..selected = true);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio02"),
@@ -88,8 +88,8 @@ class MdRadioButtons extends AbstractReflowScreen {
       ..selected = true);
     radioGroupV.addChild(new MdRadioButton(
         label: getProperty("radio05"),
-        activeColor: Theme.COLOR_BASE,
-        rippleColor: Theme.COLOR_BASE)
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        rippleColor: Theme.EXAMPLES_HIGHLIGHT_MAIN)
       ..selected = true);
     wrap03.addChild(radioGroupV);
     wrap03.span(250, 470);

@@ -4,7 +4,7 @@ part of acanvas_template;
 
 class AbstractScreen extends LifecycleSprite with MApplicationContextAware {
   AbstractScreen(String id) : super(id) {
-    padding = Ac.MOBILE ? 32 : 52;
+    padding = 0;
     inheritSpan = true;
   }
 

@@ -1,6 +1,7 @@
 part of acanvas_template;
 
-class Home extends AbstractReflowScreen implements IScreenServiceAware {
+class Home extends AbstractScreen implements IScreenServiceAware {
+  static const int PADDING = 32;
   IScreenService _uiService;
 
   /* ScreenService setter defined by interface. Injected as per setup in lib/src/project/project.dart */
@@ -9,51 +10,58 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
     _uiService = uiService;
   }
 
-  Flow _flow;
-  ImageSprite _bmp;
-  ImageSprite _bmp2;
+  Wrap reflow;
+  ImageSprite _acanvasWideLogo;
+  ImageSprite _acanvasComponentDiagram;
 
   Home(String id) : super(id) {
-    print("fff");
   }
 
   @override
   void init({Map<String, String> params: null}) {
     super.init(params: params);
 
-    _flow = new Flow()..spacing = 30;
-    _flow.flowOrientation = FlowOrientation.VERTICAL;
-    _flow.inheritSpan = false;
-
-    _bmp = new ImageSprite()
+    _acanvasWideLogo = new ImageSprite()
       //..span(spanWidth, spanHeight, refresh: false)
-      ..bitmapData = Assets.acanvas
-      ..inheritSpan = false
+      ..bitmapData = Assets.acanvas_logo_wide_bnw
+      ..inheritSpan = true
       ..autoSpan = true
       ..useHandCursor = true
       ..addEventListener(Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
           (e) {
         new AcSignal(StateEvents.ADDRESS_SET,
-                "https://github.com/block-forest/acanvas-generator")
+                "https://github.com/acanvas/acanvas-generator")
             .dispatch();
       });
-    _flow.addChild(_bmp);
+    addChild(_acanvasWideLogo);
 
-    for (int i = 1; i < 4; i++) {
-      _flow.addChild(Theme.getHeadline(getProperty("prelude.headline0${i}"),
-          size: 24, color: Colors.ARCTIC_BLUE));
-      _flow.addChild(Theme.getCopy(getProperty("prelude.copy0${i}"),
-          size: 16, color: Colors.ARCTIC_BLUE));
+    reflow = new Wrap(
+        spacing: 32,
+        reflow: false,
+        scrollOrientation: ScrollOrientation.VERTICAL,
+        enableMask: true)
+      ..padding = PADDING
+      ..inheritSpan = false
+      ..autoRefresh = false;
+
+    reflow.addChild(Theme.getHeadline(getProperty("headline"), size: 28));
+    reflow.addChild(Theme.getCopy(getProperty("copy"), size: 18));
+
+    reflow.addChild(Theme.getHeadline(getProperty("prelude.headline01"), size: 28));
+    reflow.addChild(Theme.getCopy(getProperty("prelude.copy01"), size: 18));
+
+    reflow.addChild(Theme.getButton(label: getProperty("prelude.generator.button.label"))..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, getProperty("prelude.generator.button.url")));
+
+    for (int i = 2; i < 4; i++) {
+      reflow.addChild(Theme.getHeadline(getProperty("prelude.headline0${i}")));
+      reflow.addChild(Theme.getCopy(getProperty("prelude.copy0${i}")));
     }
     for (int i = 1; i < 8; i++) {
-      _flow.addChild(Theme.getHeadline(getProperty("headline0${i}"),
-          size: 24, color: Colors.ARCTIC_BLUE));
-      _flow.addChild(Theme.getCopy(getProperty("copy0${i}"),
-          size: 16, color: Colors.ARCTIC_BLUE));
+      reflow.addChild(Theme.getHeadline(getProperty("headline0${i}")));
+      reflow.addChild(Theme.getCopy(getProperty("copy0${i}")));
     }
-    _flow.addChild(Theme.getHeadline(getProperty("headline08"),
-        size: 24, color: Colors.ARCTIC_BLUE));
-    _bmp2 = new ImageSprite()
+    reflow.addChild(Theme.getHeadline(getProperty("headline08")));
+    _acanvasComponentDiagram = new ImageSprite()
       //..span(spanWidth, spanHeight, refresh: false)
       ..href = "assets/home/acanvas_spring_architecture.png"
       ..inheritSpan = false
@@ -62,40 +70,36 @@ class Home extends AbstractReflowScreen implements IScreenServiceAware {
       ..addEventListener(Ac.TOUCH ? TouchEvent.TOUCH_END : MouseEvent.MOUSE_UP,
           (e) {
         new AcSignal(StateEvents.ADDRESS_SET,
-                "http://acanvas.sounddesignz.com/template/assets/home/acanvas_spring_architecture.png")
+                "https://acanvas.sounddesignz.com/downloads/acanvas-spring-architecture.png")
             .dispatch();
       })
       ..addEventListener(Event.COMPLETE, (e) {
         onBigImageLoaded();
       });
-    _flow.addChild(_bmp2);
-
-    reflow.addChild(_flow);
-    reflow.addChild(new Sprite()
-      ..graphics.rect(0, 0, spanWidth - 10, Dimensions.SPACER)
-      ..graphics.fillColor(0x00ff0000));
+    reflow.addChild(_acanvasComponentDiagram);
 
     addChild(reflow);
+
 
     onInitComplete();
   }
 
   void onBigImageLoaded() {
-    _flow.refresh();
+    reflow.refresh();
     refresh();
   }
 
   @override
   void refresh() {
-    _bmp.refresh();
+    _acanvasWideLogo.scaleToWidth(spanWidth);
 
-    if (_bmp2.loaded) {
-      _bmp2.scaleToWidth(spanWidth - 2 * padding);
+
+    if (_acanvasComponentDiagram.loaded) {
+      _acanvasComponentDiagram.scaleToWidth(spanWidth - 2 * PADDING);
     }
 
-    _flow.span(spanWidth - 2 * padding, spanHeight);
-    _flow.x = padding;
-    _bmp.x = (spanWidth / 2 - _bmp.spanWidth / 2).round();
+    reflow.y = _acanvasWideLogo.height;
+    reflow.span(spanWidth, spanHeight - reflow.y);
 
     super.refresh();
   }

@@ -14,8 +14,8 @@ class MdToggles extends AbstractReflowScreen {
     MdWrap wrap01 = Theme.getWrap(label: getProperty("col01"));
     wrap01.addChild(new MdToggleButton(
         label: getProperty("button01"),
-        activeColor: Theme.COLOR_BASE,
-        rippleColor: Theme.COLOR_BASE));
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        rippleColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap01.addChild(new MdToggleButton(
         label: getProperty("button02"),
         activeColor: Colors.RED,
@@ -23,8 +23,8 @@ class MdToggles extends AbstractReflowScreen {
       ..selected = true);
     wrap01.addChild(new MdToggleButton(
         label: getProperty("button03"),
-        activeColor: Theme.COLOR_BASE,
-        rippleColor: Theme.COLOR_BASE));
+        activeColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        rippleColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap01.addChild(new MdToggleButton(
         label: getProperty("button04"),
         activeColor: Colors.GREEN,

@@ -1,50 +1,45 @@
 # Acanvas Generator
 
-*Acanvas Generator – for Dart 2.0 and StageXL.*
-
-*Acanvas Generator* lets you generate *[Acanvas Framework](http://acanvas.sounddesignz.com/acanvas-framework/)* layered architecture projects [(diagram)](http://acanvas.sounddesignz.com/template/assets/home/acanvas_spring_architecture.png).
-* Blazing fast IoC/DI/MVC UI framework for WebGL and Canvas2D, written in Dart.
-* Write web apps, games, or both, in pure Dart. No HTML, no CSS, no JS, no shit.
-
-
-[![Coverage Status](https://coveralls.io/repos/block-forest/acanvas-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/acanvas-generator)
-[![Travis Build Status](https://travis-ci.org/block-forest/acanvas-generator.svg?branch=master)](https://travis-ci.org/block-forest/acanvas-generator)
+[![Coverage Status](https://coveralls.io/repos/acanvas/acanvas-generator/badge.svg?branch=master)](https://coveralls.io/github/block-forest/acanvas-generator)
+[![Travis Build Status](https://travis-ci.org/acanvas/acanvas-generator.svg?branch=master)](https://travis-ci.org/block-forest/acanvas-generator)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/acanvas-generator)
 
+*Acanvas Generator* lets you generate *[Acanvas](http://acanvas.sounddesignz.com/acanvas-framework/)* projects for Dart 2.0 and StageXL.
+With Acanvas, you write web apps, games, or something in-between, in pure Dart. 
+No HTML, no CSS, no JS. 
 
-### Features
+![Acanvas Banner](http://acanvas.sounddesignz.com/acanvas-framework/assets/autoload/acanvas-logo-wide-bnw@2x.png)
 
-The purpose of *Acanvas Generator* is to take care of ALL THE THINGS to jump into *Acanvas* development right away.
-With *Acanvas*, you write apps, games, or both, in Dart. No HTML, no CSS, JS. 
+*Acanvas* is a layered architecture originally conceived for Actionscript,
+and has been used in dozens of highly interactive microsites and facebook apps for brands such as Mercedes-Benz, Nike, Nikon, serving millions of pageviews.
+*[Learn more](http://acanvas.sounddesignz.com/acanvas-framework/)*.
 
-* Pixel-precise control over the html *CanvasElement (2D and WebGL)* through StageXL, the Flash DisplayList API for HTML5, written in Dart.
-* A blazing fast, industry proven *IoC/DI/MVC+Command framework* based on Spring ActionScript (no shit).
-* Smart *UI lifecycle management* with runtimes for GAF (Flash Pro), Spine, DragonBones, Flump, babylonjs, and THREE.js (coming soon).
-* Plugins for integration with facebook, google APIs (examples included!).
-* A generic frontend and backend solution for management of user generated content, for example to be used in sweepstakes, competitions. *WIP*.
+## Acanvas Examples
 
-*Acanvas* started as an ActionScript framework in 2009, and has been used in dozens of 
-apps serving millions of pageviews in individual web apps, microsites and specials for brands such 
-as Mercedes-Benz, Nike, Bosch, Nikon.  
+* The [Acanvas Framework Demo](http://acanvas.sounddesignz.com/acanvas-framework/) – Examples including Animation, Material Design, BitmapFonts, Toolchains (DragonBones, GAF, Spine), Physics, 3D, Bitmapdrawing.
+* The best way to learn how to use *Acanvas Spring* and *Acanvas Framework* by generating a project with [Acanvas Generator](https://github.com/acanvas/acanvas-generator).
+* [Acanvas Dartbook](http://acanvas.sounddesignz.com/acanvas-dartbook/) - [Source](https://github.com/acanvas/acanvas-dartbook)
+* [Acanvas Physics](http://acanvas.sounddesignz.com/acanvas-physics/) - [Source](https://github.com/blockforest/acanvas-physics/tree/master/lib/src/Examples)
+* [BabylonJS StageXL Wrapper](http://acanvas.sounddesignz.com/stagexl/babylonjs-interop/) - [Source](https://github.com/acanvas/babylonjs-dart-facade/tree/master/example)
+* [THREE.js StageXL Wrapper](http://acanvas.sounddesignz.com/stagexl/threejs-interop/) - [Source](https://github.com/acanvas/threejs-dart-facade/tree/master/example)
 
-### Examples
+## Installation
 
-Got an old iPhone4, a brand new Pixel, or any web browser on any OS? Then you're all set to fire up the 
-[Demo](http://acanvas.sounddesignz.com/acanvas-demo/).
+Make sure you have an up-to-date [Dart 2.0 SDK](https://webdev.dartlang.org/tools/sdk#install) installed.
 
-### Installation
-
-    $> pub global activate --source git https://github.com/block-forest/acanvas-generator
+    $> pub global activate --source git https://github.com/acanvas/acanvas-generator
 
 This puts the executable `acgen` on your path.
 
-### Usage: Basic Project
+## Usage
+
+### Basic Project
 
 This is how you create the most basic Acanvas skeleton in your current directory:
 
     # directory name serves as project name
-    $> mkdir fancy-project
-    $> cd fancy-project
+    $> mkdir fancy-name
+    $> cd fancy-name
     $> acgen project
 
 The basic project skeleton will give you:
@@ -57,7 +52,7 @@ The basic project skeleton will give you:
  * Dart2JS size: 120 KiB gzipped.
  * Deployment-ready.
  
-### Usage: Advanced Project
+### Advanced Project
  
 For a list of optional plugins and examples to install, type:
     
@@ -75,7 +70,7 @@ Following plugins are available:
  * *gaf*: Add GAF Extension to StageXL
  * *spine*: Add Spine Extension to StageXL
 
-### Usage: Advanced Project Examples
+### Advanced Project Examples
 
 Additionally, you can choose to install example pages:
 
@@ -97,7 +92,7 @@ Additionally, you can choose to install example pages:
     # all plugins and examples
     $> acgen project --material --materialExamples --google --googleExamples --facebook --facebookExamples --physics --physicsExamples --ugc --ugcExamples --bitmapFont --bitmapFontExamples --dragonBones --dragonBonesExamples --flump --flumpExamples --gaf --gafExamples --spine --spineExamples 
 
-### Usage: Final Step
+### Final Step
 
 Finally, run pub:
 
@@ -107,7 +102,7 @@ Finally, run pub:
 
 See, your project is up and running!
 
-### Usage: Project Helpers
+## Project Helpers
 
 A fast way to create classes and link them into your project.
 
@@ -123,20 +118,7 @@ A fast way to create classes and link them into your project.
     # Collect Assets into Autoloader
     $> acgen collect
 
-
-# Acanvas Framework – Layered Architecture
-
-*Acanvas Framework* is part of a layered architecture built upon the following components. 
-
-* [Acanvas Framework](https://github.com/acanvas/acanvas-framework) Plugin System, UI Lifecycle and Asset Manager, i18n, Google and Facebook Integration, Generic User Generated Content backend communication.
-* [Acanvas Spring](https://github.com/acanvas/acanvas-spring) IoC container (ObjectFactory, Postprocessing, Interface Injection).
-* [Acanvas Commons](https://github.com/acanvas/acanvas-commons) Async library (FrontController and Commands/Operations, also sequences).
-* [Acanvas Commons](https://github.com/acanvas/acanvas-commons) EventBus (with some tweaks to Operations to make them as effective as Signals).
-* [Acanvas Commons](https://github.com/acanvas/acanvas-commons) Logging.
-* [StageXL](https://github.com/bp74/StageXL) - Flash display list API for Dart.
-* Dart 2.0.
-
-# Notes for generator developers 
+## Notes for generator developers 
 (that's me)
 
 Generator was built in a way that the 'master' template under `templates/master/` can be directly opened as an IDEA project, with all plugins and examples activated, in order to allow for easy develop/debug of the master template. This decision stems from experience, and is less error prone than having to generate a project and merge back the changes (especially since package names will differ as well as content that has been auto-injected).
