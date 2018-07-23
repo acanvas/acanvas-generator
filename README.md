@@ -5,7 +5,7 @@
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/acanvas-generator)
 
 *Acanvas Generator* lets you generate *[Acanvas](http://acanvas.sounddesignz.com/acanvas-framework/)* projects for Dart 2.0 and StageXL.
-With Acanvas, you write web apps, games, or something in-between, in pure Dart. 
+With Acanvas, you quickly write web apps, minigames, or anything in-between, in pure Dart. 
 No HTML, no CSS, no JS. 
 
 ![Acanvas Banner](http://acanvas.sounddesignz.com/acanvas-framework/assets/autoload/acanvas-logo-wide-bnw@2x.png)
