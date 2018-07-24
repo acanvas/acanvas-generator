@@ -69,7 +69,7 @@ class ConfigBuilder extends Builder {
     //return buildStep.writeAsBytes(archiveId, new TarEncoder().encode(archive));
   }
 
-  void _mergeFiles(String pattern, BuildStep buildStep,
+  Future<void> _mergeFiles(String pattern, BuildStep buildStep,
       {String writeTo}) async {
     final files = <String>[];
     await for (final input in buildStep.findAssets(new Glob(pattern))) {
@@ -86,7 +86,7 @@ class ConfigBuilder extends Builder {
     }
   }
 
-  void _writeFiles(String fileName, String languageContent) {
+  Future<void> _writeFiles(String fileName, String languageContent) {
     print("writing to: $fileName");
     var file = new File(fileName);
     file.createSync(recursive: true);

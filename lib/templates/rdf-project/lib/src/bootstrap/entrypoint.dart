@@ -14,7 +14,7 @@ class Entrypoint {
   Entrypoint() {
     // Enables/Disables Logging
     //TODO solve with vars
-    AcConstants.DEBUG = "@project.debug@" == "false" ? false : true;
+    AcConstants.DEBUG = false;
   }
 
   // Invoked by web/project.dart

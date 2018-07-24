@@ -44,9 +44,9 @@ dependencies:
 
 dev_dependencies:
   #-------- Dart 2.0.0-dev --------
-  build_runner: ^0.9.1
-  build_test: ^0.10.2
-  build_web_compilers: ^0.4.0+3
+  build_runner: '>=0.9.1'
+  build_test: '>=0.10.2'
+  build_web_compilers: '>=0.4.0+3'
 
 # bleeding edge development
 dependency_overrides:

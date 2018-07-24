@@ -4,7 +4,7 @@
 [![Travis Build Status](https://travis-ci.org/acanvas/acanvas-generator.svg?branch=master)](https://travis-ci.org/block-forest/acanvas-generator)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/vgk8ojml63nd68be?svg=true)](https://ci.appveyor.com/project/nilsdoehring/acanvas-generator)
 
-*Acanvas Generator* lets you generate *[Acanvas](http://acanvas.sounddesignz.com/acanvas-framework/)* projects for Dart 2.0 and StageXL.
+*Acanvas Generator* lets you generate *[Acanvas](https://github.com/acanvas/acanvas-framework)* projects for Dart 2.0 and StageXL.
 With Acanvas, you quickly write web apps, minigames, or anything in-between, in pure Dart. 
 No HTML, no CSS, no JS. 
 
@@ -12,7 +12,7 @@ No HTML, no CSS, no JS.
 
 *Acanvas* is a layered architecture originally conceived for Actionscript,
 and has been used in dozens of highly interactive microsites and facebook apps for brands such as Mercedes-Benz, Nike, Nikon, serving millions of pageviews.
-*[Learn more](http://acanvas.sounddesignz.com/acanvas-framework/)*.
+*[Learn more](https://github.com/acanvas/acanvas-framework)*.
 
 ## Acanvas Examples
 

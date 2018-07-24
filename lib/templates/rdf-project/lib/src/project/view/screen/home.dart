@@ -52,10 +52,9 @@ class Home extends AbstractScreen implements IScreenServiceAware {
 
     reflow.addChild(Theme.getButton(label: getProperty("prelude.generator.button.label"))..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, getProperty("prelude.generator.button.url")));
 
-    for (int i = 2; i < 4; i++) {
-      reflow.addChild(Theme.getHeadline(getProperty("prelude.headline0${i}")));
-      reflow.addChild(Theme.getCopy(getProperty("prelude.copy0${i}")));
-    }
+    reflow.addChild(Theme.getHeadline(getProperty("prelude.headline02"), size: 28));
+    reflow.addChild(Theme.getCopy(getProperty("prelude.copy02"), size: 18));
+
     for (int i = 1; i < 8; i++) {
       reflow.addChild(Theme.getHeadline(getProperty("headline0${i}")));
       reflow.addChild(Theme.getCopy(getProperty("copy0${i}")));
