@@ -29,8 +29,7 @@ class SoundAnalyzer {
   }
 
   void _startWebAudio() {
-    WebAudioApiSound
-        .load(
+    WebAudioApiSound.load(
             "assets/moppiflower/Santogold-Starstruck-Southbound-Hangers-Remix.mp3")
         .then((sound) {
       _audio = sound;

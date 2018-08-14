@@ -50,7 +50,8 @@ export 'package:stagexl_flump/stagexl_flump.dart';
 export 'examples/flump/flump_example.dart';
 
 //stagexl_spine
-export 'package:stagexl_spine/stagexl_spine.dart' hide Animation, Slot, Skin, Skeleton, Bone;
+export 'package:stagexl_spine/stagexl_spine.dart'
+    hide Animation, Slot, Skin, Skeleton, Bone;
 //stagexl_spine-example
 export 'examples/spine/spine_example.dart';
 

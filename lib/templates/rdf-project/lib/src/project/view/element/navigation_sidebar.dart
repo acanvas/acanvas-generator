@@ -34,7 +34,8 @@ class NavigationSidebar extends AcanvasLifecycleSprite
       });
     addChild(_logo);
 
-    _itemList = _createList(_stateModel.getStateVOList(true, 0), _sideBarCellSelectAction);
+    _itemList = _createList(
+        _stateModel.getStateVOList(true, 0), _sideBarCellSelectAction);
     addChild(_itemList);
 
     onInitComplete();
@@ -72,10 +73,9 @@ class NavigationSidebar extends AcanvasLifecycleSprite
   }
 
   void setVO(StateVO vo) {
-
-  //  if (!_blockSelectionByAddressCallback) {
-     // _itemList.selectCellByVO(vo);
-      _subList?.selectCellByVO(vo);
+    //  if (!_blockSelectionByAddressCallback) {
+    // _itemList.selectCellByVO(vo);
+    _subList?.selectCellByVO(vo);
     //}
     _blockSelectionByAddressCallback = false;
 
@@ -97,8 +97,9 @@ class NavigationSidebar extends AcanvasLifecycleSprite
     _stateModel = stateModel;
   }
 
-  MdMenu _createList(List<StateVO> stateVOList, Function(SelectableButton cell) cellSelectAction) {
-    var itemList =  new MdMenu(stateVOList,
+  MdMenu _createList(List<StateVO> stateVOList,
+      Function(SelectableButton cell) cellSelectAction) {
+    var itemList = new MdMenu(stateVOList,
         cell: new ListMenuCell(),
         shadow: false,
         backgroundColor: Colors.GREY_DARK);
@@ -116,6 +117,7 @@ class NavigationSidebar extends AcanvasLifecycleSprite
     _subList.init();
     refresh();
   }
+
   void closeSubmenu() {
     //TODO destroy submenu, animate rootmenu
     _subList?.dispose();

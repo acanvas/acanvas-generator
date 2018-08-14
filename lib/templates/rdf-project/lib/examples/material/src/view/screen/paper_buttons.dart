@@ -42,7 +42,9 @@ class MdButtons extends AbstractReflowScreen {
     wrap02.addChild(new MdButton(getProperty("button01"),
         fontColor: Colors.BLACK, shadow: true, bgColor: MdColor.WHITE));
     wrap02.addChild(new MdButton(getProperty("button02"),
-        fontColor: Colors.WHITE, shadow: true, bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
+        fontColor: Colors.WHITE,
+        shadow: true,
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap02.addChild(new MdButton(getProperty("button03"),
         fontColor: Colors.GREY_LIGHT,
         shadow: false,

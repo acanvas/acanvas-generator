@@ -25,7 +25,9 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
             size: 18, color: Colors.WHITE),
         panelColor: Colors.WRAP_01);
     _wrap01.addChild(new MdButton("Show My Google+ Friends",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(
           GoogleEvents.USER_LOGIN,
           new GoogleLoginVO(
@@ -34,14 +36,20 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
                   getProperty(
                       GoogleExampleScreenIDs.GOOGLE_FRIENDS + ".url", true)))));
     _wrap01.addChild(new MdButton("Google Plus Me",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       ..submitEvent =
           new AcSignal(GoogleEvents.PLUS_USER_GET, "me", _onGoogleDataMe));
     _wrap01.addChild(new MdButton("Google Share",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(GoogleEvents.PLUS_SHARE_RENDER));
     _wrap01.addChild(new MdButton("Google People Me",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(
           GoogleEvents.PLUS_PEOPLE_GET, "me", _onGoogleDataFriends));
     _wrap01.span(300, 420);
@@ -53,7 +61,9 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
     MdButton sendButton;
 
     recordButton = new MdButton("Record Mic",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(IOEvents.MIC_RECORD_START)
       ..submitCallback = (_) {
         recordButton.disable();
@@ -61,7 +71,9 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
       };
 
     stopButton = new MdButton("Stop Recording",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       ..submitEvent = new AcSignal(IOEvents.MIC_RECORD_STOP)
       ..submitCallback = (_) {
         stopButton.disable();
@@ -70,7 +82,9 @@ class GoogleExample extends AbstractReflowScreen implements IIOModelAware {
       ..disable();
 
     sendButton = new MdButton("Recognize",
-        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, fontColor: Colors.WHITE, width: WIDTH_BUTTON)
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN,
+        fontColor: Colors.WHITE,
+        width: WIDTH_BUTTON)
       //..submitEvent = new AcSignal(GoogleEvents.SPEECH_RECOGNIZE, _ioModel.mic_recorded_blob)
       ..submitCallback = (_) {
         new AcSignal(GoogleEvents.SPEECH_RECOGNIZE, _ioModel.mic_recorded_blob)

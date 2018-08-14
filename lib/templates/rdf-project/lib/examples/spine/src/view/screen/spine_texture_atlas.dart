@@ -62,8 +62,7 @@ class SpineTextureAtlas extends AbstractScreen {
           _resourceManager.getTextureAtlas("combined").getBitmapData(name);
       var spine = _resourceManager.getTextFile("$name-spine");
       var atlas = _resourceManager.getTextFile("$name-atlas");
-      TextureAtlas
-          .fromBitmapData(bitmapData, atlas, TextureAtlasFormat.LIBGDX)
+      TextureAtlas.fromBitmapData(bitmapData, atlas, TextureAtlasFormat.LIBGDX)
           .then((textureAtlas) {
         // create spine skeleton data
 

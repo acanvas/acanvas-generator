@@ -15,9 +15,9 @@ class HomeSection1 extends AcanvasBoxSprite {
       ..bitmapData = DragonBonesAssets.getBitmapData("ani$section")
       ..inheritSpan = false;
 
-    hl1 = Theme.getHeadline(getProperty("headline"),
-        color: Color.Black, size: 20)
-      ..inheritWidth = false;
+    hl1 =
+        Theme.getHeadline(getProperty("headline"), color: Color.Black, size: 20)
+          ..inheritWidth = false;
     cpy1 = Theme.getCopy(getProperty("copy"), color: Color.Black, size: 14)
       ..inheritWidth = false;
 

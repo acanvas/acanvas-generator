@@ -13,9 +13,9 @@ class HomeBanner extends AcanvasBoxSprite {
     addChild(banner);
     banner.bitmapData = DragonBonesAssets.banner;
 
-    headline = Theme.getHeadline(getProperty("headline"),
-        color: Color.Black, size: 32)
-      ..inheritWidth = true;
+    headline =
+        Theme.getHeadline(getProperty("headline"), color: Color.Black, size: 32)
+          ..inheritWidth = true;
     addChild(headline);
 
     copy = Theme.getCopy(getProperty("copy"), color: Color.DarkGray, size: 18)

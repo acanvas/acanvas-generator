@@ -8,7 +8,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:acanvas_generator/acanvas_generator.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 
 void defineTests() {
   group('cli', () {

@@ -11,10 +11,10 @@ class MdFabs extends AbstractReflowScreen {
         Theme.getWrap(label: getProperty("col01"), align: AlignH.CENTER);
     wrap01.addChild(new MdFab(MdIcon.white(MdIconSet.arrow_forward),
         bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
-    wrap01.addChild(
-        new MdFab(MdIcon.white(MdIconSet.create), bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
-    wrap01.addChild(
-        new MdFab(MdIcon.white(MdIconSet.favorite), bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
+    wrap01.addChild(new MdFab(MdIcon.white(MdIconSet.create),
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
+    wrap01.addChild(new MdFab(MdIcon.white(MdIconSet.favorite),
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap01.addChild(new MdFab(MdIcon.white(MdIconSet.done),
         bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN, radius: 20));
     wrap01.addChild(new MdFab(MdIcon.white(MdIconSet.reply),
@@ -41,8 +41,8 @@ class MdFabs extends AbstractReflowScreen {
         bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap03.addChild(
         new MdFab(MdIcon.white(MdIconSet.create), bgColor: Colors.RED));
-    wrap03.addChild(
-        new MdFab(MdIcon.black(MdIconSet.favorite), bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
+    wrap03.addChild(new MdFab(MdIcon.black(MdIconSet.favorite),
+        bgColor: Theme.EXAMPLES_HIGHLIGHT_MAIN));
     wrap03.addChild(new MdFab(MdIcon.white(MdIconSet.done),
         bgColor: Colors.GREEN, radius: 20));
     wrap03.addChild(new MdFab(MdIcon.color(MdIconSet.reply, Colors.PINK),

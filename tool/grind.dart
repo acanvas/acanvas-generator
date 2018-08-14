@@ -5,7 +5,6 @@
 import 'dart:io';
 
 import 'package:grinder/grinder.dart';
-import 'package:ghpages_generator/ghpages_generator.dart' as ghpages;
 import 'package:path/path.dart' as path;
 
 final Directory BUILD_DIR = new Directory('build');
@@ -62,13 +61,6 @@ void coverage() {
   }
 }
 
-@Task('Generate a new version of gh-pages.')
-void updateGhPages() {
-  log('Updating gh-pages branch of the project');
-  new ghpages.Generator(rootDir: getDir('.').absolute.path)
-    ..templateDir = getDir('site').absolute.path
-    ..generate();
-}
 
 @Task('Delete all generated artifacts.')
 void clean() {

@@ -32,7 +32,7 @@ class Plugins {
       //new GooglePlugin(),
 
       //facebook
-     // new FacebookPlugin(),
+      // new FacebookPlugin(),
 
       //ugc
       new UGCPlugin(),
@@ -78,7 +78,7 @@ class Plugins {
       new ParticleExamplePlugin(_exampleOrder++),
 
       //facebook-example
-     // new FacebookExamplePlugin(_exampleOrder++),
+      // new FacebookExamplePlugin(_exampleOrder++),
 
       //google-example
       //new GoogleExamplePlugin(_exampleOrder++),

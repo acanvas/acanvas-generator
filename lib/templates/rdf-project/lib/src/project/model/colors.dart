@@ -25,5 +25,4 @@ class Colors {
   static const int PINK = 0xFFD65290;
   static const int RED = 0xFFf44336;
   static const int GREEN = 0xFF41A12D;
-
 }

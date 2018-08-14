@@ -42,9 +42,11 @@ class Project extends AbstractAcPlugin {
    */
   @override
   void configureTransitions() {
-    addTransition(EffectIDs.DEFAULT, new HLeftSwipeTransition(), 1.6, ScreenConstants.TRANSITION_PARALLEL, 1);
+    addTransition(EffectIDs.DEFAULT, new HLeftSwipeTransition(), 1.6,
+        ScreenConstants.TRANSITION_PARALLEL, 1);
     addTransition(EffectIDs.DEFAULT_MODAL, new CenterZoomTransition(), .5);
-    addTransition(EffectIDs.SWIPE, new HRightSwipeTransition(), 1.6, ScreenConstants.TRANSITION_PARALLEL, 1);
+    addTransition(EffectIDs.SWIPE, new HRightSwipeTransition(), 1.6,
+        ScreenConstants.TRANSITION_PARALLEL, 1);
   }
 
   /**

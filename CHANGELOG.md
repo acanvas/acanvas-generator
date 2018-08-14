@@ -1,12 +1,16 @@
 # CHANGELOG ACANVAS_GENERATOR
 
-## 0.11.0 Roadmap
+## Roadmap
 
 - Finalize UGC Backend
 - Acanvas Progressive Web App (PWA) Example
 - FlexBook as Custom Renderer for all Examples
 - MoppiFlower as Custom Renderer for all Examples
 - Include custom Shaders in Examples (zoom/fire)
+
+## 0.11.0 2018-08-14
+
+- Depends on Dart 2.0 stable
 
 ## 0.10.0-dev 2018-06-14
 

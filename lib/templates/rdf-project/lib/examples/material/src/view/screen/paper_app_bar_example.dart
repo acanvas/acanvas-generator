@@ -23,15 +23,18 @@ class MdAppBarExample extends AbstractReflowScreen {
       ..opacity = .75);
     appBar02.addHeadline(Theme.getHeadline("Headline", color: Colors.WHITE));
     appBar02.addToTR(new MdIconButton(
-        MdIcon.color(MdIconSet.account_box, Theme.EXAMPLES_MD_BUTTON_ICON_COLOR),
+        MdIcon.color(
+            MdIconSet.account_box, Theme.EXAMPLES_MD_BUTTON_ICON_COLOR),
         rippleColor: Theme.EXAMPLES_MD_BUTTON_COLOR)
       ..opacity = .75);
     appBar02.addToTR(new MdIconButton(
-        MdIcon.color(MdIconSet.accessibility, Theme.EXAMPLES_MD_BUTTON_ICON_COLOR),
+        MdIcon.color(
+            MdIconSet.accessibility, Theme.EXAMPLES_MD_BUTTON_ICON_COLOR),
         rippleColor: Theme.EXAMPLES_MD_BUTTON_COLOR)
       ..opacity = .75);
     appBar02.addToTR(new MdIconButton(
-        MdIcon.color(MdIconSet.arrow_drop_down, Theme.EXAMPLES_MD_BUTTON_ICON_COLOR),
+        MdIcon.color(
+            MdIconSet.arrow_drop_down, Theme.EXAMPLES_MD_BUTTON_ICON_COLOR),
         rippleColor: Theme.EXAMPLES_MD_BUTTON_COLOR)
       ..opacity = .75);
     reflow.addChild(appBar02);

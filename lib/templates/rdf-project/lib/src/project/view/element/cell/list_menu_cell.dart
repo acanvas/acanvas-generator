@@ -9,7 +9,8 @@ class ListMenuCell extends SelectableButton {
 
   ListMenuCell([this.fontColor = Theme.MD_BUTTON_FONT_COLOR]) : super() {
     selfSelect = false;
-    MdRipple ripple = new MdRipple(color: Theme.HIGHLIGHT_MAIN_COMP)..opacity = 1;
+    MdRipple ripple = new MdRipple(color: Theme.HIGHLIGHT_MAIN_COMP)
+      ..opacity = 1;
     addChild(ripple);
 
     label = Theme.getHeadline("empty", size: 14, color: fontColor);

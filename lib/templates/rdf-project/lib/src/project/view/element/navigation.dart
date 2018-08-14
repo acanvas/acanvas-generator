@@ -99,7 +99,6 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
 
     _modalBg.width = spanWidth;
     _modalBg.height = spanHeight;
-
   }
 
   void _openMenu() {
@@ -157,28 +156,23 @@ class Navigation extends AcanvasLifecycleSprite implements IStateModelAware {
     else if (vo.tree_parent > 0) {
       // if this subpage is the first ever loaded, get list of its siblings
       _subPageList = _stateModel.getStateVOList(true, vo.tree_parent);
-      topVo = _stateModel.getStateVOList(true, 0).firstWhere((v) => v.tree_order == vo.tree_parent);
+      topVo = _stateModel
+          .getStateVOList(true, 0)
+          .firstWhere((v) => v.tree_order == vo.tree_parent);
       appBarTitle = "${topVo.title} >${vo.title}";
     }
 
-
     // if no subpages
     if (_subPageList == null || _subPageList.length == 0) {
-
       _sidebar.closeSubmenu();
-
-    }
-
-    else {
-
-      _subPageList.forEach((vo){
-        if(!vo.title.contains("   ")) vo.title = "   ${vo.title}";
+    } else {
+      _subPageList.forEach((vo) {
+        if (!vo.title.contains("   ")) vo.title = "   ${vo.title}";
       });
       // add root and category home entries
       _subPageList.insert(0, topVo);
 
       _sidebar.openSubmenu(_subPageList);
-
     }
 
     // send vo to sidebar so we can highlight the current url's button (if applicable)

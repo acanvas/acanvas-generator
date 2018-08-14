@@ -14,8 +14,7 @@ class Home extends AbstractScreen implements IScreenServiceAware {
   ImageSprite _acanvasWideLogo;
   ImageSprite _acanvasComponentDiagram;
 
-  Home(String id) : super(id) {
-  }
+  Home(String id) : super(id) {}
 
   @override
   void init({Map<String, String> params: null}) {
@@ -47,12 +46,17 @@ class Home extends AbstractScreen implements IScreenServiceAware {
     reflow.addChild(Theme.getHeadline(getProperty("headline"), size: 28));
     reflow.addChild(Theme.getCopy(getProperty("copy"), size: 18));
 
-    reflow.addChild(Theme.getHeadline(getProperty("prelude.headline01"), size: 28));
+    reflow.addChild(
+        Theme.getHeadline(getProperty("prelude.headline01"), size: 28));
     reflow.addChild(Theme.getCopy(getProperty("prelude.copy01"), size: 18));
 
-    reflow.addChild(Theme.getButton(label: getProperty("prelude.generator.button.label"))..submitEvent = new AcSignal(StateEvents.ADDRESS_SET, getProperty("prelude.generator.button.url")));
+    reflow.addChild(
+        Theme.getButton(label: getProperty("prelude.generator.button.label"))
+          ..submitEvent = new AcSignal(StateEvents.ADDRESS_SET,
+              getProperty("prelude.generator.button.url")));
 
-    reflow.addChild(Theme.getHeadline(getProperty("prelude.headline02"), size: 28));
+    reflow.addChild(
+        Theme.getHeadline(getProperty("prelude.headline02"), size: 28));
     reflow.addChild(Theme.getCopy(getProperty("prelude.copy02"), size: 18));
 
     for (int i = 1; i < 8; i++) {
@@ -79,7 +83,6 @@ class Home extends AbstractScreen implements IScreenServiceAware {
 
     addChild(reflow);
 
-
     onInitComplete();
   }
 
@@ -91,7 +94,6 @@ class Home extends AbstractScreen implements IScreenServiceAware {
   @override
   void refresh() {
     _acanvasWideLogo.scaleToWidth(spanWidth);
-
 
     if (_acanvasComponentDiagram.loaded) {
       _acanvasComponentDiagram.scaleToWidth(spanWidth - 2 * PADDING);

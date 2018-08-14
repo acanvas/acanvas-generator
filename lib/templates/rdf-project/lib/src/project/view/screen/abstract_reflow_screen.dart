@@ -43,9 +43,8 @@ class AbstractReflowScreen extends AbstractScreen implements IModelAware {
 
     String copyText = getProperty("copy");
     _copy = Theme.getCopy(copyText, size: 16);
-   // _copy.inheritWidth = false;
+    // _copy.inheritWidth = false;
     reflow.addChild(_copy);
-
 
     //In the sub class, do this after the super call when overriding init:
     /*
@@ -60,13 +59,12 @@ class AbstractReflowScreen extends AbstractScreen implements IModelAware {
 
   @override
   void refresh() {
-   // _headline.width = spanWidth - 2 * padding;
-   // _copy.width = spanWidth - 2 * padding;
+    // _headline.width = spanWidth - 2 * padding;
+    // _copy.width = spanWidth - 2 * padding;
     reflow
-        ..span(spanWidth - 2*padding, spanHeight)
-        ..x = padding
-        ..y = padding
-    ;
+      ..span(spanWidth - 2 * padding, spanHeight)
+      ..x = padding
+      ..y = padding;
     super.refresh();
   }
 }

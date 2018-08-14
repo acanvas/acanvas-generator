@@ -25,8 +25,6 @@ class Theme {
   static const int MD_WRAP_COLOR = 0xFF000000;
   static const int MD_WRAP_FONT_COLOR = 0xFF000000;
 
-
-
   static const int EXAMPLES_HIGHLIGHT_MAIN = Colors.AC_BLUE;
   static const int EXAMPLES_HIGHLIGHT_MAIN_ALT = Colors.AC_BLUE_BOOM;
   static const int EXAMPLES_BG = Colors.GREY_MIDDLE;
