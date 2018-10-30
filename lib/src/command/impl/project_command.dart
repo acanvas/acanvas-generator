@@ -119,6 +119,9 @@ class ProjectCommand extends AcanvasCommand {
       }
     });
 
+    // remove sandbox content
+    project_data.data.removeWhere((t) => t.contains("sandbox/"));
+
     // if NO examples are to be generated at all, we want a simpler home page example
     if (!hasExamples) {
       // Skip config and view/element

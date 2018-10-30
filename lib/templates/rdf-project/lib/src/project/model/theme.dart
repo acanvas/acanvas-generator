@@ -46,7 +46,7 @@ class Theme {
       {int size: COPY_SIZE,
       int color: COPY_COLOR,
       String fontName: Fonts.ROBOTO_FONTNAME,
-      int weight: Fonts.ROBOTO_WEIGHT_NORMAL}) {
+      int weight: Fonts.ROBOTO_WEIGHT_BOLD}) {
     return new MdText(text,
         fontName: fontName, size: size, color: color, weight: weight);
   }

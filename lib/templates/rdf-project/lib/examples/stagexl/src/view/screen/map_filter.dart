@@ -64,16 +64,16 @@ class MapFilter extends AbstractScreen {
     // change the light position of the NormalMapFilter when moving
     // the mouse or the touch point.
     stage.onMouseDown.listen(_setLightPosition);
-    stage.onMouseMove.listen(_setLightPosition);
+    this.onMouseMove.listen(_setLightPosition);//when stage is used, this doesn't work due to only "Event" being sent as payload
     stage.onTouchBegin.listen(_setLightPosition);
-    stage.onTouchMove.listen(_setLightPosition);
+    this.onTouchMove.listen(_setLightPosition);
 
     Ac.MATERIALIZE_REQUIRED = true;
 
     onInitComplete();
   }
 
-  void _setLightPosition(InputEvent e) {
+  void _setLightPosition(covariant InputEvent e) {
     Ac.MATERIALIZE_REQUIRED = true;
     var stagePosition = new Point<num>(e.stageX, e.stageY);
     var guyPosition = _guy.globalToLocal(stagePosition);

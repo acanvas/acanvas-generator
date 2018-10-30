@@ -42,7 +42,7 @@ class BezierExample extends AbstractScreen {
 
   @override
   void dispose({bool removeSelf: true}) {
-    _listeners?.every((sub) {
+    _listeners?.forEach((sub) {
       sub.cancel();
       sub = null;
     });

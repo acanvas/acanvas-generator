@@ -25,23 +25,23 @@ class Logo extends AbstractScreen {
 
     num delay = 0.1;
     Random random = new Random();
+    var logoBitmapData = _resourceManager.getBitmapData("logo");
 
     _subscription = Ac.JUGGLER.interval(delay).take(666).listen((int counter) {
       var rect = stage.contentRectangle;
       var hue = random.nextDouble() * 2.0 - 1.0;
       var hueFilter = new ColorMatrixFilter.adjust(hue: hue);
-      var logoBitmapData = _resourceManager.getBitmapData("logo");
 
       var logoBitmap = new Bitmap(logoBitmapData)
         ..pivotX = logoBitmapData.width / 2
         ..pivotY = logoBitmapData.height / 2
-        ..x = rect.left + rect.width * random.nextDouble()
-        ..y = rect.top + rect.height * random.nextDouble()
         ..rotation = 0.4 * random.nextDouble() - 0.2
         ..filters = [hueFilter]
         ..scaleX = 0.0
         ..scaleY = 0.0
         ..addTo(this);
+      logoBitmap.x = rect.left + rect.width * random.nextDouble();
+      logoBitmap.y = rect.top + rect.height * random.nextDouble();
 
       Ac.JUGGLER.addTween(logoBitmap, 1.0, Transition.easeOutBack)
         ..animate.scaleX.to(1.0)

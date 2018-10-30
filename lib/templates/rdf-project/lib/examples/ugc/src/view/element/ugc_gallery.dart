@@ -37,7 +37,7 @@ class UGCGallery extends AbstractPolaroidPager {
     uploadButton.span(listItemWidth, listItemHeight);
     uploadButton.x = spanWidth - uploadButton.spanWidth - Dimensions.SPACER;
     uploadButton.y = spanHeight - uploadButton.spanHeight - Dimensions.SPACER;
-    uploadButton.rotation = -4.0 * math.PI / 180;
+    uploadButton.rotation = -4.0 * math.pi / 180;
     super.refresh();
   }
 

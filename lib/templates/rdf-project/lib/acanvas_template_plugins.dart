@@ -49,10 +49,9 @@ export 'package:stagexl_flump/stagexl_flump.dart';
 //flump-example
 export 'examples/flump/flump_example.dart';
 
-//stagexl_spine
-export 'package:stagexl_spine/stagexl_spine.dart'
-    hide Animation, Slot, Skin, Skeleton, Bone;
-//stagexl_spine-example
+//spine
+export 'package:stagexl_spine/stagexl_spine.dart' hide Animation, Slot, Skin, Skeleton, Bone;
+//spine-example
 export 'examples/spine/spine_example.dart';
 
 //isometric

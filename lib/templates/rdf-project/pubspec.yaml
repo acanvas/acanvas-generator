@@ -1,12 +1,14 @@
 name: acanvas_template
-version: 0.10.0-dev
+version: 0.11.0
+authors:
+  - Nils Döhring <nilsdoehring@gmail.com>
 description: Project template created by Acanvas Generator.
 environment:
-  sdk: '>=2.0.0-dev.66.0 <2.0.0'
+  sdk: '>=2.0.0 <3.0.0'
 
 dependencies:
   args: any
-  browser: any
+  #browser: any
   path: any
   crypto: any
   acanvas_framework:
@@ -17,6 +19,7 @@ dependencies:
   ### END PHYSICS
   ### BABYLON
   babylonjs_facade:
+    version: 0.4.0
     git: https://github.com/block-forest/babylonjs-dart-facade
   ### END BABYLON
   ### BITMAPFONT
@@ -43,10 +46,9 @@ dependencies:
   ### END ISOMETRIC
 
 dev_dependencies:
-  #-------- Dart 2.0.0-dev --------
-  build_runner: '>=0.9.1'
-  build_test: '>=0.10.2'
-  build_web_compilers: '>=0.4.0+3'
+  build_runner: '>=0.10.0 <2.0.0'
+  build_test: '>=0.10.2+5 <2.0.0'
+  build_web_compilers: '>=0.4.0+4 <2.0.0'
 
 # bleeding edge development
 dependency_overrides:
