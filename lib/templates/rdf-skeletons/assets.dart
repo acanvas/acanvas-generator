@@ -11,6 +11,18 @@ class Assets {
     return _singleton.mgr.getBitmapData(id);
   }
 
+  static TextureAtlas atlas(String id){
+  return _singleton.mgr.getTextureAtlas(id);
+  }
+
+  static BitmapData atlasBitmapData(String atlasId, String assetId){
+  return _singleton.mgr.getTextureAtlas(atlasId).getBitmapData(assetId);
+  }
+
+  static Bitmap atlasBitmap(String atlasId, String assetId){
+  return new Bitmap(atlasBitmapData(atlasId, assetId));
+  }
+
   static final Assets _singleton = new Assets._internal();
 
   factory Assets() {
